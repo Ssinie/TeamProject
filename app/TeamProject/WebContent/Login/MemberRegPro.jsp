@@ -15,6 +15,6 @@
 	String email = request.getParameter("email");
 	String phone = request.getParameter("phone");
 
-		if (pw1==pw2);{
+		
 
 %>

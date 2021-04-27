@@ -35,7 +35,7 @@
 		<b><span>항상 고객을 생각하고 고객의 가치를 더욱 높이는 동반자가 되겠습니다.</span></b>
 	</div>
 	<div class="내용">
-		<img src="/ju/0423/rata.jpg"/> <br />
+		<img src="/TeamProject/intro/rata.jpg"/> <br />
 	<p><span>안녕하십니까?</span></p>
 	<p><span>저희 ○○식당은 한식, 일식, 양식을 모두 맛 볼 수 있는 곳입니다.</span></p>
 	<p><span>요리에 타고난 감각과 천부적인 재능이 있어 음식 냄새만 맡아도</span></p>

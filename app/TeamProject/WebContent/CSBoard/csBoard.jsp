@@ -8,30 +8,30 @@
 <title> 고객센터 </title>
 
 <%
-    int pageSize = 10; // 한 페이지에 보여질 게시물 수.
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); //작성날짜를 해당 형식으로 나타냄. 91번 라인에서 사용.년-월-일 시:분 -> 년-월-일만 보여지게 할 수 있다.
+    int pageSize = 10;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    String pageNum = request.getParameter("pageNum"); //리스트에서 페이지 번호 클릭시 받을 수 있다. 100번 라인에서 확인. 자세히는 111번 라인.
+    String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
         pageNum = "1";
     }
 
-    int currentPage = Integer.parseInt(pageNum); // 1
-    int startRow = (currentPage - 1) * pageSize + 1; //(1-1) * 10 + 1 = 1
-    int endRow = currentPage * pageSize; // 1 * 10 = 10
-    int count = 0; // 전체 게시물 수.
-    int number=0; // 화면 글 번호.
+    int currentPage = Integer.parseInt(pageNum);
+    int startRow = (currentPage - 1) * pageSize + 1;
+    int endRow = currentPage * pageSize;
+    int count = 0;
+    int number=0;
 
     List articleList = null;
-    csDAO dbPro =new csDAO(); //DAO
-    count = dbPro.getArticleCount(); //getArticleCount를 생성.
+    csDAO dbPro = new csDAO();
+    count = dbPro.getArticleCount();
     if (count > 0) {
-        articleList = dbPro.getArticles(startRow, endRow); // 위에 계산 되어있는 값이 들어간다.
+        articleList = dbPro.getArticles(startRow, endRow);
     }
 
-	number=count-(currentPage-1)*pageSize; // ex) 20 - ( 2 - 1 ) * 10 = 10.
-			
+	number=count-(currentPage-1)*pageSize;
 	String id = (String)session.getAttribute("memId");
+
 %>
 
 <html>
@@ -79,7 +79,27 @@
 	<tr height="30">
     	<td align="center"  width="50" > <%=number--%></td>
     	<td  width="250" >
-
+			<%int wid=0; 
+		      if(article.getRe_level>0){
+		      	wid=10*(article.getCs_re_level()); %>
+		  		<img src="images/level.gif" width="<%=wid%>" height="16">
+		  		<img src="images/re.gif">
+			<%}else{%>
+		  		<img src="images/level.gif" width="<%=wid%>" height="16">
+			<%}%>
+     		 <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+           		<%=article.getSubject()%>
+           	 </a> 
+          <% if(article.getReadcount()>=20){%>
+         	<img src="images/hot.gif" border="0"  height="16">
+           <%}%> 
+		</td>
+    	<td align="center"  width="100"> 
+			<a href="mailto:<%=article.getEmail()%>"><%=article.getWriter()%></a>
+		</td>
+    	<td align="center"  width="150"><%= sdf.format(article.getReg_date())%></td>
+    	<td align="center"  width="50"><%=article.getReadcount()%></td>
+    	<td align="center" width="100" ><%=article.getIp()%></td>
 	</tr>
     <%}%>
 </table>
@@ -105,7 +125,7 @@
 <%		}
     }
 %>
-	<form action="searchList.jsp" method="post">
+	<form action="csBoardSearch.jsp" method="post">
 		<select name="col">
 			<option value = "subject"> 제목</option>
 			<option value = "writer"> 작성자 </option>

@@ -8,7 +8,7 @@ public class csDTO {
 	private String subject;
 	private String email;
 	private String content;
-	private String password;
+	private String passwd;
 	private String file;
 	private Timestamp reg_date;
 	private int count;
@@ -46,11 +46,11 @@ public class csDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getPassword() {
-		return password;
+	public String getPasswd() {
+		return passwd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String passwd) {
+		this.passwd = passwd;
 	}
 	public String getFile() {
 		return file;

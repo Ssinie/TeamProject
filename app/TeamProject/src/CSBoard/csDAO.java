@@ -37,13 +37,13 @@ public class csDAO {
 				re_step=0;
 				re_level=0;
 			}
-			sql = "insert into csboard(num,writer,email,subject,password,reg_date,";
+			sql = "insert into csboard(num,writer,email,subject,passwd,reg_date,";
 			sql+="ref,re_step,re_level,content) values(csboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter()); 
 			pstmt.setString(2, article.getEmail());
 			pstmt.setString(3, article.getSubject());
-			pstmt.setString(4, article.getPassword());
+			pstmt.setString(4, article.getPasswd());
 			pstmt.setTimestamp(5, article.getReg_date());
 			pstmt.setInt(6, ref);
 			pstmt.setInt(7, re_step);
@@ -114,9 +114,9 @@ public class csDAO {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,readcount,r "+
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,readcount,rownum r " +
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,readcount " +
+					"select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,readcount " +
 					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 
 					pstmt.setInt(1, start);
@@ -131,7 +131,7 @@ public class csDAO {
 							article.setWriter(rs.getString("writer"));
 							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
-							article.setPassword(rs.getString("password"));
+							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
 							article.setCount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
@@ -154,9 +154,9 @@ public class csDAO {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount " +
+					"select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
 					"from csboard where writer=? order by reg_date desc)  order by reg_date desc ) where r >= ? and r <= ? ");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, start); 
@@ -171,7 +171,7 @@ public class csDAO {
 							article.setWriter(rs.getString("writer"));
 							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
-							article.setPassword(rs.getString("password"));
+							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
 							article.setCount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
@@ -193,9 +193,9 @@ public class csDAO {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
-					"from (select num,writer,email,subject,password,reg_date,ref,re_step,re_level,content,ip,readcount " +
+					"select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
 					"from csboard  where "+col+" like '%"+search+"%' order by reg_date desc) order by reg_date desc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end);
@@ -209,7 +209,7 @@ public class csDAO {
 							article.setWriter(rs.getString("writer"));
 							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
-							article.setPassword(rs.getString("password"));
+							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
 							article.setCount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
@@ -243,7 +243,7 @@ public class csDAO {
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
-				article.setPassword(rs.getString("password"));
+				article.setPassword(rs.getString("passwd"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setCount(rs.getInt("count"));
 				article.setRef(rs.getInt("ref"));
@@ -272,7 +272,7 @@ public class csDAO {
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
-				article.setPassword(rs.getString("password"));
+				article.setPassword(rs.getString("passwd"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setCount(rs.getInt("count"));
 				article.setRef(rs.getInt("ref"));
@@ -293,19 +293,19 @@ public class csDAO {
 		int x=-1;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select password from csboard where num = ?");
+			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
 			pstmt.setInt(1, article.getNum());
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbpasswd= rs.getString("password");
-				if(dbpasswd.equals(article.getPassword())){
-					sql="update csboard set writer=?,email=?,subject=?,password=?";
+				if(dbpasswd.equals(article.getPasswd())){
+					sql="update csboard set writer=?,email=?,subject=?,passwd=?";
 					sql+=",content=? where num=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, article.getWriter());
 					pstmt.setString(2, article.getEmail());
 					pstmt.setString(3, article.getSubject());
-					pstmt.setString(4, article.getPassword());
+					pstmt.setString(4, article.getPasswd());
 					pstmt.setString(5, article.getContent());
 					pstmt.setInt(6, article.getNum());
 					pstmt.executeUpdate();
@@ -322,18 +322,18 @@ public class csDAO {
 		return x;
 	}
 	//delete 삭제
-	public int deleteArticle(int num, String password) throws Exception {
+	public int deleteArticle(int num, String passwd) throws Exception {
 		String dbpasswd="";
 		int x=-1;
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"select password from csboard where num = ?");
+			"select passwd from csboard where num = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				dbpasswd= rs.getString("password");
-				if(dbpasswd.equals(password)){
+				dbpasswd= rs.getString("passwd");
+				if(dbpasswd.equals(passwd)){
 					pstmt = conn.prepareStatement("delete from csboard where num=?");
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
@@ -349,17 +349,17 @@ public class csDAO {
 		return x;
 	}
 	//password 확인
-	public int passwordCheck(int num, String password) throws Exception {
+	public int passwordCheck(int num, String passwd) throws Exception {
 		String dbpasswd="";
 		int x=-1;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select password from csboard where num = ?");
+			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				dbpasswd= rs.getString("password");
-				if(dbpasswd.equals(password)){
+				dbpasswd= rs.getString("passwd");
+				if(dbpasswd.equals(passwd)){
 					x= 1;
 				}else
 					x= 0;

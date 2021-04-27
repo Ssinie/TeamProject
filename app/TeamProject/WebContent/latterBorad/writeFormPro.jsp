@@ -14,5 +14,5 @@
 	LatterBoardDAO dao = new LatterBoardDAO();
 	dao.insertArticle(dto);
 	
-	response.sendRedirect("writeForm.jsp");
+	response.sendRedirect("latterBoard.jsp");
 %>

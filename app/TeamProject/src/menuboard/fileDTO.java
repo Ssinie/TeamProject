@@ -1,9 +1,38 @@
-package test.board;
+package menuboard;
 
 public class fileDTO {
-	String fileName;
-	String fileRealName;
+	private String subject;
+	private String name;
+	private String type;
+	private String content;
+	private String fileName;
+	private String fileRealName;
 	
+
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getFileName() {
 		return fileName;
 	}
@@ -16,7 +45,5 @@ public class fileDTO {
 	public void setFileRealName(String fileRealName) {
 		this.fileRealName = fileRealName;
 	}
-	
-	
-	
+
 }

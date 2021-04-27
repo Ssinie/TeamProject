@@ -55,9 +55,11 @@ ul{}
 									<strong class="tit">7가지 최애버거 맥런치 출시!</strong>
 								</div>
 							</a></li>
-</ul>
-						<div class="btnMore" id="btnMore">
+	</ul>
+						<!--  <div class="btnMore" id="btnMore">
 							<a href="javascript:more();" class="more" title="더보기">더보기</a>
 						</div>
-					</div>
+					
+					</div>	-->
 				</div>
+			

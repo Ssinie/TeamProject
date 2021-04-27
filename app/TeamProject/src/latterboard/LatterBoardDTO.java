@@ -1,12 +1,14 @@
 package latterboard;
 
+import java.sql.Timestamp;
+
 public class LatterBoardDTO {
 	private int num;
 	private String writer;
 	private String subject;
 	private String email;
 	private String content;
-	private String reg_date;
+	private Timestamp reg_date;
 	private int readcount;
 	private String ip;
 	private int ref;
@@ -40,10 +42,10 @@ public class LatterBoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getReg_date() {
+	public Timestamp getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(String reg_date) {
+	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
 	public int getReadcount() {

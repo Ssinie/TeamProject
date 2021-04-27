@@ -69,9 +69,16 @@ else{%>
 %>
 	<tr height="30">
 		<td align="center" width="50"><%=number--%></td>
+		<td align="center" width="50"><%=dto.getWriter()%></td>
+		<td>
+		<a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+           		<%=dto.getSubject()%></a></td> 
+		<td align="center" width="50"><%=sdf.format(dto.getReg_date()) %></td>
+		<td align="center" width="50"><%=dto.getReadcount()%></td>
+		<td align="center" width="50"><%=dto.getIp() %></td>
 	</tr>
+</table>
 <%}
 }%>
-</table>
 </body>
 </html>

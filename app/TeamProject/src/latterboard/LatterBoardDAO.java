@@ -70,10 +70,10 @@ public class LatterBoardDAO {
 		List articleList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "\"select num,writer,email,subject,reg_date,ref,content,ip,readcount,r \"+\r\n"
-					+ "\"from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r \" +\r\n"
-					+ "\"from (select num,writer,email,subject,reg_date,ref,content,ip,readcount \" +\r\n"
-					+ "\"from latterboard order by ref desc, re_step asc) order by ref desc) where r >= ? and r <= ? \");";
+			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,r" + 
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r"+
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount"+ 
+						 "from latterboard order by ref desc) order by ref desc) where r >= ? and r <= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);

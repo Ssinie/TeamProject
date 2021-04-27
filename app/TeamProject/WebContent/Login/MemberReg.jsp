@@ -5,20 +5,26 @@
   </section>
   
   <section>
+  *는 필수사항입니다.<br><br>
+  
     <form name="login" action="MemberRegPro.jsp" method="post">
-      아이디확인<br>
-      <input type="text" name="id" placeholder="아이디 입력" >  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
+      *아이디확인<br>
+      <input type="email" name="id" placeholder="아이디 입력" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
       <input type="button" name="idcheck" value="아이디 확인">
-      <br>
-      비밀번호<br> 
-      <input type="password" name="pw1" value=""><br>
-      비밀번호 재확인<br> 
-      <input type="password" name="pw2" value="">
+      <br><br>
+      
+      *비밀번호<br> 
+      <input type="password" name="pw1" value="" required><br>
+      *비밀번호 재확인<br> 
+      <input type="password" name="pw2" value="" required>
       <input type="button" name="pwcheck" value="비밀번호 재확인">
       <br><br>
-      이름<br>  <input type="text" name="name" value=""> <br>
-      생년월일<br> 
-      <select name="year">
+      
+      *이름<br>  <input type="text" name="name" value="" required> 
+      <br><br>
+      
+      *생년월일<br> 
+      <select name="year" required>
         <option value="">-- 선택 --</option>
         <option value="1983">1983</option>
         <option value="1984">1984</option>
@@ -41,7 +47,7 @@
         <option value="2001">2001</option>
         <option value="2002">2002</option>
       </select>
-      <select name="month">
+      <select name="month" required>
         <option value="">-- 선택 --</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -56,7 +62,7 @@
         <option value="11">11</option>
         <option value="12">12</option>
       </select>
-      <select name="day">
+      <select name="day" required>
         <option value="">-- 선택 --</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -91,18 +97,22 @@
         <option value="31">31</option>
       </select>
       <br><br>
+      
       성별<br>  
       <label for="man">남자</label>
       <input type="radio" name="gender" value="남" id="man">
       <label for="woman">여자</label>
       <input type="radio" name="gender" value="여" id="woman"> <br><br>
-      이메일<br><input type="email" name="email" placeholder="email@gmail.com"><br><br>
-      휴대전화<br>  
+      *이메일<br><input type="email" name="email" placeholder="email@gmail.com" required>
+      <br><br>
+      
+      *휴대전화<br required>  
       <input type="text" name="phone" placeholder="010-****-****">
       <input type="button" name="certification" value="인증번호 받기"><br>
       <input type="text" name="certification" placeholder="인증번호를 입력하세요">
       <input type="button" name="certification" value="확인"><br><br>
       <br><br>
+      
       사진 <br>
       <input type="file" name="" value="">
       <br><br><br>

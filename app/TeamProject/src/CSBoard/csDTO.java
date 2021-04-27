@@ -11,7 +11,7 @@ public class csDTO {
 	private String passwd;
 	private String file;
 	private Timestamp reg_date;
-	private int count;
+	private int readcount;
 	private int ref;
 	private int re_step;
 	private int re_level;
@@ -64,11 +64,11 @@ public class csDTO {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-	public int getCount() {
-		return count;
+	public int getReadcount() {
+		return readcount;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
 	}
 	public int getRef() {
 		return ref;

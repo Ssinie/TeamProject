@@ -4,28 +4,29 @@
 
 <script>
 function Check(){
-	var title =document.inform.title.value; 
-	var writer =document.inform.writer.value; 
-	if(title=="" ){
+	var subject =document.inform.subject.value; 
+	var name =document.inform.name.value; 
+	if(subject=="" ){
 		alert("제목을 입력하세요.");
-		document.inform.title.focus();
+		document.inform.subject.focus();
 		return false;
-	}else if(writer==""){
-		alert("작성자를 입력하세요.");
-		document.inform.writer.focus();
+	}else if(name==""){
+		alert("메뉴 이름을 입력하세요.");
+		document.inform.name.focus();
 		return false;
 	}
 }
 </script>
 
 
+
  <form name="inform" action="insert.jsp" method="post" onsubmit="return Check();" enctype="multipart/form-data" >
 <table border="1"  width="300">
 <tr><td>		
- 제목 : <input type="text" name="title"/><br/>
+ 제목 : <input type="text" name="subject"/><br/>
  </td></tr>
    <tr><td>
- 작성자: <input type="text" name="writer"/><br/>
+ 메뉴 이름: <input type="text" name="name"/><br/>
 </td></tr>
    <tr><td>
  음식 종류: <select name="type">

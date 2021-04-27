@@ -14,7 +14,7 @@
   int check = dbPro.deleteArticle(num, passwd);
 
   if(check==1){%>
-	  <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>" >
+	  <meta http-equiv="Refresh" content="0;url=csBoard.jsp?pageNum=<%=pageNum%>" >
 <%}else{%>
        <script language="JavaScript">         
          alert("비밀번호를 잘못 입력하셨습니다.");

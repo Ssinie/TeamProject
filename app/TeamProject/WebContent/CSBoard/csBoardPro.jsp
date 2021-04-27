@@ -32,7 +32,7 @@
                 제 목
             </td>
             <td>
-                <input name="cs_subject" type="text" size="90" maxlength="100" value=""/>
+                <input name="subject" type="text" size="90" maxlength="100" value=""/>
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
                 내 용
             </td>
             <td>
-                <textarea name="cs_content" cols="72" rows="20"></textarea>
+                <textarea name="content" cols="72" rows="20"></textarea>
             </td>
         </tr>
         <tr>

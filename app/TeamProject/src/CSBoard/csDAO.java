@@ -133,7 +133,7 @@ public class csDAO {
 							article.setSubject(rs.getString("subject"));
 							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
-							article.setCount(rs.getInt("count"));
+							article.setReadcount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
 							article.setRe_step(rs.getInt("re_step"));
 							article.setRe_level(rs.getInt("re_level"));
@@ -160,12 +160,12 @@ public class csDAO {
 					"from csboard where writer=? order by reg_date desc)  order by reg_date desc ) where r >= ? and r <= ? ");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, start); 
-					pstmt.setInt(3, end); 
+					pstmt.setInt(3, end);
 
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						articleList = new ArrayList(end); 
-						do{ 
+						do{
 							csDTO article= new csDTO();
 							article.setNum(rs.getInt("num"));
 							article.setWriter(rs.getString("writer"));
@@ -173,7 +173,7 @@ public class csDAO {
 							article.setSubject(rs.getString("subject"));
 							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
-							article.setCount(rs.getInt("count"));
+							article.setReadcount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
 							article.setRe_step(rs.getInt("re_step"));
 							article.setRe_level(rs.getInt("re_level"));
@@ -211,7 +211,7 @@ public class csDAO {
 							article.setSubject(rs.getString("subject"));
 							article.setPassword(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
-							article.setCount(rs.getInt("count"));
+							article.setReadcount(rs.getInt("count"));
 							article.setRef(rs.getInt("ref"));
 							article.setRe_step(rs.getInt("re_step"));
 							article.setRe_level(rs.getInt("re_level"));
@@ -245,7 +245,7 @@ public class csDAO {
 				article.setSubject(rs.getString("subject"));
 				article.setPassword(rs.getString("passwd"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
-				article.setCount(rs.getInt("count"));
+				article.setReadcount(rs.getInt("count"));
 				article.setRef(rs.getInt("ref"));
 				article.setRe_step(rs.getInt("re_step"));
 				article.setRe_level(rs.getInt("re_level"));
@@ -274,7 +274,7 @@ public class csDAO {
 				article.setSubject(rs.getString("subject"));
 				article.setPassword(rs.getString("passwd"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
-				article.setCount(rs.getInt("count"));
+				article.setReadcount(rs.getInt("count"));
 				article.setRef(rs.getInt("ref"));
 				article.setRe_step(rs.getInt("re_step"));
 				article.setRe_level(rs.getInt("re_level"));

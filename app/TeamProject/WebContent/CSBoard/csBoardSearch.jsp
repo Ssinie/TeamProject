@@ -80,7 +80,7 @@
 	    <td align="center"  width="100" >IP</td>    
     </tr>
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
-    	csDAO article = (csDAO)articleList.get(i);
+    	csDTO article = (csDTO)articleList.get(i);
 %>
 	<tr height="30">
     	<td align="center"  width="50" > <%=number--%></td>
@@ -100,16 +100,11 @@
          	<img src="images/hot.gif" border="0"  height="16">
            <%}%> 
 		</td>
-		
-		
-		
-		
     	<td align="center"  width="100"> 
 			<a href="mailto:<%=article.getEmail()%>"><%=article.getWriter()%></a>
 		</td>
     	<td align="center"  width="150"><%= sdf.format(article.getReg_date())%></td>
     	<td align="center"  width="50"><%=article.getReadcount()%></td>
-    	<td align="center" width="100" ><%=article.getIp()%></td>
 	</tr>
     <%}%>
 </table>

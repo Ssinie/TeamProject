@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-<title>게시판</title>
+<title> 1:1 문의 글 삭제</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">      
   function deleteSave(){	

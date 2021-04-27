@@ -106,17 +106,17 @@
       *이메일<br><input type="email" name="email" placeholder="email@gmail.com" required>
       <br><br>
       
-      *휴대전화<br required>  
-      <input type="text" name="phone" placeholder="010-****-****">
+      *휴대전화<br>  
+      <input type="text" name="phone" placeholder="010-****-****" required>
       <input type="button" name="certification" value="인증번호 받기"><br>
-      <input type="text" name="certification" placeholder="인증번호를 입력하세요">
-      <input type="button" name="certification" value="확인"><br><br>
+      <input type="text" name="certification" placeholder="인증번호를 입력하세요" required>
+      <input type="button" name="certification" value="확인">
       <br><br>
       
       사진 <br>
-      <input type="file" name="" value="">
-      <br><br><br>
-      <input type="submit" name="" value="가입완료">
+      <input type="file" value="">
+      <br><br>
+      <input type="submit" value="가입완료">
       
     </form>
   </section>

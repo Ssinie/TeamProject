@@ -17,7 +17,6 @@
       <input type="password" name="pw1" value="" required><br>
       *비밀번호 재확인<br> 
       <input type="password" name="pw2" value="" required>
-      <input type="button" name="pwcheck" value="비밀번호 재확인">
       <br><br>
       
       *이름<br>  <input type="text" name="name" value="" required> 
@@ -106,7 +105,13 @@
       *이메일<br><input type="email" name="email" placeholder="email@gmail.com" required>
       <br><br>
       
-      *휴대전화<br>  
+      *휴대전화<br>
+      <select>
+      <option>SK</option>
+      <option>KT</option>
+      <option>LG U+</option>
+      <option>알뜰폰</option>
+      </select>
       <input type="text" name="phone" placeholder="010-****-****" required>
       <input type="button" name="certification" value="인증번호 받기"><br>
       <input type="text" name="certification" placeholder="인증번호를 입력하세요" required>

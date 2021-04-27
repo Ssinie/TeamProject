@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<h1>로그인</h1><br>
+<h1>로그인 페이지</h1>
 
 <form name="login" action="LoginPro.jsp" method="post"></form>
-
-<div class="text"> 로그인 해주세요.</div>
+로그인 해주세요.
 			<form action="main.jsp">
 				<div class="data">
 					<label>Email아이디</label>

@@ -1,20 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ page import="Login.MemberDAO" %>
 
 <h1>회원가입 Pro</h1>
 
 <%
-	String id = request.getParameter("id");
-	String pw1 = request.getParameter("pw1");
-	String pw2 = request.getParameter("pw2");
-	String name = request.getParameter("name");
-	String year = request.getParameter("year");
-	String month = request.getParameter("month");
-	String day = request.getParameter("day");
-	String gender = request.getParameter("gender");
-	String email = request.getParameter("email");
-	String phone = request.getParameter("phone");
+request.setCharacterEncoding("UTF-8");
+%>
+<jsp:useBean id="dto"  class="Login.MemberDTO" />
+<jsp:setProperty property="*" name="dto"/>
 
-		
+<%
+   MemberDAO dao = new MemberDAO();
+   dao.insertMember(dto);
+%>
+
+
+<% 
+
+	/* 회원정보 저장
+	pw1 pw2 일치확인 if문
+	pw 에 특수문자 들어가는지 for문
+	 */
+	
+
 
 %>

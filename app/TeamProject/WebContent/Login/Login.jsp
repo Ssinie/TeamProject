@@ -3,9 +3,8 @@
     
 <h1>로그인 페이지</h1>
 
-<form name="login" action="LoginPro.jsp" method="post"></form>
-로그인 해주세요.
-			<form action="main.jsp">
+<form name="login" action="LoginPro.jsp" method="post">
+로그인 해주세요.		
 				<div class="data">
 					<label>Email아이디</label>
 					 <input type="email" name="id" placeholder="이메일 입력" required>

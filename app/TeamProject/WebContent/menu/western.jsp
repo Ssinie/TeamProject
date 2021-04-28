@@ -11,7 +11,7 @@ ul{}
 </style>
 
 <%
-    int pageSize = 6;
+    int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
@@ -78,7 +78,7 @@ ul{}
 
 <li><a href="werstern_steak.jsp" onclick="" data-seq="1" data="11F">
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
+								  </div>				
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>
@@ -107,7 +107,7 @@ ul{}
 
 <li><a href="werstern_chilmungo.jsp" onclick="" data-seq="1" data="11F">
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
+								  </div>						
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>

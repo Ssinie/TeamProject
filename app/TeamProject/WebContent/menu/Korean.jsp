@@ -11,7 +11,7 @@ ul{}
 </style>
 
 <%
-    int pageSize = 6;
+    int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
@@ -71,24 +71,63 @@ ul{}
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   <%if (article.getType().equals("한식") ) {%>		
+   <%if (article.getType().equals("한식") ) {%>	
+   <%if(article.getFileName().equals("budae.png")) {%>
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
-					
-<li><a href="#" onclick="goDetail(this)" data-seq="1" data="11F">
-								<div class="tmb"><img src="<%=article.getFileimage()%>" alt="1!"> 
+
+<li><a href="korean_budae.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>
 							</a></li>
-	</ul>	
-     		 <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">          	
-  <%  } %>
-    <%}%>
+	</ul>	    		   		
+    </div>  
+    	 <%  }%><!-- 부대 종료 -->
+    <%if(article.getFileName().equals("baeksook.png")) {%>
+ <div> 	
+	<ul class="whatsNew" id="menuList" >							
 
-<%}%>
-</div>  
+<li><a href="korean_baeksook.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
+								<div class="con">
+									<strong class="tit">	<%=article.getSubject()%></strong>
+								</div>
+							</a></li>
+	</ul>	    		   		
+    </div>  	
+    
+     <%  } %> <!-- 핫도그 종료 -->
+     <%if(article.getFileName().equals("boolgoki.png")) {%>
+ <div> 	
+	<ul class="whatsNew" id="menuList" >							
+
+<li><a href="korean_boolgoki.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
+								<div class="con">
+									<strong class="tit">	<%=article.getSubject()%></strong>
+								</div>
+							</a></li>
+	</ul>	    		   		
+    </div>  	
+    
+     <%  } %> <!--칠면조 종료 -->
+     
+     <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+      
+     <%  } %><!-- 서양식 종료 -->
+       	
+  <%  } %><!-- for문 종료 -->
+  <%  } %><!-- else 종료 -->
+    
+    
+    
+
+ 
 
 <%
     if (count > 0) {

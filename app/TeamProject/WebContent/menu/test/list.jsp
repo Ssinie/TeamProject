@@ -75,10 +75,9 @@ ul{}
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 						
-<li><a href="#" onclick="goDetail(this)" data-seq="97" data="97,N,/kor/promotion/detail.do?page=1&amp;seq=317&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0401_FOF">
+<li><a href="#" onclick="goDetail(this)" data-seq="1" data="11F">
 								<div class="tmb"><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>
-								<!--  <div class="tmb"><img src="/TeamProject/menu/img/1.png"< alt="1!">   </div>-->
+								  </div>								
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>
@@ -90,7 +89,6 @@ ul{}
 
 <%}%>
 </div>  
-
 
 <%
     if (count > 0) {

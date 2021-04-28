@@ -70,9 +70,9 @@ public class LatterBoardDAO {
 		List articleList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,r" + 
-						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r"+
-						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount"+ 
+			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,r " + 
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r "+
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount "+ 
 						 "from latterboard order by ref desc) order by ref desc) where r >= ? and r <= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);

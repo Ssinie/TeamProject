@@ -23,6 +23,7 @@
 	List articleList = null;
 	LatterBoardDAO dao = new LatterBoardDAO();
 	count = dao.getArticleCount();
+	out.println(count);
 	if(count > 0){
 		articleList = dao.getArticles(startRow, endRow);
 	}
@@ -38,8 +39,8 @@
 <center><b>글목록(전체 글 : <%=count%>)</b></center>
 <table width="700">
 	<tr>
-		<td>
-		<a href="writeForm.jsp">글쓰기</a>
+		<td align = "right">
+		<a href="writeForm.jsp" >글쓰기</a>
 		</td>
 	</tr>
 </table>
@@ -77,8 +78,8 @@ else{%>
 		<td align="center" width="50"><%=dto.getReadcount()%></td>
 		<td align="center" width="50"><%=dto.getIp() %></td>
 	</tr>
+	<%}%>
 </table>
-<%}
-}%>
+<%}%>
 </body>
 </html>

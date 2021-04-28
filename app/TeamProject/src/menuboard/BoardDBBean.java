@@ -13,24 +13,15 @@ public void upload(BoardDataBean BoardDataBean) {
 		
 		try {
 			conn = ConnectionDAO.getConnection(); 
-			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,BoardDataBean.getWriter());
-			pstmt.setString(2,BoardDataBean.getSubject());
-			pstmt.setString(3,BoardDataBean.getEmail());
-			pstmt.setString(4,BoardDataBean.getContent());
-			pstmt.setString(5,BoardDataBean.getPasswd());
-			pstmt.setTimestamp(6,BoardDataBean.getReg_date());
-			pstmt.setInt(7,BoardDataBean.getReadcount());
-			pstmt.setString(8, BoardDataBean.getIp());
-			pstmt.setInt(9, BoardDataBean.getRef());
-			pstmt.setInt(10, BoardDataBean.getRe_step());
-			pstmt.setInt(11, BoardDataBean.getRe_level());						
-			pstmt.setString(12,BoardDataBean.getName());
-			pstmt.setString(13,BoardDataBean.getType());			
-			pstmt.setString(14,BoardDataBean.getFileName());
-			pstmt.setString(15,BoardDataBean.getFileRealName());
-			pstmt.setString(16,BoardDataBean.getFileimage());
+			pstmt.setString(1,BoardDataBean.getSubject());
+			pstmt.setString(2,BoardDataBean.getContent());					
+			pstmt.setString(3,BoardDataBean.getName());
+			pstmt.setString(4,BoardDataBean.getType());			
+			pstmt.setString(5,BoardDataBean.getFileName());
+			pstmt.setString(6,BoardDataBean.getFileRealName());
+			pstmt.setString(7,BoardDataBean.getFileimage());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -116,10 +107,10 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,filename,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
-					"from (select num,writer,email,subject,filename,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
-					"from (select num,writer,email,subject,filename,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
-					"from board2 order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"select num,subject,filename,fileimage,type,content,r "+
+			 "from (select num,subject,filename,fileimage,type,content,rownum r " +
+			"from (select num,subject,filename,fileimage,type,content " + 
+							"from board2 )) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
 
@@ -129,20 +120,11 @@ public void upload(BoardDataBean BoardDataBean) {
 						do{ 
 							BoardDataBean article= new BoardDataBean();
 							article.setNum(rs.getInt("num"));
-							article.setWriter(rs.getString("writer"));
-							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
 							article.setFileName(rs.getString("filename"));
 							article.setFileimage(rs.getString("fileimage"));
 							article.setType(rs.getString("type"));
-							article.setPasswd(rs.getString("passwd"));
-							article.setReg_date(rs.getTimestamp("reg_date"));
-							article.setReadcount(rs.getInt("readcount"));
-							article.setRef(rs.getInt("ref"));
-							article.setRe_step(rs.getInt("re_step"));
-							article.setRe_level(rs.getInt("re_level"));
 							article.setContent(rs.getString("content"));
-							article.setIp(rs.getString("ip"));
 							articleList.add(article); 
 						}while(rs.next());
 					}

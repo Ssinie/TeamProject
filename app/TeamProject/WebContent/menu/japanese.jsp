@@ -80,7 +80,7 @@ ul{}
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
+									<strong class="tit"><%=article.getSubject()%></strong>
 								</div>
 							</a></li>
 	</ul>	    		   		

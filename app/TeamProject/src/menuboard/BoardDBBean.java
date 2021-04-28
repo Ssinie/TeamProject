@@ -8,6 +8,39 @@ public class BoardDBBean {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	
+public void upload(BoardDataBean BoardDataBean) {
+		
+		try {
+			conn = ConnectionDAO.getConnection(); 
+			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,BoardDataBean.getWriter());
+			pstmt.setString(2,BoardDataBean.getSubject());
+			pstmt.setString(3,BoardDataBean.getEmail());
+			pstmt.setString(4,BoardDataBean.getContent());
+			pstmt.setString(5,BoardDataBean.getPasswd());
+			pstmt.setTimestamp(6,BoardDataBean.getReg_date());
+			pstmt.setInt(7,BoardDataBean.getReadcount());
+			pstmt.setString(8, BoardDataBean.getIp());
+			pstmt.setInt(9, BoardDataBean.getRef());
+			pstmt.setInt(10, BoardDataBean.getRe_step());
+			pstmt.setInt(11, BoardDataBean.getRe_level());						
+			pstmt.setString(12,BoardDataBean.getName());
+			pstmt.setString(13,BoardDataBean.getType());			
+			pstmt.setString(14,BoardDataBean.getFileName());
+			pstmt.setString(15,BoardDataBean.getFileRealName());
+			pstmt.setString(16,BoardDataBean.getFileimage());
+			pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+	
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+	
+	}
+	
 	public void insertArticle(BoardDataBean article) throws Exception {
 		int num=article.getNum();
 		int ref=article.getRef();
@@ -17,7 +50,7 @@ public class BoardDBBean {
 		String sql="";
 		try {
 			conn = ConnectionDAO.getConnection(); 
-			pstmt = conn.prepareStatement("select max(num) from board");
+			pstmt = conn.prepareStatement("select max(num) from board2");
 			rs = pstmt.executeQuery();
 			if (rs.next()) 
 				number=rs.getInt(1)+1;	
@@ -25,7 +58,7 @@ public class BoardDBBean {
 				number=1; 
 			if (num!=0) 
 			{ 
-				sql="update board set re_step=re_step+1 where ref= ? and re_step> ?";
+				sql="update board2 set re_step=re_step+1 where ref= ? and re_step> ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, ref);
 				pstmt.setInt(2, re_step);
@@ -38,8 +71,8 @@ public class BoardDBBean {
 				re_level=0;
 			}
  
-			sql = "insert into board(num,writer,email,subject,passwd,reg_date,";
-			sql+="ref,re_step,re_level,content,ip) values(board_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into board2(num,writer,email,subject,passwd,reg_date,";
+			sql+="ref,re_step,re_level,content,ip) values(board2_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getEmail());
@@ -64,7 +97,7 @@ public class BoardDBBean {
 		int x=0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from board");
+			pstmt = conn.prepareStatement("select count(*) from board2");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1); 
@@ -83,10 +116,10 @@ public class BoardDBBean {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
-					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
-					"from (select num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
-					"from board order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
+					"from (select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
+					"from (select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
+					"from board2 order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
 
@@ -99,6 +132,8 @@ public class BoardDBBean {
 							article.setWriter(rs.getString("writer"));
 							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
+							article.setFileimage(rs.getString("fileimage"));
+							article.setType(rs.getString("type"));
 							article.setPasswd(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
 							article.setReadcount(rs.getInt("readcount"));
@@ -125,11 +160,11 @@ public class BoardDBBean {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"update board set readcount=readcount+1 where num = ?"); 
+			"update board2 set readcount=readcount+1 where num = ?"); 
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement(
-			"select * from board where num = ?"); 
+			"select * from board2 where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -162,7 +197,7 @@ public class BoardDBBean {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"select * from board where num = ?"); 
+			"select * from board2 where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -197,13 +232,13 @@ public class BoardDBBean {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"select passwd from board where num = ?");
+			"select passwd from board2 where num = ?");
 			pstmt.setInt(1, article.getNum());
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbpasswd= rs.getString("passwd"); 
 				if(dbpasswd.equals(article.getPasswd())){
-					sql="update board set writer=?,email=?,subject=?,passwd=?";
+					sql="update board2 set writer=?,email=?,subject=?,passwd=?";
 					sql+=",content=? where num=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, article.getWriter());
@@ -233,13 +268,13 @@ public class BoardDBBean {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"select passwd from board where num = ?");
+			"select passwd from board2 where num = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbpasswd= rs.getString("passwd");
 				if(dbpasswd.equals(passwd)){
-					pstmt = conn.prepareStatement("delete from board where num=?");
+					pstmt = conn.prepareStatement("delete from board2 where num=?");
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
 					x= 1; 

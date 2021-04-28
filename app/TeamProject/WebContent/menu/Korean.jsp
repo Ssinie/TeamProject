@@ -63,7 +63,7 @@ ul{}
 
 <div class="contArea mainCont">
 					<div class="inner">
-						<h2 class="titMain">일본 음식</h2>						
+						<h2 class="titMain">한국 음식</h2>						
 					</div>
 </div>						
 
@@ -71,7 +71,7 @@ ul{}
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   <%if (article.getType().equals("일식") ) {%>		
+   <%if (article.getType().equals("한식") ) {%>		
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 					

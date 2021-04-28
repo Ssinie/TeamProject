@@ -10,7 +10,7 @@
 	
 <%
 
-	String savePath = "E:\\study\\TeamProject2\\app\\TeamProject\\WebContent\\menu\\img\\";	
+	String savePath = "D:\\자바\\team\\TeamProject\\app\\TeamProject\\WebContent\\menu\\img\\";	
 	//String savePath = request.getRealPath("E:\\save");
 	int maxSize = 1024*1024*10; // 10MB
 	String enc = "UTF-8";  //한글파일명 인코딩

@@ -5,3 +5,4 @@
  String value_c="#b0e0e6";
  String bar="#778899";
 %>
+<h1>color</h1>

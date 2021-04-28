@@ -77,7 +77,7 @@ ul{}
 					
 <li><a href="#" onclick="goDetail(this)" data-seq="1" data="11F">
 								<div class="tmb"><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>	<%=article.getType()%>							
+								  </div>							
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>

@@ -71,24 +71,63 @@ ul{}
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   <%if (article.getType().equals("서양식") ) {%>		
+   <%if (article.getType().equals("서양식") ) {%>	
+   <%if(article.getFileName().equals("steak.png")) {%>
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
-					
-<li><a href="#" onclick="goDetail(this)" data-seq="1" data="11F">
-								<div class="tmb"><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>	<%=article.getType()%>							
+
+<li><a href="werstern_steak.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
 								<div class="con">
 									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>
 							</a></li>
-	</ul>	
-     		 <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">          	
-  <%  } %>
-    <%}%>
+	</ul>	    		   		
+    </div>  
+    	 <%  }%><!-- 스테이크 종료 -->
+    <%if(article.getFileName().equals("hotdog.png")) {%>
+ <div> 	
+	<ul class="whatsNew" id="menuList" >							
 
-<%}%>
-</div>  
+<li><a href="werstern_hotdog.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
+								<div class="con">
+									<strong class="tit">	<%=article.getSubject()%></strong>
+								</div>
+							</a></li>
+	</ul>	    		   		
+    </div>  	
+    
+     <%  } %> <!-- 핫도그 종료 -->
+     <%if(article.getFileName().equals("chilmungo.png")) {%>
+ <div> 	
+	<ul class="whatsNew" id="menuList" >							
+
+<li><a href="werstern_chilmungo.jsp" onclick="" data-seq="1" data="11F">
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
+								<div class="con">
+									<strong class="tit">	<%=article.getSubject()%></strong>
+								</div>
+							</a></li>
+	</ul>	    		   		
+    </div>  	
+    
+     <%  } %> <!--칠면조 종료 -->
+     
+     <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+      
+     <%  } %><!-- 서양식 종료 -->
+       	
+  <%  } %><!-- for문 종료 -->
+  <%  } %><!-- else 종료 -->
+    
+    
+    
+
+ 
 
 <%
     if (count > 0) {

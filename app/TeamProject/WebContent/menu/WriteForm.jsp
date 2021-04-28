@@ -20,7 +20,7 @@ function Check(){
 
 
 
- <form name="inform" action="insert.jsp" method="post" onsubmit="return Check();" enctype="multipart/form-data" >
+ <form name="inform" action="WritePro.jsp" method="post" onsubmit="return Check();" enctype="multipart/form-data" >
 <table border="1"  width="300">
 <tr><td>		
  제목 : <input type="text" name="subject"/><br/>

@@ -9,21 +9,31 @@
 	ref=Integer.parseInt(request.getParameter("ref"));
 }
 %>    
-
+<body>
+<center>
 <form action ="writeFormPro.jsp">
 	<table border="1">
 	
 	<input type="hidden" name="num" value="<%=num%>">
 	<input type="hidden" name="ref" value="<%=ref%>">
 	<tr><td>
-	<input type="text" name="subject" size="70" maxlength="100" />
+	<p style="text-align:center;"><b>글쓰기</b></p>
 	</td></tr>
 	<tr><td>
+	<br />
+	제목 : <input type="text" name="subject" size="70" maxlength="100" /><br />
+	
+	</td></tr>
+	<tr><td>
+	<br />
 	일식<input type="radio" value="menu" name="japanese" />
 	중식<input type="radio" value="menu" name="chinies" />
 	양식<input type="radio" value="menu" name="western" />
+	<br />
 	</td></tr>
 	<tr><td>
+	<br />
+	내용 <br />
 	<textarea name="content"  rows="30" cols="80"></textarea><br />
 	</td></tr>
 	<tr><td>
@@ -31,3 +41,5 @@
 	</td></tr>
 	</table>
 </form>
+</center>
+</body>

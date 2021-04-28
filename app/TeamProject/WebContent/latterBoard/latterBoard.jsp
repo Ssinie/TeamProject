@@ -34,9 +34,8 @@
 <head>
 <title>후기 게시판</title>
 </head>
-
 <body>
-<center><b>글목록(전체 글 : <%=count%>)</b></center>
+<center><b>글목록(전체 글 : <%=count%>)</b>
 <table width="700">
 	<tr>
 		<td align = "right">
@@ -74,12 +73,42 @@ else{%>
 		<td>
 		<a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%></a></td> 
-		<td align="center" width="50"><%=sdf.format(dto.getReg_date()) %></td>
+		<td align="center" width="150"><%=sdf.format(dto.getReg_date()) %></td>
 		<td align="center" width="50"><%=dto.getReadcount()%></td>
-		<td align="center" width="50"><%=dto.getIp() %></td>
+		<td align="center" width="100"><%=dto.getIp() %></td>
 	</tr>
 	<%}%>
 </table>
-<%}%>
+<%}
+
+if(count > 0){
+	
+	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1 );
+	
+	int startPage = (int)(currentPage/10)*10+1;
+	int pageBlock = 10;
+					 
+	int endPage = startPage + pageBlock -1;
+	if(endPage > pageCount) endPage = pageCount;
+	
+	if(startPage > 10){%>
+		<a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+	<%}
+	for(int i = startPage; i <= endPage; i++){%>
+		<a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+	<%}
+	if(endPage < pageCount){%>
+		<a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+	<%}
+}%>
+<form action="searchList.jsp" method="post">
+	<select name="col">
+		<option value = "subject">제목</option>
+		<option value = "subject">작성자</option>
+	</select>
+	<input type="text" name="search" />
+	<input type="submit" value="검색" />
+</form>
+</center>
 </body>
 </html>

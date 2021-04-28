@@ -65,6 +65,39 @@ public class LatterBoardDAO {
 		return x;
 	}
 	
+	// 게시글 번호를 이용해 게시글 정보 가져오기
+	public LatterBoardDTO getArticle(int num) {
+		LatterBoardDTO dto = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "update latterboard set readcount=readcount+1 where num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			sql = "select * from latterboard where num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new LatterBoardDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setEmail(rs.getString("email"));
+				dto.setContent(rs.getString("content"));
+				dto.setReg_date(rs.getTimestamp("reg_date"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setIp(rs.getString("ip"));
+				dto.setRef(rs.getInt("ref"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return dto;
+	}
+	
 	// 게시글 리스트 형태로 가져오기
 	public List getArticles(int start, int end) {
 		List articleList = null;
@@ -73,7 +106,7 @@ public class LatterBoardDAO {
 			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,r " + 
 						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r "+
 						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount "+ 
-						 "from latterboard order by ref desc) order by ref desc) where r >= ? and r <= ? ";
+						 "from latterboard order by ref desc) order by reg_date desc) where r >= ? and r <= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);

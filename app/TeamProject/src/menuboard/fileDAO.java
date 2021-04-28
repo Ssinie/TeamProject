@@ -17,7 +17,7 @@ public class fileDAO {
 		
 		try {
 			conn = ConnectionDAO.getConnection(); 
-			String sql = "insert into menu values(?,?,?,?,?,?)";
+			String sql = "insert into menu values(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,filedto.getSubject());
 			pstmt.setString(2,filedto.getName());
@@ -25,6 +25,7 @@ public class fileDAO {
 			pstmt.setString(4,filedto.getContent());
 			pstmt.setString(5,filedto.getFileName());
 			pstmt.setString(6,filedto.getFileRealName());
+			pstmt.setString(7,filedto.getFileimage());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

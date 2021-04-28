@@ -14,8 +14,45 @@ public class BoardDataBean{
     private String ip;
     private int ref;
     private int re_step;	
-    private int re_level;
+    private int re_level;   
+    private String name;
+	private String type;
+    private String fileName;
+	private String fileRealName;
+	private String fileimage;
+	
+	
 
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFileRealName() {
+		return fileRealName;
+	}
+	public void setFileRealName(String fileRealName) {
+		this.fileRealName = fileRealName;
+	}
+	public String getFileimage() {
+		return fileimage;
+	}
+	public void setFileimage(String fileimage) {
+		this.fileimage = fileimage;
+	}
 	public void setNum(int num){
     	this.num=num;
     }

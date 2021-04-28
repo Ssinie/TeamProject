@@ -7,8 +7,7 @@ public class fileDTO {
 	private String content;
 	private String fileName;
 	private String fileRealName;
-	
-
+	private String fileimage;
 	public String getSubject() {
 		return subject;
 	}
@@ -45,5 +44,13 @@ public class fileDTO {
 	public void setFileRealName(String fileRealName) {
 		this.fileRealName = fileRealName;
 	}
+	public String getFileimage() {
+		return fileimage;
+	}
+	public void setFileimage(String fileimage) {
+		this.fileimage = fileimage;
+	}
+	
+
 
 }

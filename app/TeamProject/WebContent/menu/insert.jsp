@@ -4,13 +4,14 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %><!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="java.io.File" %>
-<%@ page import="menuboard.fileDAO" %>
+<%@ page import="menuboard.BoardDBBean" %>
 
-<jsp:useBean class="menuboard.fileDTO" id="filedto" /> 
-	<jsp:setProperty name="filedto" property="*" />
+<jsp:useBean class="menuboard.BoardDataBean" id="BoardDataBean" /> 
+	
 <%
 
-	String savePath = "d:\\save\\";	
+	String savePath = "E:\\study\\TeamProject2\\app\\TeamProject\\WebContent\\menu\\img\\";	
+	//String savePath = request.getRealPath("E:\\save");
 	int maxSize = 1024*1024*10; // 10MB
 	String enc = "UTF-8";  //한글파일명 인코딩
 	DefaultFileRenamePolicy drp = new DefaultFileRenamePolicy(); //덮어씌우기 방지
@@ -18,21 +19,24 @@
 
 
 	String subject = mr.getParameter("subject");
-	filedto.setSubject(subject);
+	BoardDataBean.setSubject(subject);
 	String name = mr.getParameter("name");
-	filedto.setName(name);
+	BoardDataBean.setName(name);
 	String type = mr.getParameter("type");
-	filedto.setType(type);
+	BoardDataBean.setType(type);
 	String content = mr.getParameter("content");
-	filedto.setContent(content);
+	BoardDataBean.setContent(content);
 	String on = mr.getOriginalFileName("file"); // 원본 파일명
-	filedto.setFileName(on);
+	BoardDataBean.setFileName(on);
 	String sn = mr.getFilesystemName("file"); // 업로드된 파일명
-	filedto.setFileRealName(sn);
+	BoardDataBean.setFileRealName(sn);
+	
+		
+	BoardDataBean.setFileimage("/TeamProject/menu/img/"+on);
 	
 	
-	fileDAO file = new fileDAO();	
-	file.upload(filedto);	
+	BoardDBBean file = new BoardDBBean();	
+	file.upload(BoardDataBean);	
 	
 	
 		

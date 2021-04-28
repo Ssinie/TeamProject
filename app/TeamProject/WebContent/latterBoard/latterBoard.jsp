@@ -58,8 +58,8 @@ else{%>
 <table width="700" border="1" cellpadding="0" cellspacing="0" align="center">
 	<tr height="30">
 		<td align="center" width="50">번호</td>
-		<td align="center" width="50">제목</td>
 		<td align="center" width="50">작성자</td>
+		<td align="center" width="50">제목</td>
 		<td align="center" width="50">작성일</td>
 		<td align="center" width="50">조회</td>
 		<td align="center" width="50">IP</td>
@@ -69,7 +69,7 @@ else{%>
 %>
 	<tr height="30">
 		<td align="center" width="50"><%=number--%></td>
-		<td align="center" width="50"><%=dto.getWriter()%></td>
+		<td align="center" width="70"><%=dto.getWriter()%></td>
 		<td>
 		<a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%></a></td> 

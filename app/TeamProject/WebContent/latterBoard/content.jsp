@@ -7,6 +7,7 @@
 <title>게시판</title>
 </head>
 <%
+	
 	// 로그인작업 끝나면 세션 연결
 	// String id = (String)session.getAttribute("memId");
 	int num = Integer.parseInt(request.getParameter("num"));
@@ -40,6 +41,17 @@
 	<tr height="30">
 		<td align="center" width="125">글내용</td>
 		<td align="center" width="375" colspan="3"><%=dto.getContent()%></td>
+	</tr>
+	<tr>
+		<form action="contentCommPro.jsp">
+		<input type="hidden" name="num" value=<%=dto.getNum()%>/>
+		<td colspan="3">
+		<textarea name="content" cols="40" rows="4"></textarea>
+		</td>
+		<td>
+		<input type="submit" value="댓글달기" />
+		</td>
+		</form>
 	</tr>
 	<tr height="30">
 		<td colspan="4" align="center"><%

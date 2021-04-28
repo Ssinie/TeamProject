@@ -9,7 +9,7 @@ public class csDTO {
 	private String email;
 	private String content;
 	private String passwd;
-	private String file;
+	private String save;
 	private Timestamp reg_date;
 	private int readcount;
 	private int ref;
@@ -52,11 +52,11 @@ public class csDTO {
 	public void setPassword(String passwd) {
 		this.passwd = passwd;
 	}
-	public String getFile() {
-		return file;
+	public String getSave() {
+		return save;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setSave(String save) {
+		this.save = save;
 	}
 	public Timestamp getReg_date() {
 		return reg_date;

@@ -17,7 +17,7 @@
 <body>
 
     <br>
-    <b><font size="5" color="lightblack"> Q&A</font></b>
+    <b align="center"><font size="5" color="lightblack"> Q&A</font></b>
     <br>
     
     <form method="post" action="csBoard" name="csBoardPro" enctype="multipart/form-data">

@@ -116,9 +116,9 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-					"select num,writer,email,subject,fileimage,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
-					"from (select num,writer,email,subject,fileimage,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
-					"from (select num,writer,email,subject,fileimage,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
+					"select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,r "+
+					"from (select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount,rownum r " +
+					"from (select num,writer,email,subject,fileimage,type,passwd,reg_date,ref,re_step,re_level,content,ip,readcount " +
 					"from board2 order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
@@ -133,6 +133,7 @@ public void upload(BoardDataBean BoardDataBean) {
 							article.setEmail(rs.getString("email"));
 							article.setSubject(rs.getString("subject"));
 							article.setFileimage(rs.getString("fileimage"));
+							article.setType(rs.getString("type"));
 							article.setPasswd(rs.getString("passwd"));
 							article.setReg_date(rs.getTimestamp("reg_date"));
 							article.setReadcount(rs.getInt("readcount"));

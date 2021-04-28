@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="latterboard.LatterBoardDTO" %>
+<%@ page import="latterboard.LatterBoardDAO" %>
+<%@ page import="latterboard.LBCommDAO" %>
 <%request.setCharacterEncoding("UTF-8");%>
-<h1>댓글작업...!</h1>
+
+<jsp:useBean id = "dto" class="latterboard.LBCommDTO" />
+<jsp:setProperty property="*" name="dto" />
 <%
-	// int num = Integer.parseInt(request.getParameter("num"));
+	LBCommDAO dao = new LBCommDAO();	
+
+	int count = dao.countComm(dto.getNum());
+	
+	dao.inputComm(dto, count);
 %>
+<script>
+	history.go(-1);
+</script>

@@ -32,6 +32,7 @@ public class LBCommDTO {
 		return content;
 	}
 	public void setContent(String content) {
+		
 		this.content = content;
 	}
 	public Timestamp getReg_date() {

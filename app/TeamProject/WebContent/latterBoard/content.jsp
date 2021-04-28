@@ -3,6 +3,8 @@
 <%@ page import = "latterboard.LatterBoardDAO" %>
 <%@ page import = "latterboard.LatterBoardDTO" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+<%@ page import = "latterboard.LBCommDAO" %>
+<%@ page import = "latterboard.LBCommDTO" %>
 <head>
 <title>게시판</title>
 </head>
@@ -17,6 +19,8 @@
 	
 	LatterBoardDAO dao = new LatterBoardDAO();
 	LatterBoardDTO dto = dao.getArticle(num);
+	LBCommDAO lbdao = new LBCommDAO();
+	// LBCommDTO lbdto = lbdao.getArticle(num);
 %>
 <body>
 <center><b>글 내용</b>
@@ -44,10 +48,11 @@
 	</tr>
 	<tr>
 		<form action="contentCommPro.jsp">
-		<input type="hidden" name="num" value=<%=dto.getNum()%>/>
 		<td colspan="3">
 		<textarea name="content" cols="40" rows="4"></textarea>
 		</td>
+		<input type="hidden" name="num" value=<%=dto.getNum()%> />
+		<input type="hidden" name="ip" value=<%=dto.getIp()%> />
 		<td>
 		<input type="submit" value="댓글달기" />
 		</td>

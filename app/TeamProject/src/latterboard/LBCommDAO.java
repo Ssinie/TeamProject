@@ -2,6 +2,7 @@ package latterboard;
 
 import connection.ConnectionDAO;
 import java.sql.*;
+import java.util.*;
 
 public class LBCommDAO {
 	private Connection conn = null;
@@ -47,6 +48,30 @@ public class LBCommDAO {
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
+	}
+	
+	// num를 받아와, 댓글정보 리스트 보내주기...
+	public List getArticle(int num) {
+		List commList = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "select * from latterboard_comm where num = ? order by num_dept;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				LBCommDTO dto = new LBCommDTO();
+				do {
+					
+					
+				}while(rs.next());
+			}
+		}catch(Exception e) {
+			
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return commList;
 	}
 
 }

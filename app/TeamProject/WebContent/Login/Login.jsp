@@ -19,6 +19,6 @@
 				<a href="forgotpass.jsp">비밀번호를 잊으셨나요?</a>
 				<a href = "MemberReg.jsp"> 회원가입</a> <br></br>
 				</div>
-			</form>
+</form>
 			
 

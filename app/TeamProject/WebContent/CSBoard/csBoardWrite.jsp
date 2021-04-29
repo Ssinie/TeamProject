@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <title> Q&A 1:1 문의 게시판 </title>
-    <b align="center"><font size="5" color="lightblack"> Q&A</font></b>
+    <b align="center"><font size="6" color="lightblack"> Q&A</font></b>
 
 	<form action="csBoardWritePro.jsp" method="post" enctype="multipart/form-data">
-	<table width="700" border="3" cellpadding="0" cellspacing="0" bordercolor="dddddd" align="center">
+	<table width="700" border="1" cellpadding="0" cellspacing="0" bordercolor="dddddd" align="center">
 		<tr>
 			<td id="title">작성자</td>
-			<td> 코드로 작성자 ID 넣을곳임!!! </td>
+			<td> 로그인 아이디 설정 해야 할 자리 ! </td>
 		</tr>
 		<tr>
 			<td id="title">제목</td>

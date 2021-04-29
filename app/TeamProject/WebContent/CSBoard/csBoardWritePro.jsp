@@ -27,3 +27,7 @@
 	dao.insertcsBoard(dto);
 	
 %>
+	<script>
+		alert("작성 되었습니다.")
+		window.location="csBoardList.jsp";
+	</script>

@@ -16,18 +16,18 @@ public class csDAO{
 	public void insertcsBoard(csDTO dto) {
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("insert into csboard values (csboard_seq.nextval, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, 1, sysdate)");
+			pstmt = conn.prepareStatement("insert into csboard values (csboard_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)");
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getSubject());
 			pstmt.setString(3, dto.getEmail());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getPasswd());
 			pstmt.setString(6, dto.getSave());
-			pstmt.setInt(7, dto.getReadcount());
-			pstmt.setInt(8, dto.getRef());
-			pstmt.setInt(9, dto.getRe_step());
-			pstmt.setInt(10, dto.getRe_level());
-			pstmt.setInt(11, dto.getStatus());
+//			pstmt.setInt(7, dto.getReadcount());
+			pstmt.setInt(7, dto.getRef());
+			pstmt.setInt(8, dto.getRe_step());
+			pstmt.setInt(9, dto.getRe_level());
+//			pstmt.setInt(11, dto.getStatus());
 //			pstmt.setTimestamp(11, dto.getReg());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -57,7 +57,7 @@ public class csDAO{
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setRef(rs.getInt("ref"));
 				dto.setRe_step(rs.getInt("re_step"));
-				dto.setRe_level(rs.getInt("re_revel"));
+				dto.setRe_level(rs.getInt("re_level"));
 				dto.setStatus(rs.getInt("status"));
 				list.add(dto);
 			}

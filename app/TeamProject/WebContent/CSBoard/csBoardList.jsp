@@ -3,9 +3,23 @@
 <%@ page import="CSBoard.csDAO" %>
 <%@ page import="CSBoard.csDTO" %>
 <%@ page import="java.util.ArrayList" %>
-	<title> 고객 1:1 문의 글</title>
-	
+<%@ page import = "java.text.SimpleDateFormat" %>
+	<title> 고객 1:1 문의 리스트</title>
 <%
+	int pageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+	String pageNum = request.getParameter("pageNum");
+	if (pageNum == null){
+		pageNum = "1";
+	}
+	
+	int currentPage = Integer.parseInt(pageNum);
+    int startRow = (currentPage - 1) * pageSize + 1;
+    int endRow = currentPage * pageSize;
+    int count = 0;
+    int number=0;
+
 	csDAO dao = new csDAO();
 	ArrayList<csDTO> list = dao.getList();
 %>

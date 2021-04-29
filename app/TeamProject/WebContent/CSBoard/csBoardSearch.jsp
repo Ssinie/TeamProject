@@ -56,7 +56,7 @@
     		<%}else{%>
     			<a href="/jsp/0416/loginForm.jsp">로그인후 글쓰기</a>
     		<%}%>
-    	</td>.
+    	</td>
     </tr>
 </table>
 

@@ -5,6 +5,7 @@
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ page import = "latterboard.LBCommDAO" %>
 <%@ page import = "latterboard.LBCommDTO" %>
+<%@ page import = "java.util.List" %>
 <head>
 <title>게시판</title>
 </head>
@@ -16,11 +17,14 @@
 	String pageNum = request.getParameter("pageNum");
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	SimpleDateFormat sdfs = new SimpleDateFormat("yy-MM-dd HH:mm");
 	
 	LatterBoardDAO dao = new LatterBoardDAO();
 	LatterBoardDTO dto = dao.getArticle(num);
-	LBCommDAO lbdao = new LBCommDAO();
-	// LBCommDTO lbdto = lbdao.getArticle(num);
+
+
+	LBCommDAO lbcmdao = new LBCommDAO();
+	List commlist = lbcmdao.getArticle(num);
 %>
 <body>
 <center><b>글 내용</b>
@@ -69,5 +73,21 @@
 		<%// }%>
 		</td>
 </table>
+<%if(commlist != null){%>
+<table>
+<%	
+	
+	for(int i = 0; i < commlist.size(); i++){
+		LBCommDTO lbcmdto = (LBCommDTO)commlist.get(i);
+%>
+	<tr height="30">
+		<td align="center" width="70"><%=lbcmdto.getWriter()%></td>
+		<td align="center" width="250"><%=lbcmdto.getContent()%></td>
+		<td align="center" width="150"><%=sdfs.format(lbcmdto.getReg_date()) %></td>
+		<td align="center" width="100"><%=lbcmdto.getIp() %></td>
+	</tr>
+	<%}%>
+</table>
+<%}%>
 </center>
 </body>

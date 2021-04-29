@@ -55,15 +55,21 @@ public class LBCommDAO {
 		List commList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select * from latterboard_comm where num = ? order by num_dept;";
+			String sql = "select * from latterboard_comm where num = ? order by num_dept";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				LBCommDTO dto = new LBCommDTO();
+				commList = new ArrayList();
 				do {
-					
-					
+					LBCommDTO dto = new LBCommDTO();
+					dto.setNum(rs.getInt("num"));
+					dto.setNum(rs.getInt("num_dept"));
+					dto.setWriter(rs.getString("writer"));
+					dto.setContent(rs.getString("content"));
+					dto.setReg_date(rs.getTimestamp("reg_date"));
+					dto.setIp(rs.getString("ip"));
+					commList.add(dto);
 				}while(rs.next());
 			}
 		}catch(Exception e) {

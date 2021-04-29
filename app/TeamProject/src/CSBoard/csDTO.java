@@ -10,11 +10,12 @@ public class csDTO {
 	private String content;
 	private String passwd;
 	private String save;
-	private Timestamp reg_date;
+	private Timestamp reg;
 	private int readcount;
 	private int ref;
 	private int re_step;
 	private int re_level;
+	private int status;
 	
 	public int getNum() {
 		return num;
@@ -49,7 +50,7 @@ public class csDTO {
 	public String getPasswd() {
 		return passwd;
 	}
-	public void setPassword(String passwd) {
+	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
 	public String getSave() {
@@ -58,11 +59,11 @@ public class csDTO {
 	public void setSave(String save) {
 		this.save = save;
 	}
-	public Timestamp getReg_date() {
-		return reg_date;
+	public Timestamp getReg() {
+		return reg;
 	}
-	public void setReg_date(Timestamp reg_date) {
-		this.reg_date = reg_date;
+	public void setReg(Timestamp reg) {
+		this.reg = reg;
 	}
 	public int getReadcount() {
 		return readcount;
@@ -87,6 +88,12 @@ public class csDTO {
 	}
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }

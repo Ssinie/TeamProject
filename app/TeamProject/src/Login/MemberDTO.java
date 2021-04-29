@@ -1,8 +1,8 @@
 package Login;
 
+import java.sql.Timestamp;
 
-
-public class MemberDTO 
+public class MemberDTO
 {
 	private String id;
 	private String pw1;
@@ -14,6 +14,8 @@ public class MemberDTO
 	private String gender;
 	private String email;
 	private String phone;
+	private Timestamp reg;
+	private int status;
 	
 	public String getId() {		return id;	}
 	public void setId(String id) {		this.id = id;	}
@@ -45,5 +47,11 @@ public class MemberDTO
 	public String getPhone() {		return phone;	}
 	public void setPhone(String phone) {		this.phone = phone;	}
 
-		
+	public Timestamp getReg() { return reg;}
+	public void setReg(Timestamp reg) {	this.reg=reg;	}
+	
+	public int getStatus() {	return status; }
+	public void setStatus(int status) {	this.status = status;	}
+	
+	
 }

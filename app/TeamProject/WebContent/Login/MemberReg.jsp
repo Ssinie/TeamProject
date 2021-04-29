@@ -14,7 +14,7 @@
       <br><br>
       
       *비밀번호<br> 
-      <input type="password" name="pw1" value="" required><br>
+      <input type="password" name="pw" value="" required><br>
       *비밀번호 재확인<br> 
       <input type="password" name="pw2" value="" required>
       <br><br>

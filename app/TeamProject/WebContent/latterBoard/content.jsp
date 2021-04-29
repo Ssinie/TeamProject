@@ -57,6 +57,7 @@
 		</td>
 		<input type="hidden" name="num" value=<%=dto.getNum()%> />
 		<input type="hidden" name="ip" value=<%=dto.getIp()%> />
+		<input type="hidden" name="pageNum" value=<%=pageNum%> />
 		<td>
 		<input type="submit" value="댓글달기" />
 		</td>

@@ -17,7 +17,8 @@
 	LBCommDAO dao = new LBCommDAO();	
 	int count = dao.countComm(dto.getNum());
 	dao.inputComm(dto, count);
+	
+	// 게시판에서 pageNum을 가져와, 댓글을 입력한 후 다시 게시판 글 페이지로 옮겨줌과 동시에 'Refresh'하여 작성된 댓글을 바로 보여줌...
+	String pageNum = request.getParameter("pageNum");
 %>
-<script>
-	history.go(-1);
-</script>
+<meta http-equiv="Refresh" content="0;url=content.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>" >

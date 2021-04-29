@@ -45,7 +45,7 @@ ul{}
 <table width="700">
 	<tr>
     	<td align="right" bgcolor="<%=value_c%>">
-    		<a href="writeForm.jsp">글쓰기</a>
+    		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
     	</td>
     </tr>
 </table>

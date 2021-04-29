@@ -8,7 +8,7 @@
 <style>
 ul{}
 li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px dotted red; margin-right:10px;padding:20px;text-align:center;}
+ li.mystyle{list-style-type:none; float:left; outline:1px line black; margin-right:10px;padding:20px;text-align:center;}
 #STATICMENU { position:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
 </style>
 
@@ -161,7 +161,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     
      <%  } %> <!--칠면조 종료 -->
      
-     <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+     <a href="japanese.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
       
      <%  } %><!-- 서양식 종료 -->
        	
@@ -183,13 +183,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="japanese.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="japanese.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="japanese.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

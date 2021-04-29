@@ -44,7 +44,6 @@ li{margin-bottom:10px;}
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
     int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
@@ -166,16 +165,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     
      <%  } %> <!--칠면조 종료 -->
      
-     <a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+     <a href="western.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
       
      <%  } %><!-- 서양식 종료 -->
        	
   <%  } %><!-- for문 종료 -->
   <%  } %><!-- else 종료 -->
     
-    
-    
-
  
 
 <%
@@ -188,13 +184,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="western.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="western.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="western.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

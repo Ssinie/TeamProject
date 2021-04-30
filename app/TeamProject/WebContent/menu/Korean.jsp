@@ -80,14 +80,21 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <li><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b>글목록</b>
 <table width="700">
 	<tr>
-    	<td align="right" bgcolor="<%=value_c%>">
+    	<td align="left" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
     		<% }else{%>
-    		<input type="button" value="글쓰기" />
+    		<input type="button" value="글쓰기" onclick="alert('관리자만 가능');" />
+    		<%} %>
+    	</td>
+    	<td align="right" bgcolor="<%=value_c%>">
+    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
+    		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
+    		<% }else{%>
+    		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
     </tr>

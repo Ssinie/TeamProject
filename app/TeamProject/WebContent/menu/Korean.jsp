@@ -126,7 +126,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="korean_budae.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
@@ -140,7 +140,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="korean_baeksook.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
@@ -155,7 +155,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="korean_boolgoki.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">

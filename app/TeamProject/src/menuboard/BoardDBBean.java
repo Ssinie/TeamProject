@@ -142,17 +142,14 @@ public void upload(BoardDataBean BoardDataBean) {
 		BoardDataBean article=null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement(
-			"update board2 set readcount=readcount+1 where num = ?"); 
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
-			pstmt = conn.prepareStatement(
-			"select * from board2 where num = ?"); 
+			pstmt = conn.prepareStatement("select * from board2 where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				article = new BoardDataBean();
 				article.setNum(rs.getInt("num"));
+				article.setFileimage(rs.getString("fileimage"));
+				article.setContent(rs.getString("content"));
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));

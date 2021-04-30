@@ -85,11 +85,18 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <center><b>글목록(전체 글:<%=count%>)</b>
 <table width="700">
 	<tr>
-    	<td align="right" bgcolor="<%=value_c%>">
+    	<td align="left" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
     		<% }else{%>
-    		<input type="button" value="글쓰기" />
+    		<input type="button" value="글쓰기" onclick="alert('관리자만 가능');" />
+    		<%} %>
+    	</td>
+    	<td align="right" bgcolor="<%=value_c%>">
+    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
+    		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
+    		<% }else{%>
+    		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
     </tr>
@@ -124,7 +131,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="werstern_steak.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>				
 								<div class="con">
@@ -138,7 +145,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="werstern_hotdog.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
@@ -153,7 +160,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
-<li class="mystyle"><a href="werstern_chilmungo.jsp" onclick="" data-seq="1" data="11F">
+<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>						
 								<div class="con">

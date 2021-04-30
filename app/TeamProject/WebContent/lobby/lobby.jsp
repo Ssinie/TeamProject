@@ -5,3 +5,6 @@
 <input type ="button" value="후기 소개" onclick="window.location='/TeamProject/latterBoard/latterBoard.jsp'" />
 <input type ="button" value="문의 사항" onclick="window.location='/TeamProject/intro/ceointro.jsp'" />
 <input type ="button" value="로그인 / 회원가입" onclick="window.location='/TeamProject/Login/Login.jsp'" />
+<input type ="button" value="Mypage" onclick="window.location='/TeamProject/Login/updateForm.jsp'" />
+<input type ="button" value="예약하기" onclick="window.location='/TeamProject/Reserve/ReserveForm.jsp'" />
+

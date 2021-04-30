@@ -11,7 +11,7 @@
 				</div>
 				<div class="data">
 					<label>비밀번호</label>
-					<input type="password" name="pw" placeholder="비밀번호 10~15자리" required>
+					<input type="password" name="pw1" placeholder="비밀번호 10~15자리" required>
 				</div>
 				<div>
 				<input type="submit" value="로그인">

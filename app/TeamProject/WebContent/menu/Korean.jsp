@@ -122,7 +122,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
    <%if (article.getType().equals("한식") ) {%>	
-   <%if(article.getFileName().equals("budae.png")) {%>
+   
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
@@ -135,37 +135,8 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 							</a></li>
 	</ul>	    		   		
     </div>  
-    	 <%  }%><!-- 부대 종료 -->
-    <%if(article.getFileName().equals("baeksook.png")) {%>
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
-
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  	
-    
-     <%  } %> <!-- 핫도그 종료 -->
-     <%if(article.getFileName().equals("boolgoki.png")) {%>
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
-
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  	
-    
-     <%  } %> <!--칠면조 종료 -->
+    	
+  
      
      <a href="Korean.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
       

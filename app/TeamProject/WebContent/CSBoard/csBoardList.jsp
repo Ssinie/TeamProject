@@ -4,6 +4,7 @@
 <%@ page import="CSBoard.csDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+
 	<title> 고객 1:1 문의 리스트</title>
 <%
 	int pageSize = 10;
@@ -32,14 +33,18 @@
 			<td>조회수</td>
 		</tr>
 			<%for(csDTO dto : list){%>
-				<tr>
-					<td><%=dto.getNum()%></td>
-					<td><%=dto.getSubject()%></td>
-					<td><%=dto.getWriter()%></td>
-					<td><%=dto.getReg()%></td>
-					<td><%=dto.getReadcount()%></td>
-				</tr>
+			<tr>
+				<td><%=dto.getNum()%></td>
+				<td>
+					<%if(dto.getStatus() == 3){ %>
+					해당 글은 삭제 되었습니다.
+					<%}else{ %>
+					<a href="csBoardContent.jsp?num=<%=dto.getNum()%>"><%=dto.getSubject()%></a>
+					<%}%></td>
+				<td><%=dto.getWriter()%></td>
+				<td><%=dto.getReg()%></td>
+				<td><%=dto.getReadcount()%></td>
+			</tr>
 			<%}%>
 	</table>
 	<input type="button" value="글쓰기" onclick="window.location='csBoardWrite.jsp'"/>
-	

@@ -19,12 +19,12 @@ public class MemberDAO{
 			pstmt.setString(2, dto.getPw1());
 			pstmt.setString(3, dto.getPw2());
 			pstmt.setString(4, dto.getName());
-			pstmt.setString(4, dto.getYear());
-			pstmt.setString(4, dto.getMonth());
-			pstmt.setString(4, dto.getDay());
-			pstmt.setString(4, dto.getGender());
-			pstmt.setString(4, dto.getEmail());
-			pstmt.setString(4, dto.getPhone());
+			pstmt.setString(5, dto.getYear());
+			pstmt.setString(6, dto.getMonth());
+			pstmt.setString(7, dto.getDay());
+			pstmt.setString(8, dto.getGender());
+			pstmt.setString(9, dto.getEmail());
+			pstmt.setString(10, dto.getPhone());
 			
 			pstmt.executeUpdate();
 			
@@ -36,13 +36,13 @@ public class MemberDAO{
 			}
 	}
 	
-	public boolean loginCheck(String id , String pw) {
+	public boolean loginCheck(String id , String pw1) {
 		boolean result = false;
 		try {
 			conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
-			pstmt = conn.prepareStatement("select * from member where id=? and pw=? and status != 3 ");            
+			pstmt = conn.prepareStatement("select * from member where id=? and pw1=?");            
 			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
+			pstmt.setString(2, pw1);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = true;

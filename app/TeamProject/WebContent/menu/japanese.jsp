@@ -81,7 +81,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <li><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b></b>
 <table width="700">
 	<tr>
     	<td align="left" bgcolor="<%=value_c%>">
@@ -93,9 +93,9 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	</td>
     	<td align="right" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
-    		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
+    		<input type="button" value="글수정" onclick="window.location='updateForm.jsp'"/>
     		<% }else{%>
-    		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
+    		<input type="button" value="글수정" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
     </tr>
@@ -123,7 +123,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
    <%if (article.getType().equals("일식") ) {%>	
-   <%if(article.getFileName().equals("chobab.png")) {%>
+      
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
@@ -136,38 +136,8 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 							</a></li>
 	</ul>	    		   		
     </div>  
-    	 <%  }%><!-- 부대 종료 -->
-    <%if(article.getFileName().equals("yaki.png")) {%>
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
-
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  	
-    
-     <%  } %> <!-- 핫도그 종료 -->
-     <%if(article.getFileName().equals("kuka.png")) {%>
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
-
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  	
-    
-     <%  } %> <!--칠면조 종료 -->
-     
+   	
+   
      <a href="japanese.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
       
      <%  } %><!-- 서양식 종료 -->
@@ -175,9 +145,6 @@ String id = (String)session.getAttribute("memid"); //admin 확인
   <%  } %><!-- for문 종료 -->
   <%  } %><!-- else 종료 -->
     
-    
-    
-
  
 
 <%

@@ -8,7 +8,7 @@
 <style>
 ul{}
 li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px line black; margin-right:10px;padding:20px;text-align:center;}
+ li.mystyle{list-style-type:none; float:left; outline:1px dotted black; margin-right:5px;padding:10px;text-align:center;}
 </style>
 
 <script type="text/javascript">
@@ -19,7 +19,7 @@ li{margin-bottom:10px;}
 String id = (String)session.getAttribute("memid"); //admin 확인
 
     int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  
 
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
@@ -47,16 +47,16 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();">
+<body bgcolor="<%=bodyback_c%>" >
 
 
 <center><b></b>
-<table width="700">
+<table width="650">
 	<tr>
    	
     	<td align="right" bgcolor="<%=value_c%>">
     	
-    		<input type="button" value="글삭제" onclick="" />
+    		<h2 align="center"> 수정 할 게시글을 선택 하세요.</h1>
     	
     	</td>
     </tr>
@@ -73,25 +73,24 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 <%  } else {    %>
 
-<div class="contArea mainCont"></div>						
 
-<table>
+
+
+
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   
-      
-   
-  
-  	
-  	<tr><td><img src="<%=article.getFileimage()%>" ></td> </tr>
 
-   
-     
-     	
+<li class="mystyle"><a href="updatePro.jsp?num=<%=article.getNum() %>" >
+								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+								  </div>							
+								<div class="con">
+									<strong class="tit"><%=article.getSubject()%></strong>
+								</div>
+							</a></li>
   <%  } %><!-- for문 종료 -->
-  
-    </table> 	
+
+
   <%  } %><!-- else 종료 -->
     
  

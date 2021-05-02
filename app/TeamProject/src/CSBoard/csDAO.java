@@ -13,8 +13,34 @@ public class csDAO{
 	private Connection conn = null;
 	
 	//Write
-	public void insertcsBoard(csDTO dto) {
+	public void insertcsBoard(csDTO dto) throws Exception {
+		int num=dto.getNum();
+		int ref=dto.getRef();
+		int re_step=dto.getRe_step();
+		int re_level=dto.getRe_level();
+		int number=0;
+		String sql="";
 		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select max(num) from board");
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				number=rs.getInt(1)+1;
+			else
+				number=1;
+			if (num!=0) {
+				sql="update board set re_step=re_step+1 where ref= ? and re_step> ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, ref);
+				pstmt.setInt(2, re_step);
+				pstmt.executeUpdate();
+				re_step=re_step+1;
+				re_level=re_level+1;
+			}else{
+				ref=number;
+				re_step=0;
+				re_level=0;
+			}
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement("insert into csboard values (csboard_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)");
 			pstmt.setString(1, dto.getWriter());
@@ -23,12 +49,10 @@ public class csDAO{
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getPasswd());
 			pstmt.setString(6, dto.getSave());
-//			pstmt.setInt(7, dto.getReadcount());
-			pstmt.setInt(7, dto.getRef());
-			pstmt.setInt(8, dto.getRe_step());
-			pstmt.setInt(9, dto.getRe_level());
-//			pstmt.setInt(11, dto.getStatus());
-//			pstmt.setTimestamp(11, dto.getReg());
+			pstmt.setInt(7, ref);
+			pstmt.setInt(8, re_step);
+			pstmt.setInt(9, re_level);
+
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -37,7 +61,7 @@ public class csDAO{
 		}
 	}
 	//List
-	public ArrayList<csDTO> getList(){
+	public ArrayList<csDTO> getList() throws Exception {
 		ArrayList<csDTO> list = new ArrayList<csDTO>();
 		try {
 			conn = ConnectionDAO.getConnection();
@@ -68,7 +92,7 @@ public class csDAO{
 		}return list;
 	}
 	//Content (조회수 증가)
-	public void readCount (int num) {
+	public void readCount (int num) throws Exception {
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement("update csboard set readcount=readcount+1 where num=?");
@@ -79,6 +103,36 @@ public class csDAO{
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
+	}
+	public int getCount (String id) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from csboard where writer=? ");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	public int getCount (String col, String search) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "select count(*) from board where " + col + " like '%"+search+"%'";
+			pstmt = conn.prepareStatement("select count(*) from csboard");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
 	}
 	//Content (해당 글 받기)
 	public csDTO getContent(int num) {
@@ -102,7 +156,7 @@ public class csDAO{
 				dto.setRe_step(rs.getInt("re_step"));
 				dto.setRe_level(rs.getInt("re_level"));
 				dto.setStatus(rs.getInt("status"));
-			}		
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

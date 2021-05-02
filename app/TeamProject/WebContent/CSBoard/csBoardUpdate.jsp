@@ -9,9 +9,11 @@
 	
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
+	String pageNum = request.getParameter("pageNum");
 	csDAO dao = new csDAO();
 	csDTO dto = dao.getContent(num);
 %>
+<center><b>글 수정</b>
 <form action="updatePro.jsp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="num" value="<%=dto.getNum() %>"/>
 	작성자 : <input type="text" name="writer"<%=dto.getWriter() %>/><br />

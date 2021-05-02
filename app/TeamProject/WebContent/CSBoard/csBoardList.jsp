@@ -20,9 +20,13 @@
     int endRow = currentPage * pageSize;
     int count = 0;
     int number=0;
+    
+    number=count-(currentPage-1)*pageSize;
 
 	csDAO dao = new csDAO();
 	ArrayList<csDTO> list = dao.getList();
+	
+	String id = (String)session.getAttribute("memId");
 %>
 	<table border="1">
 		<tr>

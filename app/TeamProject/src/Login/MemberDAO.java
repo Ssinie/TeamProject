@@ -125,4 +125,31 @@ public class MemberDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
 	}
+	
+	public void getUserinfo(String id) {  //마이페이지 메소드 정보불러오기 
+		MemberDTO dto = new MemberDTO();
+		try {
+		conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+		pstmt = conn.prepareStatement("select * from member where id=?");
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			dto.setId(rs.getString("id"));
+			dto.setName(rs.getString("name"));
+			dto.setYear(rs.getInt("year")+"");
+			dto.setMonth(rs.getInt("month")+"");
+			dto.setDay(rs.getInt("day")+"");
+			dto.setReg(rs.getTimestamp("reg"));
+			dto.setGender(rs.getString("gender"));
+			dto.setEmail(rs.getString("email"));
+			dto.setPhone(rs.getString("phone"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		
+		}
 }

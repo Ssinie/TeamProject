@@ -7,7 +7,7 @@
 로그인 해주세요.		
 				<div class="data">
 					<label>Email아이디</label>
-					 <input type="email" name="id" placeholder="이메일 입력" required>
+					 <input type="text" name="id" placeholder="아이디 입력" required>
 				</div>
 				<div class="data">
 					<label>비밀번호</label>

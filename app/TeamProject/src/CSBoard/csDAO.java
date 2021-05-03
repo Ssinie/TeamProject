@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import connection.ConnectionDAO;
 
@@ -11,9 +12,8 @@ public class csDAO{
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 	private Connection conn = null;
-	
-	//Write
-	public void insertcsBoard(csDTO dto) throws Exception {
+				//insetArticle(BoardDataBean article)
+	public void insertCSBoard(csDTO dto) throws Exception {
 		int num=dto.getNum();
 		int ref=dto.getRef();
 		int re_step=dto.getRe_step();
@@ -21,28 +21,31 @@ public class csDAO{
 		int number=0;
 		String sql="";
 		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select max(num) from board");
+			conn = ConnectionDAO.getConnection(); 
+			pstmt = conn.prepareStatement("select max(num) from csboard");
 			rs = pstmt.executeQuery();
-			if (rs.next())
-				number=rs.getInt(1)+1;
+			if (rs.next()) 
+				number=rs.getInt(1)+1;	
 			else
-				number=1;
-			if (num!=0) {
-				sql="update board set re_step=re_step+1 where ref= ? and re_step> ?";
+				number=1; 
+			if (num!=0) 
+			{ 
+				sql="update csboard set re_step=re_step+1 where ref= ? and re_step> ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, ref);
 				pstmt.setInt(2, re_step);
 				pstmt.executeUpdate();
 				re_step=re_step+1;
 				re_level=re_level+1;
-			}else{
+			}else{ 
 				ref=number;
 				re_step=0;
 				re_level=0;
 			}
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("insert into csboard values (csboard_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)");
+ 
+			sql = "insert into csboard(num, subject, writer, email, passwd, reg";
+			sql+="ref,re_step,re_level) values(csboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
+				pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getSubject());
 			pstmt.setString(3, dto.getEmail());
@@ -52,147 +55,6 @@ public class csDAO{
 			pstmt.setInt(7, ref);
 			pstmt.setInt(8, re_step);
 			pstmt.setInt(9, re_level);
-
-			pstmt.executeUpdate();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}
-	}
-	//List
-	public ArrayList<csDTO> getList() throws Exception {
-		ArrayList<csDTO> list = new ArrayList<csDTO>();
-		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select * from csboard order by reg desc");
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				csDTO dto = new csDTO();
-				dto.setNum(rs.getInt("num"));
-				dto.setWriter(rs.getString("writer"));
-				dto.setSubject(rs.getString("subject"));
-				dto.setEmail(rs.getString("email"));
-				dto.setContent(rs.getString("content"));
-				dto.setPasswd(rs.getString("passwd"));
-				dto.setSave(rs.getString("save"));
-				dto.setReg(rs.getTimestamp("reg"));
-				dto.setReadcount(rs.getInt("readcount"));
-				dto.setRef(rs.getInt("ref"));
-				dto.setRe_step(rs.getInt("re_step"));
-				dto.setRe_level(rs.getInt("re_level"));
-				dto.setStatus(rs.getInt("status"));
-				list.add(dto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}return list;
-	}
-	//Content (조회수 증가)
-	public void readCount (int num) throws Exception {
-		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("update csboard set readcount=readcount+1 where num=?");
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}
-	}
-	public int getCount (String id) throws Exception {
-		int x = 0;
-		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from csboard where writer=? ");
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}return x;
-	}
-	public int getCount (String col, String search) throws Exception {
-		int x = 0;
-		try {
-			conn = ConnectionDAO.getConnection();
-			String sql = "select count(*) from board where " + col + " like '%"+search+"%'";
-			pstmt = conn.prepareStatement("select count(*) from csboard");
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				x = rs.getInt(1);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}return x;
-	}
-	//Content (해당 글 받기)
-	public csDTO getContent(int num) {
-		csDTO dto = new csDTO();
-		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select * from csboard where num=?");
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				dto.setNum(rs.getInt("num"));
-				dto.setWriter(rs.getString("writer"));
-				dto.setSubject(rs.getString("subject"));
-				dto.setEmail(rs.getString("email"));
-				dto.setContent(rs.getString("content"));
-				dto.setPasswd(rs.getString("passwd"));
-				dto.setSave(rs.getString("save"));
-				dto.setReg(rs.getTimestamp("reg"));
-				dto.setReadcount(rs.getInt("readcount"));
-				dto.setRef(rs.getInt("ref"));
-				dto.setRe_step(rs.getInt("re_step"));
-				dto.setRe_level(rs.getInt("re_level"));
-				dto.setStatus(rs.getInt("status"));
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}return dto;
-	}
-	//Delete
-	public void deleteBoard(int num) {
-		try {
-			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("update csboard set status=3 where num=?");
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			ConnectionDAO.close(rs, pstmt, conn);
-		}
-	}
-	//Update
-	public void updateBoard(csDTO dto) {
-		try {
-			conn = ConnectionDAO.getConnection();
-			String sql = "update csboard set writer=?, subject=?, content=?, save=? where num=?";
-			if(dto.getSave() == null) {
-				sql = "update csboard set writer=?, subject=?, content=? where num=?";
-			}pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getWriter());
-			pstmt.setString(2, dto.getSubject());
-			pstmt.setString(3, dto.getContent());
-			if(dto.getSave() == null) {
-				pstmt.setInt(4, dto.getNum());
-			}else {
-				pstmt.setString(4, dto.getSave());
-				pstmt.setInt(5, dto.getNum());
-			}
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -201,4 +63,302 @@ public class csDAO{
 		}
 	}
 	
+	
+	public int getCSBoardCount() throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from csboard");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x; 
+	}
+	public int getCSBoardCount (String id) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from csboard where writer=? ");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	public int getCSBoardCount(String col, String search) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "select count(*) from csboard where "+col+"like '%"+search+"%'";
+			pstmt = conn.prepareStatement("select count(*) from csboard");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x; 
+	}
+	public List getCSBoard(int start, int end) throws Exception {
+		List CSBoardList = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement(
+					"select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount " +
+					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					pstmt.setInt(1, start); 
+					pstmt.setInt(2, end); 
+
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						CSBoardList = new ArrayList(end); 
+						do{
+							csDTO dto = new csDTO();
+							dto.setNum(rs.getInt("num"));
+							dto.setWriter(rs.getString("writer"));
+							dto.setEmail(rs.getString("email"));
+							dto.setSubject(rs.getString("subject"));
+							dto.setPasswd(rs.getString("passwd"));
+							dto.setReg(rs.getTimestamp("reg"));
+							dto.setReadcount(rs.getInt("readcount"));
+							dto.setRef(rs.getInt("ref"));
+							dto.setRe_step(rs.getInt("re_step"));
+							dto.setRe_level(rs.getInt("re_level"));
+							CSBoardList.add(dto);
+						}while(rs.next());
+					}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return CSBoardList;
+	}
+	public List getCSBoard(String id, int start, int end) throws Exception {
+		List CSBoardList = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement(
+					"select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount " +
+					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					pstmt.setString(1, id);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
+
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						CSBoardList = new ArrayList(end); 
+						do{ 
+							csDTO dto = new csDTO();
+							dto.setNum(rs.getInt("num"));
+							dto.setWriter(rs.getString("writer"));
+							dto.setEmail(rs.getString("email"));
+							dto.setSubject(rs.getString("subject"));
+							dto.setPasswd(rs.getString("passwd"));
+							dto.setReg(rs.getTimestamp("reg"));
+							dto.setReadcount(rs.getInt("readcount"));
+							dto.setRef(rs.getInt("ref"));
+							dto.setRe_step(rs.getInt("re_step"));
+							dto.setRe_level(rs.getInt("re_level"));
+							CSBoardList.add(dto);
+						}while(rs.next());
+					}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return CSBoardList;
+	}
+	public List getCSBoard(String col , String search, int start, int end) throws Exception {
+		List CSBoardList=null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement(
+					"select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,r "+
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount,rownum r " +
+					"from (select num,writer,email,subject,passwd,reg,ref,re_step,re_level,readcount " +
+					"from csboard where "+col+" like '%"+search+"%' order by reg desc) order by reg desc) where r >= ? and r <= ? ");
+					pstmt.setInt(1, start); 
+					pstmt.setInt(2, end); 
+
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						CSBoardList = new ArrayList(end); 
+						do{ 
+							csDTO dto = new csDTO();
+							dto.setNum(rs.getInt("num"));
+							dto.setWriter(rs.getString("writer"));
+							dto.setEmail(rs.getString("email"));
+							dto.setSubject(rs.getString("subject"));
+							dto.setPasswd(rs.getString("passwd"));
+							dto.setReg(rs.getTimestamp("reg"));
+							dto.setReadcount(rs.getInt("readcount"));
+							dto.setRef(rs.getInt("ref"));
+							dto.setRe_step(rs.getInt("re_step"));
+							dto.setRe_level(rs.getInt("re_level"));
+							CSBoardList.add(dto);
+						}while(rs.next());
+					}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return CSBoardList;
+	}
+	
+	public csDTO getCSBoard (int num) throws Exception {
+		csDTO dto = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("update csboard set readcount=readcount+1 where num = ?"); 
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("select * from csboard where num = ?"); 
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto = new csDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setEmail(rs.getString("email"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setPasswd(rs.getString("passwd"));
+				dto.setReg(rs.getTimestamp("reg"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setRef(rs.getInt("ref"));
+				dto.setRe_step(rs.getInt("re_step"));
+				dto.setRe_level(rs.getInt("re_level"));
+				dto.setContent(rs.getString("content"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return dto;
+	}
+	
+	
+	public csDTO updateGetCSBoard(int num) throws Exception {
+		csDTO dto = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select * from csboard where num = ?"); 
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto = new csDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setEmail(rs.getString("email"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setPasswd(rs.getString("passwd"));
+				dto.setReg(rs.getTimestamp("reg"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setRef(rs.getInt("ref"));
+				dto.setRe_step(rs.getInt("re_step"));
+				dto.setRe_level(rs.getInt("re_level"));
+				dto.setContent(rs.getString("content"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return dto;
+	}
+
+	public int updateCSBoard(csDTO dto) throws Exception {
+		String dbpasswd = "";
+		String sql = "";
+		int x = -1;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
+			pstmt.setInt(1, dto.getNum());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dbpasswd= rs.getString("passwd"); 
+				if(dbpasswd.equals(dto.getPasswd())){
+					sql="update csboard set writer=?,email=?,subject=?,passwd=?";
+					sql+=",content=? where num=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, dto.getWriter());
+					pstmt.setString(2, dto.getEmail());
+					pstmt.setString(3, dto.getSubject());
+					pstmt.setString(4, dto.getPasswd());
+					pstmt.setString(5, dto.getContent());
+					pstmt.setInt(6, dto.getNum());
+					pstmt.executeUpdate();
+					x = 1;
+				}else{
+					x = 0;
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	public int deleteCSBoard(int num, String passwd) throws Exception {
+		String dbpasswd="";
+		int x=-1;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement(
+			"select passwd from csboard where num = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dbpasswd= rs.getString("passwd");
+				if(dbpasswd.equals(passwd)){
+					pstmt = conn.prepareStatement("delete from csboard where num=?");
+					pstmt.setInt(1, num);
+					pstmt.executeUpdate();
+					x= 1; 
+				}else
+					x= 0; 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	public int passwdCheck(int num, String passwd) throws Exception {
+		String dbpasswd = "";
+		int x=-1;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dbpasswd= rs.getString("passwd");
+				if(dbpasswd.equals(passwd)){
+					x= 1;
+				}else
+					x= 0;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
 }

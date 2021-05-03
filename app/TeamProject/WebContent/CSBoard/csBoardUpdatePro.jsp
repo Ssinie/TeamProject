@@ -4,33 +4,28 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="CSBoard.csDAO" %>
 <%@ page import="CSBoard.csDTO" %>
+<%@ page import = "java.sql.Timestamp" %>
 
 <title> 글 수정 pro </title>
 
+<% request.setCharacterEncoding("UTF-8");%>
+
+<jsp:useBean id="dto" scope="page" class="CSBoard.csDTO" />
+<jsp:setProperty name="dto" property="*"/>
+
 <%
-	String path = request.getRealPath("save");
-	String enc = "UTF-8";
-	int size = 1024*1024*10;
-	DefaultFileRenamePolicy dp = new DefaultFileRenamePolicy();
-	MultipartRequest mr = new MultipartRequest(request,path,size,enc,dp);
-	
-	int num = Integer.parseInt(mr.getParameter("num"));
-	String writer =  mr.getParameter("writer");
-	String subject = mr.getParameter("subject");
-	String content = mr.getParameter("content");
-	String save = mr.getFilesystemName("save");
-	
-	csDTO dto = new csDTO();
-	dto.setNum(num);
-	dto.setWriter(writer);
-	dto.setSubject(subject);
-	dto.setContent(content);
-	dto.setSave(save);
-	
+ 
+    String pageNum = request.getParameter("pageNum");
+
 	csDAO dao = new csDAO();
-	dao.insertcsBoard(dto);
+    int check = dao.updateCSBoard(dto);
+
+    if(check==1){
 %>
-	<script>
-		alert("수정되었습니다.")
-		window.location="content.jsp?num=<%=num%>";
-	</script>
+	  <meta http-equiv="Refresh" content="0;url=csBoardList.jsp?pageNum=<%=pageNum%>" >
+<% }else{%>
+      <script language="JavaScript">      
+        alert("비밀번호가 맞지 않습니다");
+        history.go(-1);
+     </script>
+<%}%>  

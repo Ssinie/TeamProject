@@ -59,7 +59,6 @@
     		</td>
     	</tr>
 	</table>
-
 <%  } else {    %>
 <table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
@@ -84,7 +83,7 @@
 			<%}else{%>
 		  		<img src="images/level.gif" width="<%=wid%>" height="16">
 			<%}%>
-     		 <a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
            	 </a> 
           <% if(dto.getReadcount()>=20){%>
@@ -122,6 +121,14 @@
 <%		}
     }
 %>
+	<form action="csBoardSearch.jsp" method="post">
+		<select name="col">
+			<option value = "subject"> 제목 </option>
+			<option value = "writer"> 작성자 </option>
+		</select>
+		<input type="text" name="search" />
+		<input type="submit" value="검색"/>
+	</form>
 </center>
 </body>
 </html>

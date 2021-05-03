@@ -2,10 +2,18 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>게시판</title>
+<title>1:1 문의 하기</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="script.js"></script>
 </head>
+<%
+	String id = (String)session.getAttribute("memId");
+	if(id == null){
+%>		<script>
+			alert("로그인후 글쓰기 가능합니다.!!");
+			window.location='/TeamProject/Login/Login.jsp';
+		</script>
+<%  }%>
 
 <% 
   int num=0, ref=1, re_step=0, re_level=0;
@@ -38,7 +46,8 @@
    <tr>
     <td  width="70"  bgcolor="white" align="center">이 름</td>
     <td  width="330">
-       <input type="text" size="10" maxlength="10" name="writer"></td>
+        <%=id%>
+        <input type="hidden" name="writer" value="<%=id%>"></td>
   </tr>
   <tr>
     <td  width="70"  bgcolor="white" align="center" >제 목</td>

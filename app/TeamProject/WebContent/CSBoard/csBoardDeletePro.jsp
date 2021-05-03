@@ -22,6 +22,6 @@
 	      </script>
 	<%}%>
 	<script>
-		alert("삭제 완료");
+		alert("삭제 되었습니다.");
 		window.location="csBoardList.jsp";
 	</script>

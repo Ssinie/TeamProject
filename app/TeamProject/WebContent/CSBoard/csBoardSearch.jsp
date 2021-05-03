@@ -7,6 +7,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
+	String id = (String)session.getAttribute("memId");
+	
 	String col = request.getParameter("col");
 	String search = request.getParameter("search");
 
@@ -32,8 +34,6 @@
     }
 	number=count-(currentPage-1)*pageSize;
 	
-	String id = (String)session.getAttribute("memId");
-	
 %>
 <html>
 <head>
@@ -42,7 +42,7 @@
 </head>
 
 <body bgcolor="white">
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b> 1 : 1 문의 게시판 (전체 글:<%=count%>) </b>
 <table width="700">
 	<tr>
     	<td align="right" bgcolor="white">
@@ -63,16 +63,15 @@
     		</td>
     	</tr>
 	</table>
-
 <%  } else {    %>
 <table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
 		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제   목</td> 
+		<td align="center"  width="250" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
 	    <td align="center"  width="150" >작성일</td> 
 	    <td align="center"  width="50" >조 회</td> 
-	    <td align="center"  width="100" >상태</td>    
+	    <td align="center"  width="100" >상태</td>
     </tr>
 <%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
     	csDTO dto = (csDTO)CSBoardList.get(i);
@@ -88,7 +87,7 @@
 			<%}else{%>
 		  		<img src="images/level.gif" width="<%=wid%>" height="16">
 			<%}%>
-     		 <a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
            	 </a> 
           <% if(dto.getReadcount()>=20){%>
@@ -105,7 +104,6 @@
     <%}%>
 </table>
 <%}%>
-
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
@@ -128,12 +126,12 @@
 %>
 	<form action="csBoardSearch.jsp" method="post">
 		<select name="col">
-			<option value="subject">제목</option>
-			<option value="writer">작성자</option>
+			<option value = "subject"> 제목 </option>
+			<option value = "writer"> 작성자 </option>
 		</select>
 		<input type="text" name="search" />
-		<input type="submit" value="검색" />
+		<input type="submit" value="검색"/>
 	</form>
 </center>
 </body>
-</html></html>
+</html>

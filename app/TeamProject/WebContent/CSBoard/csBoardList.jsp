@@ -7,6 +7,8 @@
 
 	<title> 고객 1:1 문의 리스트</title>
 <%
+	String id = (String)session.getAttribute("memId");
+
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -29,7 +31,7 @@
     }
 
 	number=count-(currentPage-1)*pageSize;
-	String id = (String)session.getAttribute("memId");
+	
 %>
 <html>
 <head>
@@ -38,7 +40,7 @@
 </head>
 
 <body bgcolor="white">
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b> 1 : 1 문의 게시판 (전체 글:<%=count%>) </b>
 <table width="700">
 	<tr>
     	<td align="right" bgcolor="white">
@@ -63,11 +65,11 @@
 <table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
 		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제   목</td> 
+		<td align="center"  width="250" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
 	    <td align="center"  width="150" >작성일</td> 
 	    <td align="center"  width="50" >조 회</td> 
-	    <td align="center"  width="100" >상태</td>    
+	    <td align="center"  width="100" >상태</td>
     </tr>
 <%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
     	csDTO dto = (csDTO)CSBoardList.get(i);
@@ -100,7 +102,6 @@
     <%}%>
 </table>
 <%}%>
-
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);

@@ -8,6 +8,8 @@
 	<title> 관리자 페이지 </title>
 	
 <%
+	String id = (String)session.getAttribute("memId");
+
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -15,13 +17,13 @@
     if (pageNum == null) {
         pageNum = "1";
     }
-
+    
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
     int count = 0;
     int number=0;
-
+    
     List CSBoardList = null;
     csDAO dao =new csDAO();
     count = dao.getCSBoardCount();
@@ -31,7 +33,6 @@
 
 	number=count-(currentPage-1)*pageSize;
 	
-	String id = (String)session.getAttribute("memId");
 %>
 <html>
 <head>
@@ -40,15 +41,18 @@
 </head>
 
 <body bgcolor="white">
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b> 1 : 1 문의 게시판 (전체 글:<%=count%>) </b>
 <table width="700">
 	<tr>
-    	<td align="right" bgcolor="dddddd">
+    	<td align="right" bgcolor="white">
+    	<%if(id != null && id.equals("admin")){%>
     		<a href="csBoardWrite.jsp">글쓰기</a>
+    	<%}else{%>
+    		<a href="/TeamProject/Login/Login.jsp">로그인 후 글 쓰기</a>
+    	<%} %>
     	</td>
     </tr>
 </table>
-
 <%if (count == 0) {%>
 	<table width="700" border="1" cellpadding="0" cellspacing="0">
 		<tr>
@@ -57,16 +61,15 @@
     		</td>
     	</tr>
 	</table>
-
 <%  } else {    %>
 <table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
 		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제   목</td> 
+		<td align="center"  width="250" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
 	    <td align="center"  width="150" >작성일</td> 
 	    <td align="center"  width="50" >조 회</td> 
-	    <td align="center"  width="100" >상태</td>    
+	    <td align="center"  width="100" >상태</td>
     </tr>
 <%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
     	csDTO dto = (csDTO)CSBoardList.get(i);
@@ -82,7 +85,7 @@
 			<%}else{%>
 		  		<img src="images/level.gif" width="<%=wid%>" height="16">
 			<%}%>
-     		 <a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
            	 </a> 
           <% if(dto.getReadcount()>=20){%>
@@ -99,7 +102,6 @@
     <%}%>
 </table>
 <%}%>
-
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
@@ -120,9 +122,9 @@
 <%		}
     }
 %>
-<form action="csBoardSearch.jsp" method="post">
+	<form action="csBoardSearch.jsp" method="post">
 		<select name="col">
-			<option value = "subject"> 제목</option>
+			<option value = "subject"> 제목 </option>
 			<option value = "writer"> 작성자 </option>
 		</select>
 		<input type="text" name="search" />

@@ -44,7 +44,7 @@
    </td>
    </tr>
    <tr>
-    <td  width="70"  bgcolor="white" align="center">이 름</td>
+    <td  width="70"  bgcolor="white" align="center">작성자</td>
     <td  width="330">
         <%=id%>
         <input type="hidden" name="writer" value="<%=id%>"></td>

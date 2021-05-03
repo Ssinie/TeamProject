@@ -96,7 +96,7 @@ public class csDAO{
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select count(*) from csboard where "+col+"like '%"+search+"%'";
+			String sql = "select count(*) from csboard where " + col + " like '%"+search+"%'";
 			pstmt = conn.prepareStatement("select count(*) from csboard");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -109,6 +109,7 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x; 
 	}
+	//csBoardList
 	public List getCSBoard(int start, int end) throws Exception {
 		List CSBoardList = null;
 		try {
@@ -120,9 +121,6 @@ public class csDAO{
 					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, end);
-					//select * from ( select * from (select * from csboard))
-					//rownum - 검색 결과에 순서대로 번호를 붙여준다.
-					//where r> 1 and r <10
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						CSBoardList = new ArrayList(end); 
@@ -132,15 +130,15 @@ public class csDAO{
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
 							dto.setEmail(rs.getString("email"));
-							dto.setSubject(rs.getString("content"));
+							dto.setContent(rs.getString("content"));
 							dto.setPasswd(rs.getString("passwd"));
-							dto.setSubject(rs.getString("save"));
+							dto.setSave(rs.getString("save"));
 							dto.setReg(rs.getTimestamp("reg"));
 							dto.setReadcount(rs.getInt("readcount"));
 							dto.setRef(rs.getInt("ref"));
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
-							dto.setSubject(rs.getString("status"));
+							dto.setStatus(rs.getInt("status"));
 							CSBoardList.add(dto);
 						}while(rs.next());
 					}
@@ -150,6 +148,7 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return CSBoardList;
 	}
+	//csBoardMyList
 	public List getCSBoard(String id, int start, int end) throws Exception {
 		List CSBoardList = null;
 		try {
@@ -158,7 +157,7 @@ public class csDAO{
 					"select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,r "+
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
-					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"from csboard where writer=? order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
@@ -166,21 +165,21 @@ public class csDAO{
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						CSBoardList = new ArrayList(end); 
-						do{ 
+						do{
 							csDTO dto = new csDTO();
 							dto.setNum(rs.getInt("num"));
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
 							dto.setEmail(rs.getString("email"));
-							dto.setSubject(rs.getString("content"));
+							dto.setContent(rs.getString("content"));
 							dto.setPasswd(rs.getString("passwd"));
-							dto.setSubject(rs.getString("save"));
+							dto.setSave(rs.getString("save"));
 							dto.setReg(rs.getTimestamp("reg"));
 							dto.setReadcount(rs.getInt("readcount"));
 							dto.setRef(rs.getInt("ref"));
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
-							dto.setSubject(rs.getString("status"));
+							dto.setStatus(rs.getInt("status"));
 							CSBoardList.add(dto);
 						}while(rs.next());
 					}
@@ -190,6 +189,7 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return CSBoardList;
 	}
+	//csBoardSearch
 	public List getCSBoard(String col , String search, int start, int end) throws Exception {
 		List CSBoardList=null;
 		try {
@@ -199,8 +199,8 @@ public class csDAO{
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
 					"from csboard where "+col+" like '%"+search+"%' order by reg desc) order by reg desc) where r >= ? and r <= ? ");
-					pstmt.setInt(1, start); 
-					pstmt.setInt(2, end); 
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
 
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
@@ -211,15 +211,15 @@ public class csDAO{
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
 							dto.setEmail(rs.getString("email"));
-							dto.setSubject(rs.getString("content"));
+							dto.setContent(rs.getString("content"));
 							dto.setPasswd(rs.getString("passwd"));
-							dto.setSubject(rs.getString("save"));
+							dto.setSave(rs.getString("save"));
 							dto.setReg(rs.getTimestamp("reg"));
 							dto.setReadcount(rs.getInt("readcount"));
 							dto.setRef(rs.getInt("ref"));
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
-							dto.setSubject(rs.getString("status"));
+							dto.setStatus(rs.getInt("status"));
 							CSBoardList.add(dto);
 						}while(rs.next());
 					}

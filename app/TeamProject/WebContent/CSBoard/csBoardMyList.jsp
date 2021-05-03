@@ -38,13 +38,14 @@
 </head>
 
 <body bgcolor="white">
-<center><b>글목록(전체 글:<%=count%>)</b>
+<center><b> 나의 1 : 1 문의 목록 (전체 글:<%=count%>)</b>
 <table width="700">
 	<tr>
     	<td align="right" bgcolor="white">
     	<%if(id != null){%>
     		<a href="csBoardWrite.jsp">글쓰기</a>
     		<a href="csBoardMyList.jsp">나의 작성글 목록</a>
+    		<a href="csBoardList.jsp">전체 목록</a>
     	<%}else{%>
     		<a href="/TeamProject/Login/Login.jsp">로그인 후 글 쓰기</a>
     	<%} %>
@@ -122,6 +123,14 @@
 <%		}
     }
 %>
+	<form action="csBoardSearch.jsp" method="post">
+		<select name="col">
+			<option value = "subject"> 제목 </option>
+			<option value = "writer"> 작성자 </option>
+		</select>
+		<input type="text" name="search" />
+		<input type="submit" value="검색"/>
+	</form>
 </center>
 </body>
 </html>

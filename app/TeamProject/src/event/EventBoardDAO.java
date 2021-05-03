@@ -3,8 +3,9 @@ package event;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import connection.ConnectionDAO;
+import java.util.ArrayList;
 
+import connection.ConnectionDAO;
 
 public class EventBoardDAO {
    
@@ -12,7 +13,9 @@ public class EventBoardDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	//DB입력 메서드
 	public void insertArticle(EventBoardDTO dto) throws Exception {
+
 		int num=dto.getNum();
 		int ref=dto.getRef();
 		int re_step=dto.getRe_step();
@@ -60,7 +63,104 @@ public class EventBoardDAO {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
 	}
+	
+	//리스트 메서드
+	public ArrayList<EventBoardDTO> getList() {
+	      ArrayList<EventBoardDTO> list = new ArrayList<EventBoardDTO>();
+	      try {
+	         conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+	         pstmt = conn.prepareStatement("select * from EventBoard order by re_date desc"); 
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	        	 EventBoardDTO dto = new EventBoardDTO();
+	            dto.setNum(rs.getInt("num")); //rs.getInt("num"); 
+	            dto.setSubject(rs.getString("subject")); //DB에서 get해서 dto에 set
+	            dto.setWriter(rs.getString("writer"));
+	            dto.setContent(rs.getString("content"));
+	            dto.setReadcount(rs.getInt("readcount"));
+	            dto.setRe_date(rs.getTimestamp("re_date"));
+	            list.add(dto); //list에 (추가한내용을)dto저장.
+	         }
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }finally {
+	         ConnectionDAO.close(rs, pstmt, conn); //ConnectionDAO에 끊어준 순서대로 1번, 2번, 3번
+	      }
+	      return list;
+	   }  
+
+	//조회수 메서드
+	public void readCount(int num) {
+		try {
+			conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+		    pstmt = conn.prepareStatement("update EventBoard set readcount=readcount+1 where num=? "); 
+		    pstmt.setInt(1, num);
+		    pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+	}   
+
+	//내용 메서드
+	 public EventBoardDTO getContent(int num) {
+		 EventBoardDTO dto = new EventBoardDTO();
+	      try {
+	         conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+	         pstmt = conn.prepareStatement("select * from EventBoard where num=? "); 
+	         pstmt.setInt(1, num);
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	            dto.setNum(rs.getInt("num"));
+	            dto.setSubject(rs.getString("subject"));
+	            dto.setWriter(rs.getString("writer"));      
+	            dto.setContent(rs.getString("content"));
+	            dto.setReadcount(rs.getInt("readcount"));
+	            dto.setRe_date(rs.getTimestamp("re_date"));
+	         }
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }finally {
+	         ConnectionDAO.close(rs, pstmt, conn);
+	      }
+	      return dto;
+	   }
+
+	//수정 메서드
+		public void updateBoard(EventBoardDTO dto) {
+			try {
+				conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출			
+				String sql = "update EventBoard set subject=?,writer=?,content=?, where num=?";
+				pstmt = conn.prepareStatement(sql);   
+				pstmt.setString(1, dto.getSubject());
+				pstmt.setString(2, dto.getWriter());
+				pstmt.setString(3, dto.getContent());
+				pstmt.setInt(4, dto.getNum());
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}
+		}
+
+	//삭제 메서드
+		public void deleteBoard(int num) {
+			try {
+				conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+				pstmt = conn.prepareStatement("update EventBoard set status=3 where num=? "); 
+				pstmt.setInt(1, num);
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}
+		}
 }
+	
 	
 	
 

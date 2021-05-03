@@ -12,8 +12,8 @@
 	dao.updateMember(dto);
 %>
 <script>
-	alert("수정되었습니다..");
-	window.location="lobby.jsp";
+   alert("수정되었습니다..");
+   window.location="http://localhost:8080/TeamProject/lobby/lobby.jsp";
 </script>
 
 

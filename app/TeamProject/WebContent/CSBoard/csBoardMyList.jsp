@@ -1,17 +1,13 @@
-<%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "CSBoard.csDAO" %>
-<%@ page import = "CSBoard.csDTO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="CSBoard.csDAO" %>
+<%@ page import="CSBoard.csDTO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
+	<title> 고객 1:1 문의 리스트</title>
 <%
-	request.setCharacterEncoding("UTF-8");
-	
 	String id = (String)session.getAttribute("memId");
-	
-	String col = request.getParameter("col");
-	String search = request.getParameter("search");
-
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -28,12 +24,12 @@
 
     List CSBoardList = null;
     csDAO dao =new csDAO();
-    count = dao.getCSBoardCount(col, search);
+    count = dao.getCSBoardCount(id);
     if (count > 0) {
-        CSBoardList = dao.getCSBoard(col, search, startRow, endRow);
+        CSBoardList = dao.getCSBoard(id, startRow, endRow);
     }
+
 	number=count-(currentPage-1)*pageSize;
-	
 %>
 <html>
 <head>
@@ -42,13 +38,14 @@
 </head>
 
 <body bgcolor="white">
-<center><b> 1 : 1 문의 게시판 (전체 글:<%=count%>) </b>
+<center><b> 나의 1 : 1 문의 목록 (전체 글:<%=count%>)</b>
 <table width="700">
 	<tr>
     	<td align="right" bgcolor="white">
     	<%if(id != null){%>
     		<a href="csBoardWrite.jsp">글쓰기</a>
     		<a href="csBoardMyList.jsp">나의 작성글 목록</a>
+    		<a href="csBoardList.jsp">전체 목록</a>
     	<%}else{%>
     		<a href="/TeamProject/Login/Login.jsp">로그인 후 글 쓰기</a>
     	<%} %>
@@ -63,15 +60,16 @@
     		</td>
     	</tr>
 	</table>
+
 <%  } else {    %>
 <table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
 		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제 목</td> 
+		<td align="center"  width="250" >제   목</td> 
 	    <td align="center"  width="100" >작성자</td>
 	    <td align="center"  width="150" >작성일</td> 
 	    <td align="center"  width="50" >조 회</td> 
-	    <td align="center"  width="100" >상태</td>
+	    <td align="center"  width="100" >상태</td>    
     </tr>
 <%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
     	csDTO dto = (csDTO)CSBoardList.get(i);
@@ -87,7 +85,7 @@
 			<%}else{%>
 		  		<img src="images/level.gif" width="<%=wid%>" height="16">
 			<%}%>
-     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+     		 <a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
            	 </a> 
           <% if(dto.getReadcount()>=20){%>
@@ -104,6 +102,7 @@
     <%}%>
 </table>
 <%}%>
+
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);

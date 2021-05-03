@@ -1,54 +1,43 @@
-<%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "menuboard.BoardDBBean" %>
-<%@ page import = "menuboard.BoardDataBean" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="java.io.File" %>
+<%@ page import="menuboard.BoardDBBean" %>
 
-<%@ include file="color.jsp"%>
 
-<style>
-ul{}
-li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px line black; margin-right:10px;padding:20px;text-align:center;}
-#STATICMENU { position:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
-</style>
+<jsp:useBean class="menuboard.BoardDataBean" id="BoardDataBean" /> 
 
-<html>
-<head>
-<title>게시판</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-</head>
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
+
+
+String savePath = "D:\\자바\\team\\TeamProject\\app\\TeamProject\\WebContent\\menu\\img\\";
+int maxSize = 1024*1024*10; // 10MB
+String enc = "UTF-8";  //한글파일명 인코딩
+DefaultFileRenamePolicy drp = new DefaultFileRenamePolicy(); //덮어씌우기 방지
+MultipartRequest mr = new MultipartRequest(request,savePath,maxSize,enc,drp); //이 과정에서 업로드 됨.
+
+int num = Integer.parseInt(mr.getParameter("num"));
+
+BoardDataBean.setNum(num);
+
+String subject = mr.getParameter("subject");
+BoardDataBean.setSubject(subject);
+String content = mr.getParameter("content");
+BoardDataBean.setContent(content);
+String on = mr.getOriginalFileName("file"); // 원본 파일명
+
+BoardDataBean.setFileName(on);
+String sn = mr.getFilesystemName("file"); // 업로드된 파일명
+
+BoardDataBean.setFileRealName(sn);
+
 	
- 
-	BoardDBBean dbPro = new BoardDBBean();
-	BoardDataBean article =  dbPro.getArticle(num);
-  
-
+BoardDataBean.setFileimage("/TeamProject/menu/img/"+on);
+BoardDBBean file = new BoardDBBean();
+file.upload2(BoardDataBean);	
 %>
-<body bgcolor="<%=bodyback_c%>" >
-
-<center><b>글내용 보기</b>
-<br>
-<table width="500" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">  
-	<tr height="30">
-		
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><img src="<%=article.getFileimage() %>"></td>
-	    
-  </tr>
-  <tr height="30">
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><textarea cols="80" rows="10" ><%=article.getContent() %></textarea></td>
-	</tr>  	    
- 
-</table>
-<table>
-<tr height="30">
- <td td align="right" width="125" bgcolor="<%=value_c%>"><input type="button" value="파일"/></td>
- 
- </tr>
-<tr height="30">
- <td td align="center" width="125" bgcolor="<%=value_c%>"><input type="button" value="수정"/></td>
- <td td align="center" width="125" bgcolor="<%=value_c%>"><input type="button" value="취소"/></td>
- </tr>
-</table>
-</body>
-</html>      
+<script>
+	alert("수정 완료");
+	window.location="updateForm_list.jsp";
+</script>

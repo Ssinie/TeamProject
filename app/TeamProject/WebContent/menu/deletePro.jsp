@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import="menuboard.BoardDBBean" %>
+
+<jsp:useBean class="menuboard.BoardDataBean" id="BoardDataBean" /> 
+<jsp:setProperty property="*" name="BoardDataBean" />
+
     <h1>deletrPro</h1>
     
+
     <%
-    	int num = Integer.parseInt(request.getParameter("num"));
-    	//글번호에 해당하는 DB 삭제 후 리스트로 이동
+    BoardDBBean db = new BoardDBBean();
+    db.delete(BoardDataBean);
     %>

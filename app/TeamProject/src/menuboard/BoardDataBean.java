@@ -21,8 +21,19 @@ public class BoardDataBean{
 	private String fileRealName;
 	private String fileimage;
 	
+	private String [] ch;
+	
+	
 	
 
+	public String[] getCh() {
+		return ch;
+	}
+	public void setCh(String[] ch) {
+		this.ch = ch;
+	}
+	
+	
 	public String getName() {
 		return name;
 	}

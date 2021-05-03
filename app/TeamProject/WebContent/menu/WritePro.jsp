@@ -8,6 +8,11 @@
 
 <jsp:useBean class="menuboard.BoardDataBean" id="BoardDataBean" /> 
 	
+<script type="text/javascript">
+	alert("작성되었습니다.");
+	window.location="/TeamProject/lobby/lobby.jsp";
+</script>
+	
 <%
 
 	String savePath = "D:\\자바\\team\\TeamProject\\app\\TeamProject\\WebContent\\menu\\img\\";	
@@ -42,4 +47,4 @@
 		
 %>
 
-완료
+

@@ -31,6 +31,50 @@ public void upload(BoardDataBean BoardDataBean) {
 		}
 	
 	}
+	public void upload2(BoardDataBean BoardDataBean) { //수정
+	
+	try {
+		conn = ConnectionDAO.getConnection(); 
+		pstmt=conn.prepareStatement("update board2 set subject=?, content=?,filename=?,filerealname=?,fileimage=? where num=?");
+			
+		pstmt.setString(1,BoardDataBean.getSubject());	
+		pstmt.setString(2,BoardDataBean.getContent());						
+		pstmt.setString(3,BoardDataBean.getFileName());
+		pstmt.setString(4,BoardDataBean.getFileRealName());
+		pstmt.setString(5,BoardDataBean.getFileimage());
+		pstmt.setInt(6,BoardDataBean.getNum());
+		pstmt.executeUpdate();
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+
+	}finally {
+		ConnectionDAO.close(rs, pstmt, conn);
+	}
+
+}
+	public void delete(BoardDataBean BoardDataBean) { 
+		
+		try {
+			for(int i=0; i<=BoardDataBean.getCh().length-1; i++) {
+				conn = ConnectionDAO.getConnection(); 
+				pstmt=conn.prepareStatement("delete from board2 where num=?");
+				int a=Integer.parseInt(BoardDataBean.getCh()[i]);
+				
+				pstmt.setInt(1,a);	
+				
+				pstmt.executeUpdate();
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+
+	}
 	
 	public void insertArticle(BoardDataBean article) throws Exception {
 		int num=article.getNum();
@@ -150,17 +194,7 @@ public void upload(BoardDataBean BoardDataBean) {
 				article.setNum(rs.getInt("num"));
 				article.setFileimage(rs.getString("fileimage"));
 				article.setContent(rs.getString("content"));
-				article.setWriter(rs.getString("writer"));
-				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
-				article.setPasswd(rs.getString("passwd"));
-				article.setReg_date(rs.getTimestamp("reg_date"));
-				article.setReadcount(rs.getInt("readcount"));
-				article.setRef(rs.getInt("ref"));
-				article.setRe_step(rs.getInt("re_step"));
-				article.setRe_level(rs.getInt("re_level"));
-				article.setContent(rs.getString("content"));
-				article.setIp(rs.getString("ip"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();

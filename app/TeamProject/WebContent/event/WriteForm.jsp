@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	String id = (String)session.getAttribute("memId");
+	if(id == null){
+%>		
+		<script>
+			alert("★로그인 후 글쓰기 가능합니다!!!★");
+			window.location='/TeamProject/Login/Login.jsp';
+		</script>
+<%} %>    
+
 <% 
   int num=0;
  
@@ -15,7 +25,7 @@
 <form method="post" name="Writeform" action="WriteFormPro.jsp" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%=num%>"> <!-- 글번호 -->
 
-<table width="530" border="1" cellspacing="0" cellpadding="0"  align="center">
+<table width="870" border="1" cellspacing="0" cellpadding="0"  align="center">
    <tr>
     <td  width="200" align="center">제목</td>
     <td  width="330">
@@ -24,8 +34,8 @@
   </tr>
   <tr>
     <td  width="200" align="center" >작성자</td>
-    <td  width="330">
-    <input type="text" name="writer">
+    <td  width="330"><%=id %>
+    <input type="hidden" name="writer" value="<%=id %>"></td>
   </tr>
   <tr>
     <td  width="200" align="center" >내 용</td>

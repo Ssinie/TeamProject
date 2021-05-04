@@ -127,12 +127,12 @@ public class EventBoardDAO {
 	      }
 	      return dto;
 	   }
-
-	//수정 메서드
-		public void updateBoard(EventBoardDTO dto) {
+	  
+	//update 메서드
+	public void updateBoard(EventBoardDTO dto) {
 			try {
 				conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출			
-				String sql = "update EventBoard set subject=?,writer=?,content=?, where num=?";
+				String sql = "update EventBoard set subject=?,writer=?,content=? where num=?";
 				pstmt = conn.prepareStatement(sql);   
 				pstmt.setString(1, dto.getSubject());
 				pstmt.setString(2, dto.getWriter());
@@ -147,18 +147,32 @@ public class EventBoardDAO {
 		}
 
 	//삭제 메서드
-		public void deleteBoard(int num) {
-			try {
-				conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
-				pstmt = conn.prepareStatement("update EventBoard set status=3 where num=? "); 
-				pstmt.setInt(1, num);
-				pstmt.executeUpdate();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				ConnectionDAO.close(rs, pstmt, conn);
+	public int deleteBoard(int num, String passwd) throws Exception {
+		String dbpasswd="";
+		int x=-1;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement(
+			"select passwd from EventBoard where num = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dbpasswd= rs.getString("passwd");
+				if(dbpasswd.equals(passwd)){
+					pstmt = conn.prepareStatement("delete from EventBoard where num=?");
+					pstmt.setInt(1, num);
+					pstmt.executeUpdate();
+					x= 1; 
+				}else
+					x= 0; 
 			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
 		}
+		return x;
+	}
 }
 	
 	

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%
+	String id = (String)session.getAttribute("memId");
 	int num=0,ref=1,re_step=0,re_level=0;
 
 	if(request.getParameter("num")!=null){
@@ -26,9 +27,9 @@
 	</td></tr>
 	<tr><td>
 	<br />
-	일식<input type="radio" value="menu" name="japanese" />
-	중식<input type="radio" value="menu" name="chinies" />
-	양식<input type="radio" value="menu" name="western" />
+	일식<input type="radio" name="menu" value="japanese" checked />
+	중식<input type="radio" name="menu" value="chinies" />
+	양식<input type="radio" name="menu" value="western" />
 	<br />
 	</td></tr>
 	<tr><td>

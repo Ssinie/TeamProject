@@ -28,8 +28,8 @@ public class LatterBoardDAO {
 				number=1;
 			//}
 			ref = number;
-			sql = "insert into latterboard(num,writer,email,subject,reg_date,ref,content,ip) ";
-			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?)";
+			sql = "insert into latterboard(num,writer,email,subject,reg_date,ref,content,ip,menu) ";
+			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getEmail());
@@ -38,6 +38,7 @@ public class LatterBoardDAO {
 			pstmt.setInt(5, ref);
 			pstmt.setString(6, dto.getContent());
 			pstmt.setString(7, dto.getIp());
+			pstmt.setString(8, dto.getMenu());
 			pstmt.executeUpdate();
 			
 		}catch(Exception e){

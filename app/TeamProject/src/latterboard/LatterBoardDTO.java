@@ -12,6 +12,13 @@ public class LatterBoardDTO {
 	private int readcount;
 	private String ip;
 	private int ref;
+	private String menu;
+	public String getMenu() {
+		return menu;
+	}
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
 	public int getNum() {
 		return num;
 	}

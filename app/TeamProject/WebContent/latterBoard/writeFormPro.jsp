@@ -8,9 +8,10 @@
 <jsp:setProperty name="dto" property="*" />
 
 <%
+	String id = (String)session.getAttribute("memId");
 	dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 	dto.setIp(request.getRemoteAddr());
-	
+	dto.setWriter(id);
 	LatterBoardDAO dao = new LatterBoardDAO();
 	dao.insertArticle(dto);
 	

@@ -8,7 +8,7 @@
 <style>
 ul{}
 li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px line black; margin-right:10px;padding:20px;text-align:center;}
+ li.mystyle{list-style-type:none; float:left; outline:1px dotted red; margin-right:10px;padding:20px;text-align:center;}
 #STATICMENU { position:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
 </style>
 
@@ -42,7 +42,6 @@ li{margin-bottom:10px;}
 
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
-
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -81,7 +80,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <li><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
-<center><b></b>
+<center><b>글목록</b>
 <table width="700">
 	<tr>
     	<td align="left" bgcolor="<%=value_c%>">
@@ -93,9 +92,9 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	</td>
     	<td align="right" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
-    		<input type="button" value="글수정" onclick="window.location='updateForm.jsp'"/>
+    		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
     		<% }else{%>
-    		<input type="button" value="글수정" onclick="alert('관리자만 가능');" />
+    		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
     </tr>
@@ -123,7 +122,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
    <%if (article.getType().equals("일식") ) {%>	
-      
+   
  <div> 	
 	<ul class="whatsNew" id="menuList" >							
 
@@ -131,13 +130,14 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
 								<div class="con">
-									<strong class="tit"><%=article.getSubject()%></strong>
+									<strong class="tit">	<%=article.getSubject()%></strong>
 								</div>
 							</a></li>
 	</ul>	    		   		
     </div>  
-   	
-   
+    	
+  
+     
      <a href="japanese.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
       
      <%  } %><!-- 서양식 종료 -->
@@ -145,6 +145,9 @@ String id = (String)session.getAttribute("memid"); //admin 확인
   <%  } %><!-- for문 종료 -->
   <%  } %><!-- else 종료 -->
     
+    
+    
+
  
 
 <%
@@ -157,13 +160,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="japanese.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="Korean.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="japanese.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="Korean.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="japanese.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="Korean.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

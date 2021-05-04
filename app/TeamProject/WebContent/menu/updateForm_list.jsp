@@ -8,8 +8,7 @@
 
 <style>
 ul{}
-li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px dotted black; margin-right:5px;padding:10px;text-align:center;}
+li{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
 </style>
 
 <script type="text/javascript">
@@ -21,7 +20,6 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
     int pageSize = 10;
   
-
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
         pageNum = "1";
@@ -59,8 +57,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     	
     		<h2 align="center"> 수정 할 게시글을 선택 하세요.</h1>   	
     	</td>
-    	<td align="right" >
-    	
+    	<td align="right" >   	
     		<h2 align="center"> <input type="button" value="돌아가기" onclick="history.go(-1)"/></h1>   	
     	</td>
     </tr>
@@ -80,20 +77,24 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 
 
-
-<%	for (int i = 0 ; i < articleList.size() ; i++) {
+<table border=1 >
+<%	for (int i = 0 ; i < articleList.size(); i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-
-<li class="mystyle"><a href="updateForm2.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+<td>
+<li ><a href="updateForm2.jsp?num=<%=article.getNum() %>" >
+								<div align="center" ><img src="<%=article.getFileimage()%>" alt="1!"> 
 								  </div>							
-								<div class="con">
-									<strong class="tit"><%=article.getSubject()%></strong>
+								<div >
+									<strong ><%=article.getSubject()%></strong>
 								</div>
 							</a></li>
+ </td>
+ <% if(i%3==0 && i!=0) { %>
+ <tr></tr>
+  <%  } %>
   <%  } %><!-- for문 종료 -->
-
+</table>
 
   <%  } %><!-- else 종료 -->
     

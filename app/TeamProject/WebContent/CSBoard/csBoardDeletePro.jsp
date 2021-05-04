@@ -3,7 +3,9 @@
 <%@ page import = "CSBoard.csDTO" %>
 <%@ page import = "java.sql.Timestamp" %>
 
-<% request.setCharacterEncoding("UTF-8");%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 
 <%
 	int num = Integer.parseInt(request.getParameter("num"));

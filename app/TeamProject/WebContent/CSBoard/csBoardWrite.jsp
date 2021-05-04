@@ -71,15 +71,15 @@
   <tr>
     <td  width="100"  bgcolor="white" align="center" >비밀번호</td>
     <td  width="500" >
-     <input type="password" size="80" maxlength="15" name="passwd"> 
+     <input type="password" size="80" maxlength="15" name="passwd">
 	 </td>
   </tr>
 <tr>
- <td colspan=2 bgcolor="white" align="center"> 
-  <input type="submit" value="글쓰기" >  
-  <input type="reset" value="다시작성">
+ <td colspan=2 bgcolor="white" align="center">
+  <input type="submit" value="글쓰기" >
+  <input type="reset" value="작성취소" OnClick="window.location='csBoardList.jsp'">
   <input type="button" value="목록보기" OnClick="window.location='csBoardList.jsp'">
 </td></tr></table>
-</form>      
+</form>
 </body>
 </html>

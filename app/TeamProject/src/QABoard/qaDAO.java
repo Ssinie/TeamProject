@@ -12,6 +12,7 @@ public class qaDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 	private Connection conn = null;
+	
 	public void insertQABoard(qaDTO dto) throws Exception {
 		int num=dto.getNum();
 		int ref=dto.getRef();
@@ -26,7 +27,7 @@ public class qaDAO {
 			if (rs.next()) 
 				number=rs.getInt(1)+1;	
 			else
-				number=1; 
+				number=1;
 			if (num!=0) 
 			{
 				sql="update qaboard set re_step=re_step+1 where ref= ? and re_step> ?";
@@ -42,7 +43,7 @@ public class qaDAO {
 				re_level=0;
 			}
 			sql = "insert into qaboard(num,writer,subject,email,content,passwd,save,reg,";
-			sql+="readcount,ref,re_step,re_level,status) values(csboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
+			sql+="readcount,ref,re_step,re_level,status) values(qaboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getSubject());
@@ -294,7 +295,7 @@ public class qaDAO {
 			if(rs.next()){
 				dbpasswd= rs.getString("passwd"); 
 				if(dbpasswd.equals(dto.getPasswd())){
-					sql="update csboard set writer=?,email=?,subject=?,passwd=?";
+					sql="update qaboard set writer=?,email=?,subject=?,passwd=?";
 					sql+=",content=? where num=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, dto.getWriter());

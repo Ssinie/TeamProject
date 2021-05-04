@@ -23,6 +23,7 @@
 <center><b>문의 글 수정하기</b>
 <br>
 <form method="post" name="writeform" action="csBoardUpdatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
+	<input type="hidden" name="num" value="<%=num%>">
 <table width="600" border="1" cellspacing="0" cellpadding="0"  bgcolor="white" align="center">
   <tr>
     <td  width="100"  bgcolor="white" align="center">작성자</td>
@@ -53,8 +54,8 @@
   </tr>
   <tr>
    <td colspan=2 bgcolor="white" align="center"> 
-     <input type="submit" value="글수정" onclick="document.location.href='csBoardList.jsp?pageNum=<%=pageNum%>'">  
-     <input type="reset" value="작성취소" onclick="document.location.href='csBoardList.jsp?pageNum=<%=pageNum%>'">
+     <input type="submit" value="글수정" >  
+     <input type="reset" value="작성취소" >
      <input type="button" value="목록보기" onclick="document.location.href='csBoardList.jsp?pageNum=<%=pageNum%>'">
    </td>
  </tr>

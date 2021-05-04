@@ -8,8 +8,6 @@
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
-
-	
 %>
 <html>
 <head>

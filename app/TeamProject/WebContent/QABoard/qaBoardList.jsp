@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="QABoard.qaDAO" %>
-<%@ page import="QABoard.qaDTO" %>
+<%@ page import = "QABoard.qaDAO" %>
+<%@ page import = "QABoard.qaDTO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
@@ -42,9 +42,13 @@
 <body bgcolor="white">
 <center><b> Q&A 자주묻는질문 </b>
 <table width="800">
-		<tr>
+	<tr>
     	<td align="right" bgcolor="white">
+    	<%if(id != null){%>
+    		<a href="qaBoardWrite.jsp"></a>
+    	<%}else{%>
     		<a href="/TeamProject/Login/Login.jsp">로그인</a>
+    	<%} %>
     	</td>
     </tr>
 </table>
@@ -58,40 +62,30 @@
     	</tr>
 	</table>
 <%  } else {    %>
-<table border="1" width="800" cellpadding="0" cellspacing="0" align="center"> 
+<table border="1" width="800" cellpadding="0" cellspacing="0" align="center">
 	<tr height="30" bgcolor="eeeeee"> 
-		<td align="center"  width="75"  >번 호</td> 
-		<td align="center"  width="350" >제 목</td> 
+		<td align="center"  width="75"  >No.</td> 
+		<td align="center"  width="450" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
 	    <td align="center"  width="175" >작성일</td> 
-	    <td align="center"  width="100" >조 회</td> 
     </tr>
 <%	for (int i = 0 ; i < QABoardList.size() ; i++) {
     	qaDTO dto = (qaDTO)QABoardList.get(i);
 %>
 	<tr height="30">
     	<td align="center"  width="75" > <%=number--%></td>
-    	<td  width="350" >
-			<%int wid=0; 
-		      if(dto.getRe_level()>0){
-		      	wid=5*(dto.getRe_level()); %>
-		  		<img src="images/level.gif" width="<%=wid%>" height="16">
-		  		<img src="images/re.gif">
-			<%}else{%>
-		  		<img src="images/level.gif" width="<%=wid%>" height="16">
-			<%}%>
-     		 <a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
-           		<%=dto.getSubject()%>
-           	 </a> 
-          <% if(dto.getReadcount()>=20){%>
-         	<img src="images/hot.gif" border="0"  height="16">
-           <%}%> 
+    	<td  width="450" >
+			<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+           		<h2><%=dto.getSubject()%></h2>
+				</a><div style="DISPLAY: none">
+           		<h3><%=dto.getContent()%></h3>
+				</div>
+			</a> 
 		</td>
     	<td align="center"  width="100"> 
 			<a href="mailto:<%=dto.getEmail()%>"><%=dto.getWriter()%></a>
 		</td>
     	<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
-    	<td align="center"  width="100"><%=dto.getReadcount()%></td>
 	</tr>
     <%}%>
 </table>

@@ -1,31 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="CSBoard.csDTO" %>
-<%@ page import="CSBoard.csDAO" %>
+<%@ page import="QABoard.qaDTO" %>
+<%@ page import="QABoard.qaDAO" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-<title> 작성 글 내용 </title>
+<title> 자주 묻는 질문 내용 </title>
 
 <html>
 <head>
 <title>게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
+
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
    
-	csDAO dao = new csDAO();
-	csDTO dto =  dao.getCSBoard(num);
+	qaDAO dao = new qaDAO();
+	qaDTO dto =  dao.getQABoard(num);
   
 	int ref=dto.getRef();
 	int re_step=dto.getRe_step();
 	int re_level=dto.getRe_level();
 %>
+
 <body bgcolor="white">
-<center><b>글내용 보기</b>
 <br>
 <table width="500" border="1" cellspacing="0" cellpadding="0"  bgcolor="white" align="center">  
 	<tr height="30">
@@ -55,12 +56,12 @@
 				String id = (String)session.getAttribute("memId");
 				if(id != null){
 					if(id.equals(dto.getWriter())){%>
-						<input type="button" value="글수정" onclick="window.location='csBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-						<input type="button" value="글삭제" onclick="window.location='csBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+						<input type="button" value="글수정" onclick="window.location='qaBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+						<input type="button" value="글삭제" onclick="window.location='qaBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
 					<%}%>
-					<input type="button" value="답글쓰기" onclick="window.location='csBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
+					<input type="button" value="답글쓰기" onclick="window.location='qaBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
 			   <%}%>
-			<input type="button" value="글목록" onclick="window.location='csBoardList.jsp?pageNum=<%=pageNum%>'">
+			<input type="button" value="글목록" onclick="window.location='qaBoardList.jsp?pageNum=<%=pageNum%>'">
 	    </td>
   </tr>
 </table>

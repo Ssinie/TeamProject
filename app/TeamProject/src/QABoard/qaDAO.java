@@ -1,4 +1,4 @@
-package CSBoard;
+package QABoard;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,11 +8,11 @@ import java.util.List;
 
 import connection.ConnectionDAO;
 
-public class csDAO{
+public class qaDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 	private Connection conn = null;
-	public void insertCSBoard(csDTO dto) throws Exception {
+	public void insertQABoard(qaDTO dto) throws Exception {
 		int num=dto.getNum();
 		int ref=dto.getRef();
 		int re_step=dto.getRe_step();
@@ -20,16 +20,16 @@ public class csDAO{
 		int number=0;
 		String sql="";
 		try {
-			conn = ConnectionDAO.getConnection(); 
-			pstmt = conn.prepareStatement("select max(num) from csboard");
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select max(num) from qaboard");
 			rs = pstmt.executeQuery();
 			if (rs.next()) 
 				number=rs.getInt(1)+1;	
 			else
 				number=1; 
 			if (num!=0) 
-			{ 
-				sql="update csboard set re_step=re_step+1 where ref= ? and re_step> ?";
+			{
+				sql="update qaboard set re_step=re_step+1 where ref= ? and re_step> ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, ref);
 				pstmt.setInt(2, re_step);
@@ -41,7 +41,7 @@ public class csDAO{
 				re_step=0;
 				re_level=0;
 			}
-			sql = "insert into csboard(num,writer,subject,email,content,passwd,save,reg,";
+			sql = "insert into qaboard(num,writer,subject,email,content,passwd,save,reg,";
 			sql+="readcount,ref,re_step,re_level,status) values(csboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
@@ -54,17 +54,18 @@ public class csDAO{
 			pstmt.setInt(8, re_step);
 			pstmt.setInt(9, re_level);
 			pstmt.executeUpdate();
-		}catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
 	}
-	public int getCSBoardCount() throws Exception {
+	//게시판 글 카운트.
+	public int getQABoardCount() throws Exception {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from csboard");
+			pstmt = conn.prepareStatement("select count(*) from qaboard");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1); 
@@ -75,11 +76,11 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x; 
 	}
-	public int getCSBoardCount (String id) throws Exception {
+	public int getQABoardCount (String id) throws Exception {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from csboard where writer=? ");
+			pstmt = conn.prepareStatement("select count(*) from qaboard where writer=? ");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -91,12 +92,12 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-	public int getCSBoardCount(String col, String search) throws Exception {
+	public int getQABoardCount(String col, String search) throws Exception {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select count(*) from csboard where " + col + " like '%"+search+"%'";
-			pstmt = conn.prepareStatement("select count(*) from csboard");
+			String sql = "select count(*) from qaboard where " + col + " like '%"+search+"%'";
+			pstmt = conn.prepareStatement("select count(*) from qaboard");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -108,23 +109,22 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x; 
 	}
-	//csBoardList
-	public List getCSBoard(int start, int end) throws Exception {
-		List CSBoardList = null;
+	public List getQABoard(int start, int end) throws Exception {
+		List QABoardList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
 					"select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,r "+
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
-					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"from qaboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, end);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
-						CSBoardList = new ArrayList(end); 
+						QABoardList = new ArrayList(end); 
 						do{
-							csDTO dto = new csDTO();
+							qaDTO dto = new qaDTO();
 							dto.setNum(rs.getInt("num"));
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
@@ -138,34 +138,33 @@ public class csDAO{
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
 							dto.setStatus(rs.getInt("status"));
-							CSBoardList.add(dto);
+							QABoardList.add(dto);
 						}while(rs.next());
 					}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
-		}return CSBoardList;
+		}return QABoardList;
 	}
-	//csBoardMyList
-	public List getCSBoard(String id, int start, int end) throws Exception {
-		List CSBoardList = null;
+	public List getQABoard(String id, int start, int end) throws Exception {
+		List QABoardList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
 					"select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,r "+
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
-					"from csboard where writer=? order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"from qaboard where writer=? order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setString(1, id);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
 
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
-						CSBoardList = new ArrayList(end); 
+						QABoardList = new ArrayList(end); 
 						do{
-							csDTO dto = new csDTO();
+							qaDTO dto = new qaDTO();
 							dto.setNum(rs.getInt("num"));
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
@@ -179,32 +178,31 @@ public class csDAO{
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
 							dto.setStatus(rs.getInt("status"));
-							CSBoardList.add(dto);
+							QABoardList.add(dto);
 						}while(rs.next());
 					}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
-		}return CSBoardList;
+		}return QABoardList;
 	}
-	//csBoardSearch
-	public List getCSBoard(String col , String search, int start, int end) throws Exception {
-		List CSBoardList=null;
+	public List getQABoard(String col , String search, int start, int end) throws Exception {
+		List QABoardList=null;
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
 					"select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,r "+
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
-					"from csboard where "+col+" like '%"+search+"%' order by reg desc) order by reg desc) where r >= ? and r <= ? ");
+					"from qaboard where "+col+" like '%"+search+"%' order by reg desc) order by reg desc) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, end);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
-						CSBoardList = new ArrayList(end);
+						QABoardList = new ArrayList(end);
 						do{ 
-							csDTO dto = new csDTO();
+							qaDTO dto = new qaDTO();
 							dto.setNum(rs.getInt("num"));
 							dto.setWriter(rs.getString("writer"));
 							dto.setSubject(rs.getString("subject"));
@@ -218,28 +216,27 @@ public class csDAO{
 							dto.setRe_step(rs.getInt("re_step"));
 							dto.setRe_level(rs.getInt("re_level"));
 							dto.setStatus(rs.getInt("status"));
-							CSBoardList.add(dto);
+							QABoardList.add(dto);
 						}while(rs.next());
 					}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
-		}return CSBoardList;
+		}return QABoardList;
 	}
-	
-	public csDTO getCSBoard (int num) throws Exception {
-		csDTO dto = null;
+	public qaDTO getQABoard (int num) throws Exception {
+		qaDTO dto = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("update csboard set readcount=readcount+1 where num = ?"); 
+			pstmt = conn.prepareStatement("update qaboard set readcount=readcount+1 where num = ?"); 
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
-			pstmt = conn.prepareStatement("select * from csboard where num = ?"); 
+			pstmt = conn.prepareStatement("select * from qaboard where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				dto = new csDTO();
+				dto = new qaDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setEmail(rs.getString("email"));
@@ -258,17 +255,15 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return dto;
 	}
-	
-	
-	public csDTO updateGetCSBoard(int num) throws Exception {
-		csDTO dto = null;
+	public qaDTO updateGetQABoard(int num) throws Exception {
+		qaDTO dto = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select * from csboard where num = ?"); 
+			pstmt = conn.prepareStatement("select * from qaboard where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				dto = new csDTO();
+				dto = new qaDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setEmail(rs.getString("email"));
@@ -287,14 +282,13 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return dto;
 	}
-
-	public int updateCSBoard(csDTO dto) throws Exception {
+	public int updateQABoard(qaDTO dto) throws Exception {
 		String dbpasswd = "";
 		String sql = "";
 		int x = -1;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
+			pstmt = conn.prepareStatement("select passwd from qaboard where num = ?");
 			pstmt.setInt(1, dto.getNum());
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -321,19 +315,19 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-	public int deleteCSBoard(int num, String passwd) throws Exception {
+	public int deleteQABoard(int num, String passwd) throws Exception {
 		String dbpasswd="";
 		int x=-1;
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement(
-			"select passwd from csboard where num = ?");
+			"select passwd from qaboard where num = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbpasswd= rs.getString("passwd");
 				if(dbpasswd.equals(passwd)){
-					pstmt = conn.prepareStatement("delete from csboard where num=?");
+					pstmt = conn.prepareStatement("delete from qaboard where num=?");
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
 					x= 1; 
@@ -351,7 +345,7 @@ public class csDAO{
 		int x=-1;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select passwd from csboard where num = ?");
+			pstmt = conn.prepareStatement("select passwd from qaboard where num = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -367,4 +361,5 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
+	
 }

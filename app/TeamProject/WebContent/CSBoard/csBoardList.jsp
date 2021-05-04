@@ -41,7 +41,7 @@
 
 <body bgcolor="white">
 <center><b> 1 : 1 문의 게시판 (전체 글:<%=count%>) </b>
-<table width="700">
+<table width="900">
 	<tr>
     	<td align="right" bgcolor="white">
     	<%if(id != null){%>
@@ -54,7 +54,7 @@
     </tr>
 </table>
 <%if (count == 0) {%>
-	<table width="700" border="1" cellpadding="0" cellspacing="0">
+	<table width="900" border="1" cellpadding="0" cellspacing="0">
 		<tr>
     		<td align="center">
     			게시판에 저장된 글이 없습니다.
@@ -62,21 +62,21 @@
     	</tr>
 	</table>
 <%  } else {    %>
-<table border="1" width="700" cellpadding="0" cellspacing="0" align="center"> 
+<table border="1" width="900" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
-		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제 목</td> 
+		<td align="center"  width="75"  >번 호</td> 
+		<td align="center"  width="350" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
-	    <td align="center"  width="150" >작성일</td> 
-	    <td align="center"  width="50" >조 회</td> 
+	    <td align="center"  width="175" >작성일</td> 
+	    <td align="center"  width="100" >조 회</td> 
 	    <td align="center"  width="100" >상태</td>
     </tr>
 <%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
     	csDTO dto = (csDTO)CSBoardList.get(i);
 %>
 	<tr height="30">
-    	<td align="center"  width="50" > <%=number--%></td>
-    	<td  width="250" >
+    	<td align="center"  width="75" > <%=number--%></td>
+    	<td  width="350" >
 			<%int wid=0; 
 		      if(dto.getRe_level()>0){
 		      	wid=5*(dto.getRe_level()); %>
@@ -95,8 +95,8 @@
     	<td align="center"  width="100"> 
 			<a href="mailto:<%=dto.getEmail()%>"><%=dto.getWriter()%></a>
 		</td>
-    	<td align="center"  width="150"><%= sdf.format(dto.getReg())%></td>
-    	<td align="center"  width="50"><%=dto.getReadcount()%></td>
+    	<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
+    	<td align="center"  width="100"><%=dto.getReadcount()%></td>
     	<td align="center" width="100" ><%=dto.getStatus()%></td>
 	</tr>
     <%}%>

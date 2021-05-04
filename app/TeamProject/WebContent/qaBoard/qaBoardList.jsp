@@ -1,32 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="CSBoard.csDAO" %>
-<%@ page import="CSBoard.csDTO" %>
+<%@ page import="QABoard.qaDAO" %>
+<%@ page import="QABoard.qaDTO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-	<title> 고객 1:1 문의 리스트</title>
+<title> Q&A 자주 묻는 질문 </title>
+
 <%
 	String id = (String)session.getAttribute("memId");
-    int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-    String pageNum = request.getParameter("pageNum");
-    if (pageNum == null) {
-        pageNum = "1";
-    }
-
-    int currentPage = Integer.parseInt(pageNum);
-    int startRow = (currentPage - 1) * pageSize + 1;
-    int endRow = currentPage * pageSize;
-    int count = 0;
-    int number=0;
-
-    List CSBoardList = null;
-    csDAO dao =new csDAO();
-    count = dao.getCSBoardCount(id);
+	
+	int pageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
+	String pageNum = request.getParameter("pageNum");
+	if (pageNum == null) {
+	    pageNum = "1";
+	}
+	
+	int currentPage = Integer.parseInt(pageNum);
+	int startRow = (currentPage - 1) * pageSize + 1;
+	int endRow = currentPage * pageSize;
+	int count = 0;
+	int number=0;
+	
+	List QABoardList = null;
+    qaDAO dao =new qaDAO();
+    count = dao.getQABoardCount();
     if (count > 0) {
-        CSBoardList = dao.getCSBoard(id, startRow, endRow);
+        QABoardList = dao.getQABoard(startRow, endRow);
     }
 
 	number=count-(currentPage-1)*pageSize;
@@ -38,41 +40,34 @@
 </head>
 
 <body bgcolor="white">
-<center><b> 나의 1 : 1 문의 목록 (전체 글:<%=count%>)</b>
-<table width="900">
-	<tr>
+<center><b> Q&A 자주묻는질문 </b>
+<table width="800">
+		<tr>
     	<td align="right" bgcolor="white">
-    	<%if(id != null){%>
-    		<a href="csBoardWrite.jsp">글쓰기</a>
-    		<a href="csBoardMyList.jsp">나의 작성글 목록</a>
-    		<a href="csBoardList.jsp">전체 목록</a>
-    	<%}else{%>
-    		<a href="/TeamProject/Login/Login.jsp">로그인 후 글 쓰기</a>
-    	<%} %>
+    		<a href="/TeamProject/Login/Login.jsp">로그인</a>
     	</td>
     </tr>
 </table>
+
 <%if (count == 0) {%>
-	<table width="900" border="1" cellpadding="0" cellspacing="0">
+	<table width="800" border="1" cellpadding="0" cellspacing="0">
 		<tr>
     		<td align="center">
     			게시판에 저장된 글이 없습니다.
     		</td>
     	</tr>
 	</table>
-
 <%  } else {    %>
-<table border="1" width="900" cellpadding="0" cellspacing="0" align="center"> 
+<table border="1" width="800" cellpadding="0" cellspacing="0" align="center"> 
 	<tr height="30" bgcolor="eeeeee"> 
-		<td align="center"  width="50"  >번 호</td> 
-		<td align="center"  width="250" >제   목</td> 
+		<td align="center"  width="75"  >번 호</td> 
+		<td align="center"  width="350" >제 목</td> 
 	    <td align="center"  width="100" >작성자</td>
-	    <td align="center"  width="150" >작성일</td> 
-	    <td align="center"  width="50" >조 회</td> 
-	    <td align="center"  width="100" >상태</td>    
+	    <td align="center"  width="175" >작성일</td> 
+	    <td align="center"  width="100" >조 회</td> 
     </tr>
-<%	for (int i = 0 ; i < CSBoardList.size() ; i++) {
-    	csDTO dto = (csDTO)CSBoardList.get(i);
+<%	for (int i = 0 ; i < QABoardList.size() ; i++) {
+    	qaDTO dto = (qaDTO)QABoardList.get(i);
 %>
 	<tr height="30">
     	<td align="center"  width="75" > <%=number--%></td>
@@ -85,7 +80,7 @@
 			<%}else{%>
 		  		<img src="images/level.gif" width="<%=wid%>" height="16">
 			<%}%>
-     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+     		 <a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
            	 </a> 
           <% if(dto.getReadcount()>=20){%>
@@ -97,12 +92,10 @@
 		</td>
     	<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
     	<td align="center"  width="100"><%=dto.getReadcount()%></td>
-    	<td align="center" width="100" ><%=dto.getStatus()%></td>
 	</tr>
     <%}%>
 </table>
 <%}%>
-
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
@@ -113,20 +106,20 @@
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="csBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="csBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="csBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="qaBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>
-	<form action="csBoardSearch.jsp" method="post">
+	<form action="qaBoardSearch.jsp" method="post">
 		<select name="col">
 			<option value = "subject"> 제목 </option>
-			<option value = "writer"> 작성자 </option>
+			<option value = "content"> 내용 </option>
 		</select>
 		<input type="text" name="search" />
 		<input type="submit" value="검색"/>

@@ -29,7 +29,7 @@
 <title> Q&A 1:1 문의 게시판 </title>
 
 <body bgcolor="white">  
-<center><b>글쓰기</b>
+<center><b>1:1 문의 하기</b>
 <br>
 <form method="post" name="writeform" action="csBoardWritePro.jsp" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="<%=num%>">
@@ -37,41 +37,41 @@
 <input type="hidden" name="re_step" value="<%=re_step%>">
 <input type="hidden" name="re_level" value="<%=re_level%>">
 
-<table width="400" border="1" cellspacing="0" cellpadding="0"  bgcolor="white" align="center">
+<table width="600" border="1" cellspacing="0" cellpadding="0"  bgcolor="white" align="center">
    <tr>
     <td align="right" colspan="2" bgcolor="white">
 	    <a href="csBoardList.jsp"> 글목록</a> 
    </td>
    </tr>
    <tr>
-    <td  width="70"  bgcolor="white" align="center">작성자</td>
-    <td  width="330">
+    <td  width="100"  bgcolor="white" align="center">작성자</td>
+    <td  width="500">
         <%=id%>
         <input type="hidden" name="writer" value="<%=id%>"></td>
   </tr>
   <tr>
-    <td  width="70"  bgcolor="white" align="center" >제 목</td>
-    <td  width="330">
+    <td  width="100"  bgcolor="white" align="center" >제 목</td>
+    <td  width="500">
     <%if(request.getParameter("num")==null){%>
-       <input type="text" size="40" maxlength="50" name="subject"></td>
+       <input type="text" size="80" maxlength="50" name="subject"></td>
 	<%}else{%>
-	   <input type="text" size="40" maxlength="50" name="subject" value="[답변]">
+	   <input type="text" size="80" maxlength="50" name="subject" value="[RE : ]">
 	<%}%>
   </tr>
   <tr>
-    <td  width="70"  bgcolor="white" align="center">Email</td>
-    <td  width="330">
-       <input type="text" size="40" maxlength="30" name="email" ></td>
+    <td  width="100"  bgcolor="white" align="center">Email</td>
+    <td  width="500">
+       <input type="text" size="80" maxlength="30" name="email" ></td>
   </tr>
   <tr>
-    <td  width="70"  bgcolor="white" align="center" >내 용</td>
-    <td  width="330" >
-     <textarea name="content" rows="13" cols="40"></textarea> </td>
+    <td  width="100"  bgcolor="white" align="center" >내 용</td>
+    <td  width="500" >
+     <textarea name="content" rows="15" cols="60"></textarea> </td>
   </tr>
   <tr>
-    <td  width="70"  bgcolor="white" align="center" >비밀번호</td>
-    <td  width="330" >
-     <input type="password" size="8" maxlength="12" name="passwd"> 
+    <td  width="100"  bgcolor="white" align="center" >비밀번호</td>
+    <td  width="500" >
+     <input type="password" size="80" maxlength="15" name="passwd"> 
 	 </td>
   </tr>
 <tr>

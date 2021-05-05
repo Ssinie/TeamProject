@@ -81,18 +81,17 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <%	for (int i = 0 ; i < articleList.size(); i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
+<% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
-<li ><a href="updateForm2.jsp?num=<%=article.getNum() %>" >
-								<div align="center" ><img src="<%=article.getFileimage()%>" alt="1!"> 
+<a href="updateForm2.jsp?num=<%=article.getNum() %>" >
+								<div align="center" ><img src="<%=article.getFileimage()%>"> 
 								  </div>							
 								<div >
-									<strong ><%=article.getSubject()%></strong>
+									<li><strong ><%=article.getSubject()%></strong></li>
 								</div>
-							</a></li>
+							</a>
  </td>
- <% if(i%3==0 && i!=0) { %>
- <tr></tr>
-  <%  } %>
+ 
   <%  } %><!-- for문 종료 -->
 </table>
 
@@ -110,13 +109,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="japanese.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="updateForm_list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="japanese.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="updateForm_list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="japanese.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="updateForm_list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

@@ -6,9 +6,12 @@
 <jsp:setProperty property="*" name="BoardDataBean" />
 
     <h1>deletrPro</h1>
-    
-
+  
     <%
     BoardDBBean db = new BoardDBBean();
     db.delete(BoardDataBean);
     %>
+   <script>
+	alert("삭제 완료");
+	window.location="deleteForm_list.jsp";
+</script>

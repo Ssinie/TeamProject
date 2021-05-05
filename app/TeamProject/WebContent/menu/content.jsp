@@ -59,7 +59,7 @@ li{margin-bottom:10px;}
 <li><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
-<center><b>글내용 보기</b>
+<center><b><%=article.getType()%></b>
 <br>
 <table width="500" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">  
 	<tr height="30">

@@ -35,14 +35,23 @@ public void upload(BoardDataBean BoardDataBean) {
 	
 	try {
 		conn = ConnectionDAO.getConnection(); 
-		pstmt=conn.prepareStatement("update board2 set subject=?, content=?,filename=?,filerealname=?,fileimage=? where num=?");
-			
+		
+		String sql = "update board2 set subject=?, content=?,filename=?,filerealname=?,fileimage=? where num=?";
+		if(BoardDataBean.getFileName() ==null) {
+			sql = "update board2 set subject=?, content=? where num=?";
+		}
+		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,BoardDataBean.getSubject());	
-		pstmt.setString(2,BoardDataBean.getContent());						
-		pstmt.setString(3,BoardDataBean.getFileName());
-		pstmt.setString(4,BoardDataBean.getFileRealName());
-		pstmt.setString(5,BoardDataBean.getFileimage());
-		pstmt.setInt(6,BoardDataBean.getNum());
+		pstmt.setString(2,BoardDataBean.getContent());	
+		if(BoardDataBean.getFileName() ==null) {
+			pstmt.setInt(3,BoardDataBean.getNum());
+		}else {
+			pstmt.setString(3,BoardDataBean.getFileName());
+			pstmt.setString(4,BoardDataBean.getFileRealName());
+			pstmt.setString(5,BoardDataBean.getFileimage());	
+			pstmt.setInt(6,BoardDataBean.getNum());
+		}
+	
 		pstmt.executeUpdate();
 		
 	} catch(Exception e) {
@@ -59,14 +68,12 @@ public void upload(BoardDataBean BoardDataBean) {
 			for(int i=0; i<=BoardDataBean.getCh().length-1; i++) {
 				conn = ConnectionDAO.getConnection(); 
 				pstmt=conn.prepareStatement("delete from board2 where num=?");
-				int a=Integer.parseInt(BoardDataBean.getCh()[i]);
+				int num=Integer.parseInt(BoardDataBean.getCh()[i]);
 				
-				pstmt.setInt(1,a);	
-				
+				pstmt.setInt(1,num);					
 				pstmt.executeUpdate();
 			}
-			
-			
+						
 		} catch(Exception e) {
 			e.printStackTrace();
 
@@ -141,6 +148,7 @@ public void upload(BoardDataBean BoardDataBean) {
 			if (rs.next()) {
 				article = new BoardDataBean();
 				article.setNum(rs.getInt("num"));
+				article.setType(rs.getString("type"));
 				article.setFileimage(rs.getString("fileimage"));
 				article.setContent(rs.getString("content"));
 				article.setSubject(rs.getString("subject"));

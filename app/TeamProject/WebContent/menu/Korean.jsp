@@ -6,10 +6,10 @@
 <%@ include file="color.jsp"%>
 
 <style>
-ul{}
-li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px dotted red; margin-right:10px;padding:20px;text-align:center;}
-#STATICMENU { position:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
+
+li{margin-bottom:2px;  margin-right:2px;padding:2px;text-align:center;}
+li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
+#STATICMENU { positi 7on:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
 </style>
 
 <script type="text/javascript">
@@ -75,28 +75,32 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 <div id="STATICMENU"> 
 <ul> 
-<li><a href="Korean.jsp">한식</a></li> 
-<li><a href="japanese.jsp">일식</a></li> 
-<li><a href="western.jsp">서양식</a></li>
+<li class="style"><a href="Korean.jsp">한식</a></li> 
+<li class="style"><a href="japanese.jsp">일식</a></li> 
+<li class="style"><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
 <center><b>글목록</b>
-<table width="700">
+<table >
 	<tr>
-    	<td align="left" bgcolor="<%=value_c%>">
+    	<td align="center" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
     		<% }else{%>
     		<input type="button" value="글쓰기" onclick="alert('관리자만 가능');" />
     		<%} %>
-    	</td>
-    	<td align="right" bgcolor="<%=value_c%>">
+    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
+    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
+    		<% }else{%>
+    		<input type="button" value="글수정" onclick="alert('관리자만 가능');" />
+    		<%} %>
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
     		<% }else{%>
     		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
+    	
     </tr>
 </table>
 
@@ -111,40 +115,29 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 <%  } else {    %>
 
-<div class="contArea mainCont">
-					<div class="inner">
-						<h2 class="titMain">한국 음식</h2>						
-					</div>
-</div>						
 
-
+<div >
+	<h2 class="titMain">한국 음식</h2>						
+</div>
+						
+<table border=1 >
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   <%if (article.getType().equals("한식") ) {%>	
    
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
+ <%if (article.getType().equals("한식") ) {%>		
 
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  
-    	
-  
-     
-     <a href="Korean.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
-      
+<% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
+<td>
+<a href="content.jsp?num=<%=article.getNum() %>" >
+<li class="mystyle"><img src="<%=article.getFileimage()%>"> </li>						 								
+<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
+						 
      <%  } %><!-- 서양식 종료 -->
-       	
+ </td>       	
   <%  } %><!-- for문 종료 -->
+</table>
   <%  } %><!-- else 종료 -->
-    
     
     
 

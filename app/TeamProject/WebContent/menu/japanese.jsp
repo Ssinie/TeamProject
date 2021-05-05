@@ -6,10 +6,10 @@
 <%@ include file="color.jsp"%>
 
 <style>
-ul{}
-li{margin-bottom:10px;}
- li.mystyle{list-style-type:none; float:left; outline:1px dotted red; margin-right:10px;padding:20px;text-align:center;}
-#STATICMENU { position:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
+
+li{margin-bottom:2px;  margin-right:2px;padding:2px;text-align:center;}
+li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
+#STATICMENU { positi 7on:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
 </style>
 
 <script type="text/javascript">
@@ -43,7 +43,6 @@ li{margin-bottom:10px;}
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
     int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
@@ -111,38 +110,33 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 <%  } else {    %>
 
-<div class="contArea mainCont">
-					<div class="inner">
+
+					<div >
 						<h2 class="titMain">일본 음식</h2>						
 					</div>
-</div>						
-
-
+						
+<table border=1 >
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
    <%if (article.getType().equals("일식") ) {%>	
-   
- <div> 	
-	<ul class="whatsNew" id="menuList" >							
+ 
 
-<li class="mystyle"><a href="content.jsp?num=<%=article.getNum() %>" >
-								<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> 
-								  </div>							
-								<div class="con">
-									<strong class="tit">	<%=article.getSubject()%></strong>
-								</div>
-							</a></li>
-	</ul>	    		   		
-    </div>  
-    	
+<% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
+<td>
+	
+							
+<a href="content.jsp?num=<%=article.getNum() %>" >
+<li class="mystyle"><img src="<%=article.getFileimage()%>"> </li>						 								
+<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>	
+		  
+			   		
   
      
-     <a href="japanese.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
-      
      <%  } %><!-- 서양식 종료 -->
-       	
+ </td>       	
   <%  } %><!-- for문 종료 -->
+</table>
   <%  } %><!-- else 종료 -->
     
     
@@ -160,13 +154,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="Korean.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="japanese.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="Korean.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="japanese.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="Korean.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="japanese.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

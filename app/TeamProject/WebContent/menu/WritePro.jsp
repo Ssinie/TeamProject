@@ -46,5 +46,8 @@
 	
 		
 %>
-
+<script>
+	alert("작성 완료");
+	window.location="updateForm_list.jsp";
+</script>
 

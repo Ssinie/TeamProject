@@ -11,8 +11,6 @@ ul{}
 li{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
 
 </style>
-
-
    
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
@@ -87,16 +85,14 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-
+<% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <input type="checkbox" name="ch" value="<%=article.getNum()%>" />
 <li >
-	<div class="tmb" ><img src="<%=article.getFileimage()%>" alt="1!"> </div>							
+	<div><img src="<%=article.getFileimage()%>"> </div>							
 </li> 
  </td>
- <% if(i%3==0 && i!=0) { %>
- <tr></tr>
-  <%  } %>			
+			
   <%  } %><!-- for문 종료 -->
   <input type="submit" value="삭제" >
 </table>
@@ -115,13 +111,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
-        <a href="japanese.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="deleteForm_list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="japanese.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="deleteForm_list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
-        	<a href="japanese.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        	<a href="deleteForm_list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 <%		}
     }
 %>

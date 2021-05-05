@@ -84,22 +84,26 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 
 <center><b></b>
-<table width="700">
+<table >
 	<tr>
-    	<td align="left" bgcolor="<%=value_c%>">
+    	<td align="center" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
     		<% }else{%>
     		<input type="button" value="글쓰기" onclick="alert('관리자만 가능');" />
     		<%} %>
-    	</td>
-    	<td align="right" bgcolor="<%=value_c%>">
+    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
+    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
+    		<% }else{%>
+    		<input type="button" value="글수정" onclick="alert('관리자만 가능');" />
+    		<%} %>
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
     		<% }else{%>
     		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
+    	
     </tr>
 </table>
 

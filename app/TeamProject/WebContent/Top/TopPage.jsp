@@ -7,6 +7,18 @@
 // https://uxgjs.tistory.com/202
 String id = (String)session.getAttribute("memId");
 %>
+<script>
+	document.onkeydown = trapRefresh;
+	function trapRefresh()
+	{
+		if(event.keyCode == 116){
+			event.keyCode = 0;
+			event.cancelBubble = true;
+			event.returnValue = false;
+			document.iframe1.location.reload();
+		}
+	}
+</script>
 <head><title>오식당</title>
     <style type="text/css">
     ul {
@@ -53,6 +65,8 @@ String id = (String)session.getAttribute("memId");
     <ul>
       <li><a class="active" href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
+      <li><a href="" target="iframe1">메뉴 소개</a></li>
+      <li><a href="" target="iframe1">이벤트</a></li>
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
       <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>
       <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">문의사항</a></li>

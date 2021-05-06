@@ -29,7 +29,7 @@
 <body>
 <center><b>글 내용</b>
 <br />
-<table width="500" border="1" cellspacing="0" cellpadding="0" align="center">
+<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr height="30">
 		<td align="center" width="125">글번호</td>
 		<td align="center" width="125"><%=dto.getNum()%></td>
@@ -48,26 +48,19 @@
 	</tr>
 	<tr height="30">
 		<td align="center" width="125">글내용</td>
-		<td align="center" width="375" colspan="3"><%=dto.getContent()%></td>
-	</tr>
-	<tr>
-		<td>
-		<% if(dto.getFilename() == null) {%><input type="file" name="img">대표 이미지를 등록하세요..!!<br /><%}
-	         else{%>
-	         
-	         <img src="<%=dto.getRealname() %>" /><br />
-	         <%}%>
+		<td align="center" width="375" colspan="3"><%=dto.getContent()%>
+		<% if(dto.getFilename() != null) {%><img src="<%=dto.getFilepath() %>" /><br /><%}%>
 		</td>
 	</tr>
 	<tr>
 		<form action="contentCommPro.jsp">
 		<td colspan="3">
-		<textarea name="content" cols="40" rows="4"></textarea>
+		<textarea name="content" cols="70" rows="4"></textarea>
 		</td>
 		<input type="hidden" name="num" value=<%=dto.getNum()%> />
 		<input type="hidden" name="ip" value=<%=dto.getIp()%> />
 		<input type="hidden" name="pageNum" value=<%=pageNum%> />
-		<td>
+		<td align ="center">
 		<input type="submit" value="댓글달기" />
 		</td>
 		</form>

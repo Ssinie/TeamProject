@@ -16,7 +16,7 @@ li{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-al
 </script>
 
 <%
-String id = (String)session.getAttribute("memid"); //admin 확인
+
 
     int pageSize = 9;
   

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% String id = (String)session.getAttribute("memId"); %>    
+<% String id = (String)session.getAttribute("memId");%>    
+
 <input type ="button" value="가게 소개" onclick="window.location='/TeamProject/intro/ceointro.jsp'" />
-<input type ="button" value="메뉴 소개" onclick="window.location='/TeamProject/intro/ceointro.jsp'" />
-<input type ="button" value="후기 소개" onclick="window.location='/TeamProject/latterBoard/imageList.jsp'" />
+<input type ="button" value="메뉴 소개" onclick="window.location='/TeamProject/menu/menupage.jsp?id=<%=id %>'" />
+<input type ="button" value="후기 소개" onclick="window.location='/TeamProject/latterBoard/imageList.jsp" />
 <input type ="button" value="문의 사항" onclick="window.location='/TeamProject/intro/ceointro.jsp'" />
 <input type ="button" value="예약하기" onclick="window.location='/TeamProject/Reserve/ReserveForm.jsp'" />
 <input type ="button" value="이벤트" onclick="window.location='/TeamProject/event/list.jsp'" />

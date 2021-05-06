@@ -82,7 +82,22 @@ public void upload(BoardDataBean BoardDataBean) {
 		}
 
 	}
-		
+	public int getArticleCount() throws Exception {
+		int x=0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from board2  ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return x; 
+	}
 	
 	public int getArticleCountK() throws Exception {
 		int x=0;
@@ -132,7 +147,41 @@ public void upload(BoardDataBean BoardDataBean) {
 		}
 		return x; 
 	}
-	
+	public List getArticles(int start, int end) throws Exception {
+		List articleList=null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+						"from " +"(select * from board2  )) where r >= ? and r <= ? ";			
+			pstmt = conn.prepareStatement(sql);				
+					
+					pstmt.setInt(1, start); 
+					pstmt.setInt(2, end); 
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						articleList = new ArrayList(end); 
+						do{ 
+							BoardDataBean article= new BoardDataBean();
+							article.setNum(rs.getInt("num"));
+							article.setSubject(rs.getString("subject"));
+							article.setFileName(rs.getString("filename"));
+							article.setFileimage(rs.getString("fileimage"));
+							article.setType(rs.getString("type"));
+							article.setContent(rs.getString("content"));
+							articleList.add(article); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+
+		
+		return articleList;
+	}
 
 	public List getArticlesK(int start, int end) throws Exception {
 		List articleList=null;

@@ -43,7 +43,7 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
 
 
 <%
-String id = (String)session.getAttribute("memid"); //admin 확인
+String id = request.getParameter("id"); //admin 확인
     int pageSize = 9;
 
     String pageNum = request.getParameter("pageNum");
@@ -84,18 +84,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 
 
-<table >
-	<tr>
-    	<td align="center" bgcolor="<%=value_c%>">
-    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
-    		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
-    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
-    		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
-    		<%} %>
-    	</td>
-    	
-    </tr>
-</table>
+
 
 <%if (count == 0) {%>
 	<table width="700" border="1" cellpadding="0" cellspacing="0">
@@ -114,6 +103,18 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 					<div >
 						<h2 class="titMain">서양 음식</h2>						
 					</div>
+					<table >
+	<tr>
+    	<td align="center" bgcolor="<%=value_c%>">
+    		<% if(id.equals("admin")){%> <!-- 유효성 검사 -->
+    		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
+    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
+    		<input type="button" value="글삭제" onclick="window.location='deleteForm_list.jsp'"/>
+    		<%} %>
+    	</td>
+    	
+    </tr>
+</table>
 						
 <table border=1  >
 <%	for (int i = 0 ; i < articleList.size() ; i++) {

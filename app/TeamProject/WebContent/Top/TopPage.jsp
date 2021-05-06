@@ -3,8 +3,6 @@
 <html>
 <%
 // https://amaze9001.tistory.com/69
-// https://lcw126.tistory.com/153
-// https://uxgjs.tistory.com/202
 String id = (String)session.getAttribute("memId");
 %>
 <script>
@@ -79,9 +77,10 @@ String id = (String)session.getAttribute("memId");
 </section>
 </body>
 </html>
-
-
+<%-- 팝업페이지 --%>
+<body onload="window.open('/TeamProject/PopUp/popupform.jsp','','width=410px, height=580px')">
 
     
 </body>
 </html>
+

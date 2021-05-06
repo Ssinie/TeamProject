@@ -33,11 +33,11 @@
 								
 				<label for = "position"> 위치:</label>
 				<input type = "radio" name = "site" id = "position" value = "yes"/> 1층
-				<input type = "radio" name = "site" id = "position" value = "no"/> 2층<br>
+				<input type = "radio" name = "site" id = "position" value = "no"/> 2층<br>	
 				
 				<label for = "choice"> 옵션:</label>
 				<input type = "checkbox" name = "opt" id = "choice" value = "baby_chair">아기의자
-				<input type = "checkbox" name = "opt" id = "choice" value = "발레파킹"> 발렛파킹
+				<input type = "checkbox" name = "opt" id = "choice" value = "발렛파킹"> 발렛파킹
 				<input type = "text" name = "opt" id = "choice" value = "기타"> 
 				
 		</fieldset>						
@@ -48,5 +48,4 @@
 </form>
 
 
-
-
+<input type = "date">

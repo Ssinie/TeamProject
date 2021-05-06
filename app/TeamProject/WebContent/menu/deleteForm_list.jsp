@@ -15,7 +15,7 @@ li{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-al
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
 
-    int pageSize = 10;
+    int pageSize = 9;
   
 
     String pageNum = request.getParameter("pageNum");

@@ -102,19 +102,19 @@ public void upload(BoardDataBean BoardDataBean) {
 	}
 	
 
-	public List getArticles(int start, int end) throws Exception {
+	public List getArticlesK(int start, int end) throws Exception {
 		List articleList=null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement(
-					"select num,subject,filename,fileimage,type,content,r "+
-			 "from (select num,subject,filename,fileimage,type,content,rownum r " +
-			"from (select num,subject,filename,fileimage,type,content " + 
-							"from board2 )) where r >= ? and r <= ? ");
+			
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+						"from " +"(select * from board2 where type like '한%' order by  num desc )) where r >= ? and r <= ? ";			
+			pstmt = conn.prepareStatement(sql);				
+					
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
-
 					rs = pstmt.executeQuery();
+					
 					if (rs.next()) {
 						articleList = new ArrayList(end); 
 						do{ 
@@ -137,6 +137,77 @@ public void upload(BoardDataBean BoardDataBean) {
 		
 		return articleList;
 	}
+	public List getArticlesS(int start, int end) throws Exception {
+		List articleList=null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+						"from " +"(select * from board2 where type like '서%' order by  num desc )) where r >= ? and r <= ? ";			
+			pstmt = conn.prepareStatement(sql);				
+					
+					pstmt.setInt(1, start); 
+					pstmt.setInt(2, end); 
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						articleList = new ArrayList(end); 
+						do{ 
+							BoardDataBean article= new BoardDataBean();
+							article.setNum(rs.getInt("num"));
+							article.setSubject(rs.getString("subject"));
+							article.setFileName(rs.getString("filename"));
+							article.setFileimage(rs.getString("fileimage"));
+							article.setType(rs.getString("type"));
+							article.setContent(rs.getString("content"));
+							articleList.add(article); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+
+		
+		return articleList;
+	}
+	public List getArticlesJ(int start, int end) throws Exception {
+		List articleList=null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+						"from " +"(select * from board2 where type like '일%' order by  num desc )order by num desc) where r >= ? and r <= ? ";			
+			pstmt = conn.prepareStatement(sql);				
+					
+					pstmt.setInt(1, start); 
+					pstmt.setInt(2, end); 
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						articleList = new ArrayList(end); 
+						do{ 
+							BoardDataBean article= new BoardDataBean();
+							article.setNum(rs.getInt("num"));
+							article.setSubject(rs.getString("subject"));
+							article.setFileName(rs.getString("filename"));
+							article.setFileimage(rs.getString("fileimage"));
+							article.setType(rs.getString("type"));
+							article.setContent(rs.getString("content"));
+							articleList.add(article); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+
+		
+		return articleList;
+	}
+	
 	
 	public BoardDataBean getArticle(int num) throws Exception {
 		BoardDataBean article=null;

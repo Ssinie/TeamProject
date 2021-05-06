@@ -42,8 +42,8 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
 
 <%
 String id = (String)session.getAttribute("memid"); //admin 확인
-    int pageSize = 10;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    int pageSize = 9;
+
 
     String pageNum = request.getParameter("pageNum");
     if (pageNum == null) {
@@ -54,16 +54,16 @@ String id = (String)session.getAttribute("memid"); //admin 확인
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
     int count = 0;
-    int number=0;
+
 
     List articleList = null;
     BoardDBBean dbPro =new BoardDBBean();
     count = dbPro.getArticleCount();
     if (count > 0) {
-        articleList = dbPro.getArticles(startRow, endRow);
+        articleList = dbPro.getArticlesK(startRow, endRow);
     }
 
-	number=count-(currentPage-1)*pageSize;
+
 %>
 <html>
 <head>
@@ -80,24 +80,14 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 <li class="style"><a href="western.jsp">서양식</a></li>
 </ul> 
 </div>
-<center><b>글목록</b>
+
 <table >
 	<tr>
     	<td align="center" bgcolor="<%=value_c%>">
     		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
-    		<% }else{%>
-    		<input type="button" value="글쓰기" onclick="alert('관리자만 가능');" />
-    		<%} %>
-    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
-    		<% }else{%>
-    		<input type="button" value="글수정" onclick="alert('관리자만 가능');" />
-    		<%} %>
-    		<% if(id=="admin"){%> <!-- 유효성 검사 -->
     		<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp'"/>
-    		<% }else{%>
-    		<input type="button" value="글삭제" onclick="alert('관리자만 가능');" />
     		<%} %>
     	</td>
     	
@@ -115,12 +105,13 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
 <%  } else {    %>
 
+<center>
 
 <div >
 	<h2 class="titMain">한국 음식</h2>						
 </div>
 						
-<table border=1 >
+<table border=1  >
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>

@@ -9,3 +9,7 @@
 <input type ="button" value="예약하기" onclick="window.location='/TeamProject/Reserve/ReserveForm.jsp'" />
 <input type ="button" value="Q&A" onclick="window.location='/TeamProject/CSBoard/csBoardList.jsp'" />
 <input type ="button" value="자주묻는질문" onclick="window.location='/TeamProject/QABoard/qaAdmin.jsp'" />
+
+
+
+

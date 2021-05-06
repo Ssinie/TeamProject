@@ -13,19 +13,14 @@
 	MemberDTO dto = new MemberDTO();
 	dto = dao.getUserinfo(id);
 	
-	select * from MEMBER where= 'id'
-		
-	%>
-	
-	id : <%=id%> <br />
-	이름 : <%=name%><br />
-	생년월일 :<%=year%><br />
-			<%=Month%> <br />
-			<%=Day%> <br />
-	이메일 : <%=Email%> <br />
-	가입날짜 : <%=reg%> <br />
-	성별: <%=gender%> <br />
-	연락처: <%=phone%>
-		
-		
+	%>	
+	아이디 : <%=dto.getId()%> <br />
+	이름 : <%=dto.getName()%><br />
+	생년월일 :<%=dto.getYear()%>년<br />
+			<%=dto.getMonth()%>월 <br />
+			<%=dto.getDay()%>일 <br />
+	이메일 : <%=dto.getEmail()%> <br />
+	가입날짜 : <%=dto.getReg()%> <br />
+	성별: <%=dto.getGender()%> <br />
+	연락처: <%=dto.getPhone()%>
     

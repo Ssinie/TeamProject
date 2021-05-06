@@ -36,6 +36,44 @@ public class MemberDAO{
 			}
 	}
 	
+	public class PwCheck 
+	{
+	   public boolean charLength(String str, int little, int large)
+	   {
+	      int size = str.length();
+	      return (size >= little && size <= large);
+	   }
+	   public boolean charBig(String str)
+	   {
+	      boolean result = false;
+	      for(int i = 0; i < str.length(); i++)
+	      {
+	         char c = str.charAt(i);
+	         if(c >= 65 && c <= 90)
+	         {
+	            result = true;
+	         }
+	      }
+	      return result;
+	   }
+	   public boolean charSmall(String str)
+	   {
+	      boolean result = false;
+	      for(int i = 0; i < str.length(); i++)
+	      {
+	         char c = str.charAt(i);
+	         if(c >= 97 && c <= 122)
+	         {
+	            result = true;
+	         }
+	      }
+	      return result;
+	   }
+	}
+	
+	
+	
+	
 	public boolean loginCheck(String id , String pw1) {
 		boolean result = false;
 		try {
@@ -126,7 +164,7 @@ public class MemberDAO{
 		}
 	}
 	
-	public void getUserinfo(String id) {  //마이페이지 메소드 정보불러오기 
+	public MemberDTO getUserinfo(String id) {  //마이페이지 메소드 정보불러오기 
 		MemberDTO dto = new MemberDTO();
 		try {
 		conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
@@ -150,6 +188,6 @@ public class MemberDAO{
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
-		
+		return dto;
 		}
 }

@@ -7,3 +7,9 @@ request.setCharacterEncoding("UTF-8");
 %>
 <jsp:useBean id="dto"  class="Reserve.ReserveDTO" />
 <jsp:setProperty property="*" name="dto"/>
+
+
+<%
+//DB연결하고 중복값확인후 DB에 올리기
+
+%>

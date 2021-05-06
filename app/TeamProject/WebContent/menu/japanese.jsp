@@ -57,7 +57,7 @@ String id = (String)session.getAttribute("memid"); //admin 확인
 
     List articleList = null;
     BoardDBBean dbPro =new BoardDBBean();
-    count = dbPro.getArticleCount();
+    count = dbPro.getArticleCountJ();
     if (count > 0) {
         articleList = dbPro.getArticlesJ(startRow, endRow);
     }

@@ -84,11 +84,43 @@ public void upload(BoardDataBean BoardDataBean) {
 	}
 		
 	
-	public int getArticleCount() throws Exception {
+	public int getArticleCountK() throws Exception {
 		int x=0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from board2");
+			pstmt = conn.prepareStatement("select count(*) from board2 where type like '한%' ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return x; 
+	}
+	public int getArticleCountJ() throws Exception {
+		int x=0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from board2 where type like '일%' ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return x; 
+	}
+	public int getArticleCountS() throws Exception {
+		int x=0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from board2 where type like '서%' ");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1); 

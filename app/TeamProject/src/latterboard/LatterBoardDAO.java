@@ -111,9 +111,9 @@ public class LatterBoardDAO {
 		List articleList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,r " + 
-						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,rownum r "+
-						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount "+ 
+			String sql = "select num,writer,email,subject,reg_date,ref,content,ip,readcount,filename,realname,filepath,r  " + 
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,filename,realname,filepath,rownum r "+
+						 "from (select num,writer,email,subject,reg_date,ref,content,ip,readcount,filename,realname,filepath "+ 
 						 "from latterboard order by ref desc) order by reg_date desc) where r >= ? and r <= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
@@ -133,6 +133,9 @@ public class LatterBoardDAO {
 					dto.setReadcount(rs.getInt("readcount"));
 					dto.setIp(rs.getString("ip"));
 					dto.setRef(rs.getInt("ref"));
+					dto.setFilename(rs.getString("filename"));
+					dto.setRealname(rs.getString("realname"));
+					dto.setFilepath(rs.getString("filepath"));
 					articleList.add(dto);
 				}while(rs.next());
 			}

@@ -39,5 +39,5 @@
 	LatterBoardDAO dao = new LatterBoardDAO();
 	dao.insertArticle(dto);
 	
-	response.sendRedirect("latterBoard.jsp");
+	response.sendRedirect("imageList.jsp");
 %>

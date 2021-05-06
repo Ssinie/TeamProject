@@ -72,7 +72,7 @@
 		// if(id != null){%>
 			<input type="button" value="글수정" onclick="window.location='contentUpdate.jsp?pageNum=<%=pageNum%>&num=<%=num%>'" />
 			<input type="button" value="글삭제" onclick="" />
-			<input type="button" value="글목록" onclick="window.location='latterBoard.jsp?pageNum=<%=pageNum%>'" />
+			<input type="button" value="글목록" onclick="window.location='imageList.jsp?pageNum=<%=pageNum%>'" />
 		<%// }%>
 		</td>
 </table>

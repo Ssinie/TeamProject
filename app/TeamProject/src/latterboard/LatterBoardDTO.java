@@ -13,6 +13,27 @@ public class LatterBoardDTO {
 	private String ip;
 	private int ref;
 	private String menu;
+	private String filename;
+	private String realname;
+	private String filepath;
+	public String getFilepath() {
+		return filepath;
+	}
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
 	public String getMenu() {
 		return menu;
 	}

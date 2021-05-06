@@ -51,6 +51,15 @@
 		<td align="center" width="375" colspan="3"><%=dto.getContent()%></td>
 	</tr>
 	<tr>
+		<td>
+		<% if(dto.getFilename() == null) {%><input type="file" name="img">대표 이미지를 등록하세요..!!<br /><%}
+	         else{%>
+	         
+	         <img src="<%=dto.getRealname() %>" /><br />
+	         <%}%>
+		</td>
+	</tr>
+	<tr>
 		<form action="contentCommPro.jsp">
 		<td colspan="3">
 		<textarea name="content" cols="40" rows="4"></textarea>

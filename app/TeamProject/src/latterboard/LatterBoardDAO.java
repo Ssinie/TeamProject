@@ -28,8 +28,9 @@ public class LatterBoardDAO {
 				number=1;
 			//}
 			ref = number;
-			sql = "insert into latterboard(num,writer,email,subject,reg_date,ref,content,ip,menu) ";
-			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?,?)";
+			sql = "insert into latterboard(num,writer,email,subject,reg_date,ref,content,ip,menu,"
+					+ "filename,realname,filepath)";
+			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getEmail());
@@ -39,6 +40,9 @@ public class LatterBoardDAO {
 			pstmt.setString(6, dto.getContent());
 			pstmt.setString(7, dto.getIp());
 			pstmt.setString(8, dto.getMenu());
+			pstmt.setString(9, dto.getFilename());
+			pstmt.setString(10, dto.getRealname());
+			pstmt.setString(11, dto.getFilepath());
 			pstmt.executeUpdate();
 			
 		}catch(Exception e){
@@ -90,6 +94,9 @@ public class LatterBoardDAO {
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setIp(rs.getString("ip"));
 				dto.setRef(rs.getInt("ref"));
+				dto.setFilename(rs.getString("filename"));
+				dto.setRealname(rs.getString("realname"));
+				dto.setFilepath(rs.getString("filepath"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

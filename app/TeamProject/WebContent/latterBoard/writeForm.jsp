@@ -12,7 +12,7 @@
 %>    
 <body>
 <center>
-<form action ="writeFormPro.jsp">
+<form name="inform" action ="writeFormPro.jsp" method="post" enctype="multipart/form-data" >
 	<table border="1">
 	
 	<input type="hidden" name="num" value="<%=num%>">
@@ -25,22 +25,33 @@
 	제목 : <input type="text" name="subject" size="70" maxlength="100" /><br />
 	
 	</td></tr>
-	<tr><td>
-	<br />
-	일식<input type="radio" name="menu" value="japanese" checked />
-	중식<input type="radio" name="menu" value="chinies" />
-	양식<input type="radio" name="menu" value="western" />
-	<br />
-	</td></tr>
-	<tr><td>
-	<br />
-	내용 <br />
-	<textarea name="content"  rows="30" cols="80"></textarea><br />
-	</td></tr>
+	<tr>
+		<td>
+		<br />
+		일식<input type="radio" name="menu" value="japanese" checked />
+		중식<input type="radio" name="menu" value="chinies" />
+		양식<input type="radio" name="menu" value="western" />
+		<br />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<br />내용 <br />
+		<textarea name="content"  rows="30" cols="80"></textarea><br />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<input type="file" name="file" />
+		</td>
+	</tr>
 	<tr><td>
 	<input type=submit value="완료" />
 	</td></tr>
 	</table>
 </form>
+<%
+	
+%>
 </center>
 </body>

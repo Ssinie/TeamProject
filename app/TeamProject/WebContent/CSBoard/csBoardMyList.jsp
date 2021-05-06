@@ -15,7 +15,8 @@
     if (pageNum == null) {
         pageNum = "1";
     }
-
+    String adm = "";
+	String stat = "";
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
@@ -77,32 +78,29 @@
 	<tr height="30">
     	<td align="center"  width="75" > <%=number--%></td>
     	<td  width="350" >
-			<%int wid=0; 
-		      if(dto.getRe_level()>0){
-		      	wid=5*(dto.getRe_level()); %>
-		  		<img src="images/level.gif" width="<%=wid%>" height="16">
-		  		<img src="images/re.gif">
-			<%}else{%>
-		  		<img src="images/level.gif" width="<%=wid%>" height="16">
-			<%}%>
      		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%>
-           	 </a> 
-          <% if(dto.getReadcount()>=20){%>
-         	<img src="images/hot.gif" border="0"  height="16">
-           <%}%> 
+           	 </a>
 		</td>
-    	<td align="center"  width="100"> 
-			<a href="mailto:<%=dto.getEmail()%>"><%=dto.getWriter()%></a>
+    	<td align="center"  width="100">
+			<%if(dto.getWriter().equals("admin")) {%>
+			<%=adm = "관리자"%>
+			<%}else{%>
+			<%=dto.getWriter()%>
+			<%}%>
 		</td>
     	<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
     	<td align="center"  width="100"><%=dto.getReadcount()%></td>
-    	<td align="center" width="100" ><%=dto.getStatus()%></td>
+    	<td align="center" width="100" >
+    	<% if(dto.getStatus() == 1){stat = "처리중";}%>
+    	<% if(dto.getStatus() == 2){stat = "답변완료";}%>
+    	<% if(dto.getWriter().equals("admin")){stat = "";} %>
+    	<%=stat%>
+    	</td>
 	</tr>
     <%}%>
 </table>
 <%}%>
-
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);

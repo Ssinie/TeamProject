@@ -17,29 +17,32 @@ public class csDAO{
 		int ref=dto.getRef();
 		int re_step=dto.getRe_step();
 		int re_level=dto.getRe_level();
+		int status=dto.getStatus();
 		int number=0;
 		String sql="";
 		try {
 			conn = ConnectionDAO.getConnection(); 
 			pstmt = conn.prepareStatement("select max(num) from csboard");
 			rs = pstmt.executeQuery();
-			if (rs.next()) 
-				number=rs.getInt(1)+1;	
+			if (rs.next())
+				number=rs.getInt(1)+1;
 			else
-				number=1; 
-			if (num!=0) 
-			{ 
-				sql="update csboard set re_step=re_step+1 where ref= ? and re_step> ?";
+				number=1;
+			if (num!=0)
+			{
+				sql="update csboard set re_step=re_step+1, status=status+1 where ref= ? and re_step= ? ";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, ref);
 				pstmt.setInt(2, re_step);
 				pstmt.executeUpdate();
 				re_step=re_step+1;
 				re_level=re_level+1;
-			}else{ 
+				status=status+1;
+			}else{
 				ref=number;
 				re_step=0;
 				re_level=0;
+				status=1;
 			}
 			sql = "insert into csboard(num,writer,subject,email,content,passwd,save,reg,";
 			sql+="readcount,ref,re_step,re_level,status) values(csboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
@@ -251,6 +254,7 @@ public class csDAO{
 				dto.setRe_step(rs.getInt("re_step"));
 				dto.setRe_level(rs.getInt("re_level"));
 				dto.setContent(rs.getString("content"));
+				dto.setStatus(rs.getInt("status"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -258,8 +262,7 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return dto;
 	}
-	
-	
+
 	public csDTO updateGetCSBoard(int num) throws Exception {
 		csDTO dto = null;
 		try {
@@ -280,6 +283,7 @@ public class csDAO{
 				dto.setRe_step(rs.getInt("re_step"));
 				dto.setRe_level(rs.getInt("re_level"));
 				dto.setContent(rs.getString("content"));
+				dto.setStatus(rs.getInt("status"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -336,9 +340,9 @@ public class csDAO{
 					pstmt = conn.prepareStatement("delete from csboard where num=?");
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
-					x= 1; 
+					x= 1;
 				}else
-					x= 0; 
+					x= 0;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

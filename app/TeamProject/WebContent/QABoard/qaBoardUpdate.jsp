@@ -55,8 +55,8 @@
   </tr>
   <tr>
    <td colspan=2 bgcolor="white" align="center"> 
-     <input type="submit" value="글수정" >  
-     <input type="reset" value="작성취소" >
+     <input type="submit" value="글수정" >
+     <input type="reset" value="작성취소" onclick="document.location.href='qaBoardList.jsp?pageNum=<%=pageNum%>'">
      <input type="button" value="목록보기" onclick="document.location.href='qaBoardList.jsp?pageNum=<%=pageNum%>'">
    </td>
  </tr>

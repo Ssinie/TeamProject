@@ -11,7 +11,9 @@
 <title>게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
+
 <%
+	String adm = "";
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 
@@ -24,6 +26,7 @@
 	int re_step=dto.getRe_step();
 	int re_level=dto.getRe_level();
 %>
+
 <body bgcolor="white">
 <center><b>글내용 보기</b>
 <br>
@@ -36,7 +39,12 @@
   </tr>
   <tr height="30">
 	    <td align="center" width="125" bgcolor="white">작성자</td>
-	    <td align="center" width="125" align="center"><%=dto.getWriter()%></td>
+	    <td align="center" width="125" align="center">
+	    <%if(dto.getWriter().equals("admin")) {%>
+			<%=adm = "관리자"%>
+			<%}else{%>
+			<%=dto.getWriter()%>
+			<%}%></td>
 	    <td align="center" width="125" bgcolor="white" >작성일</td>
 	    <td align="center" width="125" align="center"><%= sdf.format(dto.getReg())%></td>
   </tr>
@@ -51,16 +59,18 @@
   <tr height="30">      
 	    <td colspan="4" bgcolor="white" align="right" > 
 	    
-			<%
-				String id = (String)session.getAttribute("memId");
-				if(id != null){
-					if(id.equals(dto.getWriter())){%>
-						<input type="button" value="글수정" onclick="window.location='csBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-						<input type="button" value="글삭제" onclick="window.location='csBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-					<%}%>
-					<input type="button" value="답글쓰기" onclick="window.location='csBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
-			   <%}%>
-			<input type="button" value="글목록" onclick="window.location='csBoardList.jsp?pageNum=<%=pageNum%>'">
+	<%
+		String id = (String)session.getAttribute("memId");
+		if(id != null){
+			if(id.equals(dto.getWriter())){%>
+				<input type="button" value="글수정" onclick="window.location='csBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" value="글삭제" onclick="window.location='csBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+			<%}%>
+			<%if(id.equals("admin")) {%>
+		<input type="button" value="답글쓰기" onclick="window.location='csBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
+			<%}%>
+				<input type="button" value="글목록" onclick="window.location='csBoardList.jsp?pageNum=<%=pageNum%>'">
+<%}%>
 	    </td>
   </tr>
 </table>

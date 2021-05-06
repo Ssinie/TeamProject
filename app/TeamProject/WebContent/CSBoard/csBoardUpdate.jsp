@@ -49,7 +49,6 @@
     <td  width="100"  bgcolor="white" align="center" >비밀번호</td>
     <td align="left" width="500" >
      <input type="password" size="80" maxlength="15" name="passwd">
-     
 	 </td>
   </tr>
   <tr>

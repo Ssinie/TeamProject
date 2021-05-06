@@ -32,7 +32,7 @@
 <table width="600" border="1" cellspacing="0" cellpadding="0"  bgcolor="white" align="center">
    <tr>
     <td align="right" colspan="2" bgcolor="white">
-	    <a href="csBoardList.jsp"> 글목록</a> 
+	    <a href="qaBoardList.jsp"> 글목록</a> 
    </td>
    </tr>
    <tr>

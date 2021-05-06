@@ -49,20 +49,19 @@
 	    <td align="center" width="125" bgcolor="white">글내용</td>
 	    <td align="left" width="375" colspan="3"><pre><%=dto.getContent()%></pre></td>
   </tr>
-  <tr height="30">      
-	    <td colspan="4" bgcolor="white" align="right" > 
-	    
-			<%
-				String id = (String)session.getAttribute("memId");
-				if(id != null){
-					if(id.equals(dto.getWriter())){%>
-						<input type="button" value="글수정" onclick="window.location='qaBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-						<input type="button" value="글삭제" onclick="window.location='qaBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-					<%}%>
-					<input type="button" value="답글쓰기" onclick="window.location='qaBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
-			   <%}%>
-			<input type="button" value="글목록" onclick="window.location='qaBoardList.jsp?pageNum=<%=pageNum%>'">
-	    </td>
+  <tr height="30">
+	    <td colspan="4" bgcolor="white" align="right" >
+
+<%
+	String id = (String)session.getAttribute("memId");
+	if(id != null&& id.equals("admin")){
+	if(id.equals(dto.getWriter())){%>
+		<input type="button" value="글수정" onclick="window.location='qaBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+		<input type="button" value="글삭제" onclick="window.location='qaBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+	<%}%>
+	<%}%>
+		<input type="button" value="글목록" onclick="window.location='qaAdmin.jsp?pageNum=<%=pageNum%>'">
+	</td>
   </tr>
 </table>
 </body>

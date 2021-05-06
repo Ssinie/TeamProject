@@ -15,10 +15,10 @@
 		</script>
 <%  }%>
 
-<% 
-  int num=0, ref=1, re_step=0, re_level=0;
- 
-    if(request.getParameter("num")!=null){
+<%
+	int num=0, ref=1, re_step=0, re_level=0;
+
+	if(request.getParameter("num")!=null){
 		num=Integer.parseInt(request.getParameter("num"));
 		ref=Integer.parseInt(request.getParameter("ref"));
 		re_step=Integer.parseInt(request.getParameter("re_step"));

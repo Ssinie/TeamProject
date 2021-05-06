@@ -29,7 +29,7 @@
    <tr>
     <td  width="200" align="center">제목</td>
     <td  width="330">
-       <input type="text" name="subject" >
+       <input type="text" name="subject" required autofocus>
     </td>
   </tr>
   <tr>
@@ -42,18 +42,33 @@
     <td  width="330" >
      <textarea name="content" rows="13" cols="40"></textarea> </td>
   </tr>
+   <tr>
+    <td  width="200" align="center" >이벤트 시작일</td>
+    <td  width="330" >
+     <input type="date" name="st_date" required> 
+	 </td>
+  </tr>
+   <tr>
+    <td  width="200" align="center" >이벤트 종료일</td>
+    <td  width="330" >
+     <input type="date" name="end_date" required> 
+	 </td>
+  </tr> 
   <tr>
     <td  width="200" align="center" >비밀번호</td>
     <td  width="330" >
-     <input type="password" size="21" maxlength="12" name="passwd"> 
+     <input type="password" size="21" maxlength="12" name="passwd" required> 
 	 </td>
   </tr>
+  
  <tr>      
- <td colspan=2 align="center"> 
-  <input type="submit" value="글쓰기" >  
+ <td colspan=6 align="center"> 
+  <input type="submit" value="글쓰기" > 
   <input type="reset" value="다시작성">
   <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
 </td></tr></table>    
+
+
    
 </form>      
 </body>

@@ -17,6 +17,7 @@
 	  <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>" >
 	   <script language="JavaScript">         
          alert("삭제되었습니다.");
+         window.location="list.jsp";
       </script>
 <%}else{%>
        <script language="JavaScript">         

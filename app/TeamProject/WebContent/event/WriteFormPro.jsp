@@ -29,9 +29,9 @@
 	dto.setRe_date(new Timestamp(System.currentTimeMillis()));
 	dto.setSubject(mr.getParameter("subject"));
 	dto.setContent(mr.getParameter("content"));
-	dto.setSt_date(mr.getParameter("st_date:"));
+	dto.setSt_date(mr.getParameter("st_date"));
 	dto.setEnd_date(mr.getParameter("end_date"));
-	dto.setSave(mr.getParameter("save"));
+	dto.setFilePath(mr.getParameter("filePath"));
 
 	
 	EventBoardDAO dao = new EventBoardDAO();

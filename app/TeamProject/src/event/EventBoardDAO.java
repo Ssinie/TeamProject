@@ -49,7 +49,7 @@ public class EventBoardDAO {
 			}
  
 			sql = "insert into EventBoard(num,subject,writer,passwd,re_date,";
-			sql+="ref,re_step,re_level,content,st_date,end_date,save) values(EventBoard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
+			sql+="ref,re_step,re_level,content,st_date,end_date,filePath) values(EventBoard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getWriter());
@@ -61,7 +61,7 @@ public class EventBoardDAO {
 			pstmt.setString(8, dto.getContent());
 			pstmt.setString(9, dto.getSt_date());
 			pstmt.setString(10, dto.getEnd_date());
-			pstmt.setString(11, dto.getSave());
+			pstmt.setString(11, dto.getFilePath());
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -75,9 +75,9 @@ public class EventBoardDAO {
 		List articleList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,r " + 
-						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,rownum r "+
-						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date "+ 
+			String sql = "select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath,r " + 
+						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath,rownum r "+
+						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath "+ 
 						 "from EventBoard order by ref desc) order by re_date desc) where r >= ? and r <= ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
@@ -97,6 +97,7 @@ public class EventBoardDAO {
 					dto.setRef(rs.getInt("ref"));
 					dto.setSt_date(rs.getString("st_date"));
 					dto.setEnd_date(rs.getString("end_date"));
+					dto.setFilePath(rs.getString("filePath"));
 					articleList.add(dto);
 				}while(rs.next());
 			}
@@ -139,6 +140,7 @@ public class EventBoardDAO {
 	            dto.setRe_date(rs.getTimestamp("re_date"));
 	            dto.setSt_date(rs.getString("st_date"));
 	            dto.setEnd_date(rs.getString("end_date"));
+	            dto.setFilePath(rs.getString("filePath"));
 	         }
 	      }catch(Exception e) {
 	         e.printStackTrace();

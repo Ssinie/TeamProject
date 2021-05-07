@@ -19,7 +19,6 @@ public class EventBoardDTO {
 	private String fileName;
 	private String realName;
 	private String filePath;
-	private String save;
 	
 	
 	public int getNum() {
@@ -112,13 +111,6 @@ public class EventBoardDTO {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-	public String getSave() {
-		return save;
-	}
-	public void setSave(String save) {
-		this.save = save;
-	}
-
 
 
 }

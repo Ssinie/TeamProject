@@ -56,6 +56,11 @@
           내용 : <%=dto.getContent() %>
        </td>
        </tr>
+       <tr>
+       <td height="300" style="vertical-align: top;" >
+          첨부파일 : <%=dto.getFilePath() %>
+       </td>
+       </tr>
     <!-- 내용 노출이 되도 상관없으면 &로 다 전달해도 좋음. -->
     <tr>      
     <td colspan=2 align="center"> 

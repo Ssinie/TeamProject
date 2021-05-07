@@ -22,7 +22,7 @@
 <body>
 <center><h1><b>이벤트 게시판 글쓰기</b></h1></center>
 <br>
-<form method="post" name="Writeform" action="WriteFormPro.jsp" onsubmit="return writeSave()">
+<form method="post" name="Writeform" action="WriteFormPro.jsp" onsubmit="return writeSave()" enctype="multipart/form-data">
 <input type="hidden" name="num" value="<%=num%>"> <!-- 글번호 -->
 
 <table width="870" border="1" cellspacing="0" cellpadding="0"  align="center">

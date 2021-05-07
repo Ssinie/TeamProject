@@ -73,16 +73,14 @@ String id = request.getParameter("id"); //admin 확인
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();">
-
+<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();" >
 <div id="STATICMENU"> 
 <ul> 
-<li class="style"><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
-<li class="style"><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
-<li class="style"><a href="western.jsp?id=<%=id%>">서양식</a></li>
+<li><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
+<li><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
+<li><a href="western.jsp?id=<%=id%>">서양식</a></li>
 </ul> 
 </div>
-
 
 
 <%if (count == 0) {%>

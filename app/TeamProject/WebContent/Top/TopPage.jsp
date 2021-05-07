@@ -16,6 +16,7 @@ String id = (String)session.getAttribute("memId");
 			document.iframe1.location.reload();
 		}
 	}
+	 
 </script>
 <head><title>오식당</title>
     <style type="text/css">
@@ -46,10 +47,14 @@ String id = (String)session.getAttribute("memId");
 	.active {
     background-color: #4CAF50;
 	}
+	#STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
+}
 </style>
 
 </head>
-<body>
+<body  >
+
+
 <header align='center'><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
 <nav>
 <table align="right">

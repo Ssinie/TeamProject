@@ -45,6 +45,12 @@
 <table width="800">
 	<tr>
     	<td align="right" bgcolor="white">
+    	<%if(id == null){%>
+    		<a href="/TeamProject/Login/Login.jsp">로그인</a>
+    	<%} %>
+    	<%if(id != null){%>
+    		<a href="/TeamProject/CSBoard/csBoardList.jsp">1 : 1 문의 게시판 가기</a>
+    	<%} %>
     	<%if(id != null && id.equals("admin")){%>
     		<a href="qaBoardWrite.jsp">글쓰기</a>
     	<%} %>

@@ -7,7 +7,9 @@
 
 	<title> 고객 1:1 문의 리스트</title>
 <%
+	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("memId");
+	
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -45,7 +47,6 @@
     	<td align="right" bgcolor="white">
     	<%if(id != null){%>
     		<a href="csBoardWrite.jsp">글쓰기</a>
-    		<a href="csBoardMyList.jsp">나의 작성글 목록</a>
     		<a href="csBoardList.jsp">전체 목록</a>
     	<%}else{%>
     		<a href="/TeamProject/Login/Login.jsp">로그인 후 글 쓰기</a>

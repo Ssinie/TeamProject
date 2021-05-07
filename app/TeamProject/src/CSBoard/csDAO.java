@@ -12,12 +12,12 @@ public class csDAO{
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 	private Connection conn = null;
+	
 	public void insertCSBoard(csDTO dto) throws Exception {
 		int num=dto.getNum();
 		int ref=dto.getRef();
 		int re_step=dto.getRe_step();
 		int re_level=dto.getRe_level();
-		int status=dto.getStatus();
 		int number=0;
 		String sql="";
 		try {
@@ -37,12 +37,10 @@ public class csDAO{
 				pstmt.executeUpdate();
 				re_step=re_step+1;
 				re_level=re_level+1;
-				status=status+1;
 			}else{
 				ref=number;
 				re_step=0;
 				re_level=0;
-				status=1;
 			}
 			sql = "insert into csboard(num,writer,subject,email,content,passwd,save,reg,";
 			sql+="readcount,ref,re_step,re_level,status) values(csboard_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, sysdate, 0, ?, ?, ?, 1)";
@@ -120,7 +118,7 @@ public class csDAO{
 					"select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,r "+
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status,rownum r " +
 					"from (select num,writer,subject,email,content,passwd,save,reg,readcount,ref,re_step,re_level,status " +
-					"from csboard order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+					"from csboard order by ref desc, re_step, re_level asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, end);
 					rs = pstmt.executeQuery();

@@ -8,6 +8,8 @@
 <title> Q&A 자주 묻는 질문 </title>
 
 <%
+	request.setCharacterEncoding("UTF-8");
+
 	String id = (String)session.getAttribute("memId");
 	
 	int pageSize = 10;
@@ -31,12 +33,12 @@
     if (count > 0) {
         QABoardList = dao.getQABoard(startRow, endRow);
     }
-
 	number=count-(currentPage-1)*pageSize;
+	
 %>
 <html>
 <head>
-<title>게시판</title>
+<title> 게시판 </title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -48,13 +50,15 @@
     	<%if(id == null){%>
     		<a href="/TeamProject/Login/Login.jsp">로그인</a>
     	<%} %>
+    	<%if(id != null){%>
+    		<a href="/TeamProject/CSBoard/csBoardList.jsp">1 : 1 문의 게시판 가기</a>
+    	<%} %>
     	<%if(id != null && id.equals("admin")){%>
     		<a href="qaBoardWrite.jsp">글쓰기</a>
     	<%} %>
     	</td>
     </tr>
 </table>
-
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0">
 		<tr>

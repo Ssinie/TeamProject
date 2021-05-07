@@ -20,7 +20,8 @@
     if (pageNum == null) {
         pageNum = "1";
     }
-
+    
+    String adm = "";
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
@@ -38,7 +39,7 @@
 %>
 <html>
 <head>
-<title> Q&A 자주 묻는 질문 관리자 </title>
+<title> 게시판 </title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -47,14 +48,18 @@
 <table width="800">
 	<tr>
     	<td align="right" bgcolor="white">
+    	<%if(id == null){%>
+    		<a href="/TeamProject/Login/Login.jsp">로그인</a>
+    	<%} %>
+    	<%if(id != null){%>
+    		<a href="/TeamProject/CSBoard/csBoardList.jsp">문의 하러가기</a>
+    	<%} %>
     	<%if(id != null && id.equals("admin")){%>
     		<a href="qaBoardWrite.jsp">글쓰기</a>
-    		<a href="qaBoardUpdate.jsp">수정하기</a>
     	<%} %>
     	</td>
     </tr>
 </table>
-
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0">
 		<tr>
@@ -83,14 +88,13 @@
            		<h3><%=dto.getContent()%></h3>
 				</div>
 					<%if(id != null && id.equals("admin")){%>
-	    			<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
-	           		자세히 보기
-	       	    	</a>
+	    			<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
     				<%} %>
 			</a> 
 		</td>
     	<td align="center"  width="100"> 
-			<a href="mailto:<%=dto.getEmail()%>"><%=dto.getWriter()%></a>
+			<%if(dto.getWriter().equals("admin")) { adm = "관리자"; }%>
+			<%=adm%>
 		</td>
     	<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
 	</tr>
@@ -100,23 +104,17 @@
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
-		 
         int startPage = (int)(currentPage/10)*10+1;
 		int pageBlock=10;
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
-        
         if (startPage > 10) {    %>
-        <a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
-<%      }
+			<a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-<%		}
+        	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
         if (endPage < pageCount) {  %>
-        	<a href="qaBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-<%		}
-    }
-%>
+        	<a href="qaBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a><%}
+}%>
 	<form action="qaBoardSearch.jsp" method="post">
 		<select name="col">
 			<option value = "subject"> 제목 </option>

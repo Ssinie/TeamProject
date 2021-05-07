@@ -5,11 +5,14 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-	<title> 관리자 페이지 </title>
-	
+	<title> 관리자 페이지 </title>	
 <%
-	String id = (String)session.getAttribute("memId");
+	request.setCharacterEncoding("UTF-8");
 
+	String id = (String)session.getAttribute("memId");
+    String adm = "";
+    String stat = "";
+    
     int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -17,13 +20,12 @@
     if (pageNum == null) {
         pageNum = "1";
     }
-    String adm = "";
-    String stat = "";
+
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
     int count = 0;
-    int number=0;
+    int number = 0;
     
     List CSBoardList = null;
     csDAO dao =new csDAO();
@@ -33,7 +35,6 @@
     }
 
 	number=count-(currentPage-1)*pageSize;
-	
 %>
 <html>
 <head>
@@ -78,9 +79,8 @@
 	<tr height="30">
     	<td align="center"  width="75" > <%=number--%></td>
     	<td  width="350" >
-     		 <a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
-           		<%=dto.getSubject()%>
-           	 </a>
+     	<a href="csBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
+        <%=dto.getSubject()%></a>
 		</td>
     	<td align="center"  width="100">
 			<%if(dto.getWriter().equals("admin")) {%>
@@ -93,7 +93,7 @@
     	<td align="center"  width="100"><%=dto.getReadcount()%></td>
     	<td align="center" width="100" >
     	<% if(dto.getStatus() == 1){stat = "처리중";}%>
-    	<% if(dto.getStatus() == 2){stat = "답변완료";}%>
+    	<% if(dto.getStatus() >= 2){stat = "답변완료";}%>
     	<% if(dto.getWriter().equals("admin")){stat = "";} %>
     	<%=stat%>
     	</td>

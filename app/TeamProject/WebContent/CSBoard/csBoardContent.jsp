@@ -22,9 +22,10 @@
 	csDAO dao = new csDAO();
 	csDTO dto =  dao.getCSBoard(num);
   
-	int ref=dto.getRef();
-	int re_step=dto.getRe_step();
-	int re_level=dto.getRe_level();
+	int ref = dto.getRef();
+	int re_step = dto.getRe_step();
+	int re_level = dto.getRe_level();
+	int status = dto.getStatus();
 %>
 
 <body bgcolor="white">
@@ -65,12 +66,12 @@
 			if(id.equals(dto.getWriter())){%>
 				<input type="button" value="글수정" onclick="window.location='csBoardUpdate.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
 				<input type="button" value="글삭제" onclick="window.location='csBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
-			<%}%>
-			<%if(id.equals("admin")) {%>
-		<input type="button" value="답글쓰기" onclick="window.location='csBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'">
+			<%}else if(id.equals("admin")) {%>
+				<input type="button" value="글삭제" onclick="window.location='csBoardDelete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" value="답글쓰기" onclick="window.location='csBoardWrite.jsp?num=<%=num%>&ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>&status=<%=status%>'">
 			<%}%>
 				<input type="button" value="글목록" onclick="window.location='csBoardList.jsp?pageNum=<%=pageNum%>'">
-<%}%>
+			<%}%>
 	    </td>
   </tr>
 </table>

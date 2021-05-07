@@ -50,7 +50,7 @@ String id = (String)session.getAttribute("memId");
 
 </head>
 <body>
-<header> 식당이미지 넣을곳</header>
+<header align='center'><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
 <nav>
 <table align="right">
 		<tr>

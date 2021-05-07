@@ -16,6 +16,10 @@ public class EventBoardDTO {
 	private int re_level;
 	private String st_date;
 	private String end_date;
+	private String fileName;
+	private String realName;
+	private String filePath;
+	private String save;
 	
 	
 	public int getNum() {
@@ -89,6 +93,30 @@ public class EventBoardDTO {
 	}
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getSave() {
+		return save;
+	}
+	public void setSave(String save) {
+		this.save = save;
 	}
 
 

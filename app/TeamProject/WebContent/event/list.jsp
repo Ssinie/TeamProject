@@ -79,7 +79,11 @@
 		<a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">
            		<%=dto.getSubject()%></a></td> 
 		<td align="center" width="100"><%=dto.getWriter()%></td>
-		<td align="center" width="150"><%=sdf.format(dto.getRe_date()) %></td>
+		<%if(dto.getRe_date() != null){%>
+      		<td align="center" width="150"><%=sdf.format(dto.getRe_date()) %></td>   
+      	<%}else{%>
+      		<td align="center" width="150"><%=dto.getRe_date() %></td>
+      <%}%>
 		<td align="center" width="50"><%=dto.getReadcount()%></td>
 		<td align="center" width="150"><%=dto.getSt_date()%></td>
 		<td align="center" width="150"><%=dto.getEnd_date() %></td>

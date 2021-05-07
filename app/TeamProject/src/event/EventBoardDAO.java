@@ -49,7 +49,7 @@ public class EventBoardDAO {
 			}
  
 			sql = "insert into EventBoard(num,subject,writer,passwd,re_date,";
-			sql+="ref,re_step,re_level,content,st_date,end_date) values(EventBoard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
+			sql+="ref,re_step,re_level,content,st_date,end_date,save) values(EventBoard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getWriter());
@@ -61,6 +61,7 @@ public class EventBoardDAO {
 			pstmt.setString(8, dto.getContent());
 			pstmt.setString(9, dto.getSt_date());
 			pstmt.setString(10, dto.getEnd_date());
+			pstmt.setString(11, dto.getSave());
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();

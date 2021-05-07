@@ -63,7 +63,7 @@ String id = (String)session.getAttribute("memId");
     <ul>
       <li><a class="active" href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
-      <li><a href="" target="iframe1">메뉴 소개</a></li>
+      <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a></li>
       <li><a href="" target="iframe1">이벤트</a></li>
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
       <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>

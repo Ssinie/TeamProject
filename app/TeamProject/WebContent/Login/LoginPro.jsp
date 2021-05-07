@@ -12,7 +12,7 @@
 	boolean result = dao.loginCheck(id, pw);
 	if(result){
 		session.setAttribute("memId", id);
-		response.sendRedirect("/TeamProject/lobby/lobby.jsp");
+		response.sendRedirect("/TeamProject/Top/TopPage.jsp");
 %>		
 <%	}else{ %>
 		<script>

@@ -5,6 +5,6 @@
 
 <%
 session.invalidate(); //세션 모두 삭제
-response.sendRedirect("/TeamProject/lobby/lobby.jsp");
+response.sendRedirect("/TeamProject/Top/TopPage.jsp");
 
 %>

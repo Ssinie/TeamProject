@@ -109,10 +109,10 @@ String id = request.getParameter("id"); //admin 확인/
 
 
 
-<form action="deletePro.jsp" metohd="post" >
+<form action="deletePro.jsp?id=<%=id %>" metohd="post" >
 
 
-
+  <input type="hidden" name="id" value="<%=id %>"> 
 
 <table border=1 >
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
@@ -124,6 +124,9 @@ String id = request.getParameter("id"); //admin 확인/
 <li >
 	<div><img src="<%=article.getFileimage()%>"> </div>							
 </li> 
+<div >
+<li><strong ><%=article.getSubject()%></strong></li>
+</div>
  </td>
 			
   <%  } %><!-- for문 종료 -->

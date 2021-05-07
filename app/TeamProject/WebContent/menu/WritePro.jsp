@@ -7,11 +7,7 @@
 <%@ page import="menuboard.BoardDBBean" %>
 
 <jsp:useBean class="menuboard.BoardDataBean" id="BoardDataBean" /> 
-	
-<script type="text/javascript">
-	alert("작성되었습니다.");
-	window.location="/TeamProject/lobby/lobby.jsp";
-</script>
+
 	
 <%
 
@@ -47,7 +43,7 @@
 		
 %>
 <script>
-	alert("작성 완료");
-	window.location="updateForm_list.jsp?id=<%=id%>";
+	alert("작성되었습니다.");
+	window.location="Korean.jsp?id=<%=id%>";
 </script>
 

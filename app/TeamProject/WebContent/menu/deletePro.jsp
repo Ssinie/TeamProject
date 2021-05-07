@@ -9,6 +9,7 @@
   
     <%
     String id = request.getParameter("id"); //admin 확인/
+    
     BoardDBBean db = new BoardDBBean();
     db.delete(BoardDataBean);
     %>

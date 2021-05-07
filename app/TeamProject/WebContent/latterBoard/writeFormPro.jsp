@@ -43,5 +43,5 @@
 
    <script>
       alert("작성되었습니다.");
-      window.location="list.jsp";      
+      window.location="imageList.jsp";      
    </script>

@@ -53,7 +53,7 @@
 	<table border="1">
 		<tr>
 			<td align = "right" colspan="4">
-			<input type="button" value = "글쓰기" onclick="writeForm.jsp" />
+			<input type="button" value = "글쓰기" onclick="window.location='writeForm.jsp'" />
 			</td>
 		</tr>
 		<%
@@ -114,5 +114,36 @@
 		}%>	
 	</table>
 </div>
+<center>
+<%
+if(count > 0){
+	
+	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1 );
+	
+	int startPage = (int)(currentPage/10)*10+1;
+	int pageBlock = 10;
+					 
+	int endPage = startPage + pageBlock -1;
+	if(endPage > pageCount) endPage = pageCount;
+	
+	if(startPage > 10){%>
+		<a href="list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+	<%}
+	for(int i = startPage; i <= endPage; i++){%>
+		<a href="list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+	<%}
+	if(endPage < pageCount){%>
+		<a href="list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+	<%}
+}%>
+<form action="searchList.jsp" method="post">
+	<select name="col">
+		<option value = "name">제목</option>
+		<option value = "writer">작성자</option>
+	</select>
+	<input type="text" name="search" />
+	<input type="submit" value="검색" />
+</form>
+</center>
 </body>
 </html>

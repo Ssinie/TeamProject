@@ -3,6 +3,8 @@
 <html>
 <%
 // https://amaze9001.tistory.com/69
+// https://lcw126.tistory.com/153
+// https://uxgjs.tistory.com/202
 String id = (String)session.getAttribute("memId");
 %>
 <script>

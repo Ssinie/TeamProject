@@ -16,6 +16,7 @@ public class LatterBoardDTO {
 	private String filename;
 	private String realname;
 	private String filepath;
+	
 	public String getFilepath() {
 		return filepath;
 	}

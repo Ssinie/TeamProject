@@ -22,7 +22,7 @@
 	DefaultFileRenamePolicy drp = new DefaultFileRenamePolicy(); //덮어씌우기 방지
 	MultipartRequest mr = new MultipartRequest(request,savePath,maxSize,enc,drp); //이 과정에서 업로드 됨.
 
-
+	String id = mr.getParameter("id");
 	String subject = mr.getParameter("subject");
 	BoardDataBean.setSubject(subject);
 	String name = mr.getParameter("name");
@@ -37,7 +37,7 @@
 	BoardDataBean.setFileRealName(sn);
 	
 		
-	BoardDataBean.setFileimage("/TeamProject/menu/img/"+on);
+	BoardDataBean.setFileimage("/TeamProject/menu/img/"+sn);
 	
 	
 	BoardDBBean file = new BoardDBBean();	
@@ -48,6 +48,6 @@
 %>
 <script>
 	alert("작성 완료");
-	window.location="updateForm_list.jsp";
+	window.location="updateForm_list.jsp?id=<%=id%>";
 </script>
 

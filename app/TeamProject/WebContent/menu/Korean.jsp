@@ -6,10 +6,10 @@
 <%@ include file="color.jsp"%>
 
 <style>
-
 li{margin-bottom:2px;  margin-right:2px;padding:2px;text-align:center;}
 li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
-#STATICMENU { positi 7on:absolute; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px;}
+#STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
+}
 </style>
 
 <script type="text/javascript">
@@ -42,6 +42,8 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
 
 <%
 String id = request.getParameter("id"); //admin 확인
+
+
     int pageSize = 9;
 
 
@@ -75,9 +77,9 @@ String id = request.getParameter("id"); //admin 확인
 
 <div id="STATICMENU"> 
 <ul> 
-<li class="style"><a href="Korean.jsp">한식</a></li> 
-<li class="style"><a href="japanese.jsp">일식</a></li> 
-<li class="style"><a href="western.jsp">서양식</a></li>
+<li class="style"><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
+<li class="style"><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
+<li class="style"><a href="western.jsp?id=<%=id%>">서양식</a></li>
 </ul> 
 </div>
 
@@ -99,13 +101,20 @@ String id = request.getParameter("id"); //admin 확인
 <div >
 	<h2 class="titMain">한국 음식</h2>						
 </div>
+				<%if(id != null && id.equals("admin") ){%>
+	<input type ="button" value="Mypage" onclick="window.location='/TeamProject/Mypage/MypageForm.jsp'" />
+	<input type ="button" value="로그아웃" onclick="window.location='/TeamProject/Login/Logout.jsp'" />
+
+<%}else{%>
+	<input type ="button" value="로그인 / 회원가입" onclick="window.location='/TeamProject/Login/Login.jsp'" />
+<%} %>	
 <table >
 	<tr>
     	<td align="center" bgcolor="<%=value_c%>">
-    		<% if(id.equals("admin")){%><!-- 유효성 검사 -->
-    		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp'"/>
-    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
-    		<input type="button" value="글삭제" onclick="window.location='deleteForm_list.jsp'"/>
+    		<% if(id!=null &&id.equals("admin")){%><!-- 유효성 검사 -->
+    		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp?id=<%=id%>'"/>
+    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp?id=<%=id%>'"/>
+    		<input type="button" value="글삭제" onclick="window.location='deleteForm_list.jsp?id=<%=id%>'"/>
     		<%} %>
     	</td>
     	
@@ -121,7 +130,7 @@ String id = request.getParameter("id"); //admin 확인
 
 <% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
-<a href="content.jsp?num=<%=article.getNum() %>" >
+<a href="content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
 <li class="mystyle"><img src="<%=article.getFileimage()%>"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
 						 

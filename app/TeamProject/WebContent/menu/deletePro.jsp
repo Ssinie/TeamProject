@@ -8,10 +8,11 @@
     <h1>deletrPro</h1>
   
     <%
+    String id = request.getParameter("id"); //admin 확인/
     BoardDBBean db = new BoardDBBean();
     db.delete(BoardDataBean);
     %>
    <script>
 	alert("삭제 완료");
-	window.location="deleteForm_list.jsp";
+	window.location="deleteForm_list.jsp?id=<%=id%>";
 </script>

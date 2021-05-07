@@ -18,6 +18,7 @@ DefaultFileRenamePolicy drp = new DefaultFileRenamePolicy(); //덮어씌우기 �
 MultipartRequest mr = new MultipartRequest(request,savePath,maxSize,enc,drp); //이 과정에서 업로드 됨.
 
 int num = Integer.parseInt(mr.getParameter("num"));
+String id = mr.getParameter("id");
 
 BoardDataBean.setNum(num);
 
@@ -39,5 +40,5 @@ file.upload2(BoardDataBean);
 %>
 <script>
 	alert("수정 완료");
-	window.location="updateForm_list.jsp";
+	window.location="updateForm_list.jsp?id=<%=id%>";
 </script>

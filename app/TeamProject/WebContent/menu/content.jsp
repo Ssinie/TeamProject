@@ -44,7 +44,7 @@ li{margin-bottom:10px;}
 </head>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
-	
+	String id = request.getParameter("id");  //admin 확인
  
 	BoardDBBean dbPro = new BoardDBBean();
 	BoardDataBean article =  dbPro.getArticle(num);
@@ -54,9 +54,9 @@ li{margin-bottom:10px;}
 <body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();">
 <div id="STATICMENU"> 
 <ul> 
-<li><a href="Korean.jsp">한식</a></li> 
-<li><a href="japanese.jsp">일식</a></li> 
-<li><a href="western.jsp">서양식</a></li>
+<li class="style"><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
+<li class="style"><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
+<li class="style"><a href="western.jsp?id=<%=id%>">서양식</a></li>
 </ul> 
 </div>
 <center><b><%=article.getType()%></b>

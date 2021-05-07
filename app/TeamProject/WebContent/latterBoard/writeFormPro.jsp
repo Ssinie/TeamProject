@@ -39,5 +39,9 @@
 	LatterBoardDAO dao = new LatterBoardDAO();
 	dao.insertArticle(dto);
 	
-	response.sendRedirect("imageList.jsp");
 %>
+
+   <script>
+      alert("작성되었습니다.");
+      window.location="list.jsp";      
+   </script>

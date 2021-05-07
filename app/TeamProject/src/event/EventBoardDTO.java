@@ -1,7 +1,5 @@
 package event;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 
@@ -18,7 +16,7 @@ public class EventBoardDTO {
 	private int re_level;
 	private String st_date;
 	private String end_date;
-
+	
 	
 	public int getNum() {
 		return num;
@@ -92,7 +90,6 @@ public class EventBoardDTO {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-
 
 
 

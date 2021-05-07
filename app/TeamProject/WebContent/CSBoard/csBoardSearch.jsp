@@ -1,9 +1,16 @@
-<%@ page contentType = "text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import = "CSBoard.csDAO" %>
 <%@ page import = "CSBoard.csDTO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
+<div id="menubar">
+	<div><a href="csBoardList.jsp"> 1:1 문의 게시판 </a></div>
+	<div><a href="/TeamProject/QABoard/qaBoardList.jsp"> 자주 묻는 질문 </a></div> <br />
+</div>
+
+	<title> 1:1 문의 게시판 </title>
 <%
 	request.setCharacterEncoding("UTF-8");
 	

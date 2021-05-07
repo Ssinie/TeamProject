@@ -5,7 +5,12 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-<title> Q&A 자주 묻는 질문 관리자 </title>
+<div id="menubar">
+	<div><a href="/TeamProject/CSBoard/csBoardList.jsp"> 1:1 문의 게시판 </a></div>
+	<div><a href="qaBoardList.jsp"> 자주 묻는 질문 </a></div><br />
+</div>
+
+<title> Q&A 자주 묻는 질문 </title>
 
 <%
 	String id = (String)session.getAttribute("memId");
@@ -36,7 +41,7 @@
 %>
 <html>
 <head>
-<title> Q&A 자주 묻는 질문 관리자 </title>
+<title> Q&A 자주 묻는 질문 </title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -49,7 +54,7 @@
     		<a href="/TeamProject/Login/Login.jsp">로그인</a>
     	<%} %>
     	<%if(id != null){%>
-    		<a href="/TeamProject/CSBoard/csBoardList.jsp">1 : 1 문의 게시판 가기</a>
+    		<a href="/TeamProject/CSBoard/csBoardList.jsp">1:1 문의 게시판 가기</a>
     	<%} %>
     	<%if(id != null && id.equals("admin")){%>
     		<a href="qaBoardWrite.jsp">글쓰기</a>

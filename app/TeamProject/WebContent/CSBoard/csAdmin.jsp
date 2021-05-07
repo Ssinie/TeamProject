@@ -5,7 +5,12 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-	<title> 관리자 페이지 </title>	
+<div id="menubar">
+	<div><a href="csBoardList.jsp"> 1:1 문의 게시판 </a></div>
+	<div><a href="/TeamProject/QABoard/qaBoardList.jsp"> 자주 묻는 질문 </a></div> <br />
+</div>
+
+	<title> 1:1 문의 게시판 </title>	
 <%
 	request.setCharacterEncoding("UTF-8");
 

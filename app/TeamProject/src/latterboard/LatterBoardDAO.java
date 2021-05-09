@@ -70,6 +70,24 @@ public class LatterBoardDAO {
 		return x;
 	}
 	
+	// 작성자 또는 제목으로 검색하여 게시글 갯수 확인
+	public int getArticleCount(String col, String search) {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from latterboard where " + col + " like '%"+search+"%'");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				x = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return x;
+	}
+	
 	// 게시글 번호를 이용해 게시글 정보 가져오기
 	public LatterBoardDTO getArticle(int num) {
 		LatterBoardDTO dto = null;
@@ -148,17 +166,16 @@ public class LatterBoardDAO {
 	}
 	
 	// 작성자 조회하여 게시글 검색
-	public List getArticles(String id, int start, int end) {
+	public List getArticles(String col, String search, int start, int end) {
 		List articleList = null;
 		try {
 			conn = ConnectionDAO.getConnection();
-			String sql = "select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,r" +
-					     "from (select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,rownum r"+
-						 "from (select * from latterboard where writer=?' order by reg_date desc)) where r >= ? and r <= ?";  
+			String sql = "select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,r " +
+					     "from (select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,rownum r "+
+						 "from (select * from latterboard where "+ col +" like '%"+ search +"%' order by reg_date desc)) where r >= ? and r <= ?";  
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				articleList = new ArrayList(end);

@@ -19,11 +19,13 @@
 	int pageSize = 16;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	String pageNum = request.getParameter("pageNum");
+	String id = (String)session.getAttribute("memId");
+	String col = request.getParameter("col");
+	String search = request.getParameter("search");
 	
 	if(pageNum == null){
-		pageNum = "1";
-	}
-	
+		pageNum = "1";}
+
 	int currentPage = Integer.parseInt(pageNum);
 	int startRow = (currentPage - 1) * pageSize + 1;
 	int endRow = currentPage * pageSize;
@@ -32,12 +34,12 @@
 	
 	List articleList = null;
 	LatterBoardDAO dao = new LatterBoardDAO();
-	count = dao.getArticleCount();
+	count = dao.getArticleCount(col, search);
 	if(count > 0){
-		articleList = dao.getArticles(startRow, endRow);
+		articleList = dao.getArticles(col, search, startRow, endRow);
 	}
 	number = count-(currentPage-1)*pageSize;
-	String id = (String)session.getAttribute("memId");
+	
 	
 
 %>
@@ -53,7 +55,7 @@
 	<table border="1">
 		<tr>
 			<td align = "right" colspan="4">
-			<input type="button" value = "글쓰기" onclick="window.location='writeForm.jsp'" />
+			<input type="button" value = "글쓰기" onclick="writeForm.jsp" />
 			</td>
 		</tr>
 		<%
@@ -139,7 +141,7 @@ if(count > 0){
 <form action="searchList.jsp" method="post">
 	<select name="col">
 		<option value = "subject">제목</option>
-		<option value = "writer">작성자</option>
+		<option value = "subject">작성자</option>
 	</select>
 	<input type="text" name="search" />
 	<input type="submit" value="검색" />

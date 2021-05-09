@@ -22,37 +22,10 @@ String id = (String)session.getAttribute("memId");
 </script>
 <head><title>오식당</title>
     <style type="text/css">
-    ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-	}
-	ul:after{
-    content:'';
-    display: block;
-    clear:both;
-	}
-	li {
-    float: left;
-	}
-	li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-	}
-	li a:hover:not(.active) {
-    background-color: #111;
-	}
-	.active {
-    background-color: #4CAF50;
-	}
 	#STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
 }
 </style>
-
+<link rel="stylesheet" href="./index.css">
 </head>
 <body  >
 
@@ -68,7 +41,7 @@ String id = (String)session.getAttribute("memId");
 		</tr>
 	</table>
     <ul>
-      <li><a class="active" href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
+      <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
       <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a></li>
       <li><a href="" target="iframe1">이벤트</a></li>

@@ -30,16 +30,19 @@ String id = (String)session.getAttribute("memId");
 <body  >
 
 
-<header align='center'><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
-<nav>
-<table align="right">
+<header ><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
+<table  align="right">
 		<tr>
-		<td><a href="/TeamProject/Login/Login.jsp" >로그인/회원가입</a></td>
+		<%if(id==null){ %>
+		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
+		<%}%>
 		<%if(id != null){%>
-		<td><a href="/TeamProject/Mypage/MypageForm.jsp" align="right ">내정보</a></td>
+		<td class="t1" align="right"><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
 		<%}%>
 		</tr>
 	</table>
+<nav>
+
     <ul>
       <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>

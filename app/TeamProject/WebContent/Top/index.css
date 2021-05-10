@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
 /*  모든 요소들은 default 마진, 패딩 제거 */
+
+
+
+header{
+width:100px;
+ margin: 0 auto;  
+}
+td.t1{
+	position:absolute;
+	width:180px;
+	right: 5%;
+	top:8%;
+    color:red;
+}
+tab
 *{margin: 0; padding: 0;}
 ul{
 	list-style-type: none;

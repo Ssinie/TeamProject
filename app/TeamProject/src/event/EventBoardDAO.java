@@ -1,14 +1,13 @@
 package event;
 
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import connection.ConnectionDAO;
-import latterboard.LatterBoardDTO;
 
 public class EventBoardDAO {
    
@@ -154,14 +153,15 @@ public class EventBoardDAO {
 	public void updateBoard(EventBoardDTO dto) {
 			try {
 				conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출			
-				String sql = "update EventBoard set subject=?,writer=?,content=?,st_date=?,end_date=? where num=?";
+				String sql = "update EventBoard set subject=?,writer=?,content=?,st_date=?,end_date=?,filePath=? where num=?";
 				pstmt = conn.prepareStatement(sql);   
 				pstmt.setString(1, dto.getSubject());
 				pstmt.setString(2, dto.getWriter());
 				pstmt.setString(3, dto.getContent());
 				pstmt.setString(4, dto.getSt_date());
 				pstmt.setString(5, dto.getEnd_date());
-				pstmt.setInt(6, dto.getNum());
+				pstmt.setString(6, dto.getFilePath());
+				pstmt.setInt(7, dto.getNum());
 				pstmt.executeUpdate();
 			}catch(Exception e) {
 				e.printStackTrace();

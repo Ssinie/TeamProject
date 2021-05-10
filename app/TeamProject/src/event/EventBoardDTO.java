@@ -19,7 +19,7 @@ public class EventBoardDTO {
 	private String fileName;
 	private String realName;
 	private String filePath;
-	
+	private String stat;
 	
 	public int getNum() {
 		return num;
@@ -111,6 +111,13 @@ public class EventBoardDTO {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
+	public String getStat() {
+		return stat;
+	}
+	public void setStat(String stat) {
+		this.stat = stat;
+	}
+	
 
 
 }

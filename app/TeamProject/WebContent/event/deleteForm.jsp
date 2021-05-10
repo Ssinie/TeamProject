@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <center><h1><b>이벤트 게시글 삭제</b></h1></center>
+<% request.setCharacterEncoding("UTF-8");%>
 
 <%
   int num = Integer.parseInt(request.getParameter("num"));
@@ -23,10 +24,10 @@
  		<tr height="30">
     		<td align=center>
       			<input type="submit" value="글삭제" >
-      			<input type="button" value="글목록" onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">     
+      			<input type="button" value="글목록" onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'"> 
    			</td>
  		</tr>  
 	</table> 
 </form>
 </body>
-</html> 
+

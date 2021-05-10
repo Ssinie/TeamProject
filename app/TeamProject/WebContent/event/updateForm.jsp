@@ -13,9 +13,10 @@
 	String content = request.getParameter("content");
 	String st_date = request.getParameter("st_date");
 	String end_date = request.getParameter("end_date");
+	String filePath = request.getParameter("filePath");
+	
 %>
-
-<form action="updatePro.jsp" method="post" >
+<form action="updatePro.jsp" method="post" enctype="multipart/form-data">
 <input type="hidden" name="num" value="<%=num%>" />
 
 <table width="870" border="1" cellspacing="0" cellpadding="0"  align="center">
@@ -34,6 +35,11 @@
 	<td  width="330">
 	<textarea rows="10" cols="40" name="content"><%=content%></textarea></td>
 	</tr>
+	<tr>
+    <td  width="200" align="center" >첨부파일</td>
+    <td  width="330" >
+     <input type="file" name="filePath"></td>
+  </tr>
 	<tr>
 	<td width="200" align="center">이벤트 시작일</td>
 	<td  width="330">

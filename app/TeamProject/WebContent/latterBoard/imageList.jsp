@@ -56,6 +56,14 @@
 			<input type="button" value = "글쓰기" onclick="window.location='writeForm.jsp'" />
 			</td>
 		</tr>
+		<tr>
+			<td colspan="4">
+				<a>전체</a>
+				<a href="japaneseList.jsp">일식</a>
+				<a href="koreanList.jsp">한식</a>
+				<a href="westernList.jsp">양식</a>
+			</td>
+		</tr>
 		<%
 		if(count == 0){%>
 		<table width="700" border="1" cellpadding="0" cellspacing="0">
@@ -73,6 +81,8 @@
 				if(i % 4 == 0) { %>
 					<tr align='center'>
 				<%} %>
+					
+					
 					<td>
 					<table>
 						<tr align='center'>

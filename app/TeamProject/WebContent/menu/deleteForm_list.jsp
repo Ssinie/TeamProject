@@ -150,7 +150,7 @@ String id = request.getParameter("id"); //admin 확인/
         <a href="deleteForm_list.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="deleteForm_list.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="deleteForm_list.jsp?pageNum=<%= i %>&id=<%=id%>">[<%= i %>]</a>
 <%		}
         if (endPage < pageCount) {  %>
         	<a href="deleteForm_list.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>

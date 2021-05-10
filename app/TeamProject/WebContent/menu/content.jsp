@@ -51,16 +51,12 @@ li{margin-bottom:10px;}
   
 
 %>
-<body  onload="InitializeStaticMenu();">
-<div id="STATICMENU"> 
-<ul> 
-<li class="style"><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
-<li class="style"><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
-<li class="style"><a href="western.jsp?id=<%=id%>">서양식</a></li>
-</ul> 
-</div>
+<body>
+
 <center><b><%=article.getType()%></b>
 <br>
+
+
 <table width="500" border="1" cellspacing="0" cellpadding="0"   align="center">  
 	<tr height="30">
 		
@@ -70,8 +66,10 @@ li{margin-bottom:10px;}
   <tr height="30">
 	    <td align="center" width="125" ><%=article.getContent() %></td>
 	  	    
- 
+
 
 </table>
+ <input type ="button" value="돌아가기" onclick="window.history.back()" style="width:80; height:30; background-color:gray;color:white; font-size:16pxl; border-radius:3px; " />
+</center>
 </body>
 </html>      

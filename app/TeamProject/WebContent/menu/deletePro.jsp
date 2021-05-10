@@ -14,6 +14,6 @@
     db.delete(BoardDataBean);
     %>
    <script>
-	alert("삭제 완료");
+	confirm("삭제하시겠습니까?");
 	window.location="deleteForm_list.jsp?id=<%=id%>";
 </script>

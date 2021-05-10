@@ -6,7 +6,7 @@
 <%@ include file="color.jsp"%>
 
 <style>
-li{margin-bottom:2px;  margin-right:2px;padding:2px;text-align:center;}
+li{ margin-bottom:2px;  margin-right:2px;padding:2px;text-align:center;}
 li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
 #STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
 }
@@ -73,7 +73,7 @@ String id = request.getParameter("id"); //admin 확인
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();" >
+<body onload="InitializeStaticMenu();" >
 <div id="STATICMENU"> 
 <ul> 
 <li><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
@@ -108,7 +108,7 @@ String id = request.getParameter("id"); //admin 확인
 <%} %>	
 <table >
 	<tr>
-    	<td align="center" bgcolor="<%=value_c%>">
+    	<td align="center" >
     		<% if(id!=null &&id.equals("admin")){%><!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp?id=<%=id%>'"/>
     		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp?id=<%=id%>'"/>
@@ -129,7 +129,7 @@ String id = request.getParameter("id"); //admin 확인
 <% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
-<li class="mystyle"><img src="<%=article.getFileimage()%>"> </li>						 								
+<li class="mystyle"><img src="<%=article.getFileimage()%>" height="350" width="350"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
 						 
      <%  } %><!-- 서양식 종료 -->

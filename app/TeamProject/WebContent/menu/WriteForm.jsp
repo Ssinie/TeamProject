@@ -63,11 +63,9 @@ function Check(){
  <form name="inform" action="WritePro.jsp" method="post" onsubmit="return Check();" enctype="multipart/form-data" >
 <table border="1"  width="300">
 <tr><td>		
- 제목 : <input type="text" name="subject"/><br/>
+  메뉴 이름: <input type="text" name="subject"/><br/>
  </td></tr>
-   <tr><td>
- 메뉴 이름: <input type="text" name="name"/><br/>
-</td></tr>
+ 
    <tr><td>
  음식 종류: <select name="type">
 					<option>한식</option>

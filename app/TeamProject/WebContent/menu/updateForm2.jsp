@@ -56,7 +56,7 @@ li{margin-bottom:10px;}
   
 
 %>
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();" >
+<body  onload="InitializeStaticMenu();" >
 <div id="STATICMENU"> 
 <ul> 
 <li><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
@@ -64,38 +64,37 @@ li{margin-bottom:10px;}
 <li><a href="western.jsp?id=<%=id%>">서양식</a></li>
 </ul> 
 </div>
-<center><b>글내용 보기</b>
+<center><b><%=article.getType() %></b>
 <br>
 <form action="updatePro.jsp" method="post" enctype="multipart/form-data">
-<table width="500" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">  
+<table width="500" border="1" cellspacing="0" cellpadding="0"   align="center">  
 	<tr height="30">
 		
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><img src="<%=article.getFileimage() %>"></td>
+	    <td align="center" width="125" ><img src="<%=article.getFileimage() %>" height="350" width="350"></td>
 	    
   </tr>
-  <tr height="30">
-	    <td><input type="hidden" name="num" value="<%=num %>"> </td>
-	    <td><input type="hidden" name="id" value="<%=id %>"> </td>
-	</tr>  
+  
 	<tr height="30">
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><input type="text" name="subject" value="<%=article.getSubject() %>" ></td>
+		<input type="hidden" name="num" value="<%=num %>"> 
+	    <input type="hidden" name="id" value="<%=id %>"> 
+	    <td align="center" width="125" ><input type="text" align="center" name="subject" value="<%=article.getSubject() %>"  ></td>
 	</tr>  	 
   <tr height="30">
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><textarea cols="80" rows="10" name="content" ><%=article.getContent() %></textarea></td>
+	    <td align="center" width="125" ><textarea cols="80" rows="10" name="content" ><%=article.getContent() %></textarea></td>
 	</tr>  	    
  
 </table>
 
-<table>
-<tr height="30">
+<table border="1">
+<tr height="30" >
 
- <td td align="right" width="125" bgcolor="<%=value_c%>"><input type="file" name="file" value="파일"/></td>
+ <td align="right" width="125" ><input type="file" name="file" value="파일"/></td>
  
  </tr>
-<tr height="30">
+<tr height="30" >
  
- <td td align="center" width="125" bgcolor="<%=value_c%>"><input type="submit" value="수정"/></td>
- <td td align="center" width="125" bgcolor="<%=value_c%>"><input type="button" value="취소" onclick="window.location='updateForm_list.jsp?id=<%=id%>'"/></td>
+ <td align="center" width="125" ><input type="submit" value="수정"/></td>
+ <td align="center" width="125" ><input type="button" value="취소" onclick="window.location='updateForm_list.jsp?id=<%=id%>'"/></td>
  </tr>
 </table>
 </form>

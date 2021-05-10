@@ -51,7 +51,7 @@ li{margin-bottom:10px;}
   
 
 %>
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();">
+<body  onload="InitializeStaticMenu();">
 <div id="STATICMENU"> 
 <ul> 
 <li class="style"><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
@@ -61,14 +61,14 @@ li{margin-bottom:10px;}
 </div>
 <center><b><%=article.getType()%></b>
 <br>
-<table width="500" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">  
+<table width="500" border="1" cellspacing="0" cellpadding="0"   align="center">  
 	<tr height="30">
 		
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><img src="<%=article.getFileimage() %>"></td>
+	    <td align="center" width="125" ><img src="<%=article.getFileimage() %>"></td>
 	    
   </tr>
   <tr height="30">
-	    <td align="center" width="125" bgcolor="<%=value_c%>"><%=article.getContent() %></td>
+	    <td align="center" width="125" ><%=article.getContent() %></td>
 	  	    
  
 

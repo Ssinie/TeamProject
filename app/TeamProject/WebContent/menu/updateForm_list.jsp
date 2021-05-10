@@ -74,7 +74,7 @@ String id = request.getParameter("id"); //admin 확인/
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body bgcolor="<%=bodyback_c%>" onload="InitializeStaticMenu();" >
+<body  onload="InitializeStaticMenu();" >
 <div id="STATICMENU"> 
 <ul> 
 <li><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
@@ -87,7 +87,7 @@ String id = request.getParameter("id"); //admin 확인/
 <table width="650">
 	<tr>
    	
-    	<td align="right" bgcolor="<%=value_c%>">
+    	<td align="right" >
     	
     		<h2 align="center"> 수정 할 게시글을 선택 하세요.</h1>   	
     	</td>
@@ -119,7 +119,7 @@ String id = request.getParameter("id"); //admin 확인/
 <% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="updateForm2.jsp?id=<%=id %>&num=<%=article.getNum() %>" >
-								<div align="center" ><img src="<%=article.getFileimage()%>"> 
+								<div align="center" ><img src="<%=article.getFileimage()%>" height="350" width="350"> 
 								  </div>							
 								<div >
 									<li><strong ><%=article.getSubject()%></strong></li>

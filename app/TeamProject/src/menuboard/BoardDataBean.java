@@ -6,7 +6,6 @@ public class BoardDataBean{
 	private int num; 
     private String subject;
     private String content;      
-    private String name;
 	private String type;
     private String fileName;
 	private String fileRealName;
@@ -29,12 +28,6 @@ public class BoardDataBean{
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getType() {
 		return type;

@@ -13,15 +13,14 @@ public void upload(BoardDataBean BoardDataBean) {
 		
 		try {
 			conn = ConnectionDAO.getConnection(); 
-			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?,?)";
+			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,BoardDataBean.getSubject());
 			pstmt.setString(2,BoardDataBean.getContent());					
-			pstmt.setString(3,BoardDataBean.getName());
-			pstmt.setString(4,BoardDataBean.getType());			
-			pstmt.setString(5,BoardDataBean.getFileName());
-			pstmt.setString(6,BoardDataBean.getFileRealName());
-			pstmt.setString(7,BoardDataBean.getFileimage());
+			pstmt.setString(3,BoardDataBean.getType());			
+			pstmt.setString(4,BoardDataBean.getFileName());
+			pstmt.setString(5,BoardDataBean.getFileRealName());
+			pstmt.setString(6,BoardDataBean.getFileimage());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

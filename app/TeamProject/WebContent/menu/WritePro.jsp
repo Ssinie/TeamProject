@@ -21,8 +21,6 @@
 	String id = mr.getParameter("id");
 	String subject = mr.getParameter("subject");
 	BoardDataBean.setSubject(subject);
-	String name = mr.getParameter("name");
-	BoardDataBean.setName(name);
 	String type = mr.getParameter("type");
 	BoardDataBean.setType(type);
 	String content = mr.getParameter("content");

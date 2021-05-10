@@ -22,7 +22,7 @@ String id = (String)session.getAttribute("memId");
 </script>
 <head><title>오식당</title>
     <style type="text/css">
-	#STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
+	#STATICMENU { position:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
 }
 </style>
 <link rel="stylesheet" href="./index.css">
@@ -43,10 +43,16 @@ String id = (String)session.getAttribute("memId");
 	</table>
 <nav>
 
-    <ul>
+    <ul id="main-menu">
       <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
-      <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a></li>
+      <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a>
+      <ul id="sub-menu">
+      	<li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">한식</a></li>
+      	<li><a href="/TeamProject/menu/japanese.jsp?id=<%=id %>" target="iframe1">일식</a></li>
+      	<li><a href="/TeamProject/menu/western.jsp?id=<%=id %>" target="iframe1">서양식</a></li>
+      </ul> 
+      </li>     
       <li><a href="/TeamProject/event/list.jsp" target="iframe1">이벤트</a></li>
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
       <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>
@@ -66,11 +72,11 @@ String id = (String)session.getAttribute("memId");
     
 </body>
 <div class="footer">
-<table  width="100%" height="10%">
+<table  width="100%" height="10%" >
 <tr style="font-size:1.5em;"><td >소개페이지</td><td>메뉴</td><td>후기 게시판</td><td>이벤트</td><td>문의 게시판</td></tr>
-<tr ><td><a href="location.jsp" >찾아오시는 길</a></td><td><a href="/TeamProject/menu/japanese.jsp" target="iframe1">일식</a></td><td></td><td><a href="/TeamProject/event/list.jsp" target="iframe1">진행중인 이벤트</a></td><td><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">자주묻는질문</a></td></tr>
-<tr><td><a href="ceointro.jsp">식당 소개</a></td><td><a href="/TeamProject/menu/Korean.jsp" target="iframe1">한식</a></td><td></td><td></td><td><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1">문의접수</a></td></tr>
-<tr><td></td><td><a href="/TeamProject/menu/Western.jsp" target="iframe1">서양식</a></td><td></td><td></td><td></td></tr>
+<tr ><td><a href="location.jsp" >찾아오시는 길</a></td><td><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">한식</a></td><td></td><td><a href="/TeamProject/event/list.jsp" target="iframe1">진행중인 이벤트</a></td><td><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">자주묻는질문</a></td></tr>
+<tr><td><a href="ceointro.jsp">식당 소개</a></td><td><a href="/TeamProject/menu/japanese.jsp?id=<%=id %>" target="iframe1">일식</a></td><td></td><td></td><td><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1">문의접수</a></td></tr>
+<tr><td></td><td><a href="/TeamProject/menu/western.jsp?id=<%=id %>" target="iframe1">서양식</a></td><td></td><td></td><td></td></tr>
 
     </table>
  </div>

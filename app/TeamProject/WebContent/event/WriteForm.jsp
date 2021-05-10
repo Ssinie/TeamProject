@@ -70,7 +70,7 @@
  <td colspan=6 align="center"> 
   <input type="submit" value="글쓰기" > 
   <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
+  <input type="button" value="목록보기" OnClick="window.location='a.jsp'">
 </td></tr></table>    
 
 

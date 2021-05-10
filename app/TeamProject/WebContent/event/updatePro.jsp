@@ -31,7 +31,7 @@ request.setCharacterEncoding("UTF-8");
 
 <script>
 	alert("수정되었습니다..")
-	window.location="list.jsp";
+	window.location="listcard.jsp";
 </script>
 	
 	

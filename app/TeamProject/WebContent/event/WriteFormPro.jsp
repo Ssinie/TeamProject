@@ -18,11 +18,11 @@
    MultipartRequest mr = new MultipartRequest(request,path,maxSize,enc,drp);
    
    // 파일명 처리
-   String on = mr.getOriginalFileName("file"); // 원본 파일명
+   String on = mr.getOriginalFileName("filePath"); // 원본 파일명
    dto.setFileName(on);
-   String sn = mr.getFilesystemName("file"); // 업로드된 파일명
+   String sn = mr.getFilesystemName("filePath"); // 업로드된 파일명
    dto.setRealName(sn);
-   dto.setFilePath("/TeamProject/Images/event"+sn);
+   dto.setFilePath("/TeamProject/Images/event/"+on);
    
    // dto에 작성한 값을 겟 파라미터 하여 넣기..
    String id = (String)session.getAttribute("memId");
@@ -42,7 +42,7 @@
 
    <script>
       alert("작성되었습니다.");
-      window.location="list.jsp";      
+      window.location="listcard.jsp";      
    </script>
 
    

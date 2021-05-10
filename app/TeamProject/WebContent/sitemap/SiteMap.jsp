@@ -27,7 +27,7 @@
     <div class="left">
     <ul>
     	<li><a href="http://www.naver.com">naver</a></li>
-    	<li>2</li>
+    	<li></li>
     	<li>3</li>
     	<li>4</li>
     	<li>5</li>    

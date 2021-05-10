@@ -31,7 +31,7 @@ String id = (String)session.getAttribute("memId");
 
 
 <header ><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
-<table  align="right">
+<table align="right">
 		<tr>
 		<%if(id==null){ %>
 		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
@@ -65,5 +65,14 @@ String id = (String)session.getAttribute("memId");
 
     
 </body>
+<div class="footer">
+<table  width="100%" height="10%">
+<tr style="font-size:1.5em;"><td >소개페이지</td><td>메뉴</td><td>후기 게시판</td><td>이벤트</td><td>문의 게시판</td></tr>
+<tr ><td><a href="location.jsp" >찾아오시는 길</a></td><td><a href="/TeamProject/menu/japanese.jsp" target="iframe1">일식</a></td><td></td><td><a href="/TeamProject/event/list.jsp" target="iframe1">진행중인 이벤트</a></td><td><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">자주묻는질문</a></td></tr>
+<tr><td><a href="ceointro.jsp">식당 소개</a></td><td><a href="/TeamProject/menu/Korean.jsp" target="iframe1">한식</a></td><td></td><td></td><td><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1">문의접수</a></td></tr>
+<tr><td></td><td><a href="/TeamProject/menu/Western.jsp" target="iframe1">서양식</a></td><td></td><td></td><td></td></tr>
+
+    </table>
+ </div>
 </html>
 

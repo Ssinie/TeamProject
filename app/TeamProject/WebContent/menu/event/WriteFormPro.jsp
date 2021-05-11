@@ -42,7 +42,7 @@
 
    <script>
       alert("작성되었습니다.");
-      window.location="cardlist.jsp";      
+      window.location="listcard.jsp";      
    </script>
 
    

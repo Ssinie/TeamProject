@@ -4,12 +4,11 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 
-
-<jsp:useBean id="dto" class="event.EventBoardDTO"/>
 <%
 request.setCharacterEncoding("UTF-8");
-
 %>
+<jsp:useBean class="event.EventBoardDTO" id="dto" />
+<jsp:setProperty name="dto" property="*" />
 
 <%
 	// 파일저장경로, 포맷사이즈, 한글파일 인코딩 처리
@@ -21,27 +20,18 @@ request.setCharacterEncoding("UTF-8");
 	MultipartRequest mr = new MultipartRequest(request,path,maxSize,enc,drp);
 	
 	// 파일명 처리
-	String on = mr.getOriginalFileName("filePath"); // 원본 파일명
+	String on = mr.getOriginalFileName("file"); // 원본 파일명
 	dto.setFileName(on);
-	String sn = mr.getFilesystemName("filePath"); // 업로드된 파일명
+	String sn = mr.getFilesystemName("file"); // 업로드된 파일명
 	dto.setRealName(sn);
-	dto.setFilePath("/TeamProject/Images/event/"+on);
-	
-	String id = (String)session.getAttribute("memId");
-	dto.setWriter(id);
-	dto.setSubject(mr.getParameter("subject"));
-	dto.setContent(mr.getParameter("content"));
-	dto.setPasswd(mr.getParameter("passwd"));
-	dto.setSt_date(mr.getParameter("st_date"));
-	dto.setEnd_date(mr.getParameter("end_date"));
-	
-	EventBoardDAO dao = new EventBoardDAO();	
+	dto.setFilePath("/TeamProject/Images/event"+on);
+	EventBoardDAO dao = new EventBoardDAO();
 	dao.updateBoard(dto);
 %>
 
 <script>
 	alert("수정되었습니다..")
-	window.location="cardlist.jsp";
+	window.location="listcard.jsp";
 </script>
 	
 	

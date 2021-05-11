@@ -7,13 +7,13 @@
 	int num = Integer.parseInt(request.getParameter("num"));
 
 	
-
+	
 	String writer = request.getParameter("writer");
 	String subject = request.getParameter("subject");
 	String content = request.getParameter("content");
 	String st_date = request.getParameter("st_date");
 	String end_date = request.getParameter("end_date");
-	String filePath = request.getParameter("filePath"); 
+	String filePath = request.getParameter("filePath");
 	
 %>
 <form action="updatePro.jsp" method="post" enctype="multipart/form-data">
@@ -53,6 +53,6 @@
 	 <tr>      
 	 <td colspan=2 align="center"> 
 			<input type="submit" value="글수정" />	
-			<input type="button" value="글목록" OnClick="window.location='cardlist.jsp'">	
+			<input type="button" value="글목록" OnClick="window.location='list.jsp'">	
 	 </td></tr></table>	 
 </form>

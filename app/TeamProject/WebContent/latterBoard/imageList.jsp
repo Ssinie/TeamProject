@@ -56,6 +56,7 @@
 			<input type="button" value = "글쓰기" onclick="window.location='writeForm.jsp'" />
 			</td>
 		</tr>
+		<!-- 
 		<tr>
 			<td colspan="4">
 				<a>전체</a>
@@ -64,6 +65,7 @@
 				<a href="westernList.jsp">양식</a>
 			</td>
 		</tr>
+		 -->
 		<%
 		if(count == 0){%>
 		<table width="700" border="1" cellpadding="0" cellspacing="0">

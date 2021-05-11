@@ -19,6 +19,7 @@
 	int pageSize = 16;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	String pageNum = request.getParameter("pageNum");
+	String menu = request.getParameter("menu");
 	
 	if(pageNum == null){
 		pageNum = "1";
@@ -34,7 +35,7 @@
 	LatterBoardDAO dao = new LatterBoardDAO();
 	count = dao.getArticleCount();
 	if(count > 0){
-		articleList = dao.getArticles(startRow, endRow);
+		articleList = dao.getArticles(startRow, endRow, menu);
 	}
 	number = count-(currentPage-1)*pageSize;
 	String id = (String)session.getAttribute("memId");
@@ -59,13 +60,13 @@
 		<tr>
 			<td colspan="4">
 				<a href="imageList.jsp">전체</a>
-				<a>일식</a>
-				<a href="koreanList.jsp">한식</a>
-				<a href="westernList.jsp">양식</a>
+				<a href="japaneseList.jsp?menu=<%="japanese"%>">일식</a>
+				<a href="japaneseList.jsp?menu=<%="korean"%>">한식</a>
+				<a href="japaneseList.jsp?menu=<%="western"%>">양식</a>
 			</td>
 		</tr>
 		<%
-		if(count == 0){%>
+		if(count == 0 || articleList == null){%>
 		<table width="700" border="1" cellpadding="0" cellspacing="0">
 			<tr>
 				<td align="center">

@@ -21,13 +21,13 @@
     	form.submit();//액션으로 보낸다
     }
     </script>
-      *아이디확인<br>
+      *아이디(5자~11자까지 가능)<br>
       <input type="text" name="id" id="first_id" placeholder="아이디 입력" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
       <input type="submit" name="idcheck" value="아이디 확인"  onclick="checkDuplicationId()" >      
       <br><br>
      
       <form name="myForm" action="" method="post">
-      *비밀번호<br> 
+      *비밀번호 (대문자,소문자,특수문자를 포함한 6~20자)<br> 
       <input type="password" name="pw1" value="" required><br>
       *비밀번호 재확인<br> 
       <input type="password" name="pw2" value="" required>
@@ -127,13 +127,13 @@
       <option>알뜰폰</option>
       </select>
       <input type="text" name="phone" placeholder="010-****-****" required>
-      <input type="button" name="certification" value="인증번호 받기"><br>
+     <!--  <input type="button" name="certification" value="인증번호 받기"><br>
       <input type="text" name="certification" placeholder="인증번호를 입력하세요" required>
-      <input type="button" name="certification" value="확인">
+      <input type="button" name="certification" value="확인"> 
       <br><br>
       
       사진 <br>
-      <input type="file" value="">
+      <input type="file" value="">-->
       <br><br>
       <input type="submit" value="가입완료" onclick="checkAllValidate(this.form)">
       

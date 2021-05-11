@@ -22,7 +22,7 @@ request.setCharacterEncoding("UTF-8");
 	String id = dto.getId();	
 		
 	 boolean aa = vc.ischarLength(id, 5, 11);  //아이디 길이체크
-
+	
    if(id != null && aa) // 이전부분에서 스크립트 처리를 해주어도 null비교는 해주어야 한다.
    {
 
@@ -41,10 +41,11 @@ request.setCharacterEncoding("UTF-8");
    } else {
 	   %>
  	 "아이디형식에 맞지 않습니다."
+ 	 
 			
  <%
    }
-%> 
+   %> 
 
 
 

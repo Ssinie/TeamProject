@@ -6,15 +6,11 @@
 
 
 <jsp:useBean id="dto" class="event.EventBoardDTO"/>
-<%
-request.setCharacterEncoding("UTF-8");
-
-%>
 
 <%
 	// 파일저장경로, 포맷사이즈, 한글파일 인코딩 처리
 	String path = "C:\\Users\\주사재\\Desktop\\주인선\\teamProject\\TeamProject\\app\\TeamProject\\WebContent\\Images\\event";
-	// String savePath = request.getRealPath("/Images/latterBoard");
+	// String savePath = request.getRealPath("	/Images/latterBoard");
 	int maxSize = 1024*1024*50; // 50Mb
 	String enc = "UTF-8";
 	DefaultFileRenamePolicy drp = new DefaultFileRenamePolicy();
@@ -29,14 +25,20 @@ request.setCharacterEncoding("UTF-8");
 	
 	String id = (String)session.getAttribute("memId");
 	dto.setWriter(id);
+	
+	
+	int num = Integer.parseInt(mr.getParameter("num"));
+	dto.setNum(num);
 	dto.setSubject(mr.getParameter("subject"));
 	dto.setContent(mr.getParameter("content"));
 	dto.setPasswd(mr.getParameter("passwd"));
 	dto.setSt_date(mr.getParameter("st_date"));
 	dto.setEnd_date(mr.getParameter("end_date"));
 	
-	EventBoardDAO dao = new EventBoardDAO();	
+	EventBoardDAO dao = new EventBoardDAO();
 	dao.updateBoard(dto);
+
+
 %>
 
 <script>

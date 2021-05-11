@@ -19,14 +19,13 @@
 <table width="870" border="1" cellspacing="0" cellpadding="0"  align="center">
 	<tr>
 	<td width="200" align="center">작성자</td>
-	<td width="330">
-		<input type="hidden" name="writer" value="<%=id%>" />
-		<input type="text" name="writer" value="<%=dto.getWriter() %> "/></td>
+	<td width="330"><%=id%></td>
+		
 	</tr>
 	<tr>
 	<td width="200" align="center">제  목</td>
 	<td  width="330">
-		<input type="text" name="subject" value="<%=dto.getSubject()%>"/></td>
+		<input type="text" name="subject" value="<%=dto.getSubject()%>"></td>
 	</tr>
 	<tr>
 	<td width="200" align="center">내  용</td>
@@ -41,16 +40,16 @@
 	<tr>
 	<td width="200" align="center">이벤트 시작일</td>
 	<td  width="330">
-		<input type="date" name="st_date" value="<%=dto.getSt_date() %>" />
+		<input type="date" name="st_date" value="<%=dto.getSt_date() %>" >
 	</tr>
 	<tr>
 	<td width="200" align="center">이벤트 종료일</td>
 	<td  width="330">
-		<input type="date" name="end_date" value="<%=dto.getEnd_date() %>" />
+		<input type="date" name="end_date" value="<%=dto.getEnd_date() %>" >
 	</tr>
 	 <tr>      
 	 <td colspan=2 align="center"> 
-			<input type="submit" value="글수정" />	
+			<input type="submit" value="글수정" >	
 			<input type="button" value="글목록" OnClick="window.location='cardlist.jsp'">	
 	 </td></tr></table>	 
 </form>

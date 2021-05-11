@@ -42,29 +42,30 @@ request.setCharacterEncoding("UTF-8");
 <%
     	  
       if(aa && bb && cc && dd && ee){
-    
-    	 dao.insertMember(dto);
+	
+	   	dao.insertMember(dto);
     	session.setAttribute("memId", dto.getId());
     	response.sendRedirect("/TeamProject/Top/TopPage.jsp");
+    	
     	  
       }else{%>
     	  <script>
 			alert("비밀번호가 적절하지 않습니다.");
 			history.go(-1); 
 		</script>
+		   <%}
       	
-    <%
-      } 
-   } else {
-	   %>
+    
+      } else { %>
+	   
  	  <script>
-			alert("비밀번호를 재입력해주세요.");
+			alert("비밀번호를 입력해주세요.");
 			history.go(-1); 
 		</script>
-   	
- <%
-   }   
-%> 
+<%}%>  	
+ 
+      
+ 
 
 
 

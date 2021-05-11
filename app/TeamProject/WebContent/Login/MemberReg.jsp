@@ -22,15 +22,15 @@
     }
     </script>
       *아이디(5자~11자까지 가능)<br>
-      <input type="text" name="id" id="first_id" placeholder="아이디 입력" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
+      <input type="text" name="id" id="first_id" placeholder="5자~11자까지 가능" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
       <input type="submit" name="idcheck" value="아이디 확인"  onclick="checkDuplicationId()" >      
       <br><br>
      
       <form name="myForm" action="" method="post">
-      *비밀번호 (대문자,소문자,특수문자를 포함한 6~20자)<br> 
-      <input type="password" name="pw1" value="" required><br>
+      *비밀번호 (대,소,특수문자를 포함한 6~20자)<br> 
+      <input type="password" name="pw1" value="" required placeholder="비밀번호입력 "><br>
       *비밀번호 재확인<br> 
-      <input type="password" name="pw2" value="" required>
+      <input type="password" name="pw2" value="" placeholder="비밀번호 재입력 "required>
       <br><br>
       
       *이름<br>  <input type="text" name="name" value="" required> 

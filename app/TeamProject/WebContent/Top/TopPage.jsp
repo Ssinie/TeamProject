@@ -45,7 +45,7 @@ String id = (String)session.getAttribute("memId");
 <nav>
 
     <ul id="main-menu">
-      <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
+      <li><a href="/TeamProject/Top/TopPage.jsp" target="iframe1">메인화면</a></li>
       <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
       <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a>
       <ul id="sub-menu">

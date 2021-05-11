@@ -20,17 +20,23 @@ width:100px;
 td {
         text-align: center;
       }
-
 td.t1{
 	position:absolute;
-	width:180px;
+	width:150px;
 	right: 5%;
 	top:8%;
     color:red;
 }
 td.t2{
 	position:absolute;
-	width:180px;
+	width:100px;
+	right: 5%;
+	top:8%;
+    color:red;
+}
+td.t2_1{
+	position:absolute;
+	width:100px;
 	right:1%;
 	top:8%;
     color:red;

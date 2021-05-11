@@ -7,6 +7,7 @@
 
 
 
+
  <h1>예약페이지 Pro</h1>
 
 <%
@@ -18,8 +19,12 @@ request.setCharacterEncoding("UTF-8");
 <%  
 	String guest = (String)session.getAttribute("memid");
 	ReserveDAO dao = new ReserveDAO();
-	dto = dao.Reserveinfo(guest);	
+	dao.insertReservation(dto);
+	dto = dao.Reserveinfo(guest);
+	
+	
 %>
+
 	<h1 align="center">나의 예약정보 </h1>
 	<table border="1" align="center">
 	<tr>

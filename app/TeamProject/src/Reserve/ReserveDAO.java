@@ -35,10 +35,10 @@ public class ReserveDAO {
 	}
 	
 	
-	public ReserveDTO Reserveinfo(String guest) {  //마이페이지 메소드 정보불러오기 
+	public ReserveDTO Reserveinfo(String guest) { 
 		ReserveDTO dto = new ReserveDTO();
 		try {
-		conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
+		conn = ConnectionDAO.getConnection(); 
 		pstmt = conn.prepareStatement("select * from member where id=?");
 		pstmt.setString(1, guest);
 		rs = pstmt.executeQuery();

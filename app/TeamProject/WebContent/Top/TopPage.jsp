@@ -57,7 +57,7 @@ String id = (String)session.getAttribute("memId");
       </li>     
       <li><a href="/TeamProject/event/cardlist.jsp" target="iframe1">이벤트</a></li>
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
-      <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>
+      <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약 및 확인</a></li>
       <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">문의사항</a></li>
     </ul>
 </nav>

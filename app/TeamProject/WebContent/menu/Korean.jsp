@@ -66,13 +66,7 @@ String id = request.getParameter("id"); //admin 확인
 <div >
 	<h2 class="titMain">한국 음식</h2>						
 </div>
-				<%if(id != null && id.equals("admin") ){%>
-	<input type ="button" value="Mypage" onclick="window.location='/TeamProject/Mypage/MypageForm.jsp'" />
-	<input type ="button" value="로그아웃" onclick="window.location='/TeamProject/Login/Logout.jsp'" />
 
-<%}else if(id==null){%>
-	<input type ="button" value="로그인 / 회원가입" onclick="window.location='/TeamProject/Login/Login.jsp'" />
-<%} %>	
 <table >
 	<tr>
     	<td align="center" >

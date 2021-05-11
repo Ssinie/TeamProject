@@ -4,6 +4,11 @@
 <%@ page import = "QABoard.qaDTO" %>
 <%@ page import = "java.util.List" %>
 
+<div id="menubar">
+	<div><a href="/TeamProject/CSBoard/csBoardList.jsp"> 1:1 문의 게시판 </a></div>
+	<div><a href="qaBoardSample.jsp"> 자주 묻는 질문 </a></div><br />
+</div>
+
 <%
 	String id = (String)session.getAttribute("memId");
 	int pageSize = 10;
@@ -26,6 +31,7 @@
 	    QABoardList = dao.getQABoard(startRow, endRow);
 	}
 	number=count-(currentPage-1)*pageSize;
+	qaDTO dto = null;
 %>
 <html>
 <head>
@@ -36,6 +42,16 @@
 <body bgcolor="white">
 <center><b> Q&A 자주묻는질문 </b>
 <table width="800">
+	<tr>
+    	<td align="right" bgcolor="white">
+    	<%if(id == null){%>
+    		<a href="/TeamProject/Login/Login.jsp">로그인</a>
+    	<%} %>
+    	<%if(id != null && id.equals("admin")){%>
+    		<a href="qaBoardWrite.jsp">글쓰기</a>
+    	<%} %>
+    	</td>
+    </tr>
 <html>
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -46,46 +62,28 @@
 </head>
 <body>
 <div class="container-fluid" style="min-height: calc(100vh - 136px);">
-<!-- 그룹 태그로 role과 aria-multiselectable를 설정한다. -->
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-<!-- 하나의 item입니다. data-parent 설청과 href 설정만 제대로 하면 문제없이 작동합니다. -->
-<div class="panel panel-default">
-<div class="panel-heading" role="tab">
-<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false">
-공지 사항
-</a>
-</div>
-<div id="collapse1" class="panel-collapse collapse" role="tabpanel">
-<div class="panel-body">
-이거 어떻게 해야 합니까!!!!
-</div>
-</div>
-</div>
 
+
+<% for(int i = 0; i < QABoardList.size(); i++){
+		dto = (qaDTO)QABoardList.get(i);
+%>
 <div class="panel panel-default">
 <div class="panel-heading" role="tab">
-<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false">
-안내 사항
+<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i %>" aria-expanded="false">
+<%= dto.getSubject() %>
 </a>
 </div>
-<div id="collapse2" class="panel-collapse collapse" role="tabpanel">
+<div id="collapse<%=i %>" class="panel-collapse collapse" role="tabpanel">
 <div class="panel-body">
-안내를 도와드릴 수 없네요
+<%= dto.getContent() %>
+<%if(id != null && id.equals("admin")){%>
+	<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
+<%} %>
 </div>
 </div>
 </div>
-<div class="panel panel-default">
-<div class="panel-heading" role="tab">
-<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false">
-오시는 방법
-</a>
-</div>
-<div id="collapse3" class="panel-collapse collapse" role="tabpanel">
-<div class="panel-body">
-날아서 오세요
-</div>
-</div>
-</div>
+<%}%>
 </div>
 </div>
 </body>
@@ -97,7 +95,7 @@
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
         if (startPage > 10) {    %>
-        <a href="qaBoardSample.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
+        	<a href="qaBoardSample.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
         for (int i = startPage ; i <= endPage ; i++) {  %>
         	<a href="qaBoardSample.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
         if (endPage < pageCount) {  %>

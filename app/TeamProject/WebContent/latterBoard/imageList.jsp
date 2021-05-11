@@ -60,9 +60,9 @@
 		<tr>
 			<td colspan="4">
 				<a href="imageList.jsp">전체</a>
-				<a href="japaneseList.jsp?menu=<%="japanese"%>">일식</a>
-				<a href="japaneseList.jsp?menu=<%="korean"%>">한식</a>
-				<a href="japaneseList.jsp?menu=<%="western"%>">양식</a>
+				<a href="typeList.jsp?menu=<%="japanese"%>">일식</a>
+				<a href="typeList.jsp?menu=<%="korean"%>">한식</a>
+				<a href="typeList.jsp?menu=<%="western"%>">양식</a>
 			</td>
 		</tr>
 		

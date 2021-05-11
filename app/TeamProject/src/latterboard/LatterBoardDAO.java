@@ -249,7 +249,46 @@ public class LatterBoardDAO {
 		return articleList;
 	}
 	
-	
+	// 작성자 조회 + 타입 검색하여 게시글 검색
+		public List getArticles(String col, String search, int start, int end, String type) {
+			List articleList = null;
+			try {
+				conn = ConnectionDAO.getConnection();
+				String sql = "select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,r " +
+						     "from (select num,writer,subject,email,content,reg_date,ref,ip,readcount,menu,filename,realname,filepath,rownum r "+
+							 "from (select * from latterboard where "+ col +" like '%"+ search +"%' and menu =? order by reg_date desc)) where r >= ? and r <= ?";  
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					articleList = new ArrayList(end);
+					do {
+						LatterBoardDTO dto = new LatterBoardDTO();
+						dto.setNum(rs.getInt("num"));
+						dto.setWriter(rs.getString("writer"));
+						dto.setSubject(rs.getString("subject"));
+						dto.setEmail(rs.getString("email"));
+						dto.setContent(rs.getString("content"));
+						dto.setReg_date(rs.getTimestamp("reg_date"));
+						dto.setReadcount(rs.getInt("readcount"));
+						dto.setIp(rs.getString("ip"));
+						dto.setRef(rs.getInt("ref"));
+						dto.setMenu(rs.getString("menu"));
+						dto.setFilename(rs.getString("filename"));
+						dto.setRealname(rs.getString("realname"));
+						dto.setFilepath(rs.getString("filepath"));
+						articleList.add(dto);
+					}while(rs.next());
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}
+			return articleList;
+		}
 	
 	
 	

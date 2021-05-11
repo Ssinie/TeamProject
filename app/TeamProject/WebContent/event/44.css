@@ -26,7 +26,7 @@ nav {
   width: 1200px;
   height: 100px;
   line-height: 100px; /*¸Þ´º¸¦ ¾Æ·¡·Î ³»¸®±â À§ÇØ 100pxÁß¿¡¼­ 40px ¾Æ·¡·Î*/  
-/*    background-color: rgba(146, 214, 180, 0.74); */
+  background-color: rgba(146, 214, 180, 0.74); 
 }
 
 

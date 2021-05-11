@@ -18,9 +18,10 @@ request.setCharacterEncoding("UTF-8");
     <%
 	// 세션에 ID를 DB에서 검색 한다. 
 	// 검색 결과를 DTO에 대입하여 리턴
-	String guest = (String)session.getAttribute("guest");
-    ReserveDTO dto = new ReserveDTO();
+	String guest = (String)session.getAttribute("memguest");
+    
 	ReserveDAO dao = new ReserveDAO();
+	ReserveDTO dto = new ReserveDTO();
 	
 	dto = dao.Reservation(guest);
 	%>	

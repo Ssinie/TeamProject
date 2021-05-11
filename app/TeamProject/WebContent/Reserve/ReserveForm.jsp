@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <h1>예약페이지 Form</h1>
 
-<Body bgcolor="lightyellow">
+<Body bgcolor="lightyellow" align = "center">
 <form method = "get" action = "ReservePro.jsp">
 	<fieldset>
 			<legend> 예약자 정보</legend>

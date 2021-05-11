@@ -3,6 +3,7 @@
 	
 <%@ page import="Login.MemberDAO" %>
 <%@ page import="Login.ValueCheck" %>
+<%@ page import="Login.MemberDTO" %>
 
 	
 
@@ -16,36 +17,35 @@ request.setCharacterEncoding("UTF-8");
 
 <%
    ValueCheck vc = new ValueCheck();
-	
+   MemberDAO dao = new MemberDAO();
 
 	String pw = dto.getPw1();
+	String pw2 = dto.getPw2();
+	System.out.println(dto.getId());
 	
 		
    if(pw != null) // 이전부분에서 스크립트 처리를 해주어도 null비교는 해주어야 한다.
    {
-      boolean aa = vc.charLength(pw, 6, 11);
-      boolean bb = vc.charBig(pw);
-      boolean cc = vc.charSmall(pw);
-      
-      int size = pw.length();
-      int count = 0;
-      int x=0, y=0, z=0;
-      
-      
-      
-      for(int i=0; i < size; i++)
-      {
-         char c = pw.charAt(i);
-         if(c ==33 || c == 63 || c == 94 || c == 88 ||  c == 35 ||  c == 36 || c == 37)
-         {
-            z++;
-         }
-      }
-      
-      
-      if(aa && bb && cc && z !=0){
+      boolean aa = vc.ischarLength(pw, 6, 20);  //비번 길이체크
+      boolean bb = vc.ischarBig(pw); //비번 대문자체크
+      boolean cc = vc.ischarSmall(pw);
+      boolean dd = vc.isSpecial(pw);
+      boolean ee = vc.isSame(pw,pw2);
+     
+      if(!ee)
+    	  %>
+	  <script>
+		alert("재확인 비밀번호가 다릅니다.");
+		history.go(-1); 
+	</script>
+  	
+<%
+    	  
+      if(aa && bb && cc && dd && ee){
     
     	 dao.insertMember(dto);
+    	session.setAttribute("memId", dto.getId());
+    	response.sendRedirect("/TeamProject/Top/TopPage.jsp");
     	  
       }else{%>
     	  <script>
@@ -53,12 +53,18 @@ request.setCharacterEncoding("UTF-8");
 			history.go(-1); 
 		</script>
       	
-    	  
-            
- <%   }else{
-	   
-   }%>
-
+    <%
+      } 
+   } else {
+	   %>
+ 	  <script>
+			alert("비밀번호를 재입력해주세요.");
+			history.go(-1); 
+		</script>
+   	
+ <%
+   }   
+%> 
 
 
 

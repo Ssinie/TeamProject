@@ -6,15 +6,9 @@
 		import java.sql.ResultSet;
 
 		import connection.ConnectionDAO;
+%>
 
-		public class MemberDAO{
-		private Connection conn = null;
-		private PreparedStatement pstmt = null;
-		private ResultSet rs = null;
- %>
-	
-	
-<h1>예약페이지 Pro</h1>
+ <h1>예약페이지 Pro</h1>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -23,8 +17,3 @@ request.setCharacterEncoding("UTF-8");
 <jsp:setProperty property="*" name="dto"/>
 
 
-<%
-//DB연결하고 중복값확인후 DB에 올리기
-
-
-%>

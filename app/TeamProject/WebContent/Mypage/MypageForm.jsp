@@ -12,15 +12,21 @@
 	MemberDAO dao = new MemberDAO();
 	MemberDTO dto = new MemberDTO();
 	dto = dao.getUserinfo(id);
-	
 	%>	
-	아이디 : <%=dto.getId()%> <br />
-	이름 : <%=dto.getName()%><br />
-	생년월일 :<%=dto.getYear()%>년<br />
-			<%=dto.getMonth()%>월 <br />
-			<%=dto.getDay()%>일 <br />
-	이메일 : <%=dto.getEmail()%> <br />
-	가입날짜 : <%=dto.getReg()%> <br />
-	성별: <%=dto.getGender()%> <br />
-	연락처: <%=dto.getPhone()%>
-    
+	<Body bgcolor="lightblue">
+	<h1 align="center">나의 회원정보 </h1>
+	<table border="1" align="center">
+	<tr>
+	<td>아이디</td> <td><%=dto.getId()%></td></tr>
+	<td>이름</td> <td><%=dto.getName()%></td></tr>
+	<td>생년월일</td> <td><%=dto.getYear()%>년
+						<%=dto.getMonth()%>월
+						<%=dto.getDay()%>일</td></tr>
+	<td>이메일</td> <td><%=dto.getEmail()%> </td></tr>
+	<td>가입날짜</td> <td><%=dto.getReg()%> </td></tr>
+	<td>성별</td> <td><%=dto.getGender()%> </td></tr>
+	<td>연락처</td> <td><%=dto.getPhone()%></td></tr>
+	
+	</table>
+   
+

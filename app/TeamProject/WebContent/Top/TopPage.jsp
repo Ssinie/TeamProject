@@ -37,7 +37,8 @@ String id = (String)session.getAttribute("memId");
 		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
 		<%}%>
 		<%if(id != null){%>
-		<td class="t1" align="right"><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
+		<td class="t1" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
+		<td class="t1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;">로그아웃</a></td>
 		<%}%>
 		</tr>
 	</table>
@@ -66,10 +67,21 @@ String id = (String)session.getAttribute("memId");
 </section>
 </body>
 </html>
+<script>
 <%-- 팝업페이지 --%>
-<body onload="window.open('/TeamProject/PopUp/popupform.jsp','','width=410px, height=580px')">
 
-    
+function popupLoad() {
+	if(!document.cookie.includes("todayPop")) { //todayPop 쿠키를 갖고 있지 않으면 팝업을 실행
+		window.open('/TeamProject/PopUp/popupform.jsp','','width=410px, height=580px');
+	}
+}
+</script>
+
+<body onload="popupLoad()">
+</body>
+</html>
+
+	   
 </body>
 <div class="footer">
 <table  width="100%" height="10%" >

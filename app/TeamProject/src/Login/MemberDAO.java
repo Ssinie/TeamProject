@@ -14,7 +14,7 @@ public class MemberDAO{
 	public void insertMember(MemberDTO dto) { //inserMember 메소드에 dto에 잇는 값들을 대입
 		try {
 			conn = ConnectionDAO.getConnection(); //1,2단계 메소드 호출
-			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,sysdate,1)");
+			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,sysdate)");
 			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getPw1());
 			pstmt.setString(3, dto.getPw2());
@@ -67,17 +67,17 @@ public class MemberDAO{
 		pstmt.setString(1, id);
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
-			dto.setId(rs.getString("pw"));
-			dto.setId(rs.getString("id"));
-			dto.setName(rs.getString("name"));
-			dto.setYear(rs.getInt("year")+"");
-			dto.setMonth(rs.getInt("month")+"");
-			dto.setDay(rs.getInt("day")+"");
-			dto.setReg(rs.getTimestamp("reg"));
-			dto.setStatus(rs.getInt("status"));
-			dto.setGender(rs.getString("gender"));
-			dto.setEmail(rs.getString("email"));
-			dto.setPhone(rs.getString("phone"));
+			dto.setPw1(rs.getString("PW1"));
+			dto.setId(rs.getString("ID"));
+			dto.setName(rs.getString("NAME"));
+			dto.setYear(rs.getInt("YEAR")+"");
+			dto.setMonth(rs.getInt("MONTH")+"");
+			dto.setDay(rs.getInt("DAY")+"");
+			dto.setReg(rs.getTimestamp("REG"));
+			dto.setGender(rs.getString("GENDER"));
+			dto.setEmail(rs.getString("EMAIL"));
+			dto.setPhone(rs.getString("PHONE"));
+			return dto;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class MemberDAO{
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
-		return dto;
+		return null;
 		}
 	
 	

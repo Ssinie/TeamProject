@@ -21,7 +21,7 @@ public class ReserveDAO {
 			pstmt.setString(3, dto.getPerson_no());
 			pstmt.setString(4, dto.getReservation_date());
 			pstmt.setString(5, dto.getReservation_time());
-			pstmt.setString(6, dto.getSite());
+			pstmt.setString(6, dto.getFloor());
 			pstmt.setString(7, dto.getOpt());
 			
 			

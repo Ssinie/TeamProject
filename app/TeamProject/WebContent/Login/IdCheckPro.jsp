@@ -21,7 +21,7 @@ request.setCharacterEncoding("UTF-8");
 
 	String id = dto.getId();	
 		
-	 boolean aa = vc.ischarLength(id, 5, 11);  //비번 길이체크
+	 boolean aa = vc.ischarLength(id, 5, 11);  //아이디 길이체크
 
    if(id != null && aa) // 이전부분에서 스크립트 처리를 해주어도 null비교는 해주어야 한다.
    {
@@ -29,18 +29,18 @@ request.setCharacterEncoding("UTF-8");
      MemberDTO member = dao.getMember(id);
       if(member == null){
     	  %>
-			"사용 가능한 id 입니다."
+			"사용 가능한 아이디 입니다."
       	
     <%	  
       }else{%>
     	 
-			"중복된 id 입니다."
+			"중복된 아이디 입니다."
       	
     <%
       } 
    } else {
 	   %>
- 	 "아이디형식에 맞지않습니다."
+ 	 "아이디형식에 맞지 않습니다."
 			
  <%
    }

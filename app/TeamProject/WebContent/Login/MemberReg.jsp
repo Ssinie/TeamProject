@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<Body bgcolor="lightgreen" align = "center">    
 <section>
     <h1>회원가입 페이지</h1>
   </section>
@@ -7,14 +9,26 @@
   <section>
   *는 필수사항입니다.<br><br>
   
-    <form name="login" action="MemberRegPro.jsp" method="post">
+    <script>
+    function checkDuplicationId() { //아이디중복값체크
+    	var inputId = document.getElementById("first_id").value; //입력한아디값을 var 인풋id 변수에 저장  /  아이디중복값체크때 false나면 입력한아이디가 날라가서 새창에 함
+    	window.open("IdCheckPro.jsp?id="+inputId,'','width=410px, height=200px') //파라미터 아이디를 받아 IdCheckPro.jsp 로 보낸다  아이디체크프로.jsp 빈작업으로 dto에 들어감 
+    }
+    
+    function checkAllValidate(form) {  //아이디외에 다른값들 확인하기 위해 만듦
+    	var id1 = document.getElementById("first_id").value;
+    	form.action = 'MemberRegPro.jsp?id='+id1; //id1값을 가지고 멤버레그프로로 가서 bean작업을 통해 dto로
+    	form.submit();//액션으로 보낸다
+    }
+    </script>
       *아이디확인<br>
-      <input type="email" name="id" placeholder="아이디 입력" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
-      <input type="button" name="idcheck" value="아이디 확인">
+      <input type="text" name="id" id="first_id" placeholder="아이디 입력" required>  <%-- Placeholder는 빈칸에 설명채워넣는 명령어 --%>
+      <input type="submit" name="idcheck" value="아이디 확인"  onclick="checkDuplicationId()" >      
       <br><br>
-      
+     
+      <form name="myForm" action="" method="post">
       *비밀번호<br> 
-      <input type="password" name="pw" value="" required><br>
+      <input type="password" name="pw1" value="" required><br>
       *비밀번호 재확인<br> 
       <input type="password" name="pw2" value="" required>
       <br><br>
@@ -121,7 +135,7 @@
       사진 <br>
       <input type="file" value="">
       <br><br>
-      <input type="submit" value="가입완료">
+      <input type="submit" value="가입완료" onclick="checkAllValidate(this.form)">
       
     </form>
   </section>

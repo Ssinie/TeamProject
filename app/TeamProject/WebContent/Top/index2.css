@@ -28,13 +28,6 @@ td.t1{
 	top:8%;
     color:red;
 }
-td.t2{
-	position:absolute;
-	width:180px;
-	right:1%;
-	top:8%;
-    color:red;
-}
 tab
 *{margin: 0; padding: 0;}
 #main-menu > li {
@@ -74,7 +67,9 @@ tab
 #main-menu > li:hover #sub-menu {
   opacity: 1;
   visibility: visible;
+  
 }
+
 
 #sub-menu > li >  a:hover {
  text-decoration: underline;

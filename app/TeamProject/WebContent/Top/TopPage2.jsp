@@ -25,28 +25,34 @@ String id = (String)session.getAttribute("memId");
 	#STATICMENU { position:absolute; width:100%;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
 }
 </style>
-<link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="./index2.css">
 </head>
 <body  >
 
 
 <header ><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
-<table align="right" >
+<table align="right">
 		<tr>
 		<%if(id==null){ %>
 		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
 		<%}%>
 		<%if(id != null){%>
-		<td class="t1" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
-		<td class="t2" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;">로그아웃</a></td>
+		<td class="t1" align="right"><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
 		<%}%>
 		</tr>
 	</table>
 <nav>
 
     <ul id="main-menu">
-      <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
-      <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
+
+      <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a>
+      <ul id="sub-menu">
+      	<li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">한식</a></li>
+      	<li><a href="/TeamProject/menu/japanese.jsp?id=<%=id %>" target="iframe1">일식</a></li>
+      	<li><a href="/TeamProject/menu/western.jsp?id=<%=id %>" target="iframe1">서양식</a></li>
+      </ul> 
+      </li>     
+      <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>         
       <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a>
       <ul id="sub-menu">
       	<li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">한식</a></li>
@@ -58,6 +64,7 @@ String id = (String)session.getAttribute("memId");
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
       <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>
       <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">문의사항</a></li>
+
     </ul>
 </nav>
 <section id="main">
@@ -67,21 +74,10 @@ String id = (String)session.getAttribute("memId");
 </section>
 </body>
 </html>
-<script>
 <%-- 팝업페이지 --%>
+<body onload="window.open('/TeamProject/PopUp/popupform.jsp','','width=410px, height=580px')">
 
-function popupLoad() {
-	if(!document.cookie.includes("todayPop")) { //todayPop 쿠키를 갖고 있지 않으면 팝업을 실행
-		window.open('/TeamProject/PopUp/popupform.jsp','','width=410px, height=580px');
-	}
-}
-</script>
-
-<body onload="popupLoad()">
-</body>
-</html>
-
-	   
+    
 </body>
 <div class="footer">
 <table  width="100%" height="10%" >

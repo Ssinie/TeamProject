@@ -35,7 +35,7 @@
 	<tr>
     <td  width="200" align="center" >첨부파일</td>
     <td  width="330" >
-     <input type="file" name="filePath"></td>
+     <input type="file" name="filePath" value="<%=dto.getFilePath() %>" >
   </tr>
 	<tr>
 	<td width="200" align="center">이벤트 시작일</td>

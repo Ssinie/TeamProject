@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import CSBoard.csDTO;
 import connection.ConnectionDAO;
 
 public class EventBoardDAO {
@@ -169,6 +170,33 @@ public class EventBoardDAO {
 				ConnectionDAO.close(rs, pstmt, conn);
 			}
 		}
+	
+	//	//update 메서드 불러오기
+	public EventBoardDTO updateGetEventBoard(int num) throws Exception {
+		EventBoardDTO dto = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select * from EventBoard where num = ?"); 
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto = new EventBoardDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setRe_date(rs.getTimestamp("re_date"));
+				dto.setSt_date(rs.getString("st_date"));
+				dto.setEnd_date(rs.getString("end_date"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setFilePath(rs.getString("filePath"));
+				dto.setContent(rs.getString("content"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return dto;
+	}
 
 	//삭제 메서드
 	public int deleteBoard(int num, String passwd) throws Exception {

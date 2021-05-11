@@ -4,7 +4,8 @@
 
 
 <%
-session.invalidate(); //세션 모두 삭제
-response.sendRedirect("/TeamProject/Top/TopPage.jsp");
-
-%>
+session.invalidate(); //세션 모두 삭제%>
+<script>
+parent.document.location.reload();
+location.href="/TeamProject/lobby/lobby.jsp";
+</script>

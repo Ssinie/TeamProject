@@ -5,7 +5,7 @@
 }
 
 ul {
-  list-style: none; /*ul±âÈ£ ¾Èº¸ÀÌ°Ô*/
+  list-style: none; /*ul짹창횊짙 쩐횊쨘쨍�횑째횚*/
 }
 
 #container {
@@ -25,7 +25,9 @@ nav {
   float: right;
   width: 1200px;
   height: 100px;
-  line-height: 100px; /*¸Þ´º¸¦ ¾Æ·¡·Î ³»¸®±â À§ÇØ 100pxÁß¿¡¼­ 40px ¾Æ·¡·Î*/  
+  line-height: 100px; 
+  background-color: linen;
+  line-height: 100px; /*쨍횧쨈쨘쨍짝 쩐횈쨌징쨌횓 쨀쨩쨍짰짹창 �짠횉횠 100px횁횩쩔징쩌짯 40px 쩐횈쨌징쨌횓*/  
   background-color: rgba(146, 214, 180, 0.74); 
 }
 
@@ -35,9 +37,11 @@ nav {
 }
 
 /* #topMenu > li > a {
-  display: block; ¸µÅ© ÅØ½ºÆ®´Â ºí·ÏÀ¸·Î
+  display: block;
+  display: block; 쨍쨉횇짤 횇횠쩍쨘횈짰쨈횂 쨘챠쨌횕�쨍쨌횓
   color: black;
-  font-weight: 600; ÆùÆ®±½±â
+  font-weight: 600; 
+  font-weight: 600; 횈첫횈짰짹쩍짹창
   text-shadow: black;
 } */
 
@@ -48,7 +52,8 @@ nav {
 
 #contents {
   width: 1200px;
-/*   height: 600px; */
+/*    height: 600px; 
+background-color: #c0c0c0; */
 }
 
 #links {

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <h1>예약페이지 Form</h1>
 
-<Body bgcolor="lightyellow" align = "center">
+<Body align = "center">
 <form method = "get" action = "ReservePro.jsp">
 	<fieldset>
 			<legend> 예약자 정보</legend>
@@ -42,7 +42,8 @@
 				
 		</fieldset>						
 		<br>
+		<input type = "submit" value = "예약완료"/>
+		<input type ="reset" value = "취소"/></br></br>
+		<input type = "button" value = "예약조회" onclick="window.location='/TeamProject/Reserve/Reserveinfo.jsp'"/>
 		
-		<input type = "submit" value = "예약"/>
-		<input type ="reset" value = "취소"/>
 </form>

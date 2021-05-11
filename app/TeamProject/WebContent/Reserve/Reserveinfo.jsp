@@ -23,7 +23,6 @@ request.setCharacterEncoding("UTF-8");
 	
 	dto = dao.Reserveinfo(id);
 	%>	
-	<Body bgcolor="lightblue">
 	<h1 align="center">나의 예약정보 </h1>
 	<table border="1" align="center">
 	<tr>

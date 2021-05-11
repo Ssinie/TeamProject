@@ -25,8 +25,6 @@ nav {
   float: right;
   width: 1200px;
   height: 100px;
-  line-height: 100px; 
-  background-color: linen;
   line-height: 100px; /*쨍횧쨈쨘쨍짝 쩐횈쨌징쨌횓 쨀쨩쨍짰짹창 �짠횉횠 100px횁횩쩔징쩌짯 40px 쩐횈쨌징쨌횓*/  
   background-color: rgba(146, 214, 180, 0.74); 
 }
@@ -37,10 +35,8 @@ nav {
 }
 
 /* #topMenu > li > a {
-  display: block;
   display: block; 쨍쨉횇짤 횇횠쩍쨘횈짰쨈횂 쨘챠쨌횕�쨍쨌횓
   color: black;
-  font-weight: 600; 
   font-weight: 600; 횈첫횈짰짹쩍짹창
   text-shadow: black;
 } */

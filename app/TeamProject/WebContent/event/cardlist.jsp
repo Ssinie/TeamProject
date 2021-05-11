@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="44.css"> 
   </head>
     <body>
+    <div id="container_body">
       <div id="container">
         <header>
            <nav>
@@ -98,7 +99,7 @@
 				<%}
 		  	 }
 		}%>	
-		
+</div>		
 <div id="footer">    
 <%
 

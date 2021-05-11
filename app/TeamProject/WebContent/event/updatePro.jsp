@@ -4,7 +4,7 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 
-
+<% request.setCharacterEncoding("UTF-8");%>
 <jsp:useBean id="dto" class="event.EventBoardDTO"/>
 
 <%

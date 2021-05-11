@@ -16,14 +16,12 @@ request.setCharacterEncoding("UTF-8");
 
 
     <%
-	// 세션에 ID를 DB에서 검색 한다. 
-	// 검색 결과를 DTO에 대입하여 리턴
-	String guest = (String)session.getAttribute("memguest");
+	String id = (String)session.getAttribute("memid");
     
 	ReserveDAO dao = new ReserveDAO();
-	ReserveDTO dto = new ReserveDTO();
 	
-	dto = dao.Reservation(guest);
+	
+	dto = dao.Reserveinfo(id);
 	%>	
 	<Body bgcolor="lightblue">
 	<h1 align="center">나의 예약정보 </h1>
@@ -38,4 +36,4 @@ request.setCharacterEncoding("UTF-8");
 	<td>옵션</td> <td><%=dto.getOpt()%></td></tr>
 	
 	</table>
-   
+   <a1 align="center">예약해주셔서 감사합니다.</a1>

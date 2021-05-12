@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-<Body align = "center">       
+<Body bgcolor="lightblue" align = "center">       
 <h1>로그인 페이지</h1>
 
 <form name="login" action="LoginPro.jsp" method="post">

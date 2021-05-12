@@ -13,8 +13,6 @@
 <title> Q&A 자주 묻는 질문 </title>
 
 <%
-	request.setCharacterEncoding("UTF-8");
-
 	String id = (String)session.getAttribute("memId");
 	
 	int pageSize = 10;
@@ -38,8 +36,8 @@
     if (count > 0) {
         QABoardList = dao.getQABoard(startRow, endRow);
     }
+
 	number=count-(currentPage-1)*pageSize;
-	qaDTO dto = null;
 %>
 <html>
 <head>
@@ -55,42 +53,54 @@
     	<%if(id == null){%>
     		<a href="/TeamProject/Login/Login.jsp">로그인</a>
     	<%} %>
+    	<%if(id != null){%>
+    		<a href="/TeamProject/CSBoard/csBoardList.jsp">1:1 문의 게시판 가기</a>
+    	<%} %>
     	<%if(id != null && id.equals("admin")){%>
     		<a href="qaBoardWrite.jsp">글쓰기</a>
     	<%} %>
     	</td>
     </tr>
-  </table>
-</html>
-<html>
-<head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="container-fluid" style="min-height: calc(100vh - 136px);">
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-<% for(int iu = 0; iu < QABoardList.size(); iu++){
-		dto = (qaDTO)QABoardList.get(iu);
+</table>
+<%if (count == 0) {%>
+	<table width="800" border="1" cellpadding="0" cellspacing="0">
+		<tr>
+    		<td align="center">
+    			게시판에 저장된 글이 없습니다.
+    		</td>
+    	</tr>
+	</table>
+<%} else {%>
+<table border="1" width="800" cellpadding="0" cellspacing="0" align="center">
+	<tr height="30" bgcolor="eeeeee"> 
+		<td align="center"  width="75"  >No.</td>
+		<td align="center"  width="450" >제 목</td>
+	    <td align="center"  width="100" >작성자</td>
+	    <td align="center"  width="175" >작성일</td>
+    </tr>
+<%	for (int i = 0 ; i < QABoardList.size() ; i++) {
+    	qaDTO dto = (qaDTO)QABoardList.get(i);
 %>
-<div class="panel panel-default">
-<div class="panel-heading" role="tab">
-<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=iu %>" aria-expanded="false">
-<%= dto.getSubject() %>
-</a>
-</div>
-<div id="collapse<%=iu %>" class="panel-collapse collapse" role="tabpanel">
-<div class="panel-body">
-<%= dto.getContent() %> </br>
-<%if(id != null && id.equals("admin")){%>
-	<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
-<%} %>
-</div>
-</div>
-</div>
+	<tr height="30">
+    	<td align="center"  width="75" > <%=number--%></td>
+    	<td  width="450" >
+			<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+           		<h2><%=dto.getSubject()%></h2>
+				</a><div style="DISPLAY: none">
+           		<h3><%=dto.getContent()%></h3>
+				</div>
+					<%if(id != null && id.equals("admin")){%>
+	    			<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
+    				<%} %></a>
+		</td>
+    	<td align="center"  width="100">
+			<%if(dto.getWriter().equals("admin")) { adm = "관리자"; }%>
+			<%=adm%>
+		</td>
+    		<td align="center"  width="175"><%= sdf.format(dto.getReg())%></td>
+	</tr>
+    <%}%>
+</table>
 <%}%>
 <%if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
@@ -99,7 +109,7 @@
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
         if (startPage > 10) {    %>
-        	<a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
+        <a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
         for (int i = startPage ; i <= endPage ; i++) {  %>
         	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
         if (endPage < pageCount) {  %>
@@ -114,7 +124,5 @@
 		<input type="submit" value="검색"/>
 	</form>
 </center>
-</div>
-</div>
 </body>
 </html>

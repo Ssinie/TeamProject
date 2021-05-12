@@ -9,3 +9,11 @@ session.invalidate(); //세션 모두 삭제%>
 parent.document.location.reload();
 location.href="/TeamProject/Top/TopPage}.jsp";
 </script>
+session.invalidate(); //세션 모두 삭제
+response.sendRedirect("/TeamProject/Top/TopPage.jsp");
+
+%>
+session.invalidate(); //세션 모두 삭제
+response.sendRedirect("/TeamProject/Top/TopPage.jsp");
+
+%>

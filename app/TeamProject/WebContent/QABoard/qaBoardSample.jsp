@@ -6,16 +6,12 @@
 
 <div id="menubar">
 	<div><a href="/TeamProject/CSBoard/csBoardList.jsp"> 1:1 문의 게시판 </a></div>
-	<div><a href="qaBoardList.jsp"> 자주 묻는 질문 </a></div><br />
+	<div><a href="qaBoardSample.jsp"> 자주 묻는 질문 </a></div><br />
 </div>
 
 <%
-	request.setCharacterEncoding("UTF-8");
-
 	String id = (String)session.getAttribute("memId");
-	
 	int pageSize = 10;
-	
 	String pageNum = request.getParameter("pageNum");
 	if (pageNum == null) {
 	    pageNum = "1";
@@ -56,9 +52,6 @@
     	<%} %>
     	</td>
     </tr>
-  </table>
-</html>
-
 <html>
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -72,18 +65,18 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 
-<% for(int iu = 0; iu < QABoardList.size(); iu++){
-		dto = (qaDTO)QABoardList.get(iu);
+<% for(int i = 0; i < QABoardList.size(); i++){
+		dto = (qaDTO)QABoardList.get(i);
 %>
 <div class="panel panel-default">
 <div class="panel-heading" role="tab">
-<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=iu %>" aria-expanded="false">
+<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i %>" aria-expanded="false">
 <%= dto.getSubject() %>
 </a>
 </div>
-<div id="collapse<%=iu %>" class="panel-collapse collapse" role="tabpanel">
+<div id="collapse<%=i %>" class="panel-collapse collapse" role="tabpanel">
 <div class="panel-body">
-<%= dto.getContent() %> </br>
+<%= dto.getContent() %>
 <%if(id != null && id.equals("admin")){%>
 	<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
 <%} %>
@@ -91,6 +84,10 @@
 </div>
 </div>
 <%}%>
+</div>
+</div>
+</body>
+</html>
 <%if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
         int startPage = (int)(currentPage/10)*10+1;
@@ -98,13 +95,13 @@
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
         if (startPage > 10) {    %>
-        	<a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
+        	<a href="qaBoardSample.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
+        	<a href="qaBoardSample.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
         if (endPage < pageCount) {  %>
-        	<a href="qaBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a><%}
+        	<a href="qaBoardSample.jsp?pageNum=<%= startPage + 10 %>">[다음]</a><%}
 }%>
-	<form action="qaBoardSearch.jsp" method="post">
+	<form action="qaBoardSample.jsp" method="post">
 		<select name="col">
 			<option value = "subject"> 제목 </option>
 			<option value = "content"> 내용 </option>
@@ -113,7 +110,5 @@
 		<input type="submit" value="검색"/>
 	</form>
 </center>
-</div>
-</div>
 </body>
 </html>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
     
+    
 <script>
 function setCookie(name, value, expiredays){ //쿠키설정 기능
 	var today = new Date(); //today에 현재데이트 값을 넣어준다
@@ -17,6 +18,8 @@ function closePop(){
 	self.close();
 }
 </script>
+
+    
     
 
 <table>
@@ -26,7 +29,7 @@ function closePop(){
  	 	</td>
  	</tr>
  	<tr>
- 	 	<td align= "center">
+ 	 	<td align=center>
  	 	 	<input type="checkbox" id = "todayPop" onclick= "closePop()">오늘하루 이창을 열지않음
  	 	 	 	 	 	
  	 	</td>

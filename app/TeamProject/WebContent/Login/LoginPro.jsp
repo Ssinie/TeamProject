@@ -11,11 +11,9 @@
 	MemberDAO dao = new MemberDAO();
 	boolean result = dao.loginCheck(id, pw);
 	if(result){
-		session.setAttribute("memId", id);%>
-		<script>
-		parent.document.location.reload();
-		location.href="/TeamProject/lobby/lobby.jsp";
-		</script>
+		session.setAttribute("memId", id);
+		response.sendRedirect("/TeamProject/Top/TopPage.jsp");
+%>		
 <%	}else{ %>
 		<script>
 			alert("아이디와 비밀번호를 확인하세요");

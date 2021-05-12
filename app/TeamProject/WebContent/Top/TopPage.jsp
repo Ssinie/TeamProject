@@ -7,7 +7,6 @@
 // https://uxgjs.tistory.com/202
 String id = (String)session.getAttribute("memId");
 %>
-
 <script>
 	document.onkeydown = trapRefresh;
 	function trapRefresh()
@@ -35,11 +34,11 @@ String id = (String)session.getAttribute("memId");
 <table align="right" >
 		<tr>
 		<%if(id==null){ %>
-		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp"  target="iframe1"   style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
+		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
 		<%}%>
 		<%if(id != null){%>
-		<td class="t2" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" target="iframe1"   style="color:orange; font-size:1.0em;" >내정보</a></td>
-		<td class="t2_1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"   target="iframe1"  style="color:orange; font-size:1.0em;">로그아웃</a></td>
+		<td class="t2" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
+		<td class="t2_1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;">로그아웃</a></td>
 		<%}%>
 		</tr>
 	</table>
@@ -57,7 +56,7 @@ String id = (String)session.getAttribute("memId");
       </li>     
       <li><a href="/TeamProject/event/cardlist.jsp" target="iframe1">이벤트</a></li>
       <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
-      <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약 및 확인</a></li>
+      <li><a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1">예약하기</a></li>
       <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">문의사항</a></li>
     </ul>
 </nav>

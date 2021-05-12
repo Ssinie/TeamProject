@@ -21,7 +21,7 @@ request.setCharacterEncoding("UTF-8");
 
 	String pw = dto.getPw1();
 	String pw2 = dto.getPw2();
-	
+	System.out.println(dto.getId());
 	
 		
    if(pw != null) // 이전부분에서 스크립트 처리를 해주어도 null비교는 해주어야 한다.

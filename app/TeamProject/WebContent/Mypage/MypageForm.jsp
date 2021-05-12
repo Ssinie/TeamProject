@@ -13,8 +13,9 @@
 	MemberDTO dto = new MemberDTO();
 	dto = dao.getUserinfo(id);
 	%>	
-	<h1>나의 회원정보 </h1>
-	<table border="1">
+	<Body bgcolor="lightblue">
+	<h1 align="center">나의 회원정보 </h1>
+	<table border="1" align="center">
 	<tr>
 	<td>아이디</td> <td><%=dto.getId()%></td></tr>
 	<td>이름</td> <td><%=dto.getName()%></td></tr>
@@ -25,11 +26,10 @@
 	<td>가입날짜</td> <td><%=dto.getReg()%> </td></tr>
 	<td>성별</td> <td><%=dto.getGender()%> </td></tr>
 	<td>연락처</td> <td><%=dto.getPhone()%></td></tr>
+	
 	</table>
 	<input type ="button" value="탈퇴 및 정보수정" onclick="window.location='/TeamProject/Login/updateForm.jsp'"/>
 	
 	
    
-
-	
 

@@ -1,7 +1,5 @@
 package Reserve;
 
-import java.sql.Timestamp;
-
 public class ReserveDTO {
 	
 	private String guest;
@@ -44,7 +42,7 @@ public class ReserveDTO {
 	public String getFloor() {
 		return floor;
 	}
-	public void setFloor(String floor) {
+	public void setSite(String site) {
 		this.floor = floor;
 	}
 	public String getOpt() {

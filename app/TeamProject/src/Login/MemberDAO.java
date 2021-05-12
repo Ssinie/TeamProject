@@ -11,7 +11,7 @@ public class MemberDAO{
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
-	public void insertMember(MemberDTO dto) { //insertMember 메소드에 dto에 잇는 값들을 대입
+	public void insertMember(MemberDTO dto) { //inserMember 메소드에 dto에 잇는 값들을 대입
 		try {
 			conn = ConnectionDAO.getConnection(); //1,2단계 메소드 호출
 			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?,sysdate)");

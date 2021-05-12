@@ -9,7 +9,7 @@
 			<label for = "sub"> 예약자:</label>
 			<input type = "text" name = "guest" id = "sub" required> <br>
 			<label for = "phone"> 휴대폰:</label>
-			<input type = "tel" name = "tell" id = "phone" placeholder= "010-****-****" required>
+			<input type = "tel" name = "tel" id = "phone" placeholder= "010-****-****" required>
 				
 			예약인원:
 			<select name = "person_no" size="1" required>
@@ -32,8 +32,8 @@
 							
 								
 				<label for = "position"> 위치:</label>
-				<input type = "radio" name = "floor" id = "position" value = "yes"/ required> 1층
-				<input type = "radio" name = "floor" id = "position" value = "no"/ required> 2층<br>	
+				<input type = "radio" name = "floor" id = "position" value = "1"/ required> 1층
+				<input type = "radio" name = "floor" id = "position" value = "2"/ required> 2층<br>	
 				
 				<label for = "choice"> 옵션:</label>
 				<input type = "checkbox" name = "opt" id = "choice" value = "baby_chair">아기의자

@@ -32,23 +32,27 @@ request.setCharacterEncoding("UTF-8");
       boolean dd = vc.isSpecial(pw);
       boolean ee = vc.isSame(pw,pw2);
      
-      if(!ee)
+      if(!ee){
     	  %>
 	  <script>
 		alert("재확인 비밀번호가 다릅니다.");
 		history.go(-1); 
 	</script>
   	
-<%
+	<%}
     	  
-      if(aa && bb && cc && dd && ee){
+      else if(aa && bb && cc && dd && ee){
 	
 	   	dao.insertMember(dto);
-    	session.setAttribute("memId", dto.getId());
-    	response.sendRedirect("/TeamProject/Top/TopPage.jsp");
+    	session.setAttribute("memId", dto.getId());%>
+    	<script>
+    	alert("회원가입이 완료되었습니다.");
+    	location.href="/TeamProject/lobby/lobby.jsp";
+    	</script>
     	
     	  
-      }else{%>
+      <%}
+      else{%>
     	  <script>
 			alert("비밀번호가 적절하지 않습니다.");
 			history.go(-1); 
@@ -56,7 +60,9 @@ request.setCharacterEncoding("UTF-8");
 		   <%}
       	
     
-      } else { %>
+  }
+  else 
+  { %>
 	   
  	  <script>
 			alert("비밀번호를 입력해주세요.");

@@ -34,11 +34,11 @@ String id = (String)session.getAttribute("memId");
 <table align="right" >
 		<tr>
 		<%if(id==null){ %>
-		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" >로그인/회원가입</a></td>
+		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" target="iframe1">로그인/회원가입</a></td>
 		<%}%>
 		<%if(id != null){%>
-		<td class="t2" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" >내정보</a></td>
-		<td class="t2_1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;">로그아웃</a></td>
+		<td class="t2" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" target="iframe1">내정보</a></td>
+		<td class="t2_1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;" target="iframe1">로그아웃</a></td>
 		<%}%>
 		</tr>
 	</table>

@@ -8,16 +8,22 @@
 	String id = (String)session.getAttribute("memId"); //세션아이디
 	MemberDAO dao = new MemberDAO();
 	boolean result= dao.loginCheck(id, pw1);
-	if(result){
+	if(id == pw1){
 		dao.statusChange(id);
 		session.invalidate();  // 세션 모두 삭제 
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("http://localhost:8080/TeamProject/Top/TopPge.jsp");
 %>		
+	<script>
+   alert("탈퇴되었습니다..");
+   </script>
+
 <%	}else{ %>
 		<script>
 			alert("pw 를 확인하세요");
 			history.go(-1);
 		</script>
 <%	} %>
+
+
 
 	

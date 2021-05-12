@@ -24,6 +24,8 @@
 	이메일 : <input type="text" name="email" value="<%=dto.getEmail()%>" /> <br />
 	가입날짜 : <%=dto.getReg() %> <br />
 		  <input type="submit" value="수 정" />
+		  <input type="button" value="회원탈퇴" onclick="window.location='/TeamProject/Login/deleteForm.jsp'"/>
+		
 </form>
 
 

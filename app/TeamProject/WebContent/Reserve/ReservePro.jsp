@@ -20,9 +20,7 @@ request.setCharacterEncoding("UTF-8");
 	String guest = (String)session.getAttribute("memid");
 	ReserveDAO dao = new ReserveDAO();
 	dao.insertReservation(dto);
-	dto = dao.Reserveinfo(guest);
-	
-	
+	dto = dao.Reserveinfo(guest);	
 %>
 
 	<h1 align="center">나의 예약정보 </h1>

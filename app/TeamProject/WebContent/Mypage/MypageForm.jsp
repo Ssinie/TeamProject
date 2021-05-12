@@ -26,7 +26,8 @@
 	<td>성별</td> <td><%=dto.getGender()%> </td></tr>
 	<td>연락처</td> <td><%=dto.getPhone()%></td></tr>
 	</table>
-	<input type ="button" value="정보수정" onclick="window.location='/TeamProject/Login/updateForm.jsp'"/>
+	<input type ="button" value="탈퇴 및 정보수정" onclick="window.location='/TeamProject/Login/updateForm.jsp'"/>
+	
 	
    
 

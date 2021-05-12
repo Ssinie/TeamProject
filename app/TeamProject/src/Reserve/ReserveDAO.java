@@ -1,10 +1,9 @@
 package Reserve;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import Login.MemberDTO;
 import connection.ConnectionDAO;
 
 public class ReserveDAO {

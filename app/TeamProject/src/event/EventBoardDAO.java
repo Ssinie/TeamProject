@@ -276,7 +276,11 @@ public class EventBoardDAO {
 			List endlist = null;
 			try {
 				conn = ConnectionDAO.getConnection();
-				String sql = "select * from Eventboard where end_date < sysdate";
+				String sql = "select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath,r " + 
+						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath,rownum r "+
+						 "from (select num,writer,subject,re_date,ref,content,readcount,st_date,end_date,filePath "+ 
+						 "from EventBoard order by ref desc) order by re_date desc) where r >= ? and r <= ? and end_date < sysdate ";
+				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, end);

@@ -27,7 +27,7 @@
     count = dao.getArticleCount();
     if (count > 0) {
        endlist = dao.getend(startRow, endRow);
-       System.out.println(endlist);
+       
     }
 
    number=count-(currentPage-1)*pageSize;

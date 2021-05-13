@@ -114,6 +114,7 @@ function popupLoad() {
      		<li class="cell">
      			<a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1"class="block">문의사항</a>
     				<ul>
+    				<li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1"class="block">Q&A</a></li>
                     <li><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1" class="block">문의접수</a></li>
                   
                 </ul>

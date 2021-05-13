@@ -14,7 +14,7 @@
 String id = request.getParameter("id"); //admin 확인
 
 
-    int pageSize = 4;
+    int pageSize = 10;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
@@ -36,9 +36,9 @@ String id = request.getParameter("id"); //admin 확인
     EventBoardDAO dao =new EventBoardDAO();
     LatterBoardDAO dao2 = new LatterBoardDAO();
     
-    count = dbPro.getArticleCountK();
+    count = dbPro.getArticleCount();
     if (count > 0) {
-        articleList = dbPro.getArticlesK(startRow, endRow);
+        articleList = dbPro.getArticles(startRow, endRow);
         articleList2 = dao.getArticles(startRow, endRow);
         articleList3 = dao2.getArticles(startRow, endRow);
     }
@@ -101,7 +101,7 @@ $(document).ready(function () {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
    
- <%if (article.getType().equals("한식") ) {%>		
+	
 
 
 <% if(i%2==0 && i!=0) { %>  <%  } %>
@@ -109,7 +109,7 @@ $(document).ready(function () {
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="220" width="300"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
 						 
-     <%  } %><!-- 서양식 종료 -->    
+       
       	
   <%  } %><!-- for문 종료 -->
 

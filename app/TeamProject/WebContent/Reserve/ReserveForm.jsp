@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <% String id = (String)session.getAttribute("memId"); %>
-<Body>
+
 <center>
 <h1>예약페이지</h1>
 <form method = "get" action = "ReservePro.jsp">
@@ -53,4 +53,3 @@
 		<input type ="reset" value = "취소"/>
 </form>
 </center>
-</Body>

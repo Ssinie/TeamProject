@@ -12,6 +12,9 @@
 	int rescount = 0;
 	ReserveDAO resdao = new ReserveDAO();
 	
+	int mecount = 0;
+	int evecount = 0;
+	
 	int cscount = 0;
 	csDAO csdao = new csDAO();
 	cscount = csdao.getCSBoardCount();

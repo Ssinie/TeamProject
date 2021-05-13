@@ -1,144 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "QABoard.qaDAO" %>
+<%@ page import = "QABoard.qaDTO" %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+
+<div id="menubar">
+	<div><a href="/TeamProject/CSBoard/csBoardList.jsp"> 1 : 1 문의 게시판 </a></div>
+	<div><a href="qaBoardList.jsp"> 자주 묻는 질문 </a></div><br />
+</div>
+
+<title> Q&A 자주 묻는 질문 </title>
 
 <%
+	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("memId");
+
+	int pageSize = 10;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
+	String pageNum = request.getParameter("pageNum");
+	
+	if (pageNum == null) {
+	    pageNum = "1";
+	}
+	
+	String adm = "";
+	int currentPage = Integer.parseInt(pageNum);
+	int startRow = (currentPage - 1) * pageSize + 1;
+	int endRow = currentPage * pageSize;
+	int count = 0;
+	int number=0;
+	
+	List QABoardList = null;
+	qaDAO dao =new qaDAO();
+	count = dao.getQABoardCount();
+	if (count > 0) {
+	    QABoardList = dao.getQABoard(startRow, endRow);
+	}
+	
+	number=count-(currentPage-1)*pageSize;
+	qaDTO dto = null;
 %>
-<title> Admin </title>
+
+<html>
+<head>
+<title> Q&A 자주 묻는 질문 </title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
 
 <body bgcolor="white">
-<center><h3>관리자 전용 페이지</h3>
+<center><b> Q&A 자주 묻는 질문 </b>
 <table width="800">
-</table>
-
-<table border="1" width="1050" cellpadding="0" cellspacing="0" align="center">
-	<tr height="30" bgcolor="dddddd"> 
-		<td align="center"  width="75"  >No.</td> 
-		<td align="center"  width="450" >LIST</td> 
-	    <td align="center"  width="175" >COUNT-DAY</td>
-	    <td align="center"  width="175" >COUNT-WEEK</td> 
-	    <td align="center"  width="175" >COUNT-MONTH</td>
+	<tr>
+    	<td align="right" bgcolor="white">
+    	<%if(id == null){%>
+    		<a href="/TeamProject/Login/Login.jsp">로그인</a>
+    	<%} %>
+    	<%if(id != null && id.equals("admin")){%>
+    		<a href="qaBoardWrite.jsp">글쓰기</a>
+    	<%} %>
+    	</td>
     </tr>
-	<tr height="30">
-    	<td align="center"  width="75" >1</td>
-    	<td align="center"  width="450">예약 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >2</td>
-    	<td align="center"  width="450">후기게시판 총 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >3</td>
-    	<td align="center"  width="450">후기게시판 한식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >4</td>
-    	<td align="center"  width="450">후기게시판 일식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >5</td>
-    	<td align="center"  width="450">후기게시판 양식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >6</td>
-    	<td align="center"  width="450">문의게시판 총 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >7</td>
-    	<td align="center"  width="450">문의 게시판 미 답변 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >8</td>
-    	<td align="center"  width="450">문의 게시판 답변 완료 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >9</td>
-    	<td align="center"  width="450">이벤트 게시판 진행중 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >10</td>
-    	<td align="center"  width="450">이벤트 게시판 종료된 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >11</td>
-    	<td align="center"  width="450">회원 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-	</tr>
 </table>
-</br></br></br>
-<table border="1" width="875" cellpadding="0" cellspacing="0" align="center">
-	<tr height="30" bgcolor="dddddd">
-		<td align="center"  width="75"  >No.</td> 
-		<td align="center"  width="450" >게시판 이름</td> 
-	    <td align="center"  width="175" >글쓰기 바로가기</td>
-	    <td align="center"  width="175" >게시판 바로가기</td> 
-    </tr>
-    <tr height="30">
-    	<td align="center"  width="75" >1</td>
-    	<td align="center"  width="450">메뉴 게시판</td>
-    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/menu/WriteForm.jsp'"/></td>
-    	<td align="center"  width="175"><input type="button" value="메뉴 바로가기" onclick="window.location='/TeamProject/menu/menupage.jsp'"/></td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >2</td>
-    	<td align="center"  width="450">이벤트 게시판</td>
-    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/event/WriteForm.jsp'"/></td>
-    	<td align="center"  width="175"><input type="button" value="이벤트 바로가기" onclick="window.location='/TeamProject/event/cardlist.jsp'"/></td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >3</td>
-    	<td align="center"  width="450">후기 게시판</td>
-    	<td align="center"  width="175"></td>
-    	<td align="center"  width="175"><input type="button" value="후기 바로가기" onclick="window.location='/TeamProject/latterBoard/imageList.jsp'"/></td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >4</td>
-    	<td align="center"  width="450">1 : 1 문의 게시판</td>
-    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/CSBoard/csBoardWrite.jsp'"/></td>
-    	<td align="center"  width="175"><input type="button" value="문의사항 바로가기" onclick="window.location='/TeamProject/CSBoard/csBoardList.jsp'"/></td>
-	</tr>
-    <tr height="30">
-    	<td align="center"  width="75" >5</td>
-    	<td align="center"  width="450">자주 묻는 질문 게시판</td>
-    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/QABoard/qaBoardWrite.jsp'"/></td>
-    	<td align="center"  width="175"><input type="button" value="자주 묻는 질문 바로가기" onclick="window.location='/TeamProject/QABoard/qaBoardList.jsp'"/></td>
-	</tr>
-	<tr height="30">
-    	<td align="center"  width="75" >6</td>
-    	<td align="center"  width="450">예약 게시판</td>
-    	<td align="center"  width="175"></td>
-    	<td align="center"  width="175"><input type="button" value="예약 바로가기" onclick="window.location='/TeamProject/Reserve/ReserveForm.jsp'"/></td>
-	</tr>
-</table>
+</body>
+</html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid" style="min-height: calc(100vh - 136px);">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<% for(int iu = 0; iu < QABoardList.size(); iu++){
+		dto = (qaDTO)QABoardList.get(iu);
+%>
+<div class="panel panel-default">
+<div class="panel-heading" role="tab">
+<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=iu %>" aria-expanded="false">
+<%= dto.getSubject() %>
+</a>
+</div>
+<div id="collapse<%=iu %>" class="panel-collapse collapse" role="tabpanel">
+<div class="panel-body">
+<%= dto.getContent() %> </br>
+<%if(id != null && id.equals("admin")){%>
+	<a href="qaBoardContent.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">글 수정 및 삭제하기</a>
+<%} %>
+</div>
+</div>
+</div>
+<%}%>
+<%if (count > 0) {
+        int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
+        int startPage = (int)(currentPage/10)*10+1;
+		int pageBlock=10;
+        int endPage = startPage + pageBlock-1;
+        if (endPage > pageCount) endPage = pageCount;
+        if (startPage > 10) {    %>
+        	<a href="qaBoardList.jsp?pageNum=<%= startPage - 10 %>">[이전]</a><%}
+        for (int i = startPage ; i <= endPage ; i++) {  %>
+        	<a href="qaBoardList.jsp?pageNum=<%= i %>">[<%= i %>]</a><%}
+        if (endPage < pageCount) {  %>
+        	<a href="qaBoardList.jsp?pageNum=<%= startPage + 10 %>">[다음]</a><%}
+}%>
+	<form action="qaBoardSearch.jsp" method="post">
+		<select name="col">
+			<option value = "subject"> 제목 </option>
+			<option value = "content"> 내용 </option>
+		</select>
+		<input type="text" name="search" />
+		<input type="submit" value="검색"/>
+	</form>
+</center>
+</div>
+</div>
+</body>
+</html>

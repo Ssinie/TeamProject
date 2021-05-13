@@ -127,7 +127,7 @@ function popupLoad() {
 
 
 <div class="body2">
-		<iframe name="iframe1" src="/TeamProject/main/main2.jsp"  frameborder="0"   width="100%" height="1100"></iframe>		
+		<iframe name="iframe1" src="/TeamProject/main/main2.jsp"  frameborder="0"   width="100%" height="1200"></iframe>		
 		<%-- SNS 연동 부분 --%>
 
 <li class="footer_social_listitem footer_instagram">

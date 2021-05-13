@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h1>예약페이지 Form</h1>
+
 <% String id = (String)session.getAttribute("memId"); %>
-<Body bgcolor="lightyellow">
+<Body>
+<center>
+<h1>예약페이지</h1>
 <form method = "get" action = "ReservePro.jsp">
-	<fieldset>
+	<fieldset style="width:30%">
 			<legend> 예약자 정보</legend>
 			<label for = "sub"> 예약자:</label><%
 			if(id == null){
@@ -29,7 +31,7 @@
 			</select>	
 		</fieldset>	
 		
-		<fieldset>
+		<fieldset style="width:30%">
 				<legend>날짜 및 시간 선택</legend>
 				<input type = "date" name = "reservation_date"/ required>
 				<input type = "time" name = "reservation_time" min="09:00" max="20:00"/ required><br>
@@ -50,3 +52,5 @@
 		<input type = "submit" value = "예약"/>
 		<input type ="reset" value = "취소"/>
 </form>
+</center>
+</Body>

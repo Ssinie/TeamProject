@@ -11,7 +11,7 @@ width:100px;
 	position:relative;
 	top:200px;
 	width:100%;	
-	height:400px; 
+	height:1200; 
 }
 
 
@@ -185,7 +185,8 @@ li a:hover:not(.active) {
 }
 
 html, body {
-    overflow-x:hidden;
+    height:100%;
+    overflow-x:auto;
 }
 
 body {

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
+<html >
 <%
 // https://amaze9001.tistory.com/69
 // https://lcw126.tistory.com/153
@@ -48,7 +48,9 @@ function popupLoad() {
 <head><title>오식당</title>
     <style type="text/css">
 	#STATICMENU { position:absolute; width:100%;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
+	
 }
+
 </style>
 <link rel="stylesheet" href="./top.css">
 </head>
@@ -75,11 +77,8 @@ function popupLoad() {
     <nav class="menu-box-1 inline-block">
         <ul class="row">
             <li class="cell">
-				 <a href="/TeamProject/main/main.jsp"target="iframe1" class="block">메인화면</a>
-    				<ul>
-                    <li><a href="/TeamProject/main/test.jsp" target="iframe1" class="block">메인2</a></li>
-                    
-                </ul>
+				 <a href="/TeamProject/main/main2.jsp"target="iframe1" class="block">메인화면</a>
+    				
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/intro/ceointro.jsp" target="iframe1"class="block">가게 소개</a>
@@ -99,31 +98,23 @@ function popupLoad() {
                 </ul>
      		</li>
      		<li class="cell">
-     			<a href="/TeamProject/event/cardlist.jsp" target="iframe1"class="block">이벤트 게시판</a>
-    				<ul>
-                    <li><a href="/TeamProject/event/list.jsp" target="iframe1">진행중인<br>이벤트</a></li>
-                  
-                </ul>
+     			<a href="/TeamProject/event/cardlist.jsp" target="iframe1"class="block">이벤트 게시판</a>    				
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1"class="block">후기 게시판</a>
-    				<ul>
-                    <li><a href="#" class="block">2차 메뉴 아이템 1</a></li>
-                    
-                </ul>
+    				
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/Reserve/ReserveForm.jsp" target="iframe1"class="block">예약하기</a>
     				<ul>
-                    <li><a href="#" class="block">2차 메뉴 아이템 1</a></li>
+                    <li><a href="/TeamProject/Reserve/ReserveMain.jsp" target="iframe1"class="block">예약확인</a></li>
                    
                 </ul>
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1"class="block">문의사항</a>
     				<ul>
-                    <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">자주묻는질문</a></li>
-                    <li><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1">문의접수</a></li>
+                    <li><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1" class="block">문의접수</a></li>
                   
                 </ul>
      		</li>             	            
@@ -136,7 +127,9 @@ function popupLoad() {
 
 
 <div class="body2">
-		<iframe name="iframe1" src="/TeamProject/main/main.jsp" frameborder="0" width="100%" height="1100"></iframe><%-- SNS 연동 부분 --%>
+		<iframe name="iframe1" src="/TeamProject/main/main2.jsp"  frameborder="0"   width="100%" height="1100"></iframe>		
+		<%-- SNS 연동 부분 --%>
+
 <li class="footer_social_listitem footer_instagram">
 <a itemprop="sameAs" class="footer_social_listitem_anchor footer_social_listitem_anchor_instagram" target="_blank" href="https://www.instagram.com/5g__restaurant/">
 <span class="share_instagram" data-svg="https://studio-jt.co.kr/wp-content/themes/studio_jt/images/layout/share-instagram.svg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="레이어_1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
@@ -156,23 +149,6 @@ function popupLoad() {
 </svg></span></a></li>
 </div>
 
-
-
-
 </body>
 
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

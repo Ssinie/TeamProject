@@ -14,16 +14,7 @@ width:100px;
 	height:400px; 
 }
 
-.sns{
-	position:relative;
-	left: 100;
-	width:10px;	
-	height:5px; 
-	padding:12px 0;
-	background: #ffffff;
-	border: 1px solid
 
-}
 td {
         text-align: center;
       }
@@ -232,8 +223,8 @@ html.not-scroll-top-0 .top-bar {
     content:"";
     position:absolute;
     top:44px;
-    left:0;
-    right:0;
+    left:0%;
+    right:0%;
     bottom:0;
     z-index:-1;
     background-color:black;

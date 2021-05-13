@@ -47,7 +47,7 @@ request.setCharacterEncoding("UTF-8");
     	session.setAttribute("memId", dto.getId());%>
     	<script>
     	alert("회원가입이 완료되었습니다.");
-    	location.href="/TeamProject/lobby/lobby.jsp";
+    	location.href="/TeamProject/Top/TopPage.jsp";
     	</script>
     	
     	  

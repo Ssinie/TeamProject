@@ -13,16 +13,16 @@ width:100px;
 	width:100%;	
 	height:400px; 
 }
-.footer{
+
+.sns{
 	position:relative;
-	left: 0;
-	width:100%;	
-	height:10%; 
-	padding:15px 0;
-	text-align:center;
+	left: 100;
+	width:10px;	
+	height:5px; 
+	padding:12px 0;
 	background: #ffffff;
 	border: 1px solid
-	
+
 }
 td {
         text-align: center;

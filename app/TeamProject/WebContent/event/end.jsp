@@ -11,7 +11,6 @@
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     String pageNum = request.getParameter("pageNum");
-    System.out.println(pageNum);
     if (pageNum == null) {
         pageNum = "1";
     }
@@ -27,7 +26,6 @@
     count = dao.getArticleCount();
     if (count > 0) {
        endlist = dao.getend(startRow, endRow);
-       System.out.println(endlist);
     }
 
    number=count-(currentPage-1)*pageSize;
@@ -46,9 +44,9 @@
         <header>
            <nav>
              <ul id="topMenu">
-               <li><h3><a href="#" style="padding: 0 300px 0 300px;">진행중인 이벤트</a></h3></li>
+               <li><h3><a href="cardlist.jsp" style=" font-size:1.5rem;">진행중인 이벤트</a></h3></li>
                 
-               <li><h3><a href="#" style="padding: 0 300px 0 0;">종료된 이벤트</a></h3></li>
+               <li><h3><a href="end.jsp" style=" font-size: 1.5rem;">종료된 이벤트</a></h3></li>
              </ul>
            </nav>
         </header>
@@ -59,8 +57,7 @@
            		<a href="WriteForm.jsp">글쓰기</a>
            		<a href="/TeamProject/Top/TopPage.jsp">HOME</a>
            <%}else{%>
-           		<b><em>이벤트 게시글은 관리자만 작성 가능합니다.</em></b>
-           		<a href="/TeamProject/Top/TopPage.jsp">HOME</a>
+           		<b style = " font-size:1.5em;  color: green;">종료된 이벤트</b>    
            	<%} %>
            </div>
            

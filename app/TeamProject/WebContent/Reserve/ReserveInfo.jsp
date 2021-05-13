@@ -14,7 +14,7 @@
 	ReserveDAO dao = new ReserveDAO();
 	ReserveDTO dto = new ReserveDTO();
 	List ResList = dao.idInfo(id);
-	if(ResList == null){%>
+	if(ResList.isEmpty()){%>
 		<script>
 		alert("회원님의 예약기록이 없습니다.");
 		location.href="TeamProject/Reserve/ReserveMain.jsp";

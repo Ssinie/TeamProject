@@ -2,7 +2,7 @@ package Reserve;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
+import java.util.*;
 
 import Login.MemberDTO;
 import connection.ConnectionDAO;
@@ -102,6 +102,7 @@ public class ReserveDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				ResList = new ArrayList();
 				dto.setGuest(rs.getString("guest"));
 				dto.setTel(rs.getString("tell"));
 				dto.setPerson_no(rs.getString("person_no"));

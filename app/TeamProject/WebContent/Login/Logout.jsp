@@ -7,5 +7,5 @@
 session.invalidate(); //세션 모두 삭제%>
 <script>
 parent.document.location.reload();
-location.href="/TeamProject/lobby/lobby.jsp";
+location.href="/TeamProject/Top/TopPage.jsp";
 </script>

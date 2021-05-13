@@ -14,7 +14,7 @@
 		session.setAttribute("memId", id);%>
 		<script>
 		parent.document.location.reload();
-		location.href="/TeamProject/lobby/lobby.jsp";
+		location.href="/TeamProject/Top/TopPage.jsp";
 		</script>
 <%	}else{ %>
 		<script>

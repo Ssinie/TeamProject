@@ -9,7 +9,7 @@
 <jsp:useBean id="dto" class="event.EventBoardDTO"/>
 <%
    // 파일저장경로, 포맷사이즈, 한글파일 인코딩 처리
-   String path = "C:\\Users\\주사재\\Desktop\\주인선\\teamProject\\TeamProject\\app\\TeamProject\\WebContent\\Images\\event";
+   String path =  "E:\\이클립스_인선\\TeamProject\\app\\TeamProject\\WebContent\\Images\\event";
           //"C:\\Users\\주사재\\Desktop\\주인선\\teamProject\\TeamProject\\app\\TeamProject\\WebContent\\Images\\event";
    // String savePath = request.getRealPath("/Images/latterBoard");
    int maxSize = 1024*1024*50; // 50Mb

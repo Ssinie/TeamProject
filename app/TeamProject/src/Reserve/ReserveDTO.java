@@ -1,5 +1,7 @@
 package Reserve;
 
+import java.sql.Timestamp;
+
 public class ReserveDTO {
 	
 	private String guest;
@@ -9,6 +11,21 @@ public class ReserveDTO {
 	private String reservation_time;
 	private String floor;
 	private String opt;
+	private Timestamp WRITE_TIME;
+	public Timestamp getWRITE_TIME() {
+		return WRITE_TIME;
+	}
+	public void setWRITE_TIME(Timestamp wRITE_TIME) {
+		WRITE_TIME = wRITE_TIME;
+	}
+	public int getRes_num() {
+		return res_num;
+	}
+	public void setRes_num(int res_num) {
+		this.res_num = res_num;
+	}
+	private int res_num;
+	
 	public String getGuest() {
 		return guest;
 	}

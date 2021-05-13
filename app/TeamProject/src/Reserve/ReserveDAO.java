@@ -60,5 +60,33 @@ public class ReserveDAO {
 		return dto;
 		}
 	
+	// 예약번호(res_num)를 사용하여 예약현황을 조회하는 메서스 만들기
+	public ReserveDTO resnumInfo(int res_num) {
+		ReserveDTO dto = null;
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "select * from reservation where res_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, res_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new ReserveDTO();
+				dto.setGuest(rs.getString("guest"));
+				dto.setTel(rs.getString("tell"));
+				dto.setPerson_no(rs.getString("person_no"));
+				dto.setReservation_date(rs.getString("reservation_date"));
+				dto.setReservation_time(rs.getString("reservation_time"));
+				dto.setFloor(rs.getString("floor"));
+				dto.setOpt(rs.getString("opt"));
+				dto.setWRITE_TIME(rs.getTimestamp("write_time"));
+				dto.setRes_num(res_num);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return dto;
+	}
 }
 	

@@ -74,7 +74,7 @@ public class csDAO{
 			e.printStackTrace();
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
-		}return x; 
+		}return x;
 	}
 	public int getCSBoardCount (String id) throws Exception {
 		int x = 0;

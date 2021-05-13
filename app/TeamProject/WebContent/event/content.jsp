@@ -66,9 +66,9 @@
     <%if(id != null && id.equals("admin")){%>	
     	<input type="button" value="수정"  onclick="window.location='updateForm.jsp?num=<%=dto.getNum()%>&writer=<%=dto.getWriter()%>'" />  
         <input type="button" value="삭제"  onclick="window.location='deleteForm.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'"/>
-        <input type="button" value="글목록" onclick="window.location='cardlist.jsp?num=<%=dto.getNum()%>'"/>
+        <input type="button" value="글목록" onclick="window.location='cardlist.jsp'"/>
     <%}else{%>    
-        <input type="button" value="글목록" onclick="window.location='cardlist.jsp?num=<%=dto.getNum()%>'"/>
+        <input type="button" value="글목록" onclick="window.location='cardlist.jsp'"/>
     <%} %>
    </td></tr></table>
 

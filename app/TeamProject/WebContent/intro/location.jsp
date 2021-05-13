@@ -1,9 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="introform.jsp"%>
+<html>
+ <head>
+  <title>location</title>
 
+	<style type="text/css">
 
-<h1 style="text-align: center;" ><strong>찾아오시는 길</strong></h1>
+		#menubar div{
+								width:90px; padding:10px 5px;
+								float:left; text-align:center; 
+								font-size:13px; font-weight:bold;  
+								background:#999;
+								}
+								
+		#menubar div:hover{
+			background:#555; color:#fff;
+		}
+	</style>
+ </head>
+
+ <body>
+<div style="height:30px;"></div>
+<div id="menubar">
+	<div><a href="ceointro.jsp">ceo인사말</a></div>
+	<div><a href="location.jsp">오시는길</a></div> <br />
+</div>
+ </body>
+</html>
+
+<h1><strong>찾아오시는 길</strong></h1>
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,7 +36,7 @@
     
 </head>
 <body>
-<div id="map" style="width:700px;height:500px; display: block; margin-left: auto; margin-right: auto;"></div>
+<div id="map" style="width:600px;height:350px;"></div>
 
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8311d2f57be07e77e4629db29cc0d7c8"></script>
 	<script>
@@ -39,7 +64,7 @@
 
 		// 마커 위에 표시할 인포윈도우를 생성한다
 		var infowindow = new kakao.maps.InfoWindow({
-		    content : '<div style="padding:5px;">5G식당입니다~^^</div>' // 인포윈도우에 표시할 내용
+		    content : '<div style="padding:5px;">○○식당입니다~^^</div>' // 인포윈도우에 표시할 내용
 		});
 
 		// 인포윈도우를 지도에 표시한다

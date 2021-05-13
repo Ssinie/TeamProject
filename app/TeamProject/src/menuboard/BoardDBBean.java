@@ -290,14 +290,14 @@ public void upload(BoardDataBean BoardDataBean) {
 	
 	
 	public BoardDataBean getArticle(int num) throws Exception {
-		BoardDataBean article=null;
+		BoardDataBean article=new BoardDataBean();
 		try {
 			conn = ConnectionDAO.getConnection();
 			pstmt = conn.prepareStatement("select * from board2 where num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				article = new BoardDataBean();
+				
 				article.setNum(rs.getInt("num"));
 				article.setType(rs.getString("type"));
 				article.setFileimage(rs.getString("fileimage"));

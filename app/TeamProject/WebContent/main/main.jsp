@@ -88,7 +88,7 @@ String id = request.getParameter("id"); //admin 확인
 <% if(i%4==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
-<li class="mystyle"><img src="<%=article.getFileimage()%>" height="230" width="250"> </li>						 								
+<li class="mystyle"><img src="<%=article.getFileimage()%>" height="240" width="300"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
 						 
      <%  } %><!-- 서양식 종료 -->    
@@ -108,7 +108,7 @@ String id = request.getParameter("id"); //admin 확인
 <% if(i%4==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="/TeamProject/event/content.jsp?num=<%=dto.getNum() %>&pageNum=<%=currentPage%>" >
-<li class="mystyle"><img src="<%=dto.getFilePath() %>"  height="230" width="250" /></li>					 								
+<li class="mystyle"><img src="<%=dto.getFilePath() %>"  height="240" width="300" /></li>					 								
 <li class="mystyle"><strong ><%=dto.getSubject()%></strong></li>		</a>							
 						 
     
@@ -127,7 +127,7 @@ String id = request.getParameter("id"); //admin 확인
 <% if(i%4==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="/TeamProject/latterBoard/content.jsp?num=<%=dto.getNum() %>&pageNum=<%=currentPage%>" >
-<li class="mystyle"><img src="<%=dto.getFilepath()  %>"  height="230" width="250" /></li>					 								
+<li class="mystyle"><img src="<%=dto.getFilepath()  %>"  height="240" width="300" /></li>					 								
 <li class="mystyle"><strong ><%=dto.getSubject()%></strong></li>		</a>							
 						 
     

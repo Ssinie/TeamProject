@@ -32,9 +32,50 @@ function NotScrollTop0__init() {
     }
 }
 
+<<<<<<< HEAD
 $(window).scroll(NotScrollTop0__init);
 NotScrollTop0__init();
 </script>
+=======
+
+<header ><a href="/TeamProject/Top/TopPage.jsp"><img src="/TeamProject/Images/Mainlogo.png"  width='170' height='170' ></a></header>
+<table align="right" >
+		<tr>
+		<%if(id==null){ %>
+		<td class="t1" align="right"><a href="/TeamProject/Login/Login.jsp" style="color:orange; font-size:1.0em;" target="iframe1">로그인/회원가입</a></td>
+		<%}%>
+		<%if(id != null){%>
+		<td class="t2" align="right" ><a href="/TeamProject/Mypage/MypageForm.jsp" style="color:orange; font-size:1.0em;" target="iframe1">내정보</a></td>
+		<td class="t2_1" align="right"  ><a href="/TeamProject/Login/Logout.jsp"  style="color:orange; font-size:1.0em;" target="iframe1">로그아웃</a></td>
+		<%}%>
+		</tr>
+	</table>
+<nav>
+
+    <ul id="main-menu">
+      <li><a href="/TeamProject/lobby/lobby.jsp" target="iframe1">메인화면</a></li>
+      <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">가게 소개</a></li>
+      <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">메뉴 소개</a>
+      <ul id="sub-menu">
+      	<li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1">한식</a></li>
+      	<li><a href="/TeamProject/menu/japanese.jsp?id=<%=id %>" target="iframe1">일식</a></li>
+      	<li><a href="/TeamProject/menu/western.jsp?id=<%=id %>" target="iframe1">서양식</a></li>
+      </ul> 
+      </li>     
+      <li><a href="/TeamProject/event/cardlist.jsp" target="iframe1">이벤트</a></li>
+      <li><a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1">후기 게시판</a></li>
+      <li><a href="/TeamProject/Reserve/ReserveMain.jsp" target="iframe1">예약하기</a></li>
+      <li><a href="/TeamProject/QABoard/qaBoardList.jsp" target="iframe1">문의사항</a></li>
+    </ul>
+</nav>
+<section id="main">
+	<article>
+		<iframe name="iframe1" src="/TeamProject/intro/ceointro.jsp" frameborder="0" width="1900" height="1000"></iframe>
+	</article>
+</section>
+</body>
+</html>
+>>>>>>> branch 'master' of https://github.com/Ssinie/TeamProject.git
 <script>
 <%-- 팝업페이지 --%>
 

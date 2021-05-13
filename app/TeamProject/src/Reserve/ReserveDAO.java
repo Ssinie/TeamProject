@@ -2,9 +2,11 @@ package Reserve;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import Login.MemberDTO;
 import connection.ConnectionDAO;
+import Reserve.ReserveDTO;
 
 public class ReserveDAO {
 
@@ -88,5 +90,40 @@ public class ReserveDAO {
 		}
 		return dto;
 	}
+	
+	// ID로 예약정보를 조회하여 List로 보내줄 메서드
+	public List idInfo(String id) {
+		List ResList = null;
+		ReserveDTO dto = new ReserveDTO();
+		try {
+			conn = ConnectionDAO.getConnection();
+			String sql = "select * from reservation where guest=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setGuest(rs.getString("guest"));
+				dto.setTel(rs.getString("tell"));
+				dto.setPerson_no(rs.getString("person_no"));
+				dto.setReservation_date(rs.getString("reservation_date"));
+				dto.setReservation_time(rs.getString("reservation_time"));
+				dto.setFloor(rs.getString("floor"));
+				dto.setOpt(rs.getString("opt"));
+				dto.setWRITE_TIME(rs.getTimestamp("write_time"));
+				dto.setRes_num(rs.getInt("res_num"));
+				ResList.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}
+		return ResList;
+	};
 }
 	
+
+
+
+
+

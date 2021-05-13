@@ -7,7 +7,7 @@
 }
 
 ul {
-  list-style: none; /*ul짹창횊짙 쩐횊쨘쨍�횑째횚*/
+  list-style: none; 
 }
 
 #container {
@@ -15,27 +15,21 @@ ul {
   width: 1200px;
 }
 
-header {
-  width: 100%;
-  height: 100px;
-/*   background-color: #07c */
-}
 
+#topMenu {   
+	width: 1200px;
+    float: left;
+    margin: auto;
+    display: flex;
+    background-color: antiquewhite;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    }
 
-
-nav {
-  float: right;
-  width: 1200px;
-  height: 100px;
-  line-height: 100px; 
-  background-color: linen;
-  line-height: 100px; /*쨍횧쨈쨘쨍짝 쩐횈쨌징쨌횓 쨀쨩쨍짰짹창 �짠횉횠 100px횁횩쩔징쩌짯 40px 쩐횈쨌징쨌횓*/  
-  background-color: rgba(146, 214, 180, 0.74); 
-}
-
-
-#topMenu > li {
+#topMenu li {
   float: left;
+  width: 100%;
 }
 
 /* #topMenu > li > a {
@@ -45,9 +39,16 @@ nav {
   text-shadow: black;
 } */
 
+
+
 #topMenu > li > h3:hover {
-  color: blue;
-  text-shadow: 0 -1px #07c;
+  color: white;
+
+}
+
+#topMenu > li :hover {
+	
+	 background-color: rgba(0,0,0,0.07);
 }
 
 #contents {
@@ -79,6 +80,9 @@ footer {
 
 a{
   text-decoration: none;
+  display: block;
+      cursor: pointer;
+  
 }
 
 

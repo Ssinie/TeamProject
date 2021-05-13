@@ -22,13 +22,10 @@
 	LatterBoardDAO dao = new LatterBoardDAO();
 	LatterBoardDTO dto = dao.getArticle(num);
 
-
-	LBCommDAO lbcmdao = new LBCommDAO();
-	List commlist = lbcmdao.getArticle(num);
 %>
 <body>
 <center>
-<form action ="writeFormPro.jsp">
+<form action ="updatePro.jsp">
 	<table border="1">
 	
 	<input type="hidden" name="num" value="<%=num%>">
@@ -46,14 +43,21 @@
 	중식<input type="radio" name="menu" value="chinies" th:value="chinies" checked />
 	양식<input type="radio" name="menu" value="western" th:value="western" checked />
 	<br />
-	</td></tr>
+	</td>
+	</tr>
+	<tr >
+	<td><br />첨부파일 :
+	<input type="file" name="file" value="<%=dto.getFilepath()%>"/></td>
+	</tr>
 	<tr><td>
 	<br />
 	내용 <br />
 	<textarea name="content"  rows="30" cols="80" ><%=dto.getSubject()%></textarea><br />
 	</td></tr>
-	<tr><td>
-	<input type=submit value="완료" align="center" />
+	<tr>
+	<td align="center">
+	<input type="submit" value="수정완료" />
+	<input type="button" value="글목록" onclick = "window.location = 'imageList.jsp'">
 	</td></tr>
 	</table>
 </form>

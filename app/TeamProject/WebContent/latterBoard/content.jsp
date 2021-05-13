@@ -71,7 +71,7 @@
 		// 로그인 여부로 글 쓰거나 수정하게...
 		// if(id != null){%>
 			<input type="button" value="글수정" onclick="window.location='contentUpdate.jsp?pageNum=<%=pageNum%>&num=<%=num%>'" />
-			<input type="button" value="글삭제" onclick="" />
+			<input type="button" value="글삭제" onclick="window.location='deleteForm.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'"/>
 			<input type="button" value="글목록" onclick="window.location='imageList.jsp?pageNum=<%=pageNum%>'" />
 		<%// }%>
 		</td>

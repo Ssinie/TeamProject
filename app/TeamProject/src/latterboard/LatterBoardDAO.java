@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import connection.ConnectionDAO;
+import event.EventBoardDTO;
 import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
 
 public class LatterBoardDAO {
@@ -290,9 +291,53 @@ public class LatterBoardDAO {
 			return articleList;
 		}
 	
+		//updatePro.jsp 메서드
+		public void updateBoard(LatterBoardDTO dto) {
+				try {
+					conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출			
+					String sql = "update latterboard set writer=?,subject=?,content=?,menu=?,filepath=? where num=?";
+					pstmt = conn.prepareStatement(sql);   
+					pstmt.setString(1, dto.getWriter());
+					pstmt.setString(2, dto.getSubject());
+					pstmt.setString(3, dto.getContent());
+					pstmt.setString(4, dto.getMenu());
+					pstmt.setString(5, dto.getFilepath());
+					pstmt.setInt(6, dto.getNum());
+					pstmt.executeUpdate();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					ConnectionDAO.close(rs, pstmt, conn);
+				}
+			}	
 	
-	
-	
+		//삭제 메서드
+		public int deleteBoard(int num, String passwd) throws Exception {
+			String dbpasswd="";
+			int x=-1;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement(
+				"select passwd from latterboard where num = ?");
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					dbpasswd= rs.getString("passwd");
+					if(dbpasswd.equals(passwd)){
+						pstmt = conn.prepareStatement("delete from latterboard where num=?");
+						pstmt.setInt(1, num);
+						pstmt.executeUpdate();
+						x= 1; 
+					}else
+						x= 0; 
+				}
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}
+			return x;
+		}
 	
 	
 	

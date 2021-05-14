@@ -56,8 +56,8 @@
        <td height="300" style="vertical-align: top;" >
           내용 : <%=dto.getContent() %> </td>
        <td height="250" width="300">
-       	  <img src="<%=dto.getFilePath() %>" /> 
-       	  <%=dto.getFilePath() %>
+       	  <img src="<%=dto.getFilePath() %>" width="450" height="350"/> 
+       	  <%-- <%=dto.getFilePath() %> --%>
        </td>
        </tr>
     <!-- 내용 노출이 되도 상관없으면 &로 다 전달해도 좋음. -->

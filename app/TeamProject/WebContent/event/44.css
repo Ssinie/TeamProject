@@ -80,7 +80,7 @@ footer {
 
 a{
   text-decoration: none;
-  display: block;
+ /*  display: block; */
       cursor: pointer;
   
 }
@@ -179,8 +179,8 @@ a {
   letter-spacing: -1px;
 } */
 
-.list_wrap .item a:hover{
-  background: rgb(32, 14, 192);
+.list_wrap .item .apple:hover{
+  background:green;
   color: #fff
 } 
 

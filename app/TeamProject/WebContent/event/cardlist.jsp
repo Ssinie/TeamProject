@@ -82,7 +82,7 @@
                      <div class="aaa"><a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>"><img class="image" src="<%=dto.getFilePath() %>" /></a></div>
                      <div class="cont">
                        <strong><%--! <%=number--%> </strong> 
-                       <strong><a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>"><%=dto.getSubject() %></a></strong>
+                       <strong><a class="apple" href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>"><%=dto.getSubject() %></a></strong>
                        <p>이벤트 종료일 : <%=dto.getEnd_date()%></p>
                        <%-- <p><a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">바로가기</a></p>    --%>             
                      </div>

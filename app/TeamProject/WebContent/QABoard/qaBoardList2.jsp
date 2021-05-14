@@ -5,10 +5,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 
-<div id="menubar">
-	<div><a href="/TeamProject/CSBoard/csBoardList.jsp"> 1 : 1 문의 게시판 </a></div>
-	<div><a href="qaBoardList.jsp"> 자주 묻는 질문 </a></div><br />
-</div>
+
 
 <title> Q&A 자주 묻는 질문 </title>
 

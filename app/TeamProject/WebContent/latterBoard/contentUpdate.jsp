@@ -25,7 +25,7 @@
 %>
 <body>
 <center>
-<form action ="updatePro.jsp">
+<form action ="updatePro.jsp" method="post" enctype="multipart/form-data">
 	<table border="1">
 	
 	<input type="hidden" name="num" value="<%=num%>">

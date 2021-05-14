@@ -24,7 +24,7 @@
  		<tr height="30">
     		<td align=center>
       			<input type="submit" value="글삭제" >
-      			<input type="button" value="글목록" onclick="document.location.href='cardlist.jsp?pageNum=<%=pageNum%>'"> 
+      			<input type="button" value="글목록" onclick="document.location.href='imageList.jsp?pageNum=<%=pageNum%>'"> 
    			</td>
  		</tr>  
 	</table> 

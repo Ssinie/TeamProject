@@ -45,6 +45,11 @@
 		<input type="file" name="file" />
 		</td>
 	</tr>
+	<tr>
+	<td>
+	<br />비밀번호<br />
+	<input type="password" size="21" maxlength="12" name="passwd" required>
+	</tr>
 	<tr><td>
 	<input type=submit value="완료" />
 	</td></tr>

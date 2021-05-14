@@ -30,8 +30,8 @@
 	// dto에 작성한 값을 겟 파라미터 하여 넣기..
 	String id = (String)session.getAttribute("memId");
 	dto.setWriter(id);
-	dto.setReg_date(new Timestamp(System.currentTimeMillis()));
-	dto.setIp(request.getRemoteAddr());
+	int num = Integer.parseInt(mr.getParameter("num"));
+	dto.setNum(num);
 	dto.setSubject(mr.getParameter("subject"));
 	dto.setContent(mr.getParameter("content"));
 	dto.setMenu(mr.getParameter("menu"));

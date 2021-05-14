@@ -16,6 +16,7 @@ public class LatterBoardDTO {
 	private String filename;
 	private String realname;
 	private String filepath;
+	private String passwd;
 	
 	public String getFilepath() {
 		return filepath;
@@ -94,6 +95,12 @@ public class LatterBoardDTO {
 	}
 	public void setRef(int ref) {
 		this.ref = ref;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 
 }

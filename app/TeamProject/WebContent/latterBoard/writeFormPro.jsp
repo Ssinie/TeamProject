@@ -13,7 +13,7 @@
 
 <%
 	// 파일저장경로, 포맷사이즈, 한글파일 인코딩 처리
-	String savePath = "C:\\Users\\Yoo\\Desktop\\BIG_DATA\\01. app\\TeamProject\\app\\TeamProject\\WebContent\\Images\\latterBoard";
+	String savePath = "C:\\Users\\Yoo\\Desktop\\BIG_DATA\\01. app\\TeamProject\\app\\TeamProject\\WebContent\\Images\\latterBoard";	
 	// String savePath = request.getRealPath("/Images/latterBoard");
 	int maxSize = 1024*1024*50; // 50Mb
 	String enc = "UTF-8";

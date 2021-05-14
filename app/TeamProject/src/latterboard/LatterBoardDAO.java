@@ -30,8 +30,8 @@ public class LatterBoardDAO {
 			//}
 			ref = number;
 			sql = "insert into latterboard(num,writer,email,subject,reg_date,ref,content,ip,menu,"
-					+ "filename,realname,filepath)";
-			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "filename,realname,filepath,passwd)";
+			sql+="values(latterboard_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getEmail());
@@ -44,6 +44,7 @@ public class LatterBoardDAO {
 			pstmt.setString(9, dto.getFilename());
 			pstmt.setString(10, dto.getRealname());
 			pstmt.setString(11, dto.getFilepath());
+			pstmt.setString(12, dto.getPasswd());
 			pstmt.executeUpdate();
 			
 		}catch(Exception e){
@@ -295,14 +296,13 @@ public class LatterBoardDAO {
 		public void updateBoard(LatterBoardDTO dto) {
 				try {
 					conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출			
-					String sql = "update latterboard set writer=?,subject=?,content=?,menu=?,filepath=? where num=?";
+					String sql = "update latterboard set subject=?,content=?,menu=?,filepath=? where num=?";
 					pstmt = conn.prepareStatement(sql);   
-					pstmt.setString(1, dto.getWriter());
-					pstmt.setString(2, dto.getSubject());
-					pstmt.setString(3, dto.getContent());
-					pstmt.setString(4, dto.getMenu());
-					pstmt.setString(5, dto.getFilepath());
-					pstmt.setInt(6, dto.getNum());
+					pstmt.setString(1, dto.getSubject());
+					pstmt.setString(2, dto.getContent());
+					pstmt.setString(3, dto.getMenu());
+					pstmt.setString(4, dto.getFilepath());
+					pstmt.setInt(5, dto.getNum());
 					pstmt.executeUpdate();
 				}catch(Exception e) {
 					e.printStackTrace();

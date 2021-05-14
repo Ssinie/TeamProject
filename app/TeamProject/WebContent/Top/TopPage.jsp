@@ -44,14 +44,11 @@ function popupLoad() {
 	}
 }
 </script>
-
-<head><title>오식당</title>
-    <style type="text/css">
-	#STATICMENU { position:absolute; width:100%;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
-	
-}
-
+<style>
+li{list-style-type:none; }
 </style>
+<head><title>오식당</title>
+ 
 <link rel="stylesheet" href="./top.css">
 </head>
 <body onload="popupLoad()"  >
@@ -140,8 +137,7 @@ function popupLoad() {
 <div class="body2">
 		<iframe name="iframe1" src="/TeamProject/main/main2.jsp"  frameborder="0"   width="100%" height="1200"></iframe>		
 		<%-- SNS 연동 부분 --%>
-
-<li class="footer_social_listitem footer_instagram">
+		<li class="footer_social_listitem footer_instagram">
 <a itemprop="sameAs" class="footer_social_listitem_anchor footer_social_listitem_anchor_instagram" target="_blank" href="https://www.instagram.com/5g__restaurant/">
 <span class="share_instagram" data-svg="https://studio-jt.co.kr/wp-content/themes/studio_jt/images/layout/share-instagram.svg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="레이어_1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
 <style type="text/css">
@@ -159,7 +155,7 @@ function popupLoad() {
 <path class="st0" d="M25.8,32H6.2C2.8,32,0,29.2,0,25.8V6.2C0,2.8,2.8,0,6.2,0h19.7C29.2,0,32,2.8,32,6.2v19.7  C32,29.2,29.2,32,25.8,32L25.8,32z M6.2,2C3.9,2,2,3.9,2,6.2v19.7C2,28.1,3.9,30,6.2,30h19.7c2.3,0,4.1-1.9,4.1-4.1V6.2  C30,3.9,28.1,2,25.8,2L6.2,2L6.2,2z M19.1,11.4c-0.4-0.1-0.9-0.1-1.3-0.1c-0.9,0-1,0.4-1,1v1.1h2.3L19,15.7h-2.1v7.1H14v-7.1h-1.5  v-2.3H14V12c0-2,0.9-3.1,3.2-3.1c0.8,0,1.4,0.1,2.2,0.3L19.1,11.4L19.1,11.4z"></path>
 </svg></span></a></li>
 </div>
-
 </body>
+
 
 </html>

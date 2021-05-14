@@ -36,6 +36,16 @@ public class MemberDAO{
 			}
 	}
 	
+	/*
+	 * public boolean PwCheck(String id , String pw1, String pw2) { boolean result =
+	 * false; try { conn = ConnectionDAO.getConnection(); // 1/2단계 메서드 호출 pstmt =
+	 * conn.prepareStatement("select * from member where id=? and pw1=? and pw2=?");
+	 * pstmt.setString(1, id); pstmt.setString(2, pw1); pstmt.setString(3, pw2); rs
+	 * = pstmt.executeQuery();
+	 * 
+	 * if(rs.next()) { result = true; } }catch(Exception e) { e.printStackTrace();
+	 * }finally { ConnectionDAO.close(rs, pstmt, conn); } return result; }
+	 */
 	
 	
 	

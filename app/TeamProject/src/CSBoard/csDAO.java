@@ -392,7 +392,7 @@ public class csDAO{
 			int x = 0;
 			try {
 				conn = ConnectionDAO.getConnection();
-				pstmt = conn.prepareStatement("select count(*) from csboard where status = ?");
+				pstmt = conn.prepareStatement("select count(*) from csboard where status = 2 ");
 				pstmt.setInt(1, status);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {

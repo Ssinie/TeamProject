@@ -28,10 +28,12 @@
 	int cscount = 0;
 	int csstcount = 0;
 	int csstacount = 0;
+	int status = 0;
 	csDAO csdao = new csDAO();
+	csDTO csdto = new csDTO();
 	cscount = csdao.getCSBoardCount();
 	csstcount = csdao.getCSBoardStatusCount(status);
-	csstacount = csdao.getCSBoardStatusCounts(status);
+	csstacount = csdao.getCSBoardStatusCount(status);
 	//회원
 	int memcount = 0;
 	MemberDAO memdao = new MemberDAO();
@@ -115,7 +117,9 @@
     	<td align="center"  width="175">일일 카운트 코드</td>
     	<td align="center"  width="175">주간 카운트 코드</td>
     	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175"><%=csstcount%></td>
+    	<td align="center"  width="175">
+    	<%if(csdto.getStatus()==1){%><%} %>
+    	<%=csstcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >9</td>
@@ -123,7 +127,9 @@
     	<td align="center"  width="175">일일 카운트 코드</td>
     	<td align="center"  width="175">주간 카운트 코드</td>
     	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175"><%=csstacount%></td>
+    	<td align="center"  width="175">
+    	<%if(csdto.getStatus()==2){%>
+    	<%csstacount%><%} %></td>
 	</tr>
 		<tr height="30">
     	<td align="center"  width="75" >10</td>

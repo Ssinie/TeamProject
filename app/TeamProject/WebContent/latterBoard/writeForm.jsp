@@ -28,8 +28,8 @@
 	<tr>
 		<td>
 		<br />
-		일식<input type="radio" name="menu" value="japanese" checked />
-		중식<input type="radio" name="menu" value="chinies" />
+		한식<input type="radio" name="menu" value="korean" checked />
+		일식<input type="radio" name="menu" value="japanese" />
 		양식<input type="radio" name="menu" value="western" />
 		<br />
 		</td>

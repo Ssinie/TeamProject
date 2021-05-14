@@ -90,7 +90,9 @@ $(document).ready(function () {
 <%  } else {    %>
 
 <center>
-
+<%if (articleList.size() == 0) {%>
+<h1>게시글이 없습니다.</h1>
+<%}else{ %>
 <div >
 	<h2 class="titMain">메뉴 추천</h2>						
 </div>
@@ -100,23 +102,19 @@ $(document).ready(function () {
 <%	for (int i = 0 ; i < articleList.size() ; i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
-   
-	
 
-
-<% if(i%2==0 && i!=0) { %>  <%  } %>
 <a href="/TeamProject/menu/content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="220" width="300"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
-						 
-       
-      	
+						             	
   <%  } %><!-- for문 종료 -->
-
-  
-
+ 
 </ul>
+<%  } %> <!-- 게시글 0이 아닐때 -->
 <div >
+<%if (articleList2.size() == 0) {%>
+<h1>게시글이 없습니다.</h1>
+<%}else{ %>
 	<h2 class="titMain">이벤트</h2>						
 </div>
  <ul class="bxslider">	<!--  이벤트 페이지 -->
@@ -124,18 +122,19 @@ $(document).ready(function () {
 <%	for (int i = 0 ; i < articleList2.size() ; i++) {
 	EventBoardDTO dto = (EventBoardDTO)articleList2.get(i);
 %>
-   
-
-<% if(i%4==0 && i!=0) { %> <tr></tr>  <%  } %>
 
 <a href="/TeamProject/event/content.jsp?num=<%=dto.getNum() %>&pageNum=<%=currentPage%>" >
 <li class="mystyle"><img src="<%=dto.getFilePath() %>"  height="220" width="300" /></li>					 								
 <li class="mystyle"><strong ><%=dto.getSubject()%></strong></li>		</a>							
-						 
-    
+						  
       	
   <%  } %><!-- for문 종료 -->
 </ul>
+<%  } %><!-- 게시글 0이 아닐때 -->
+
+<%if (articleList3.size() == 0) {%>
+<h1>게시글이 없습니다.</h1>
+<%}else{ %>
 <div >
 	<h2 class="titMain">후기 게시판</h2>						
 </div>
@@ -145,20 +144,17 @@ $(document).ready(function () {
 <%	for (int i = 0 ; i < articleList3.size() ; i++) {
 	LatterBoardDTO dto = (LatterBoardDTO)articleList3.get(i);
 %>
-   
-
 
 
 <a href="/TeamProject/latterBoard/content.jsp?num=<%=dto.getNum() %>&pageNum=<%=currentPage%>" >
 <li class="mystyle"><img src="<%=dto.getFilepath()  %>"  height="220" width="300" /></li>					 								
 <li class="mystyle"><strong ><%=dto.getSubject()%></strong></li>		</a>							
 						 
-    
-      	
+    	
   <%  } %><!-- for문 종료 -->
 
 </ul>
-
+<%  } %><!-- 게시글 0이 아닐때 -->
   <%  } %><!-- else 종료 -->
   
 

@@ -35,6 +35,7 @@
 	dto.setSubject(mr.getParameter("subject"));
 	dto.setContent(mr.getParameter("content"));
 	dto.setMenu(mr.getParameter("menu"));
+	dto.setPasswd(mr.getParameter("passwd"));
 	
 	LatterBoardDAO dao = new LatterBoardDAO();
 	dao.updateBoard(dto);

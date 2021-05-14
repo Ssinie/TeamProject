@@ -99,7 +99,11 @@ function popupLoad() {
                 </ul>
      		</li>
      		<li class="cell">
-     			<a href="/TeamProject/event/cardlist.jsp" target="iframe1"class="block">이벤트 게시판</a>    				
+     			<a href="/TeamProject/event/cardlist.jsp" target="iframe1"class="block">이벤트 게시판</a>
+     			<ul>
+                    <li><a href="/TeamProject/event/cardlist.jsp?id=<%=id %>" target="iframe1" class="block">진행중 게시판</a></li>
+                    <li><a href="/TeamProject/event/end.jsp?id=<%=id %>" target="iframe1" class="block">종료된 게시판</a></li>
+                </ul>    				
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1"class="block">후기 게시판</a>

@@ -11,6 +11,8 @@ li{margin-bottom:2px;list-style-type:none; margin-right:2px;padding:2px;text-ali
 li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-align:center;}
 #STATICMENU { positi 7on:absolute;font-size:20; margin: 0pt; padding: 0pt;  position: absolute; right: 0px; top: 0px; background-color:rgba(255,255,255,0.5);
 }
+
+
 </style>
  
 <%
@@ -46,13 +48,9 @@ String id = request.getParameter("id"); //admin 확인/
 </head>
 
 <body  >
-<div id="STATICMENU"> 
-<ul> 
-<li><a href="Korean.jsp?id=<%=id%>">한식</a></li> 
-<li><a href="japanese.jsp?id=<%=id%>">일식</a></li> 
-<li><a href="western.jsp?id=<%=id%>">서양식</a></li>
-</ul> 
-</div>
+
+<div style="height:1100px;" >
+
 
 <center><b></b>
 <table width="650">
@@ -96,7 +94,7 @@ String id = request.getParameter("id"); //admin 확인/
 <td>
 <input type="checkbox" name="ch" value="<%=article.getNum()%>" />
 <li >
-	<div><img src="<%=article.getFileimage()%>" height="350" width="350"> </div>							
+	<div><img src="<%=article.getFileimage()%>" height="250" width="350"> </div>							
 </li> 
 <div >
 <li><strong ><%=article.getSubject()%></strong></li>
@@ -109,8 +107,9 @@ String id = request.getParameter("id"); //admin 확인/
   </form> 
   <%  } %><!-- else 종료 -->
 
- 
-
+ </div>
+ <center>
+<center>
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);

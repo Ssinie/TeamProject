@@ -49,6 +49,7 @@ String id = request.getParameter("id"); //admin 확인/
 
 <body >
 
+<div style="height:1000px;" >
 
 <center><b></b>
 <table width="650">
@@ -79,14 +80,14 @@ String id = request.getParameter("id"); //admin 확인/
 
 
 
-<table border=1 >
+<table border=1>
 <%	for (int i = 0 ; i < articleList.size(); i++) {
     	BoardDataBean article = (BoardDataBean)articleList.get(i);
 %>
 <% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
 <a href="updateForm2.jsp?id=<%=id %>&num=<%=article.getNum() %>" >
-								<div align="center" ><img src="<%=article.getFileimage()%>" height="350" width="350"> 
+								<div align="center" ><img src="<%=article.getFileimage()%>" height="250" width="350"> 
 								  </div>							
 								<div >
 									<li><strong ><%=article.getSubject()%></strong></li>
@@ -99,7 +100,9 @@ String id = request.getParameter("id"); //admin 확인/
 
   <%  } %><!-- else 종료 -->
     
- 
+ </div>
+ </center>
+ <center>
 
 <%
     if (count > 0) {

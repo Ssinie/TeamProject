@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<center>
 <Table border="1">
 <tr>
 	<td>예약번호를 입력해주세요.
@@ -14,3 +15,4 @@
 </tr>
 </form>
 </Table>
+</center>

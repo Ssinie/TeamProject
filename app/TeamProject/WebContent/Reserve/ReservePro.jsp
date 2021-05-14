@@ -26,5 +26,8 @@ request.setCharacterEncoding("UTF-8");
 %>
 <script>
 alert("예약이 완료되었습니다. 감사합니다.");
-location.href="/TeamProject/lobby/lobby.jsp";
+
+parent.document.location.reload();
+location.href="/TeamProject/Top/TopPage.jsp";
+
 </script>

@@ -369,4 +369,39 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
+	
+		//Admin 페이지 status 1 count
+		public int getCSBoardStatusCount(int status) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from csboard where status = ?");
+			pstmt.setInt(1, status);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+		//Admin 페이지 status 2 count
+		public int getCSBoardStatusCounts(int status) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from csboard where status = ?");
+				pstmt.setInt(1, status);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
 }

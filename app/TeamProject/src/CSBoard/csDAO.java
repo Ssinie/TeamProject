@@ -369,13 +369,12 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-	
-		//Admin 페이지 status 1 count
+		//Admin 페이지 status count
 		public int getCSBoardStatusCount(int status) throws Exception {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from csboard where status = ?");
+			pstmt = conn.prepareStatement("select count(*) from csboard where status = ? and re_level = 0");
 			pstmt.setInt(1, status);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -387,13 +386,13 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-		//Admin 페이지 status 2 count
-		public int getCSBoardStatusCounts(int status) throws Exception {
+		//Admin 페이지 day count
+		public int getCSBoardDayCount(int reg) throws Exception {
 			int x = 0;
 			try {
 				conn = ConnectionDAO.getConnection();
-				pstmt = conn.prepareStatement("select count(*) from csboard where status = 2 ");
-				pstmt.setInt(1, status);
+				pstmt = conn.prepareStatement("select count(*) from csboard where reg = sysdate");
+				pstmt.setInt(1, reg);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					x= rs.getInt(1); 

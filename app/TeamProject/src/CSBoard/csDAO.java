@@ -369,7 +369,7 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-		//Admin ÆäÀÌÁö status count
+		//Admin í˜ì´ì§€ status count
 		public int getCSBoardStatusCount(int status) throws Exception {
 		int x = 0;
 		try {
@@ -386,13 +386,13 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-		//Admin ÆäÀÌÁö day count
+		/*//Admin í˜ì´ì§€ day count
 		public int getCSBoardDayCount(int reg) throws Exception {
 			int x = 0;
 			try {
 				conn = ConnectionDAO.getConnection();
-				pstmt = conn.prepareStatement("select count(*) from csboard where reg = sysdate");
-				pstmt.setInt(1, reg);
+				pstmt = conn.prepareStatement("select count(*) from (select to_char(reg,'yy/mm/dd') as day1 , to_char(sysdate,'yy/mm/dd') as day2 from csboard) where day1 = day2");
+				pstmt.setTimestamp(1, reg);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					x= rs.getInt(1); 
@@ -402,5 +402,5 @@ public class csDAO{
 			}finally {
 				ConnectionDAO.close(rs, pstmt, conn);
 			}return x;
-		}
+		}*/
 }

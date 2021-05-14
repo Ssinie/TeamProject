@@ -26,13 +26,17 @@
 	LatterBoardDAO latdao = new LatterBoardDAO();
 	//CS
 	int cscount = 0;
-	int csstcount = 0;
-	int csstacount = 0;
+	int csstcount = 1;
+	int csstacount = 2;
+	int regcount = 1;
+	int regscount = 0;
 	csDAO csdao = new csDAO();
 	csDTO csdto = new csDTO();
-	csstcount = csdao.getCSBoardStatusCount(1);
-	csstacount = csdao.getCSBoardStatusCount(2);
+	csstcount = csdao.getCSBoardStatusCount(csstcount);
+	csstacount = csdao.getCSBoardStatusCount(csstacount);
 	cscount = csstcount + csstacount;
+	//regcount = csdao.getCSBoardDayCount(regcount);
+	//regscount = csdao.getCSBoardDayCount(regscount);
 	
 	//회원
 	int memcount = 0;
@@ -114,20 +118,18 @@
 	<tr height="30">
     	<td align="center"  width="75" >8</td>
     	<td align="center"  width="450">문의 게시판 미 답변 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
+    	<td align="center"  width="175"><%=regcount%></td>
     	<td align="center"  width="175">주간 카운트 코드</td>
     	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">
-    	<%=csstcount%></td>
+    	<td align="center"  width="175"><%=csstcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >9</td>
     	<td align="center"  width="450">문의 게시판 답변 완료 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
+    	<td align="center"  width="175"><%=regscount%></td>
     	<td align="center"  width="175">주간 카운트 코드</td>
     	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">
-    	<%=csstacount%></td>
+    	<td align="center"  width="175"><%=csstacount%></td>
 	</tr>
 		<tr height="30">
     	<td align="center"  width="75" >10</td>
@@ -199,7 +201,7 @@
 	<tr height="30">
     	<td align="center"  width="75" >4</td>
     	<td align="center"  width="450">1 : 1 문의 게시판</td>
-    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/CSBoard/csBoardWrite.jsp'"/></td>
+    	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/CSBoard/csBoardList.jsp'"/></td>
     	<td align="center"  width="175"><input type="button" value="바로가기" onclick="window.location='/TeamProject/CSBoard/csBoardList.jsp'"/></td>
 	</tr>
     <tr height="30">

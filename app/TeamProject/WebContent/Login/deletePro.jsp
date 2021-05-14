@@ -4,11 +4,11 @@
 <h1>deletePro</h1>
 
 <%
-	String pw1 = request.getParameter("pw1");
+	String pw1 = (String)session.getAttribute("memPw1");
 	String id = (String)session.getAttribute("memId"); //세션아이디
 	MemberDAO dao = new MemberDAO();
 	boolean result= dao.loginCheck(id, pw1);
-	if(id == pw1){
+	if(pw1 == "memPw1") {
 		dao.statusChange(id);
 		session.invalidate();  // 세션 모두 삭제 
 		response.sendRedirect("http://localhost:8080/TeamProject/Top/TopPge.jsp");

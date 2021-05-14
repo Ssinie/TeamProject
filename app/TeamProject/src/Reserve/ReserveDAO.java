@@ -18,7 +18,7 @@ public class ReserveDAO {
 	public void insertReservation(ReserveDTO dto) { //reserveDTO값 dto에 대입
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("insert into reservation values(?,?,?,?,?,?,?,sysdate,RESERVATION_seq.NEXTVAL)");
+			pstmt = conn.prepareStatement("insert into reservation values(?,?,?,?,?,?,?,sysdate,RESERVATION_seq.NEXTVAL)"); //정보와 시퀀스받기
 			pstmt.setString(1, dto.getGuest());
 			pstmt.setString(2, dto.getTel());
 			pstmt.setString(3, dto.getPerson_no());

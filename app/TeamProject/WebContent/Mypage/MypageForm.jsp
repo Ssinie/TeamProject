@@ -13,7 +13,6 @@
 	MemberDTO dto = new MemberDTO();
 	dto = dao.getUserinfo(id);
 	%>	
-	<Body bgcolor="lightblue">
 	<h1 align="center">나의 회원정보 </h1>
 	<table border="1" align="center">
 	<tr>

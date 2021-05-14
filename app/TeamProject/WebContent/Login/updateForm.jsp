@@ -11,11 +11,19 @@
 	MemberDAO dao = new MemberDAO();
 	MemberDTO dto = dao.getMember(id); 
 	
+	if(dto.equals (null)){ %>
+	
+		<script>
+			alert("로그인 후 가능합니다.");
+			history.go(-1); 
+		</script>
+	<%}
+	
 %>
 
 <form action="updatePro.jsp" method="post">
 	id : <%=id%> <br />
-	비밀번호 : <input type="password" name="pw" value="<%=dto.getPw1()%>" /> <br />
+	비밀번호 : <input type="password" name="pw1" value="<%=dto.getPw1()%>" /> <br />
 	비밀번호확인 : <input type="password" name="pw2" value="<%=dto.getPw2()%>" /> <br />
 	이름 : <input type="text" name="name" value="<%=dto.getName()%>" /> <br />
 	생년월일 : <input type="text" name="year" value="<%=dto.getYear()%>" /> <br />

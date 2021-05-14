@@ -93,24 +93,24 @@ public class MemberDAO{
 	
 	public void updateMember(MemberDTO dto) {
 		try {
-			conn = ConnectionDAO.getConnection();  // 1/2단계 메서드 호출
-			pstmt = conn.prepareStatement("update member set pw1=?,name=?,year=?, month=?,day=?,email=?,phone=? where id=?");
-			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getPw1());
-			pstmt.setString(3, dto.getPw2());
-			pstmt.setString(4, dto.getName());
-			pstmt.setString(5, dto.getYear());
-			pstmt.setString(6, dto.getMonth());
-			pstmt.setString(7, dto.getDay());
-			pstmt.setString(8, dto.getGender());
-			pstmt.setString(9, dto.getEmail());
-			pstmt.setString(10, dto.getPhone());
-			pstmt.setTimestamp(11, dto.getReg());
-			pstmt.setInt(12, dto.getStatus());
-			
+			conn = ConnectionDAO.getConnection();
+			String sql = "update Member set pw1=?, pw2=?, name=?,year=?, month=?,day=?,email=?,phone=? where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getPw1());
+			pstmt.setString(2, dto.getPw2());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getYear());
+			pstmt.setString(5, dto.getMonth());
+			pstmt.setString(6, dto.getDay());
+			pstmt.setString(7, dto.getEmail());
+			pstmt.setString(8, dto.getPhone());
+			pstmt.setString(9, dto.getId());
+						
 			pstmt.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
+			
 		}finally {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}

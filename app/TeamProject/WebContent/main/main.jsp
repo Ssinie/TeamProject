@@ -87,7 +87,7 @@ String id = request.getParameter("id"); //admin 확인
 
 <% if(i%4==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
-<a href="content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
+<a href="/TeamProject/menu/content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="240" width="300"> </li>                                           
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>      </a>                     
                    

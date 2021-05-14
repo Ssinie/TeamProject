@@ -77,15 +77,16 @@ function popupLoad() {
     <nav class="menu-box-1 inline-block">
         <ul class="row">
             <li class="cell">
-				 <a href="/TeamProject/main/main2.jsp"target="iframe1" class="block">메인화면</a>
-    				
+				 <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   
+				 <ul>
+                       <li > <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   </li>                
+                </ul>			
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/intro/ceointro.jsp" target="iframe1"class="block">가게 소개</a>
     				<ul>
                     <li><a href="/TeamProject/intro/location.jsp" target="iframe1"class="block">찾아<br>오시는 길</a></li>
-                    <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">식당 소개</a></li>
-                   
+                    <li><a href="/TeamProject/intro/ceointro.jsp" target="iframe1">식당 소개</a></li>                  
                 </ul>
      		</li>
      		<li class="cell">
@@ -118,7 +119,12 @@ function popupLoad() {
                     <li><a href="/TeamProject/CSBoard/csBoardList.jsp" target="iframe1" class="block">문의접수</a></li>
                   
                 </ul>
-     		</li>             	            
+     		</li> 
+     		<li class="cell">
+     			<%if(id!=null&&id.equals("admin")){ %>
+     			<a href="/TeamProject/Admin/admin.jsp" target="iframe1"class="block">관리자 페이지</a>
+     			<%} %>  				
+     		</li>                 	            
   </ul>
 </nav>
 	<div class="menu-box-1-bg"></div>

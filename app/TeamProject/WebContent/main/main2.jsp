@@ -58,8 +58,7 @@ String id = request.getParameter("id"); //admin 확인
 	<script src="script/script.js"></script>
 	<script>
 $(document).ready(function () {
-    $('.bxslider').bxSlider({
-    	
+    $('.bxslider').bxSlider({    	
         auto: true, // 자동으로 애니메이션 시작
         speed: 500,  // 애니메이션 속도
         pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
@@ -69,7 +68,8 @@ $(document).ready(function () {
         captions: true, // 이미지 위에 텍스트를 넣을 수 있음       
         maxSlides:3,
         slideWidth:300,
-        slideMargin:20       
+        slideMargin:20,
+        touchEnabled:false
     });
 });
 </script>
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
 
 <% if(i%2==0 && i!=0) { %>  <%  } %>
-<a href="content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
+<a href="/TeamProject/menu/content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="220" width="300"> </li>						 								
 <li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
 						 

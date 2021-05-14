@@ -74,10 +74,7 @@ li{list-style-type:none; }
     <nav class="menu-box-1 inline-block">
         <ul class="row">
             <li class="cell">
-				 <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   
-				 <ul>
-                       <li > <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   </li>                
-                </ul>			
+				 <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   			 		
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/intro/ceointro.jsp" target="iframe1"class="block">가게 소개</a>

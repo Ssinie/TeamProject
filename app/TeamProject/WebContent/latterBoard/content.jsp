@@ -49,7 +49,7 @@
 	<tr height="30">
 		<td align="center" width="125">글내용</td>
 		<td align="center" width="375" colspan="3"><%=dto.getContent()%>
-		<% if(dto.getFilename() != null) {%><img src="<%=dto.getFilepath() %>" /><br /><%}%>
+		<% if(dto.getFilename() != null) {%><img src="<%=dto.getFilepath() %>" style="width: 600px; height: auto;"/><br /><%}%>
 		</td>
 	</tr>
 	<tr>

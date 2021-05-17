@@ -105,7 +105,9 @@ $(document).ready(function () {
 
 <a href="/TeamProject/menu/content.jsp?num=<%=article.getNum() %>&id=<%=id %>" >
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="220" width="300"> </li>						 								
-<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>							
+<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>
+<li class="mystyle"><strong ><%=article.getPrice()%></strong></li>	
+		</a>							
 						             	
   <%  } %><!-- for문 종료 -->
  

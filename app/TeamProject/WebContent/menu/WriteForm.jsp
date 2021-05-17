@@ -28,6 +28,9 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
  </select>
  <br/>
 </td></tr>
+<tr><td>		
+  금액: <input type="text" name="price"/><br/>
+ </td></tr>
  <tr><td>
  내용:<textarea rows="20" cols="50" name="content"/> </textarea><br/>
    </td></tr>

@@ -24,6 +24,8 @@ BoardDataBean.setNum(num);
 
 String subject = mr.getParameter("subject");
 BoardDataBean.setSubject(subject);
+String price = mr.getParameter("price");
+BoardDataBean.setPrice(price);
 String content = mr.getParameter("content");
 BoardDataBean.setContent(content);
 String on = mr.getOriginalFileName("file"); // 원본 파일명

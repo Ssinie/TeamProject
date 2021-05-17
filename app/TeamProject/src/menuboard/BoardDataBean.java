@@ -11,6 +11,15 @@ public class BoardDataBean{
 	private String fileRealName;
 	private String fileimage;	
 	private String [] ch;
+	private String price;
+	
+	
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	public int getNum() {
 		return num;
 	}

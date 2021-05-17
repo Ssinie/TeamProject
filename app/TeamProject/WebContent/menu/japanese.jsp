@@ -93,7 +93,9 @@ String id = request.getParameter("id");  //admin 확인
 							
 <a href="content.jsp?num=<%=article.getNum() %>&id=<%=id%>">
 <li class="mystyle"><img src="<%=article.getFileimage()%>" height="350" width="350"> </li>					 								
-<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		</a>	
+<li class="mystyle"><strong ><%=article.getSubject()%></strong></li>		
+<li class="mystyle"><strong ><%=article.getPrice()%></strong></li>	
+</a>	
     
      <%  } %><!-- 서양식 종료 -->
  </td>       	

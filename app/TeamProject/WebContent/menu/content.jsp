@@ -60,7 +60,7 @@ li{margin-bottom:10px;}
 <table width="500" border="1" cellspacing="0" cellpadding="0"   align="center">  
 	<tr height="30">
 		
-	    <td align="center" width="125" ><img src="<%=article.getFileimage() %>" height="450" width="450"></td>
+	    <td align="center" width="125" ><img src="<%=article.getFileimage() %>" height="450" width="500"></td>
 	    
   </tr>
   <tr height="30">

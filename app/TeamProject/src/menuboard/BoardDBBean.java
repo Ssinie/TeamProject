@@ -13,7 +13,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		
 		try {
 			conn = ConnectionDAO.getConnection(); 
-			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?)";
+			String sql = "insert into board2 values(board2_seq.nextval,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,BoardDataBean.getSubject());
 			pstmt.setString(2,BoardDataBean.getContent());					
@@ -21,6 +21,7 @@ public void upload(BoardDataBean BoardDataBean) {
 			pstmt.setString(4,BoardDataBean.getFileName());
 			pstmt.setString(5,BoardDataBean.getFileRealName());
 			pstmt.setString(6,BoardDataBean.getFileimage());
+			pstmt.setString(7,BoardDataBean.getPrice());
 			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -30,25 +31,26 @@ public void upload(BoardDataBean BoardDataBean) {
 		}
 	
 	}
-	public void upload2(BoardDataBean BoardDataBean) { //�닔�젙
+	public void upload2(BoardDataBean BoardDataBean) { 
 	
 	try {
 		conn = ConnectionDAO.getConnection(); 
 		
-		String sql = "update board2 set subject=?, content=?,filename=?,filerealname=?,fileimage=? where num=?";
+		String sql = "update board2 set subject=?, content=?, price=?,filename=?,filerealname=?,fileimage=? where num=?";
 		if(BoardDataBean.getFileName() ==null) {
-			sql = "update board2 set subject=?, content=? where num=?";
+			sql = "update board2 set subject=?, content=?,price=? where num=?";
 		}
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,BoardDataBean.getSubject());	
 		pstmt.setString(2,BoardDataBean.getContent());	
+		pstmt.setString(3, BoardDataBean.getPrice());
 		if(BoardDataBean.getFileName() ==null) {
 			pstmt.setInt(3,BoardDataBean.getNum());
 		}else {
-			pstmt.setString(3,BoardDataBean.getFileName());
-			pstmt.setString(4,BoardDataBean.getFileRealName());
-			pstmt.setString(5,BoardDataBean.getFileimage());	
-			pstmt.setInt(6,BoardDataBean.getNum());
+			pstmt.setString(4,BoardDataBean.getFileName());
+			pstmt.setString(5,BoardDataBean.getFileRealName());
+			pstmt.setString(6,BoardDataBean.getFileimage());				
+			pstmt.setInt(7,BoardDataBean.getNum());
 		}
 	
 		pstmt.executeUpdate();
@@ -151,7 +153,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			
-			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,price,rownum r " +			 	
 						"from " +"(select * from board2  )) where r >= ? and r <= ? ";			
 			pstmt = conn.prepareStatement(sql);				
 					
@@ -169,6 +171,7 @@ public void upload(BoardDataBean BoardDataBean) {
 							article.setFileimage(rs.getString("fileimage"));
 							article.setType(rs.getString("type"));
 							article.setContent(rs.getString("content"));
+							article.setPrice(rs.getString("price"));
 							articleList.add(article); 
 						}while(rs.next());
 					}
@@ -187,7 +190,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			
-			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,price,rownum r " +			 	
 						"from " +"(select * from board2 where type like '한%' order by  num desc )) where r >= ? and r <= ? ";			
 			pstmt = conn.prepareStatement(sql);				
 					
@@ -205,6 +208,7 @@ public void upload(BoardDataBean BoardDataBean) {
 							article.setFileimage(rs.getString("fileimage"));
 							article.setType(rs.getString("type"));
 							article.setContent(rs.getString("content"));
+							article.setPrice(rs.getString("price"));
 							articleList.add(article); 
 						}while(rs.next());
 					}
@@ -222,7 +226,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			
-			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,price,rownum r " +			 	
 						"from " +"(select * from board2 where type like '서%' order by  num desc )) where r >= ? and r <= ? ";			
 			pstmt = conn.prepareStatement(sql);				
 					
@@ -240,6 +244,7 @@ public void upload(BoardDataBean BoardDataBean) {
 							article.setFileimage(rs.getString("fileimage"));
 							article.setType(rs.getString("type"));
 							article.setContent(rs.getString("content"));
+							article.setPrice(rs.getString("price"));
 							articleList.add(article); 
 						}while(rs.next());
 					}
@@ -257,7 +262,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		try {
 			conn = ConnectionDAO.getConnection();
 			
-			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,rownum r " +			 	
+			String sql ="select * from "+"(select num,subject,filename,fileimage,type,content,price,rownum r " +			 	
 						"from " +"(select * from board2 where type like '일%' order by  num desc )order by num desc) where r >= ? and r <= ? ";			
 			pstmt = conn.prepareStatement(sql);				
 					
@@ -275,6 +280,7 @@ public void upload(BoardDataBean BoardDataBean) {
 							article.setFileimage(rs.getString("fileimage"));
 							article.setType(rs.getString("type"));
 							article.setContent(rs.getString("content"));
+							article.setPrice(rs.getString("price"));
 							articleList.add(article); 
 						}while(rs.next());
 					}
@@ -303,6 +309,8 @@ public void upload(BoardDataBean BoardDataBean) {
 				article.setFileimage(rs.getString("fileimage"));
 				article.setContent(rs.getString("content"));
 				article.setSubject(rs.getString("subject"));
+				article.setPrice(rs.getString("price"));
+			
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();

@@ -47,6 +47,10 @@ li{margin-bottom:10px;}
 	    <input type="hidden" name="id" value="<%=id %>"> 
 	    <td align="center" width="125" ><input type="text" align="center" name="subject" value="<%=article.getSubject() %>"  ></td>
 	</tr>  	 
+	<tr height="30">
+		
+	    <td align="center" width="50" ><input type="text" align="center" name="price" value="<%=article.getPrice() %>"  ></td>
+	</tr>  	 
   <tr height="30">
 	    <td align="center" width="125" ><textarea cols="80" rows="10" name="content" ><%=article.getContent() %></textarea></td>
 	</tr>  	    

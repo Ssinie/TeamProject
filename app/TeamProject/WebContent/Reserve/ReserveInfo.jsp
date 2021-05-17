@@ -4,6 +4,11 @@
 <%@ page import="Reserve.ReserveDTO" %>
 <%@ page import="java.util.List" %>
 <%
+	// 인코딩이 되지 않아 임시 변수 선언...
+	int atype = 1;
+	int btype = 2;
+	int ctype = 3;
+	
 	String id = (String)session.getAttribute("memId");
 	if(id == null){%>
 		<script>

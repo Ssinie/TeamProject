@@ -15,7 +15,7 @@ public class EventBoardDAO {
    private PreparedStatement pstmt = null;
    private ResultSet rs = null;
    
-   //DB�Է� �޼���
+   //WritePro.jsp
    public void insertArticle(EventBoardDTO dto) throws Exception {
 
       int num=dto.getNum();
@@ -69,7 +69,7 @@ public class EventBoardDAO {
       }
    }
    
-   //�Խñ� ����Ʈ �޼���
+   //list 불러오기
    public List getArticles(int start, int end) {
       List articleList = null;
       try {
@@ -108,7 +108,7 @@ public class EventBoardDAO {
       return articleList;
    }
    
-   //��ȸ�� �޼���
+   //조회수
    public void readCount(int num) {
       try {
          conn = ConnectionDAO.getConnection();  // 1/2�ܰ� �޼��� ȣ��
@@ -122,8 +122,8 @@ public class EventBoardDAO {
       }
    }   
 
-   //���� �޼���
-    public EventBoardDTO getContent(int num) {
+   //content.jsp
+   public EventBoardDTO getContent(int num) {
        EventBoardDTO dto = new EventBoardDTO();
          try {
             conn = ConnectionDAO.getConnection();  // 1/2�ܰ� �޼��� ȣ��
@@ -207,7 +207,7 @@ public class EventBoardDAO {
       }return dto;
    }
 
-   //���� �޼���
+   //deletePro.jsp
    public int deleteBoard(int num, String passwd) throws Exception {
       String dbpasswd="";
       int x=-1;
@@ -235,7 +235,7 @@ public class EventBoardDAO {
       return x;
    }
 
-   //��� �Խñ� Ȯ�� �޼���
+   //list 개수 불러오기
    public int getArticleCount() {
       int x = 0;
       try {
@@ -253,7 +253,7 @@ public class EventBoardDAO {
       return x;
    }
 
-   //xx������ �޼���
+   //진행중인 이벤트 (사용x)
    public ArrayList<EventBoardDTO> selectenddate() {
       ArrayList<EventBoardDTO> endlistabc = new ArrayList<EventBoardDTO>();
       try {
@@ -281,8 +281,8 @@ public class EventBoardDAO {
          return endlistabc;
       }
 
-   //������<���ó�¥ �������� �ҷ����� getend�޼���... end.jsp
-      public List getend(int start, int end) {
+   //종료된 이벤트
+   public List getend(int start, int end) {
          List endlist = null;
          try {
             conn = ConnectionDAO.getConnection();
@@ -322,8 +322,8 @@ public class EventBoardDAO {
       }
       
       
-      //������ select * from eventboard where end_date >= sysdate and st_date <= sysdate;... cardlist.jsp
-      public List geting(int start, int end) {
+   //진행중인 이벤트 select * from eventboard where end_date >= sysdate and st_date <= sysdate;... cardlist.jsp
+   public List geting(int start, int end) {
          List inglist = null;
          try {
             conn = ConnectionDAO.getConnection();

@@ -46,6 +46,25 @@ function popupLoad() {
 	}
 }
 </script>
+<script type="text/javascript"> 
+//<![CDATA[ iframe에 스크롤 안생기게 작업...
+// https://m.blog.naver.com/PostView.nhn?blogId=sajacr&logNo=221021059931&proxyReferer=https:%2F%2Fwww.google.co.kr%2F
+function calcHeight(){
+ //find the height of the internal page
+
+ var the_height=
+ document.getElementById('the_iframe').contentWindow.
+ document.body.scrollHeight;
+
+ //change the height of the iframe
+ document.getElementById('the_iframe').height=
+ the_height;
+
+ //document.getElementById('the_iframe').scrolling = "no";
+ document.getElementById('the_iframe').style.overflow = "hidden";
+}
+//
+</script>
 <style>
 li{list-style-type:none; }
 </style>
@@ -134,7 +153,7 @@ li{list-style-type:none; }
 
 
 <div class="body2">
-		<iframe name="iframe1" src="/TeamProject/main/main2.jsp"  frameborder="0"   width="100%" height="1200"></iframe>		
+		<iframe name="iframe1" src="/TeamProject/main/main2.jsp" id="the_iframe" onload="calcHeight();" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:100%; min-height:300px;"></iframe>		
 		<%-- SNS 연동 부분 --%>
 		<li class="footer_social_listitem footer_instagram">
 <a itemprop="sameAs" class="footer_social_listitem_anchor footer_social_listitem_anchor_instagram" target="_blank" href="https://www.instagram.com/5g__restaurant/">

@@ -20,7 +20,7 @@ li{margin-bottom:10px;}
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <%
-	String id = request.getParameter("id"); //admin 확인/
+String id = (String)session.getAttribute("memId"); //admin 확인
 	
 	int num = Integer.parseInt(request.getParameter("num"));
 	

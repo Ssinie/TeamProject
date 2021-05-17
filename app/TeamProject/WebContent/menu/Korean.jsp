@@ -15,7 +15,7 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
 
 
 <%
-String id = request.getParameter("id"); //admin 확인
+String id = (String)session.getAttribute("memId"); //admin 확인
 
 
     int pageSize = 9;
@@ -75,7 +75,7 @@ String id = request.getParameter("id"); //admin 확인
     	<td align="center" >
     		<% if(id!=null &&id.equals("admin")){%><!-- 유효성 검사 -->
     		<input type="button" value="글쓰기" onclick="window.location='WriteForm.jsp?id=<%=id%>'"/>
-    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp?id=<%=id%>'"/>
+    		<input type="button" value="글수정" onclick="window.location='updateForm_list.jsp'"/>
     		<input type="button" value="글삭제" onclick="window.location='deleteForm_list.jsp?id=<%=id%>'"/>
     		<%} %>
     	</td>

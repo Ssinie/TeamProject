@@ -15,7 +15,7 @@ li.mystyle{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px
 
 
 <%
-String id = request.getParameter("id");  //admin 확인
+String id = (String)session.getAttribute("memId"); //admin 확인
 
     int pageSize = 9;
 

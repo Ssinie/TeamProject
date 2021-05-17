@@ -105,19 +105,19 @@ li{list-style-type:none; }
                 </ul>
      		</li>
      		<li class="cell">
-     			<a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1"class="block">메뉴 소개</a>
+     			<a href="/TeamProject/menu/Korean.jsp" target="iframe1"class="block">메뉴 소개</a>
     				<ul>
-                    <li><a href="/TeamProject/menu/Korean.jsp?id=<%=id %>" target="iframe1" class="block">한식</a></li>
-                    <li><a href="/TeamProject/menu/japanese.jsp?id=<%=id %>" target="iframe1" class="block">일식</a></li>
-                    <li><a href="/TeamProject/menu/western.jsp?id=<%=id %>" target="iframe1" class="block">양식</a></li>
+                    <li><a href="/TeamProject/menu/Korean.jsp" target="iframe1" class="block">한식</a></li>
+                    <li><a href="/TeamProject/menu/japanese.jsp" target="iframe1" class="block">일식</a></li>
+                    <li><a href="/TeamProject/menu/western.jsp" target="iframe1" class="block">양식</a></li>
                     
                 </ul>
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/event/cardlist.jsp" target="iframe1"class="block">이벤트 게시판</a>
      			<ul>
-                    <li><a href="/TeamProject/event/cardlist.jsp?id=<%=id %>" target="iframe1" class="block">진행중 게시판</a></li>
-                    <li><a href="/TeamProject/event/end.jsp?id=<%=id %>" target="iframe1" class="block">종료된 게시판</a></li>
+                    <li><a href="/TeamProject/event/cardlist.jsp" target="iframe1" class="block">진행중 게시판</a></li>
+                    <li><a href="/TeamProject/event/end.jsp" target="iframe1" class="block">종료된 게시판</a></li>
                 </ul>    				
      		</li>
      		<li class="cell">

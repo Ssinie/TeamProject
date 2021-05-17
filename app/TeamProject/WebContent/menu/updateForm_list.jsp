@@ -17,7 +17,7 @@ li{margin-bottom:2px; list-style-type:none; margin-right:2px;padding:2px;text-al
 
 <%
 
-String id = request.getParameter("id"); //admin 확인/
+String id = (String)session.getAttribute("memId"); //admin 확인
 
     int pageSize = 9;
   
@@ -86,7 +86,7 @@ String id = request.getParameter("id"); //admin 확인/
 %>
 <% if(i%3==0 && i!=0) { %> <tr></tr>  <%  } %>
 <td>
-<a href="updateForm2.jsp?id=<%=id %>&num=<%=article.getNum() %>" >
+<a href="updateForm2.jsp?num=<%=article.getNum() %>" >
 								<div align="center" ><img src="<%=article.getFileimage()%>" height="250" width="350"> 
 								  </div>							
 								<div >

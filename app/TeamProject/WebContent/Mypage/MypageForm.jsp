@@ -27,8 +27,10 @@
 	<td>연락처</td> <td><%=dto.getPhone()%></td></tr>
 	
 	</table>
-	<input type ="button" value="탈퇴 및 정보수정" onclick="window.location='/TeamProject/Login/updateForm.jsp'"/>
 	
+	<div align="center" >
+	<input type ="button"  value="탈퇴 및 정보수정" onclick="window.location='/TeamProject/Login/updateForm.jsp'"/>
+	</div>
 	
    
 

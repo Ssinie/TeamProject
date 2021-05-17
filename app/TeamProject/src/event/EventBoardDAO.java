@@ -15,7 +15,7 @@ public class EventBoardDAO {
    private PreparedStatement pstmt = null;
    private ResultSet rs = null;
    
-   //DBÀÔ·Â ¸Þ¼­µå
+   //DBï¿½Ô·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
    public void insertArticle(EventBoardDTO dto) throws Exception {
 
       int num=dto.getNum();
@@ -69,7 +69,7 @@ public class EventBoardDAO {
       }
    }
    
-   //°Ô½Ã±Û ¸®½ºÆ® ¸Þ¼­µå
+   //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Þ¼ï¿½ï¿½ï¿½
    public List getArticles(int start, int end) {
       List articleList = null;
       try {
@@ -108,10 +108,10 @@ public class EventBoardDAO {
       return articleList;
    }
    
-   //Á¶È¸¼ö ¸Þ¼­µå
+   //ï¿½ï¿½È¸ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
    public void readCount(int num) {
       try {
-         conn = ConnectionDAO.getConnection();  // 1/2´Ü°è ¸Þ¼­µå È£Ãâ
+         conn = ConnectionDAO.getConnection();  // 1/2ï¿½Ü°ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
           pstmt = conn.prepareStatement("update EventBoard set readcount=readcount+1 where num=? "); 
           pstmt.setInt(1, num);
           pstmt.executeUpdate();
@@ -122,11 +122,11 @@ public class EventBoardDAO {
       }
    }   
 
-   //³»¿ë ¸Þ¼­µå
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
     public EventBoardDTO getContent(int num) {
        EventBoardDTO dto = new EventBoardDTO();
          try {
-            conn = ConnectionDAO.getConnection();  // 1/2´Ü°è ¸Þ¼­µå È£Ãâ
+            conn = ConnectionDAO.getConnection();  // 1/2ï¿½Ü°ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
             pstmt = conn.prepareStatement("select * from EventBoard where num=? "); 
             pstmt.setInt(1, num);
             rs = pstmt.executeQuery();
@@ -149,20 +149,30 @@ public class EventBoardDAO {
          return dto;
       }
      
-   //update ¸Þ¼­µå
+   //updatePro.jsp
    public void updateBoard(EventBoardDTO dto) {
          try {
-            conn = ConnectionDAO.getConnection();  // 1/2´Ü°è ¸Þ¼­µå È£Ãâ         
-            String sql = "update EventBoard set subject=?,writer=?,content=?,st_date=?,end_date=?,filePath=? where num=?";
+            conn = ConnectionDAO.getConnection();  // 1/2ï¿½Ü°ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½         
+            
+            String sql = "update EventBoard set subject=?,writer=?,content=?,st_date=?,end_date=?,filePath=?,fileName=?,realName=? where num=?";
+            	if(dto.getFileName()==null) {
+            	   sql = "update EventBoard set subject=?,writer=?content=?st_date=?,end_date=? where num=?";
+            	}
             pstmt = conn.prepareStatement(sql);   
             pstmt.setString(1, dto.getSubject());
             pstmt.setString(2, dto.getWriter());
             pstmt.setString(3, dto.getContent());
             pstmt.setString(4, dto.getSt_date());
             pstmt.setString(5, dto.getEnd_date());
+            if(dto.getFileName()==null) {
+            	pstmt.setInt(6, dto.getNum());
+            }else {		
             pstmt.setString(6, dto.getFilePath());
-            pstmt.setInt(7, dto.getNum());
+            pstmt.setString(7, dto.getFileName());
+            pstmt.setString(8, dto.getRealName());
+            pstmt.setInt(9, dto.getNum());
             pstmt.executeUpdate();
+            }
          }catch(Exception e) {
             e.printStackTrace();
          }finally {
@@ -170,7 +180,7 @@ public class EventBoardDAO {
          }
       }
    
-   //   //update ¸Þ¼­µå ºÒ·¯¿À±â
+   //update ë¶ˆëŸ¬ì˜¤ê¸°
    public EventBoardDTO updateGetEventBoard(int num) throws Exception {
       EventBoardDTO dto = null;
       try {
@@ -197,7 +207,7 @@ public class EventBoardDAO {
       }return dto;
    }
 
-   //»èÁ¦ ¸Þ¼­µå
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
    public int deleteBoard(int num, String passwd) throws Exception {
       String dbpasswd="";
       int x=-1;
@@ -225,7 +235,7 @@ public class EventBoardDAO {
       return x;
    }
 
-   //¸ðµç °Ô½Ã±Û È®ÀÎ ¸Þ¼­µå
+   //ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ È®ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
    public int getArticleCount() {
       int x = 0;
       try {
@@ -243,7 +253,7 @@ public class EventBoardDAO {
       return x;
    }
 
-   //xxÁ¾·áÀÏ ¸Þ¼­µå
+   //xxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
    public ArrayList<EventBoardDTO> selectenddate() {
       ArrayList<EventBoardDTO> endlistabc = new ArrayList<EventBoardDTO>();
       try {
@@ -271,7 +281,7 @@ public class EventBoardDAO {
          return endlistabc;
       }
 
-   //Á¾·áÀÏ<¿À´Ã³¯Â¥ ±âÁØÀ¸·Î ºÒ·¯¿À±â getend¸Þ¼­µå... end.jsp
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<ï¿½ï¿½ï¿½Ã³ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ getendï¿½Þ¼ï¿½ï¿½ï¿½... end.jsp
       public List getend(int start, int end) {
          List endlist = null;
          try {
@@ -312,7 +322,7 @@ public class EventBoardDAO {
       }
       
       
-      //ÁøÇàÁß select * from eventboard where end_date >= sysdate and st_date <= sysdate;... cardlist.jsp
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ select * from eventboard where end_date >= sysdate and st_date <= sysdate;... cardlist.jsp
       public List geting(int start, int end) {
          List inglist = null;
          try {

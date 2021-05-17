@@ -18,9 +18,9 @@
    MultipartRequest mr = new MultipartRequest(request,path,maxSize,enc,drp);
    
    // 파일명 처리
-   String on = mr.getOriginalFileName("filePath"); // 원본 파일명
+   String on = mr.getOriginalFileName("file"); // 업로드된 파일명
    dto.setFileName(on);
-   String sn = mr.getFilesystemName("filePath"); // 업로드된 파일명
+   String sn = mr.getFilesystemName("file"); // 원본 파일명
    dto.setRealName(sn);
    dto.setFilePath("/TeamProject/Images/event/"+on);
    

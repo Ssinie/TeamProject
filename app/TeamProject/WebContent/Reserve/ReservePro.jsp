@@ -5,9 +5,6 @@
 <%@ page import="Reserve.ReserveDAO" %>  
 <%@ page import="connection.ConnectionDAO" %> 
 
-
-
-
  <h1>예약페이지 Pro</h1>
 
 <%

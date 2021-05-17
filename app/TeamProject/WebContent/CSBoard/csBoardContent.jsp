@@ -14,6 +14,7 @@
 
 <%
 	String adm = "";
+	String stat = "";
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 
@@ -48,6 +49,14 @@
 			<%}%></td>
 	    <td align="center" width="125" bgcolor="white" >작성일</td>
 	    <td align="center" width="125" align="center"><%= sdf.format(dto.getReg())%></td>
+  </tr>
+  <tr height="30">
+		<td align="center" width="125" bgcolor="white">상태</td>
+		<td align="center" width="375" align="center" colspan="3">
+		<% if(dto.getStatus() == 1){stat = "처리중";}%>
+    	<% if(dto.getStatus() >= 2){stat = "답변완료";}%>
+    	<% if(dto.getWriter().equals("admin")){stat = "";} %>
+    	<%=stat%></td>
   </tr>
   <tr height="30">
 		<td align="center" width="125" bgcolor="white">글제목</td>

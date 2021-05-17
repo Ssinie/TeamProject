@@ -176,6 +176,71 @@ public class MemberDAO{
 		}
 		return dto;
 		}
+	//Admin 페이지 count
+	public int getMemberCount(int status) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from member where status = 1");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 day count
+	public int getMemberDayCount(int status) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from member where to_char(reg,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and status = 1");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 week count
+	public int getMemberWeekCount(int status) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from member where to_char(reg,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and status = 1");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 month count
+	public int getMemberMonthCount(int status) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from member where to_char(reg,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and status = 1");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	
 }
 
 

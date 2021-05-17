@@ -83,6 +83,9 @@
                      <div class="cont">
                        <strong><%--! <%=number--%> </strong> 
                        <strong><a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>"><%=dto.getSubject() %></a></strong>
+                        <% if(dto.getReadcount()>=20){%>
+         					<img src="hot.jpg" border="0"  height="25" style="vertical-align: middle;" />
+         			   <%}%> 
                        <p>이벤트 종료일 : <%=dto.getEnd_date()%></p>
                        <%-- <p><a href="content.jsp?num=<%=dto.getNum()%>&pageNum=<%=currentPage%>">바로가기</a></p>    --%>             
                      </div>

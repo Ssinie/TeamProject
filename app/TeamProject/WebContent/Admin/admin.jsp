@@ -29,15 +29,22 @@
 	int csstcount = 1;
 	int csstacount = 2;
 	int regcount = 1;
-	int regscount = 0;
+	int regscount = 2;
+	int wecount = 1;
+	int weecount = 2;
+	int moncount = 1;
+	int montcount = 2;
 	csDAO csdao = new csDAO();
 	csDTO csdto = new csDTO();
 	csstcount = csdao.getCSBoardStatusCount(csstcount);
 	csstacount = csdao.getCSBoardStatusCount(csstacount);
 	cscount = csstcount + csstacount;
-	//regcount = csdao.getCSBoardDayCount(regcount);
-	//regscount = csdao.getCSBoardDayCount(regscount);
-	
+	regcount = csdao.getCSBoardDayCount(regcount);
+	regscount = csdao.getCSBoardDayCount(regscount);
+	wecount = csdao.getCSBoardWeekCount(wecount);
+	weecount = csdao.getCSBoardWeekCount(weecount);
+	moncount = csdao.getCSBoardMonthCount(moncount);
+	montcount = csdao.getCSBoardMonthCount(montcount);
 	//회원
 	int memcount = 0;
 	MemberDAO memdao = new MemberDAO();
@@ -119,16 +126,16 @@
     	<td align="center"  width="75" >8</td>
     	<td align="center"  width="450">문의 게시판 미 답변 건 수</td>
     	<td align="center"  width="175"><%=regcount%></td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
+    	<td align="center"  width="175"><%=wecount%></td>
+    	<td align="center"  width="175"><%=moncount%></td>
     	<td align="center"  width="175"><%=csstcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >9</td>
     	<td align="center"  width="450">문의 게시판 답변 완료 건 수</td>
     	<td align="center"  width="175"><%=regscount%></td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
+    	<td align="center"  width="175"><%=weecount%></td>
+    	<td align="center"  width="175"><%=montcount%></td>
     	<td align="center"  width="175"><%=csstacount%></td>
 	</tr>
 		<tr height="30">

@@ -386,21 +386,56 @@ public class csDAO{
 			ConnectionDAO.close(rs, pstmt, conn);
 		}return x;
 	}
-		/*//Admin 페이지 day count
-		public int getCSBoardDayCount(int reg) throws Exception {
+		//Admin 페이지 day count
+		public int getCSBoardDayCount(int status) throws Exception {
 			int x = 0;
 			try {
 				conn = ConnectionDAO.getConnection();
-				pstmt = conn.prepareStatement("select count(*) from (select to_char(reg,'yy/mm/dd') as day1 , to_char(sysdate,'yy/mm/dd') as day2 from csboard) where day1 = day2");
-				pstmt.setTimestamp(1, reg);
+				pstmt = conn.prepareStatement("select count(*) from csboard where to_char(reg,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and status = ? and re_level=0");
+				pstmt.setInt(1, status);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
-					x= rs.getInt(1); 
+					x= rs.getInt(1);
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
 				ConnectionDAO.close(rs, pstmt, conn);
 			}return x;
-		}*/
+		}
+		//Admin 페이지 week count
+		public int getCSBoardWeekCount(int status) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from csboard where to_char(reg,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and status = ? and re_level = 0");
+				pstmt.setInt(1, status);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin 페이지 month count
+		public int getCSBoardMonthCount(int status) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from csboard where to_char(reg,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and status = ? and re_level = 0");
+				pstmt.setInt(1, status);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+
 }

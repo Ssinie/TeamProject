@@ -29,14 +29,14 @@ BoardDataBean.setPrice(price);
 String content = mr.getParameter("content");
 BoardDataBean.setContent(content);
 String on = mr.getOriginalFileName("file"); // 원본 파일명
-
 BoardDataBean.setFileName(on);
-String sn = mr.getFilesystemName("file"); // 업로드된 파일명
 
+String sn = mr.getFilesystemName("file"); // 업로드된 파일명
 BoardDataBean.setFileRealName(sn);
 
+
 	
-BoardDataBean.setFileimage("/TeamProject/menu/img/"+on);
+BoardDataBean.setFileimage("/TeamProject/menu/img/"+sn);
 BoardDBBean file = new BoardDBBean();
 file.upload2(BoardDataBean);	
 %>

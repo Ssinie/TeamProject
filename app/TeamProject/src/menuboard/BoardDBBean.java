@@ -45,7 +45,7 @@ public void upload(BoardDataBean BoardDataBean) {
 		pstmt.setString(2,BoardDataBean.getContent());	
 		pstmt.setString(3, BoardDataBean.getPrice());
 		if(BoardDataBean.getFileName() ==null) {
-			pstmt.setInt(3,BoardDataBean.getNum());
+			pstmt.setInt(4,BoardDataBean.getNum());
 		}else {
 			pstmt.setString(4,BoardDataBean.getFileName());
 			pstmt.setString(5,BoardDataBean.getFileRealName());

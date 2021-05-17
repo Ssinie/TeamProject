@@ -20,6 +20,7 @@ String id = (String)session.getAttribute("memId");
 	}
 	 
 </script>
+<!--  
 <script>
 function NotScrollTop0__init() {
     let scrollTop = $(window).scrollTop();
@@ -35,6 +36,7 @@ function NotScrollTop0__init() {
 $(window).scroll(NotScrollTop0__init);
 NotScrollTop0__init();
 </script>
+-->
 <script>
 <%-- 팝업페이지 --%>
 

@@ -13,7 +13,7 @@ public class LatterBoardDAO {
 	private ResultSet rs = null;
 	
 	
-	// °Ô½Ã±Û ¾²±â
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void insertArticle(LatterBoardDTO dto) {
 		int ref=dto.getRef();
 		int number = 0;
@@ -54,7 +54,7 @@ public class LatterBoardDAO {
 		}
 	}
 	
-	// ÃÑ °Ô½Ã±Û °¹¼ö È®ÀÎ
+	// ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int getArticleCount() {
 		int x = 0;
 		try {
@@ -72,7 +72,7 @@ public class LatterBoardDAO {
 		return x;
 	}
 	
-	// ÀÛ¼ºÀÚ ¶Ç´Â Á¦¸ñÀ¸·Î °Ë»öÇÏ¿© °Ô½Ã±Û °¹¼ö È®ÀÎ
+	// ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï¿ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int getArticleCount(String col, String search) {
 		int x = 0;
 		try {
@@ -90,7 +90,7 @@ public class LatterBoardDAO {
 		return x;
 	}
 	
-	// °Ô½Ã±Û ¹øÈ£¸¦ ÀÌ¿ëÇØ °Ô½Ã±Û Á¤º¸ °¡Á®¿À±â
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public LatterBoardDTO getArticle(int num) {
 		LatterBoardDTO dto = null;
 		try {
@@ -126,7 +126,7 @@ public class LatterBoardDAO {
 		return dto;
 	}
 	
-	// °Ô½Ã±Û ¸®½ºÆ® ÇüÅÂ·Î °¡Á®¿À±â
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List getArticles(int start, int end) {
 		List articleList = null;
 		try {
@@ -168,7 +168,7 @@ public class LatterBoardDAO {
 		return articleList;
 	}
 	
-	// °Ô½Ã±Û À½½ÄÅ¸ÀÔº°·Î ¸®½ºÆ® ÇüÅÂ·Î °¡Á®¿À±â
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½Ôºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public List getArticles(int start, int end, String menu) {
 			List articleList = null;
 			try {
@@ -211,7 +211,7 @@ public class LatterBoardDAO {
 			return articleList;
 		}
 	
-	// ÀÛ¼ºÀÚ Á¶È¸ÇÏ¿© °Ô½Ã±Û °Ë»ö
+	// ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï¿ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½Ë»ï¿½
 	public List getArticles(String col, String search, int start, int end) {
 		List articleList = null;
 		try {
@@ -251,7 +251,7 @@ public class LatterBoardDAO {
 		return articleList;
 	}
 	
-	// ÀÛ¼ºÀÚ Á¶È¸ + Å¸ÀÔ °Ë»öÇÏ¿© °Ô½Ã±Û °Ë»ö
+	// ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ + Å¸ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï¿ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½Ë»ï¿½
 		public List getArticles(String col, String search, int start, int end, String type) {
 			List articleList = null;
 			try {
@@ -292,10 +292,10 @@ public class LatterBoardDAO {
 			return articleList;
 		}
 	
-		//updatePro.jsp ¸Þ¼­µå
+		//updatePro.jsp ï¿½Þ¼ï¿½ï¿½ï¿½
 		public void updateBoard(LatterBoardDTO dto) {
 				try {
-					conn = ConnectionDAO.getConnection();  // 1/2´Ü°è ¸Þ¼­µå È£Ãâ			
+					conn = ConnectionDAO.getConnection();  // 1/2ï¿½Ü°ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½			
 					String sql = "update latterboard set subject=?,content=?,menu=?,filepath=? where num=?";
 					pstmt = conn.prepareStatement(sql);   
 					pstmt.setString(1, dto.getSubject());
@@ -311,7 +311,7 @@ public class LatterBoardDAO {
 				}
 			}	
 	
-		//»èÁ¦ ¸Þ¼­µå
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 		public int deleteBoard(int num, String passwd) throws Exception {
 			String dbpasswd="";
 			int x=-1;
@@ -338,15 +338,201 @@ public class LatterBoardDAO {
 			}
 			return x;
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
+		
+		//Admin íŽ˜ì´ì§€ korean í›„ê¸° total count
+		public int getLatterKoreanCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where menu = 'korean'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ korean í›„ê¸° ì¼ì¼ count
+		public int getLatterKoreanDayCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and menu = 'korean'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ Korean í›„ê¸° ì£¼ê°„ count
+		public int getLatterKoreanWeekCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and menu = 'korean'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ Korean í›„ê¸° ì›”ê°„ count
+		public int getLatterKoreanMonthCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and menu = 'korean'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		
+		//Admin íŽ˜ì´ì§€ japanese í›„ê¸° count
+		public int getLatterjapaneseCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where menu = 'japanese'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ japanese í›„ê¸° ì¼ì¼ count
+		public int getLatterJapaneseDayCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and menu = 'japanese'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ japanese í›„ê¸° ì£¼ê°„ count
+		public int getLatterJapaneseWeekCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and menu = 'japanese'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ japanese í›„ê¸° ì›”ê°„ count
+		public int getLatterJapaneseMonthCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and menu = 'japanese'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+
+		//Admin íŽ˜ì´ì§€ western í›„ê¸° count
+		public int getLatterWesternCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where menu = 'western'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ western í›„ê¸° ì¼ì¼ count
+		public int getLatterWesternDayCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and menu = 'western'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ western í›„ê¸° ì£¼ê°„ count
+		public int getLatterWesternWeekCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and menu = 'western'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		//Admin íŽ˜ì´ì§€ western í›„ê¸° ì›”ê°„ count
+		public int getLatterWesternMonthCount(int num) throws Exception {
+			int x = 0;
+			try {
+				conn = ConnectionDAO.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from latterboard where to_char(reg_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and menu = 'western'");
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					x= rs.getInt(1); 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionDAO.close(rs, pstmt, conn);
+			}return x;
+		}
+		
 }

@@ -35,11 +35,19 @@
 	int wfmcount = 0; // 월간 양식 후기 글 카운트
 	LatterBoardDAO latdao = new LatterBoardDAO();
 	LatterBoardDTO latdto = new LatterBoardDTO();
-	//한식
-	//일식
-	//양식
+	kfcount = latdao.getLatterKoreanCount(kfcount);
+	jfcount = latdao.getLatterjapaneseCount(jfcount);
+	wfcount = latdao.getLatterWesternCount(wfcount);
 	latcount = kfcount + jfcount + wfcount;
-	
+	kfdcount = latdao.getLatterKoreanDayCount(kfdcount);
+	kfwcount = latdao.getLatterKoreanWeekCount(kfwcount);
+	kfmcount = latdao.getLatterKoreanMonthCount(kfmcount);
+	jfdcount = latdao.getLatterJapaneseDayCount(jfdcount);
+	jfwcount = latdao.getLatterJapaneseWeekCount(jfwcount);
+	jfmcount = latdao.getLatterJapaneseMonthCount(jfmcount);
+	wfdcount = latdao.getLatterWesternDayCount(wfdcount);
+	wfwcount = latdao.getLatterWesternWeekCount(wfwcount);
+	wfmcount = latdao.getLatterWesternMonthCount(wfmcount);
 	//이벤트
 	int evcount = 0; // 총 이벤트 카운트
 	int evicount = 0; // 진행중 이벤트 카운트
@@ -131,26 +139,26 @@
 	<tr height="30">
     	<td align="center"  width="75" >4</td>
     	<td align="center"  width="450">후기게시판 한식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=kfdcount%></td>
+    	<td align="center"  width="175"><%=kfwcount%></td>
+    	<td align="center"  width="175"><%=kfmcount%></td>
+    	<td align="center"  width="175"><%=kfcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >5</td>
     	<td align="center"  width="450">후기게시판 일식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=jfdcount%></td>
+    	<td align="center"  width="175"><%=jfwcount%></td>
+    	<td align="center"  width="175"><%=jfmcount%></td>
+    	<td align="center"  width="175"><%=jfcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >6</td>
     	<td align="center"  width="450">후기게시판 양식 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=wfdcount%></td>
+    	<td align="center"  width="175"><%=wfwcount%></td>
+    	<td align="center"  width="175"><%=wfmcount%></td>
+    	<td align="center"  width="175"><%=wfcount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >7</td>

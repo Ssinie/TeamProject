@@ -11,7 +11,7 @@
 	if(result) {
 		dao.statusChange(id);
 		session.invalidate();  // 세션 모두 삭제 
-		response.sendRedirect("http://localhost:8080/TeamProject/Top/TopPge.jsp");
+		response.sendRedirect("http://localhost:8080/TeamProject/main/main2.jsp");
 %>		
 	<script>
    alert("탈퇴되었습니다..");

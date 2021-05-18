@@ -48,6 +48,7 @@
 	wfdcount = latdao.getLatterWesternDayCount(wfdcount);
 	wfwcount = latdao.getLatterWesternWeekCount(wfwcount);
 	wfmcount = latdao.getLatterWesternMonthCount(wfmcount);
+	
 	//이벤트
 	int evcount = 0; // 총 이벤트 카운트
 	int evicount = 0; // 진행중 이벤트 카운트
@@ -60,6 +61,14 @@
 	int evemcount = 0; // 월간 종료된 이벤트 카운트
 	EventBoardDAO evedao = new EventBoardDAO();
 	EventBoardDTO evedto = new EventBoardDTO();
+	evicount = evedao.getEventCount(evicount);
+	//evecount = evedao.getEndEventCount(evecount);
+	evcount = evicount + evecount;
+	evdcount = evedao.getEventDayCount(evdcount);
+	evwcount = evedao.getEventWeekCount(evwcount);
+	evmcount = evedao.getEventMonthCount(evmcount);
+	
+	
 	
 	//CS
 	int cscount = 0; // 총 문의 글 카운트
@@ -195,18 +204,18 @@
 	<tr height="30">
     	<td align="center"  width="75" >11</td>
     	<td align="center"  width="450">이벤트 게시판 진행중 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=evdcount%></td>
+    	<td align="center"  width="175"><%=evwcount%></td>
+    	<td align="center"  width="175"><%=evmcount%></td>
+    	<td align="center"  width="175"><%=evicount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >12</td>
     	<td align="center"  width="450">이벤트 게시판 종료된 건 수</td>
-    	<td align="center"  width="175">일일 카운트 코드</td>
-    	<td align="center"  width="175">주간 카운트 코드</td>
-    	<td align="center"  width="175">월간 카운트 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=evedcount%></td>
+    	<td align="center"  width="175"><%=evewcount%></td>
+    	<td align="center"  width="175"><%=evemcount%></td>
+    	<td align="center"  width="175"><%=evecount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >13</td>

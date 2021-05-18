@@ -361,11 +361,72 @@ public class EventBoardDAO {
          }
          return inglist;
       }
+   
+   //Admin 페이지 진행중 이벤트 count
+   public int getEventCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 진행중 이벤트 일일 count
+   public int getEventDayCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_char(re_date,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 진행중 이벤트 주간 count
+   public int getEventWeekCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_char(re_date,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 진행중 이벤트 월간 count
+   public int getEventMonthCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_char(end_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 종료된 이벤트 count
+   
+   
 }
-   
-
-
-   
-   
-
-

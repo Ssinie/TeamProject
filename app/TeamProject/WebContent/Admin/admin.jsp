@@ -22,7 +22,10 @@
 	int resmcount = 0;
 	ReserveDAO resdao = new ReserveDAO();
 	ReserveDTO resdto = new ReserveDTO();
-	
+	rescount = resdao.getReserveCount(rescount);
+	resdcount = resdao.getReserveDayCount(resdcount);
+	reswcount = resdao.getReserveWeekCount(reswcount);
+	resmcount = resdao.getReserveMonthCount(resmcount);
 	
 	//후기
 	int latcount = 0; // 총 후기 글 카운트
@@ -138,10 +141,10 @@
 	<tr height="30">
     	<td align="center"  width="75" >2</td>
     	<td align="center"  width="450">예약 건 수</td>
-    	<td align="center"  width="175">일별 예약 코드</td>
-    	<td align="center"  width="175">주간 예약 코드</td>
-    	<td align="center"  width="175">월간 예약 코드</td>
-    	<td align="center"  width="175">TOTAL</td>
+    	<td align="center"  width="175"><%=resdcount%></td>
+    	<td align="center"  width="175"><%=reswcount%></td>
+    	<td align="center"  width="175"><%=resmcount%></td>
+    	<td align="center"  width="175"><%=rescount%></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >3</td>

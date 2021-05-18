@@ -120,11 +120,73 @@ public class ReserveDAO {
 			ConnectionDAO.close(rs, pstmt, conn);
 		}
 		return ResList;
-	};
+	}
+	//Admin 페이지 예약 count
+	public int getReserveCount(int res_num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from reservation where floor = 1 or floor = 2 ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 예약 일일 count
+	public int getReserveDayCount(int res_num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 예약 주간 count
+	public int getReserveWeekCount(int res_num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	//Admin 페이지 예약 월간 count
+	public int getReserveMonthCount(int res_num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+	
+	
+	
 }
 	
-
-
-
-
-

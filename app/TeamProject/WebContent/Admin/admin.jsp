@@ -17,8 +17,13 @@
 	String id = (String)session.getAttribute("memId");
 	//예약
 	int rescount = 0;
+	int resdcount = 0;
+	int reswcount = 0;
+	int resmcount = 0;
 	ReserveDAO resdao = new ReserveDAO();
 	ReserveDTO resdto = new ReserveDTO();
+	
+	
 	//후기
 	int latcount = 0; // 총 후기 글 카운트
 	int kfcount = 0; // 한식 후기 글 카운트
@@ -62,13 +67,14 @@
 	EventBoardDAO evedao = new EventBoardDAO();
 	EventBoardDTO evedto = new EventBoardDTO();
 	evicount = evedao.getEventCount(evicount);
-	//evecount = evedao.getEndEventCount(evecount);
+	evecount = evedao.getEventEndCount(evecount);
 	evcount = evicount + evecount;
 	evdcount = evedao.getEventDayCount(evdcount);
 	evwcount = evedao.getEventWeekCount(evwcount);
 	evmcount = evedao.getEventMonthCount(evmcount);
-	
-	
+	evedcount = evedao.getEventEndDayCount(evedcount);
+	evewcount = evedao.getEventEndWeekCount(evewcount);
+	evemcount = evedao.getEventEndMonthCount(evemcount);
 	
 	//CS
 	int cscount = 0; // 총 문의 글 카운트

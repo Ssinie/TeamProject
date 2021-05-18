@@ -415,7 +415,7 @@ public class EventBoardDAO {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from eventboard where to_char(end_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and writer = 'admin'");
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_char(re_date,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and writer = 'admin'");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1);
@@ -427,6 +427,68 @@ public class EventBoardDAO {
 		}return x;
 	}
    //Admin 페이지 종료된 이벤트 count
-   
+   public int getEventEndCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_date(end_date,'yy/mm/dd') <= to_char(sysdate,'yy/mm/dd')");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 종료된 이벤트 일일 count
+   public int getEventEndDayCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_date(end_date,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 종료된 이벤트 주간 count
+   public int getEventEndWeekCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_date(end_date,'yy/mm/dd') <= to_char(sysdate-7,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
+   //Admin 페이지 종료된 이벤트 월간 count
+   public int getEventEndMonthCount(int num) throws Exception {
+		int x = 0;
+		try {
+			conn = ConnectionDAO.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from eventboard where to_date(end_date,'yy/mm/dd') <= to_char(sysdate-30,'yy/mm/dd') and writer = 'admin'");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDAO.close(rs, pstmt, conn);
+		}return x;
+	}
    
 }

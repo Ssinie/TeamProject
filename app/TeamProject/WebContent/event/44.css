@@ -65,7 +65,8 @@ background-color: #c0c0c0; */
 }
 
 #board {
-  width: 1200px;
+ float: left;
+/*   width: 1200px; */
 /*   height: 550px; */
  /*  background-color: lawngreen; */
 }
@@ -131,10 +132,9 @@ a {
 }
 
 .list_wrap {
- width: 1000px
- margin 0 auto;
- padding: 10px 60px 10px 60px;
- float: left;
+ padding: 10px 70px 10px 70px;
+ margin-left: 8px;
+ display: inline-block;
   }
 
 .list_wrap .item  {

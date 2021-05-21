@@ -94,8 +94,7 @@ li{list-style-type:none; }
 <div class="top-bar text-align-center line-height-0-ch-only ">
     <nav class="menu-box-1 inline-block">
         <ul class="row">
-            <li class="cell">
-				 <a href="/TeamProject/main/main2.jsp"target="iframe1" >메인화면</a>   			 		
+            <li class="cell">   			 		
      		</li>
      		<li class="cell">
      			<a href="/TeamProject/intro/ceointro.jsp" target="iframe1"class="block">가게 소개</a>

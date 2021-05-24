@@ -142,7 +142,7 @@ public class ReserveDAO {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') = to_char(sysdate,'yy/mm/dd') and floor > 0");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1);
@@ -158,7 +158,7 @@ public class ReserveDAO {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-7,'yy/mm/dd') and floor > 0 ");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1);
@@ -174,7 +174,7 @@ public class ReserveDAO {
 		int x = 0;
 		try {
 			conn = ConnectionDAO.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and floor = 1 or floor = 2 ");
+			pstmt = conn.prepareStatement("select count(*) from reservation where to_char(write_time,'yy/mm/dd') >= to_char(sysdate-30,'yy/mm/dd') and floor > 0 ");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1);

@@ -10,13 +10,15 @@
 	boolean result= dao.loginCheck(id, pw1);
 	if(result) {
 		dao.statusChange(id);
-		session.invalidate();  // 세션 모두 삭제 
-		response.sendRedirect("http://localhost:8080/TeamProject/main/main2.jsp");
-%>		
-	<script>
-   alert("탈퇴되었습니다..");
-   </script>
-
+		session.invalidate();  // 세션 모두 삭제 %>	
+				
+		<script>
+		alert("탈퇴되었습니다..");
+		parent.document.location.reload();
+		location.href="/TeamProject/Top/TopPage.jsp";
+		</script>
+	
+   
 <%	}else{ %>
 		<script>
 			alert("pw 를 확인하세요");

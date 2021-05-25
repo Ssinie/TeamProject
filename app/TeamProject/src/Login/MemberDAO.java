@@ -64,10 +64,10 @@ public class MemberDAO{
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String status = rs.getString("status");
-				if(status == "1") {
+				if(status == "1" || status=="5") {
 					result = true;
 				}
-				result = true;
+				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

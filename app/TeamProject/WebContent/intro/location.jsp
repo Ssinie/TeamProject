@@ -11,7 +11,8 @@
     
 </head>
 <body>
-<div id="map" style="width:700px;height:500px; display: block; margin-left: auto; margin-right: auto;"></div>
+<div id="map" style="width:700px;height:500px; display: block; 
+margin-left: auto; margin-right: auto;"></div>
 
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8311d2f57be07e77e4629db29cc0d7c8"></script>
 	<script>

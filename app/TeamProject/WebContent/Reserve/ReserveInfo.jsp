@@ -27,7 +27,7 @@
 	<%}
 	for(int i =0; i < ResList.size(); i++){
 		dto = (ReserveDTO)ResList.get(i);%>
-		<table border="2">
+		<table border="2" align="center">
 		<tr>
 		<td>예약번호</td>
 		<td><%=dto.getRes_num()%></td>

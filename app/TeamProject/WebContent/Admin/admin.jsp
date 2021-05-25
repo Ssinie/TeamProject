@@ -255,7 +255,7 @@
     	<td align="center"  width="75" >1</td>
     	<td align="center"  width="450">메뉴 게시판</td>
     	<td align="center"  width="175"><input type="button" value="글쓰기" onclick="window.location='/TeamProject/menu/WriteForm.jsp'"/></td>
-    	<td align="center"  width="175"><input type="button" value="바로가기" onclick="window.location='/TeamProject/menu/menupage.jsp'"/></td>
+    	<td align="center"  width="175"><input type="button" value="바로가기" onclick="window.location='/TeamProject/menu/Korean.jsp'"/></td>
 	</tr>
 	<tr height="30">
     	<td align="center"  width="75" >2</td>

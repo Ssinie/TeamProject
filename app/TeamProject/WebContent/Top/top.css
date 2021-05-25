@@ -269,4 +269,5 @@ html.not-scroll-top-0 .top-bar {
 */
 body {
     background-color:#ffffff;
+    overflow-y: hidden;
 }

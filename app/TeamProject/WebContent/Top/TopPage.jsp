@@ -120,7 +120,7 @@ li{list-style-type:none; }
                 </ul>    				
      		</li>
      		<li class="cell">
-     			<a href="/TeamProject/latterBoard/imageList.jsp" target="iframe1"class="block">후기 게시판</a>
+     			<a href="/TeamProject/latterBoard/imff.jsp" target="iframe1"class="block">후기 게시판</a>
     				
      		</li>
      		<li class="cell">

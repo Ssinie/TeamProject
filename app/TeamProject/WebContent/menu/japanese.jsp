@@ -63,9 +63,6 @@ String id = (String)session.getAttribute("memId"); //admin 확인
 						<h2 class="titMain">일본 음식</h2>						
 					</div>
 
-<%if(id==null){%>
-	<input type ="button" value="로그인 / 회원가입" onclick="window.location='/TeamProject/Login/Login.jsp'" />
-<%} %>	
 	<table >
 	<tr>
     	<td align="center" >
